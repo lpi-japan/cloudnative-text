@@ -1,0 +1,54 @@
+クラウドネイティブ教科書（目次案・叩き台の最終案）
+
+
+序章　クラウドネイティブとは何か
+・歴史と背景（モノリス → VM → コンテナ → クラウドネイティブ）
+・CNCFの定義と思想
+・なぜ今クラウドネイティブが必要か
+・学ぶことで見える世界
+
+第1部：基礎理論
+ 1.コンテナの基礎とDocker
+ 2.Kubernetesの全体構造
+ 3.クラウドサービスとオンプレの違い
+ 4.クラウドネイティブアーキテクチャ（マイクロサービス、12Factor）
+ 5.ネットワークとサービスディスカバリの基礎
+
+第2部：実践環境構築（KillerCodaを活用）
+ 1.実践環境の選択肢（Minikube / Kind / k3s / Docker Desktop 概要）
+ 2.KillerCodaの使い方（推奨環境）
+ 　・ブラウザ完結での演習
+   ・基本操作方法
+ 3.ハンズオン課題
+   ・Pod / Deployment / Service
+   ・ConfigMap / Secret / Volume
+   ・Ingressとアクセス確認
+   ・kubectlコマンド活用（get/describe/logs/exec）
+ 4.ローカル環境へ展開する場合の注意点
+
+第3部：発展技術
+ 1.マイクロサービス設計と実装パターン
+ 2.CI/CDとGitOps（ArgoCD, Flux）
+ 3.Service Mesh（Istio / Linkerd）とeBPF
+ 4.可観測性（Observability: Logging, Monitoring, Tracing）
+
+第4部：運用とセキュリティ
+ 1.RBACと認証・認可
+ 2.Secret管理とセキュアな構成
+ 3.OPA / Policy as Codeの基礎
+ 4.監視（Prometheus, Grafana）
+ 5.運用のベストプラクティスとトラブルシューティング
+
+第5部：クラウドネイティブと社会・ビジネス
+ 1.クラウドネイティブが変える開発文化と組織
+ 2.SESから「価値提供型」への転換
+ 3.コスト最適化とFinOps
+ 4.AI・Web3との接続可能性
+
+付録：学習ロードマップと資格試験
+ 1.KCNA（Kubernetes and Cloud Native Associate）
+   ・試験概要（形式・時間・合格ライン）
+   ・出題範囲（クラウドネイティブ基礎、Kubernetes、アーキテクチャ、Observability、ネットワーク）
+   ・本書でカバーする領域との対応表
+ 2.CKA / CKAD / CKS（中級〜上級資格）との違いと進め方
+ 3.学習プラン例

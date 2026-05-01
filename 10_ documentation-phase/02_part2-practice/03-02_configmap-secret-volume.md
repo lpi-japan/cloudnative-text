@@ -125,6 +125,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 **Pod は設定を「所有していない」**
 
+---
 
 ## 4. ConfigMap を変更する（設定はどこに効くか）
 

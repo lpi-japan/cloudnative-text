@@ -63,7 +63,7 @@ get は、「今、何が存在しているか」を一覧で確認するコマ�
 
 ## 3. kubectl describe
 
-#### なぜその状態になっているかを見る
+#### 詳細な状態を見る
 
 ```bash
 kubectl describe pod sample-pod

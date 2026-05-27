@@ -67,6 +67,9 @@ RBAC、NetworkPolicy、Supply Chain Security、Runtime Security などを通じ�
 
 > 「**なぜ、分散するほど責任分界点が重要になるのか？**」
 
+> > [!WARNING]  
+> CKS の受験にはCKA資格が必要
+
 ---
 
 ## どこから進むべきか

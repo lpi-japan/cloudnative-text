@@ -50,7 +50,7 @@ Killercoder のように、実行環境が用意されているものもある�
 
 ※補足：この章で扱う実行環境について
 
-ここで紹介する Minikube / Kind / k3s / Docker Desktop は、  
+Minikube / Kind / k3s / Docker Desktop は、  
 主に学習や検証を目的とした Kubernetes の実行環境である。
 
 一方で、実際のサービス運用で使用される  

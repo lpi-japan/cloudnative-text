@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cloud Native テキスト　図版 図4-2.1　v1
+  A-8→図4-2.1 改訂：図番号更新・副題削除・ボトルネック枠拡張・定義枠調整
+  タイトル：Trace と Span で処理の流れを再構成する
+  主張：利用者には「1回の処理」に見えても、内部では複数のサービス（Span）が連鎖している。
+        Trace はリクエスト全体の処理記録。Span は個別サービスの処理区間。
+        Span の長さを比較することで遅延箇所（ボトルネック）を特定できる。
+  レイアウト：ガントチャート形式（時系列水平バー）
+    時間軸スケール: 300ms 全体 → 860px（2.867px/ms）
+    Span 時間配分:
+      API Gateway  : 0–30ms   (86px)
+      注文サービス  : 30–80ms  (143px)
+      在庫サービス  : 80–140ms (172px)
+      決済サービス  : 140–260ms (344px) ← ボトルネック
+      通知サービス  : 260–300ms (115px)
+  A-7との連続性：A-7の5サービス呼び出し連鎖（①②③④）を同一サービスで Trace/Span 化
+  グループ構造:
+    g-title
+    g-zone-header       A-7接続ゾーンヘッダー
+    g-time-axis         時間軸ゾーン（目盛り・ラベル）
+    g-grid              縦グリッドライン
+    g-trace-row         Trace バー（全体）
+    g-span-divider      Trace / Span 区切りバー
+    g-span-1            API Gateway Span
+    g-span-2            注文サービス Span
+    g-span-3            在庫サービス Span
+    g-span-4            決済サービス Span（ボトルネック）
+    g-span-5            通知サービス Span
+    g-gantt-border      ガントチャート外枠
+    g-summary           Trace / Span 定義ボックス
+    g-note
+    g-caption
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     xml:lang="ja"
+     font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
+
+  <title>図4-2.1 Trace と Span で処理の流れを再構成する</title>
+  <desc>Cloud Native テキスト 図版 図4-2.1 v1　Trace/Span ガントチャートによる遅延可視化</desc>
+
+  <!-- ═══════════════ 0. 背景 ══════════════════════════ -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ═══════════════ 1. TITLE BAR ════════════════════ -->
+  <g id="g-title">
+    <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+    <text x="560" y="26" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="18" font-weight="bold" letter-spacing="0.5">
+      図4-2.1　Trace と Span で処理の流れを再構成する
+    </text>
+
+  </g>
+
+  <!-- ═══════════════ 2. ZONE HEADER（A-7との接続） ════ -->
+  <g id="g-zone-header">
+    <rect x="20" y="66" width="1080" height="38" fill="#546E7A" rx="2"/>
+    <text x="560" y="86" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="13" font-weight="bold">
+      図4-2 の5サービス呼び出し連鎖を、Trace と Span（ガントチャート形式）で記録・可視化する
+    </text>
+  </g>
+
+  <!-- ═══════════════ 3. TIME AXIS ZONE ════════════════ -->
+  <g id="g-time-axis">
+    <rect x="20" y="104" width="1080" height="48"
+          fill="#ECEFF1" stroke="#546E7A" stroke-width="0.5"/>
+
+    <!-- 軸ラベル -->
+    <text x="110" y="128" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10" font-weight="bold">時間軸（ms）</text>
+
+    <!-- 目盛りテキスト（各50ms） -->
+    <text x="220" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">0</text>
+    <text x="363" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">50ms</text>
+    <text x="507" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">100ms</text>
+    <text x="650" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">150ms</text>
+    <text x="793" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">200ms</text>
+    <text x="937" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">250ms</text>
+    <text x="1080" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">300ms</text>
+
+    <!-- 時間軸水平ライン -->
+    <line x1="218" y1="142" x2="1082" y2="142"
+          stroke="#546E7A" stroke-width="1"/>
+
+    <!-- 目盛りティック（↓方向） -->
+    <line x1="220" y1="140" x2="220" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="363" y1="140" x2="363" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="507" y1="140" x2="507" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="650" y1="140" x2="650" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="793" y1="140" x2="793" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="937" y1="140" x2="937" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="1080" y1="140" x2="1080" y2="152" stroke="#546E7A" stroke-width="1"/>
+  </g>
+
+  <!-- ═══════════════ グリッドライン（縦・薄） ═══════════ -->
+  <g id="g-grid">
+    <line x1="218" y1="152" x2="218" y2="520" stroke="#BDBDBD" stroke-width="0.8"/>
+    <line x1="220" y1="152" x2="220" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="363" y1="152" x2="363" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="507" y1="152" x2="507" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="650" y1="152" x2="650" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="793" y1="152" x2="793" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="937" y1="152" x2="937" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="1080" y1="152" x2="1080" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+  </g>
+
+  <!-- ═══════════════ 4. TRACE ROW ════════════════════
+       Trace = リクエスト全体の処理記録
+       濃いブルーバーが全 Span を含む「親」であることを視覚化
+       ════════════════════════════════════════════════ -->
+  <g id="g-trace-row">
+    <rect x="20" y="152" width="1080" height="56" fill="#DDEEFF"/>
+    <line x1="20" y1="208" x2="1100" y2="208" stroke="#BDBDBD" stroke-width="0.5"/>
+
+    <!-- 行ラベル（左列） -->
+    <text x="30" y="172" dominant-baseline="middle"
+          fill="#1F4E79" font-size="13" font-weight="bold">Trace</text>
+    <text x="30" y="192" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">（リクエスト全体）</text>
+
+    <!-- Trace バー（全幅・Primary Blue） -->
+    <rect x="220" y="162" width="860" height="34"
+          fill="#1F4E79" rx="3"/>
+    <text x="232" y="179" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="9">0 ms</text>
+    <text x="560" y="179" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="10" font-weight="bold">
+      ─── Trace（リクエスト全体の処理記録）───
+    </text>
+    <text x="1068" y="179" text-anchor="end" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="9">合計 300ms</text>
+  </g>
+
+  <!-- ═══════════════ 5. SPAN DIVIDER ═════════════════ -->
+  <g id="g-span-divider">
+    <rect x="20" y="208" width="1080" height="22" fill="#546E7A"/>
+    <text x="560" y="219" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="10">
+      ↓　Span（個別サービスの処理区間）
+    </text>
+  </g>
+
+  <!-- ═══════════════ 6. SPAN 1: API Gateway ══════════
+       Span 1: 0–30ms (86px) / エントリポイント = オレンジ（A-7との色語彙継続）
+       ════════════════════════════════════════════════ -->
+  <g id="g-span-1">
+    <rect x="20" y="230" width="1080" height="52" fill="#FFF3E0"/>
+    <line x1="20" y1="282" x2="1100" y2="282" stroke="#BDBDBD" stroke-width="0.5"/>
+
+    <text x="30" y="248" dominant-baseline="middle"
+          fill="#D84315" font-size="11" font-weight="bold">API Gateway</text>
+    <text x="30" y="264" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 1)</text>
+
+    <rect x="220" y="244" width="86" height="24"
+          fill="#FFF3E0" stroke="#D84315" stroke-width="2" rx="3"/>
+    <text x="263" y="256" text-anchor="middle" dominant-baseline="middle"
+          fill="#D84315" font-size="10" font-weight="bold">30ms</text>
+  </g>
+
+  <!-- ═══════════════ 7. SPAN 2: 注文サービス ════════════
+       Span 2: 30–80ms (143px, start x=306)
+       ════════════════════════════════════════════════ -->
+  <g id="g-span-2">
+    <rect x="20" y="282" width="1080" height="52" fill="#F5F7FA"/>
+    <line x1="20" y1="334" x2="1100" y2="334" stroke="#BDBDBD" stroke-width="0.5"/>
+
+    <text x="30" y="300" dominant-baseline="middle"
+          fill="#1F4E79" font-size="11" font-weight="bold">注文サービス</text>
+    <text x="30" y="316" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 2)</text>
+
+    <rect x="306" y="296" width="143" height="24"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="3"/>
+    <text x="377" y="308" text-anchor="middle" dominant-baseline="middle"
+          fill="#2E75B6" font-size="10" font-weight="bold">50ms</text>
+  </g>
+
+  <!-- ═══════════════ 8. SPAN 3: 在庫サービス ════════════
+       Span 3: 80–140ms (172px, start x=449)
+       ════════════════════════════════════════════════ -->
+  <g id="g-span-3">
+    <rect x="20" y="334" width="1080" height="52" fill="#ECEFF1"/>
+    <line x1="20" y1="386" x2="1100" y2="386" stroke="#BDBDBD" stroke-width="0.5"/>
+
+    <text x="30" y="352" dominant-baseline="middle"
+          fill="#1F4E79" font-size="11" font-weight="bold">在庫サービス</text>
+    <text x="30" y="368" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 3)</text>
+
+    <rect x="449" y="348" width="172" height="24"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="3"/>
+    <text x="535" y="360" text-anchor="middle" dominant-baseline="middle"
+          fill="#2E75B6" font-size="10" font-weight="bold">60ms</text>
+  </g>
+
+  <!-- ═══════════════ 9. SPAN 4: 決済サービス（ボトルネック）
+       Span 4: 140–260ms (344px, start x=621) / 最長 = Error Red
+       行を 68px に拡大してボトルネックの重要性を強調
+       ════════════════════════════════════════════════ -->
+  <g id="g-span-4">
+    <rect x="20" y="386" width="1080" height="82" fill="#FFEBEE"/>
+    <line x1="20" y1="468" x2="1100" y2="468" stroke="#C62828" stroke-width="0.8"/>
+
+    <text x="30" y="404" dominant-baseline="middle"
+          fill="#C62828" font-size="11" font-weight="bold">決済サービス</text>
+    <text x="30" y="420" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 4)</text>
+    <text x="30" y="438" dominant-baseline="middle"
+          fill="#C62828" font-size="10" font-weight="bold">⚠ 最長</text>
+
+    <!-- ボトルネック Span バー（高さ 38px で強調） -->
+    <rect x="621" y="397" width="344" height="52"
+          fill="#FFEBEE" stroke="#C62828" stroke-width="2.5" rx="3"/>
+    <text x="793" y="413" text-anchor="middle" dominant-baseline="middle"
+          fill="#C62828" font-size="12" font-weight="bold">120ms（ボトルネック）</text>
+    <text x="793" y="440" text-anchor="middle" dominant-baseline="middle"
+          fill="#C62828" font-size="9">このSpanの遅延がTrace全体の処理時間に影響している</text>
+  </g>
+
+  <!-- ═══════════════ 10. SPAN 5: 通知サービス ═══════════
+       Span 5: 260–300ms (115px, start x=965)
+       ════════════════════════════════════════════════ -->
+  <g id="g-span-5">
+    <rect x="20" y="468" width="1080" height="52" fill="#F5F7FA"/>
+    <line x1="20" y1="520" x2="1100" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+
+    <text x="30" y="486" dominant-baseline="middle"
+          fill="#1F4E79" font-size="11" font-weight="bold">通知サービス</text>
+    <text x="30" y="502" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 5)</text>
+
+    <rect x="965" y="480" width="115" height="24"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="3"/>
+    <text x="1022" y="492" text-anchor="middle" dominant-baseline="middle"
+          fill="#2E75B6" font-size="10" font-weight="bold">40ms</text>
+  </g>
+
+  <!-- ═══════════════ ガントチャート外枠 ════════════════ -->
+  <g id="g-gantt-border">
+    <rect x="20" y="104" width="1080" height="416"
+          fill="none" stroke="#546E7A" stroke-width="1"/>
+  </g>
+
+  <!-- ═══════════════ 11. SUMMARY BOXES ════════════════
+       Trace と Span の定義を並置して対比させる
+       ════════════════════════════════════════════════ -->
+  <g id="g-summary">
+
+    <!-- Trace 定義ボックス（左） -->
+    <rect x="30" y="532" width="505" height="76"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+    <text x="282" y="548" text-anchor="middle" dominant-baseline="middle"
+          fill="#1F4E79" font-size="12" font-weight="bold">Trace（トレース）</text>
+    <text x="282" y="564" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">1回のリクエストが経由するすべてのサービス処理の記録</text>
+    <text x="282" y="579" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">開始から完了まで全サービスにまたがる流れ全体 ＝ 複数 Span の集合</text>
+
+    <!-- Span 定義ボックス（右） -->
+    <rect x="560" y="532" width="530" height="76"
+          fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5" rx="4"/>
+    <text x="825" y="548" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="12" font-weight="bold">Span（スパン）</text>
+    <text x="825" y="564" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">個別サービスごとの処理区間（開始時刻・終了時刻・サービス名などを記録）</text>
+    <text x="825" y="579" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">Trace は複数の Span から構成される　── 1 Trace = N 個の Span</text>
+
+  </g>
+
+  <!-- ═══════════════ 12. NOTE ══════════════════════════ -->
+  <g id="g-note">
+    <text x="560" y="616" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="11">
+      Span の長さを比較することで、どのサービスが遅延のボトルネックになっているかを一目で特定できる
+    </text>
+  </g>
+
+  <!-- ═══════════════ 13. CAPTION ════════════════════════ -->
+  <g id="g-caption">
+    <rect x="20" y="618" width="4" height="80" fill="#1F4E79"/>
+    <text x="32" y="634" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      図4-2.1：図4-2 で見たリクエスト経路（API Gateway→認証→商品→決済→通知）を Trace と Span として時系列に記録したガントチャート。
+    </text>
+    <text x="32" y="654" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      Trace はリクエスト全体の処理記録。各 Span は個別サービスの処理区間を表す。Span の長さを比較することで、
+    </text>
+    <text x="32" y="674" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      決済サービス（Span 4：120ms）がボトルネックであることが一目で判明する。これが Distributed Tracing の核心である。
+    </text>
+  </g>
+
+</svg>

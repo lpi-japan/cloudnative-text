@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  図版 1-3  v2
+  タイトル：Kubernetesアーキテクチャ：Control PlaneとWorker Nodeの役割分担
+  作成日：2026-06-09
+  変更：①Pod3個 ②「...」削除 ③etcd独立ボックス化 ④下部メッセージを責務分担表現へ
+  キャンバス：1120 × 740 px
+  レイアウト：左(Control Plane 480px) + 中央(矢印 130px) + 右(Worker Nodes 490px)
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     font-family="'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif">
+
+  <defs>
+    <marker id="arr-blue" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E75B6"/>
+    </marker>
+    <marker id="arr-gray" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#546E7A"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00796B"/>
+    </marker>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ===== TITLE BAR ===== -->
+  <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+  <text x="560" y="34" text-anchor="middle" font-size="15" font-weight="bold"
+        fill="#FFFFFF">図1-3　Kubernetesアーキテクチャ：Control PlaneとWorker Nodeの役割分担</text>
+
+  <!-- ══════════════════════════════════════════
+       LEFT PANEL ── Control Plane
+       x=20–500, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="66" width="480" height="40" fill="#1F4E79" rx="4"/>
+  <text x="260" y="82" text-anchor="middle" font-size="10" fill="#BBDEFB">状態を管理する側</text>
+  <text x="260" y="99" text-anchor="middle" font-size="13" font-weight="bold"
+        fill="#FFFFFF">Control Plane</text>
+
+  <rect x="20" y="106" width="480" height="534" fill="#DDEEFF" stroke="#1F4E79"
+        stroke-width="1.5"/>
+
+  <text x="260" y="127" text-anchor="middle" font-size="9" fill="#1F4E79">
+    あるべき状態を把握し、全体が成立するように判断し続ける
+  </text>
+
+  <!-- Component 1: API Server  y=134–194 (60px) -->
+  <rect x="34" y="134" width="452" height="60" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="2" rx="5"/>
+  <rect x="34" y="134" width="452" height="22" fill="#2E75B6" rx="5"/>
+  <rect x="34" y="145" width="452" height="11" fill="#2E75B6"/>
+  <text x="260" y="150" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">状態の入り口となるもの</text>
+  <text x="260" y="166" text-anchor="middle" font-size="9" fill="#546E7A">
+    （API Server）
+  </text>
+  <text x="260" y="184" text-anchor="middle" font-size="9" fill="#1F4E79">
+    すべての操作はここを経由する。宣言を受け取り、クラスタ内に伝える。
+  </text>
+
+  <!-- Component 2: Controller Manager  y=206–264 (58px) -->
+  <rect x="34" y="206" width="452" height="58" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="5"/>
+  <rect x="34" y="206" width="452" height="22" fill="#2E75B6" rx="5"/>
+  <rect x="34" y="217" width="452" height="11" fill="#2E75B6"/>
+  <text x="260" y="222" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">状態のずれを戻すもの</text>
+  <text x="260" y="238" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Controller Manager）
+  </text>
+  <text x="260" y="254" text-anchor="middle" font-size="9" fill="#1F4E79">
+    望ましい状態と現在の状態を比較し、差分を検知して修復を指示する。
+  </text>
+
+  <!-- Component 3: Scheduler  y=276–334 (58px) -->
+  <rect x="34" y="276" width="452" height="58" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="5"/>
+  <rect x="34" y="276" width="452" height="22" fill="#2E75B6" rx="5"/>
+  <rect x="34" y="287" width="452" height="11" fill="#2E75B6"/>
+  <text x="260" y="292" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">実行場所を決めるもの</text>
+  <text x="260" y="308" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Scheduler）
+  </text>
+  <text x="260" y="324" text-anchor="middle" font-size="9" fill="#1F4E79">
+    Podをどの Worker Node で動かすかを判断し、割り当てる。
+  </text>
+
+  <!-- Component 4: etcd  y=346–396 (50px)  ── State Teal で区別 -->
+  <rect x="34" y="346" width="452" height="50" fill="#FFFFFF" stroke="#00796B"
+        stroke-width="1.5" rx="5"/>
+  <rect x="34" y="346" width="452" height="22" fill="#00796B" rx="5"/>
+  <rect x="34" y="357" width="452" height="11" fill="#00796B"/>
+  <text x="260" y="362" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">状態を保持するもの</text>
+  <text x="260" y="378" text-anchor="middle" font-size="9" fill="#546E7A">
+    （etcd）
+  </text>
+  <text x="260" y="392" text-anchor="middle" font-size="9" fill="#004D40">
+    望ましい状態を記録し続ける。Control Plane が判断する根拠となる。
+  </text>
+
+  <!-- Left panel summary box  y=414–466 (52px) -->
+  <rect x="34" y="414" width="452" height="52" fill="#1F4E79" rx="4"/>
+  <text x="260" y="433" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    それぞれが責務を分担することで
+  </text>
+  <text x="260" y="455" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">全体として状態を維持し続ける</text>
+
+  <!-- Divider line -->
+  <line x1="500" y1="106" x2="500" y2="640" stroke="#B0BEC5" stroke-width="1"
+        stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════
+       CENTER ── 双方向矢印
+       x=500–630
+  ══════════════════════════════════════════ -->
+
+  <!-- 指示 arrow: Control Plane → Worker Node -->
+  <line x1="502" y1="296" x2="626" y2="296" stroke="#2E75B6" stroke-width="3"
+        marker-end="url(#arr-blue)"/>
+  <text x="564" y="287" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#2E75B6">指示</text>
+
+  <!-- 状態報告 arrow: Worker Node → Control Plane -->
+  <line x1="626" y1="358" x2="502" y2="358" stroke="#546E7A" stroke-width="2"
+        stroke-dasharray="6,3" marker-end="url(#arr-gray)"/>
+  <text x="564" y="349" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#546E7A">状態報告</text>
+
+  <!-- Divider line -->
+  <line x1="630" y1="106" x2="630" y2="640" stroke="#B0BEC5" stroke-width="1"
+        stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════
+       RIGHT PANEL ── Worker Nodes
+       x=630–1100, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="630" y="66" width="470" height="40" fill="#546E7A" rx="4"/>
+  <text x="865" y="82" text-anchor="middle" font-size="10" fill="#CFD8DC">
+    状態を実現する側
+  </text>
+  <text x="865" y="99" text-anchor="middle" font-size="13" font-weight="bold"
+        fill="#FFFFFF">Worker Node（複数台）</text>
+
+  <rect x="630" y="106" width="470" height="534" fill="#ECEFF1" stroke="#546E7A"
+        stroke-width="1.5"/>
+
+  <text x="865" y="127" text-anchor="middle" font-size="9" fill="#546E7A">
+    指示された状態を受け取り、実際にコンテナを動かす
+  </text>
+
+  <!-- ─── Worker Node 1  x=642–858 ─── -->
+  <rect x="642" y="140" width="216" height="348" fill="#FFFFFF" stroke="#546E7A"
+        stroke-width="1.5" rx="5"/>
+  <rect x="642" y="140" width="216" height="26" fill="#546E7A" rx="5"/>
+  <rect x="642" y="153" width="216" height="13" fill="#546E7A"/>
+  <text x="750" y="158" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Worker Node 1</text>
+
+  <!-- Kubelet -->
+  <rect x="654" y="174" width="192" height="72" fill="#ECEFF1" stroke="#546E7A"
+        stroke-width="1.5" rx="4"/>
+  <text x="750" y="193" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">実際に状態を成立させるもの</text>
+  <text x="750" y="210" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Kubelet）
+  </text>
+  <text x="750" y="230" text-anchor="middle" font-size="8" fill="#546E7A">
+    指示を受け取り Pod を起動・維持する
+  </text>
+
+  <!-- Pods ×3 -->
+  <text x="750" y="262" text-anchor="middle" font-size="9" fill="#546E7A">
+    実行中の Pod
+  </text>
+  <rect x="658" y="268" width="52" height="38" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5" rx="3"/>
+  <text x="684" y="285" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#00796B">Pod</text>
+  <text x="684" y="300" text-anchor="middle" font-size="7" fill="#004D40">Container</text>
+
+  <rect x="720" y="268" width="52" height="38" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5" rx="3"/>
+  <text x="746" y="285" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#00796B">Pod</text>
+  <text x="746" y="300" text-anchor="middle" font-size="7" fill="#004D40">Container</text>
+
+  <rect x="782" y="268" width="52" height="38" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5" rx="3"/>
+  <text x="808" y="285" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#00796B">Pod</text>
+  <text x="808" y="300" text-anchor="middle" font-size="7" fill="#004D40">Container</text>
+
+  <!-- Container Runtime Node 1 -->
+  <rect x="654" y="320" width="192" height="38" fill="#ECEFF1" stroke="#B0BEC5"
+        stroke-width="1" rx="3"/>
+  <text x="750" y="336" text-anchor="middle" font-size="8" fill="#546E7A">
+    Container Runtime
+  </text>
+  <text x="750" y="351" text-anchor="middle" font-size="7" fill="#546E7A">
+    （containerd など）
+  </text>
+
+  <!-- ─── Worker Node 2  x=870–1086 ─── -->
+  <rect x="870" y="140" width="216" height="348" fill="#FFFFFF" stroke="#546E7A"
+        stroke-width="1.5" rx="5"/>
+  <rect x="870" y="140" width="216" height="26" fill="#546E7A" rx="5"/>
+  <rect x="870" y="153" width="216" height="13" fill="#546E7A"/>
+  <text x="978" y="158" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Worker Node 2</text>
+
+  <!-- Kubelet -->
+  <rect x="882" y="174" width="192" height="72" fill="#ECEFF1" stroke="#546E7A"
+        stroke-width="1.5" rx="4"/>
+  <text x="978" y="193" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">実際に状態を成立させるもの</text>
+  <text x="978" y="210" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Kubelet）
+  </text>
+  <text x="978" y="230" text-anchor="middle" font-size="8" fill="#546E7A">
+    指示を受け取り Pod を起動・維持する
+  </text>
+
+  <!-- Pods ×3 -->
+  <text x="978" y="262" text-anchor="middle" font-size="9" fill="#546E7A">
+    実行中の Pod
+  </text>
+  <rect x="886" y="268" width="52" height="38" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5" rx="3"/>
+  <text x="912" y="285" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#00796B">Pod</text>
+  <text x="912" y="300" text-anchor="middle" font-size="7" fill="#004D40">Container</text>
+
+  <rect x="948" y="268" width="52" height="38" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5" rx="3"/>
+  <text x="974" y="285" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#00796B">Pod</text>
+  <text x="974" y="300" text-anchor="middle" font-size="7" fill="#004D40">Container</text>
+
+  <rect x="1010" y="268" width="52" height="38" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5" rx="3"/>
+  <text x="1036" y="285" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#00796B">Pod</text>
+  <text x="1036" y="300" text-anchor="middle" font-size="7" fill="#004D40">Container</text>
+
+  <!-- Container Runtime Node 2 -->
+  <rect x="882" y="320" width="192" height="38" fill="#ECEFF1" stroke="#B0BEC5"
+        stroke-width="1" rx="3"/>
+  <text x="978" y="336" text-anchor="middle" font-size="8" fill="#546E7A">
+    Container Runtime
+  </text>
+  <text x="978" y="351" text-anchor="middle" font-size="7" fill="#546E7A">
+    （containerd など）
+  </text>
+
+  <!-- Right panel summary box -->
+  <rect x="642" y="510" width="444" height="52" fill="#546E7A" rx="4"/>
+  <text x="864" y="530" text-anchor="middle" font-size="10" fill="#CFD8DC">
+    判断はしない。指示された状態を実行するだけ。
+  </text>
+  <text x="864" y="551" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">Control Plane の指示どおりに動き続ける</text>
+
+  <!-- ═══════════════════════════════════
+       CAPTION  y=652–730
+  ═══════════════════════════════════ -->
+  <rect x="20" y="652" width="4" height="78" fill="#2E75B6" rx="2"/>
+  <text x="34" y="668" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">役割の分離：</tspan>
+    <tspan>宣言的制御が成立する理由は、「状態を管理する側（Control Plane）」と「状態を実現する側（Worker Node）」が明確に分かれているからである。</tspan>
+  </text>
+  <text x="34" y="688" text-anchor="start" font-size="11" fill="#1F4E79">
+    Control Plane は全体の状態を把握して判断し続け、Worker Node はその指示を受けてコンテナを動かす。それぞれが一つの責務だけを持つ。
+  </text>
+  <text x="34" y="708" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">この分離によって、クラスタの一部に障害が発生しても、全体は成立し続ける。</tspan>
+  </text>
+
+</svg>

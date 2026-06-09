@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  図版 4-1.1  v1
+  タイトル：モニタリングと可観測性の守備範囲
+  レイアウト：左右比較図（左=モニタリング、中=守備範囲の軸、右=可観測性）
+  キャンバス：1120 × 740 px
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     font-family="'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif">
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ===== TITLE BAR ===== -->
+  <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+  <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
+        fill="#FFFFFF">図4-1.1　モニタリングと可観測性の守備範囲</text>
+
+  <!-- ══════════════════════════════════════════
+       LEFT PANEL ── モニタリング
+       x=20–468, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="66" width="448" height="40" fill="#2E75B6" rx="4"/>
+  <text x="244" y="82" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    既知の問題を監視する
+  </text>
+  <text x="244" y="99" text-anchor="middle" font-size="14" font-weight="bold"
+        fill="#FFFFFF">モニタリング</text>
+
+  <rect x="20" y="106" width="448" height="534" fill="#DDEEFF" stroke="#2E75B6"
+        stroke-width="1.5"/>
+
+  <!-- Core premise -->
+  <rect x="34" y="120" width="420" height="58" fill="#2E75B6" rx="5"/>
+  <text x="244" y="140" text-anchor="middle" font-size="10" fill="#BBDEFB">担う役割</text>
+  <text x="244" y="162" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">事前に定義した状態の変化を監視する</text>
+
+  <!-- Row 1: 対象の問題 -->
+  <rect x="34" y="194" width="420" height="86" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="4"/>
+  <rect x="34" y="194" width="6" height="86" fill="#2E75B6" rx="2"/>
+  <text x="254" y="215" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#2E75B6">既知の問題を検知する</text>
+  <text x="254" y="234" text-anchor="middle" font-size="9" fill="#1F4E79">
+    しきい値を超えた状態を捉える。
+  </text>
+  <text x="254" y="251" text-anchor="middle" font-size="9" fill="#1F4E79">
+    定義済みの異常パターンに反応する。
+  </text>
+  <text x="254" y="268" text-anchor="middle" font-size="9" fill="#546E7A">
+    想定外の問題は検知の対象にならない。
+  </text>
+
+  <!-- Row 2: 使う情報 -->
+  <rect x="34" y="296" width="420" height="86" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="4"/>
+  <rect x="34" y="296" width="6" height="86" fill="#2E75B6" rx="2"/>
+  <text x="254" y="317" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#2E75B6">メトリクスを収集・可視化する</text>
+  <text x="254" y="336" text-anchor="middle" font-size="9" fill="#1F4E79">
+    CPU使用率・エラー率・レスポンスタイムを計測する。
+  </text>
+  <text x="254" y="353" text-anchor="middle" font-size="9" fill="#1F4E79">
+    ダッシュボードで状態を把握する。
+  </text>
+  <text x="254" y="370" text-anchor="middle" font-size="9" fill="#546E7A">
+    定量的な変化を視覚的に捉える。
+  </text>
+
+  <!-- Row 3: 答えられる問い -->
+  <rect x="34" y="398" width="420" height="86" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="4"/>
+  <rect x="34" y="398" width="6" height="86" fill="#2E75B6" rx="2"/>
+  <text x="254" y="419" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#2E75B6">「何が起きているか」がわかる</text>
+  <text x="254" y="438" text-anchor="middle" font-size="9" fill="#1F4E79">
+    アラートで問題の発生を知る。
+  </text>
+  <text x="254" y="455" text-anchor="middle" font-size="9" fill="#1F4E79">
+    事前に設定した範囲で機能する。
+  </text>
+  <text x="254" y="472" text-anchor="middle" font-size="9" fill="#546E7A">
+    発生を知ることに守備範囲がある。
+  </text>
+
+  <!-- Left summary -->
+  <rect x="34" y="500" width="420" height="46" fill="#2E75B6" rx="4"/>
+  <text x="244" y="519" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    設定した範囲で
+  </text>
+  <text x="244" y="539" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">問題の発生を通知できる</text>
+
+  <!-- Left divider -->
+  <line x1="468" y1="106" x2="468" y2="640" stroke="#B0BEC5" stroke-width="1"
+        stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════
+       CENTER PANEL ── 守備範囲の軸
+       x=468–668, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="468" y="66" width="200" height="40" fill="#1F4E79" rx="4"/>
+  <text x="568" y="88" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">守備範囲の違い</text>
+
+  <rect x="468" y="106" width="200" height="534" fill="#F5F7FA" stroke="#1F4E79"
+        stroke-width="1.5"/>
+
+  <!-- Center core message -->
+  <rect x="480" y="120" width="176" height="58" fill="#1F4E79" rx="5"/>
+  <text x="568" y="140" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    どちらが優れているかではない
+  </text>
+  <text x="568" y="162" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">守備範囲が異なる</text>
+
+  <!-- Row 1 center label -->
+  <line x1="480" y1="194" x2="644" y2="194" stroke="#B0BEC5" stroke-width="1"/>
+  <rect x="498" y="228" width="140" height="24" fill="#ECEFF1" stroke="#B0BEC5"
+        stroke-width="1" rx="3"/>
+  <text x="568" y="245" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">対象の問題</text>
+  <line x1="480" y1="280" x2="644" y2="280" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Row 2 center label -->
+  <rect x="498" y="330" width="140" height="24" fill="#ECEFF1" stroke="#B0BEC5"
+        stroke-width="1" rx="3"/>
+  <text x="568" y="347" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">使う情報</text>
+  <line x1="480" y1="382" x2="644" y2="382" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Row 3 center label -->
+  <rect x="498" y="430" width="140" height="24" fill="#ECEFF1" stroke="#B0BEC5"
+        stroke-width="1" rx="3"/>
+  <text x="568" y="447" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">答えられる問い</text>
+  <line x1="480" y1="484" x2="644" y2="484" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Center bottom message -->
+  <rect x="480" y="496" width="176" height="58" fill="#1F4E79" rx="5"/>
+  <text x="568" y="516" text-anchor="middle" font-size="9" fill="#BBDEFB">
+    守備範囲が変わると
+  </text>
+  <text x="568" y="533" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">問いの立て方が変わる</text>
+  <text x="568" y="548" text-anchor="middle" font-size="8" fill="#BBDEFB">
+    集める情報も変わる
+  </text>
+
+  <!-- Right divider -->
+  <line x1="668" y1="106" x2="668" y2="640" stroke="#B0BEC5" stroke-width="1"
+        stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════
+       RIGHT PANEL ── 可観測性
+       x=668–1100, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="668" y="66" width="432" height="40" fill="#00796B" rx="4"/>
+  <text x="884" y="82" text-anchor="middle" font-size="10" fill="#E0F2F1">
+    未知の問題も診断できる
+  </text>
+  <text x="884" y="99" text-anchor="middle" font-size="14" font-weight="bold"
+        fill="#FFFFFF">可観測性（Observability）</text>
+
+  <rect x="668" y="106" width="432" height="534" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="1.5"/>
+
+  <!-- Core premise -->
+  <rect x="682" y="120" width="404" height="58" fill="#00796B" rx="5"/>
+  <text x="884" y="140" text-anchor="middle" font-size="10" fill="#E0F2F1">担う役割</text>
+  <text x="884" y="162" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">システムの内部状態を外部から推測できる</text>
+
+  <!-- Row 1: 対象の問題 -->
+  <rect x="682" y="194" width="404" height="86" fill="#FFFFFF" stroke="#00796B"
+        stroke-width="1.5" rx="4"/>
+  <rect x="682" y="194" width="6" height="86" fill="#00796B" rx="2"/>
+  <text x="892" y="215" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#00796B">未知の問題も診断できる</text>
+  <text x="892" y="234" text-anchor="middle" font-size="9" fill="#004D40">
+    想定していない問題も追える。
+  </text>
+  <text x="892" y="251" text-anchor="middle" font-size="9" fill="#004D40">
+    複雑な依存関係の障害も特定できる。
+  </text>
+  <text x="892" y="268" text-anchor="middle" font-size="9" fill="#546E7A">
+    発生を予測していない状況にも対応できる。
+  </text>
+
+  <!-- Row 2: 使う情報 -->
+  <rect x="682" y="296" width="404" height="86" fill="#FFFFFF" stroke="#00796B"
+        stroke-width="1.5" rx="4"/>
+  <rect x="682" y="296" width="6" height="86" fill="#00796B" rx="2"/>
+  <text x="892" y="317" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#00796B">ログ・メトリクス・トレースを組み合わせる</text>
+  <text x="892" y="336" text-anchor="middle" font-size="9" fill="#004D40">
+    3つのシグナルで状態を立体的に捉える。
+  </text>
+  <text x="892" y="353" text-anchor="middle" font-size="9" fill="#004D40">
+    問題の発生から原因まで時系列で追う。
+  </text>
+  <text x="892" y="370" text-anchor="middle" font-size="9" fill="#546E7A">
+    複数の情報を統合して判断する。
+  </text>
+
+  <!-- Row 3: 答えられる問い -->
+  <rect x="682" y="398" width="404" height="86" fill="#FFFFFF" stroke="#00796B"
+        stroke-width="1.5" rx="4"/>
+  <rect x="682" y="398" width="6" height="86" fill="#00796B" rx="2"/>
+  <text x="892" y="419" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#00796B">「なぜ起きているか」まで追える</text>
+  <text x="892" y="438" text-anchor="middle" font-size="9" fill="#004D40">
+    問題の根本原因を特定できる。
+  </text>
+  <text x="892" y="455" text-anchor="middle" font-size="9" fill="#004D40">
+    未知の問題も診断の対象になる。
+  </text>
+  <text x="892" y="472" text-anchor="middle" font-size="9" fill="#546E7A">
+    診断まで守備範囲に含まれる。
+  </text>
+
+  <!-- Right summary -->
+  <rect x="682" y="500" width="404" height="46" fill="#00796B" rx="4"/>
+  <text x="884" y="519" text-anchor="middle" font-size="10" fill="#E0F2F1">
+    診断まで含めて
+  </text>
+  <text x="884" y="539" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">問題の原因まで追い続けられる</text>
+
+  <!-- ══════════════════════════════════════════
+       CAPTION  y=652–718
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="652" width="4" height="68" fill="#2E75B6" rx="2"/>
+  <text x="34" y="668" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">守備範囲の違い：</tspan>
+    <tspan>モニタリングは事前に定義した状態の変化を検知し、問題の発生を通知する。可観測性はログ・メトリクス・トレースを組み合わせ、</tspan>
+  </text>
+  <text x="34" y="688" text-anchor="start" font-size="11" fill="#1F4E79">
+    未知の問題も含めて診断できる。モニタリングは「何が起きているか」を知るために、可観測性は「なぜ起きているか」を追うために機能する。
+  </text>
+  <text x="34" y="708" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">守備範囲の違いを理解することで、どの情報を集め、どう使うかの判断が変わる。</tspan>
+  </text>
+
+</svg>

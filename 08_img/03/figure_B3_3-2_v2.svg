@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  図版 3-2  v2
+  タイトル：GitOpsフロー：変更の流れを定義する
+  変更：①矢印細化(2.5→1.5) ②「変更検知」font-size縮小 ③「image push」2行化 ④ボックス高260pxに縮小・内部行間引き締め
+  キャンバス：1120 × 740 px
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 606"
+     width="1120" height="606"
+     font-family="'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif">
+
+  <defs>
+    <marker id="arr-flow" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D84315"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E75B6"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00796B"/>
+    </marker>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ===== TITLE BAR ===== -->
+  <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+  <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
+        fill="#FFFFFF">図3-2　GitOpsフロー：変更の流れを定義する</text>
+
+  <!-- ══════════════════════════════════════════
+       ZONE BANNERS  y=66–94
+  ══════════════════════════════════════════ -->
+  <rect x="30" y="66" width="406" height="28" fill="#2E75B6" rx="4"/>
+  <text x="233" y="85" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">人の手による</text>
+
+  <rect x="466" y="66" width="624" height="28" fill="#00796B" rx="4"/>
+  <text x="778" y="85" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">自動化された流れ</text>
+
+  <!-- Zone boundary indicator -->
+  <line x1="451" y1="66" x2="451" y2="362" stroke="#B0BEC5" stroke-width="1.5"
+        stroke-dasharray="5,4"/>
+  <text x="451" y="372" text-anchor="middle" font-size="8" fill="#546E7A">
+    人の関与は
+  </text>
+  <text x="451" y="383" text-anchor="middle" font-size="8" fill="#546E7A">
+    ここまで
+  </text>
+
+  <!-- ══════════════════════════════════════════
+       FLOW BOXES  y=100–360  (height=260)
+  ══════════════════════════════════════════ -->
+
+  <!-- ─── Stage 1: Developer  x=30–218 ─── -->
+  <rect x="30" y="100" width="188" height="260" fill="#DDEEFF" stroke="#2E75B6"
+        stroke-width="2" rx="5"/>
+  <rect x="30" y="100" width="188" height="26" fill="#2E75B6" rx="5"/>
+  <rect x="30" y="114" width="188" height="12" fill="#2E75B6"/>
+  <text x="124" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">変更を定義する</text>
+  <text x="124" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#1F4E79">開発者</text>
+  <text x="124" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Developer）
+  </text>
+  <line x1="42" y1="164" x2="206" y2="164" stroke="#BBDEFB" stroke-width="1"/>
+  <text x="124" y="181" text-anchor="middle" font-size="9" fill="#1F4E79">
+    コードや設定を変更し、
+  </text>
+  <text x="124" y="196" text-anchor="middle" font-size="9" fill="#1F4E79">
+    Gitにpushする。
+  </text>
+  <text x="124" y="213" text-anchor="middle" font-size="9" fill="#546E7A">
+    変更はどんな場合も
+  </text>
+  <text x="124" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    まずGitに記録される。
+  </text>
+  <rect x="42" y="322" width="164" height="28" fill="#2E75B6" rx="3"/>
+  <text x="124" y="340" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">ここで人の操作は終わる</text>
+
+  <!-- ─── Arrow 1→2 ─── -->
+  <line x1="220" y1="230" x2="244" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <text x="232" y="222" text-anchor="middle" font-size="8" fill="#D84315">push</text>
+
+  <!-- ─── Stage 2: Git Repository  x=248–436 ─── -->
+  <rect x="248" y="100" width="188" height="260" fill="#DDEEFF" stroke="#2E75B6"
+        stroke-width="2" rx="5"/>
+  <rect x="248" y="100" width="188" height="26" fill="#2E75B6" rx="5"/>
+  <rect x="248" y="114" width="188" height="12" fill="#2E75B6"/>
+  <text x="342" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">変更を保持する</text>
+  <text x="342" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#1F4E79">Gitリポジトリ</text>
+  <text x="342" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Git Repository）
+  </text>
+  <line x1="260" y1="164" x2="424" y2="164" stroke="#BBDEFB" stroke-width="1"/>
+  <text x="342" y="181" text-anchor="middle" font-size="9" fill="#1F4E79">
+    すべての変更が
+  </text>
+  <text x="342" y="196" text-anchor="middle" font-size="9" fill="#1F4E79">
+    ここに記録される。
+  </text>
+  <text x="342" y="213" text-anchor="middle" font-size="9" fill="#546E7A">
+    差分として追跡でき、
+  </text>
+  <text x="342" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    過去の状態に戻せる。
+  </text>
+  <rect x="260" y="322" width="164" height="28" fill="#2E75B6" rx="3"/>
+  <text x="342" y="340" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">変更を管理する構造が成立する</text>
+
+  <!-- ─── Arrow 2→3 (crosses zone boundary) ─── -->
+  <line x1="438" y1="230" x2="462" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <!-- ②「変更検知」font-size縮小 -->
+  <text x="451" y="222" text-anchor="middle" font-size="7" fill="#D84315">変更検知</text>
+
+  <!-- ─── Stage 3: CI Pipeline  x=466–654 ─── -->
+  <rect x="466" y="100" width="188" height="260" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="2" rx="5"/>
+  <rect x="466" y="100" width="188" height="26" fill="#00796B" rx="5"/>
+  <rect x="466" y="114" width="188" height="12" fill="#00796B"/>
+  <text x="560" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">変更を検証する</text>
+  <text x="560" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#004D40">CIパイプライン</text>
+  <text x="560" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （CI Pipeline）
+  </text>
+  <line x1="478" y1="164" x2="642" y2="164" stroke="#E0F2F1" stroke-width="1"/>
+  <text x="560" y="181" text-anchor="middle" font-size="9" fill="#004D40">
+    テスト・ビルド・
+  </text>
+  <text x="560" y="196" text-anchor="middle" font-size="9" fill="#004D40">
+    イメージのpushを
+  </text>
+  <text x="560" y="211" text-anchor="middle" font-size="9" fill="#004D40">
+    自動で実行する。
+  </text>
+  <text x="560" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    人が関与しない。
+  </text>
+  <rect x="478" y="322" width="164" height="28" fill="#00796B" rx="3"/>
+  <text x="560" y="340" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">変更は自動的に実行可能になる</text>
+
+  <!-- ─── Arrow 3→4 ─── -->
+  <line x1="656" y1="230" x2="680" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <!-- ③「image push」2行化 -->
+  <text x="668" y="208" text-anchor="middle" font-size="7" fill="#D84315">image</text>
+  <text x="668" y="218" text-anchor="middle" font-size="7" fill="#D84315">push</text>
+
+  <!-- ─── Stage 4: GitOps Operator  x=684–872 ─── -->
+  <rect x="684" y="100" width="188" height="260" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="2" rx="5"/>
+  <rect x="684" y="100" width="188" height="26" fill="#00796B" rx="5"/>
+  <rect x="684" y="114" width="188" height="12" fill="#00796B"/>
+  <text x="778" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">差分を検出する</text>
+  <text x="778" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#004D40">GitOpsオペレーター</text>
+  <text x="778" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （ArgoCD / Flux など）
+  </text>
+  <line x1="696" y1="164" x2="860" y2="164" stroke="#E0F2F1" stroke-width="1"/>
+  <text x="778" y="181" text-anchor="middle" font-size="9" fill="#004D40">
+    Gitの状態と
+  </text>
+  <text x="778" y="196" text-anchor="middle" font-size="9" fill="#004D40">
+    クラスタの状態を
+  </text>
+  <text x="778" y="211" text-anchor="middle" font-size="9" fill="#004D40">
+    継続的に比較する。
+  </text>
+  <text x="778" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    差分があれば同期する。
+  </text>
+  <rect x="696" y="322" width="164" height="28" fill="#00796B" rx="3"/>
+  <text x="778" y="340" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">変更と実行がつながる</text>
+
+  <!-- ─── Arrow 4→5 ─── -->
+  <line x1="874" y1="230" x2="898" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <text x="886" y="222" text-anchor="middle" font-size="8" fill="#D84315">apply</text>
+
+  <!-- ─── Stage 5: Kubernetes  x=902–1090 ─── -->
+  <rect x="902" y="100" width="188" height="260" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="2" rx="5"/>
+  <rect x="902" y="100" width="188" height="26" fill="#00796B" rx="5"/>
+  <rect x="902" y="114" width="188" height="12" fill="#00796B"/>
+  <text x="996" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">状態を実現する</text>
+  <text x="996" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#004D40">Kubernetes</text>
+  <text x="996" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （クラスタ）
+  </text>
+  <line x1="914" y1="164" x2="1078" y2="164" stroke="#E0F2F1" stroke-width="1"/>
+  <text x="996" y="181" text-anchor="middle" font-size="9" fill="#004D40">
+    差分をもとにクラスタの
+  </text>
+  <text x="996" y="196" text-anchor="middle" font-size="9" fill="#004D40">
+    状態を更新し続ける。
+  </text>
+  <text x="996" y="213" text-anchor="middle" font-size="9" fill="#546E7A">
+    宣言された状態へ
+  </text>
+  <text x="996" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    近づけ続ける。
+  </text>
+  <rect x="914" y="322" width="164" height="28" fill="#00796B" rx="3"/>
+  <text x="996" y="340" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">Gitの定義が環境に反映される</text>
+
+  <!-- ══════════════════════════════════════════
+       KEY MESSAGES  y=404–514
+  ══════════════════════════════════════════ -->
+
+  <!-- Message 1 -->
+  <rect x="30" y="404" width="330" height="110" fill="#2E75B6" rx="5"/>
+  <rect x="30" y="404" width="330" height="28" fill="#1F4E79" rx="5"/>
+  <rect x="30" y="420" width="330" height="12" fill="#1F4E79"/>
+  <text x="195" y="422" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    変更の管理
+  </text>
+  <text x="195" y="452" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">変更はすべてGitに記録される</text>
+  <text x="195" y="474" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    差分として追跡でき、過去の状態に戻せる。
+  </text>
+  <text x="195" y="492" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    変更はGitに記録されることで管理された流れになる。
+  </text>
+
+  <!-- Message 2 -->
+  <rect x="390" y="404" width="330" height="110" fill="#1F4E79" rx="5"/>
+  <rect x="390" y="404" width="330" height="28" fill="#004D40" rx="5"/>
+  <rect x="390" y="420" width="330" height="12" fill="#004D40"/>
+  <text x="555" y="422" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    デプロイの仕組み
+  </text>
+  <text x="555" y="452" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">人が直接デプロイしない</text>
+  <text x="555" y="474" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    操作の記録が残り、手順が揃い、状態が再現できる。
+  </text>
+  <text x="555" y="492" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    人の操作に依存させない設計が安定をもたらす。
+  </text>
+
+  <!-- Message 3 -->
+  <rect x="750" y="404" width="340" height="110" fill="#00796B" rx="5"/>
+  <rect x="750" y="404" width="340" height="28" fill="#004D40" rx="5"/>
+  <rect x="750" y="420" width="340" height="12" fill="#004D40"/>
+  <text x="920" y="422" text-anchor="middle" font-size="10" fill="#E0F2F1">
+    構造のつながり
+  </text>
+  <text x="920" y="452" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">変更と実行がつながる</text>
+  <text x="920" y="474" text-anchor="middle" font-size="9" fill="#E0F2F1">
+    Gitの状態がKubernetesの状態に直接接続される。
+  </text>
+  <text x="920" y="492" text-anchor="middle" font-size="9" fill="#E0F2F1">
+    定義と実行が一つの流れとして成立する。
+  </text>
+
+  <!-- ═══════════════════════════════════
+       CAPTION  y=652–730
+  ═══════════════════════════════════ -->
+  <rect x="20" y="530" width="4" height="78" fill="#2E75B6" rx="2"/>
+  <text x="34" y="546" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">GitOpsフロー：</tspan>
+    <tspan>開発者はGitにpushするだけでよい。それ以降の検証・差分検出・クラスタへの反映はすべて自動で行われる。</tspan>
+  </text>
+  <text x="34" y="566" text-anchor="start" font-size="11" fill="#1F4E79">
+    変更はGitに記録され、CIパイプラインで検証され、GitOpsオペレーターがKubernetesと同期し続ける。
+  </text>
+  <text x="34" y="586" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">デプロイという行為そのものを人の手から切り離すことで、変更は安定した流れとして扱われるようになる。</tspan>
+  </text>
+
+</svg>

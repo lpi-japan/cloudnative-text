@@ -1,4 +1,4 @@
-# 3-2 ハンズオン：ConfigMap / Secret / Volume ～設定と実行を切り離す～
+## 3-2 ハンズオン：ConfigMap / Secret / Volume ～設定と実行を切り離す～
 
 ***
 
@@ -7,7 +7,7 @@
 
 ***
 
-## 0. 前提確認
+### 0. 前提確認
 
 前のハンズオンで作成した Deployment が存在していることを確認します。
 ```bash
@@ -19,9 +19,9 @@ Pod が稼働していれば OK です。
 
 ***
 
-## 1. ConfigMap を作成する（設定を Pod の外に置く）
+### 1. ConfigMap を作成する（設定を Pod の外に置く）
 
-#### ConfigMap を定義します。
+##### ConfigMap を定義します。
 ```bash
 cat <<EOF > configmap.yaml
 apiVersion: v1
@@ -33,21 +33,21 @@ data:
 EOF
 ```
 
-#### ConfigMap を作成します。
+##### ConfigMap を作成します。
 ```bash
 kubectl apply -f configmap.yaml
 ```
 
-#### 確認します。
+##### 確認します。
 ```bash
 kubectl get configmap
 ```
 
 ***
 
-## 2. ConfigMap を Pod から参照する
+### 2. ConfigMap を Pod から参照する
 
-#### ConfigMap を環境変数として読み込むようにします。
+##### ConfigMap を環境変数として読み込むようにします。
 
 ```bash
 cat <<EOF > deployment-config.yaml
@@ -79,22 +79,22 @@ spec:
 EOF
 ```
 
-#### 適用します。
+##### 適用します。
 ```bash
 kubectl apply -f deployment-config.yaml
 ```
 
-#### Pod を確認します。
+##### Pod を確認します。
 ```bash
 kubectl get pod
 ```
 
-#### 環境変数を確認します。
+##### 環境変数を確認します。
 ```bash
 kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadata.name}') -- env | grep MESSAGE
 ```
 
-#### 観察
+##### 観察
 - 設定は Pod の中に見える
 - しかし定義は Pod の外にある
 
@@ -102,24 +102,24 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 ***
 
-## 3. Pod を削除する（設定は残るか？）
+### 3. Pod を削除する（設定は残るか？）
 
-#### Pod を削除します。
+##### Pod を削除します。
 ```bash
 kubectl delete pod -l app=sample
 ```
 
-#### 再度 Pod を確認します。
+##### 再度 Pod を確認します。
 ```bash
 kubectl get pod
 ```
 
-#### 新しい Pod が起動したら、もう一度環境変数を確認します。
+##### 新しい Pod が起動したら、もう一度環境変数を確認します。
 ```bash
 kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadata.name}') -- env | grep MESSAGE
 ```
 
-#### 観察
+##### 観察
 - Pod は入れ替わった
 - 設定はそのまま使われている
 
@@ -127,29 +127,29 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 ***
 
-## 4. ConfigMap を変更する（設定はどこに効くか）
+### 4. ConfigMap を変更する（設定はどこに効くか）
 
-#### ConfigMap を変更します。
+##### ConfigMap を変更します。
 ```bash
 kubectl edit configmap app-config
 ```
 
-#### MESSAGE の内容を変更して保存します。
+##### MESSAGE の内容を変更して保存します。
 ```bash
 MESSAGE: "Hello updated ConfigMap"
 ```
 
-#### Pod を再起動します。
+##### Pod を再起動します。
 ```bash
 kubectl delete pod -l app=sample
 ```
 
-#### 再度環境変数を確認します。
+##### 再度環境変数を確認します。
 ```bash
 kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadata.name}') -- env | grep MESSAGE
 ```
 
-#### 観察
+##### 観察
 - 設定変更は Pod 再作成時に反映される
 - 設定と実行が分離されている
 
@@ -157,9 +157,9 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 ***
 
-## 5. Volume を使う（データの置き場所を考える）
+### 5. Volume を使う（データの置き場所を考える）
 
-#### Volume を使用する Deployment を作成します。
+##### Volume を使用する Deployment を作成します。
 ```bash
 cat <<EOF > deployment-volume.yaml
 apiVersion: apps/v1
@@ -190,30 +190,30 @@ spec:
 EOF
 ```
 
-#### 適用します。
+##### 適用します。
 ```bash
 kubectl apply -f deployment-volume.yaml
 ```
 
-#### データを確認します。
+##### データを確認します。
 ```bash
 kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].metadata.name}') -- cat /data/message.txt
 ```
 
 ***
 
-## 6. Pod を削除する（データは残るか？ ）
+### 6. Pod を削除する（データは残るか？ ）
 
 ```bash
 kubectl delete pod -l app=volume-sample
 ```
 
-#### 新しい Pod が起動したら、再度確認します。
+##### 新しい Pod が起動したら、再度確認します。
 ```bash
 kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].metadata.name}') -- ls /data
 ```
 
-#### 観察
+##### 観察
 - データは消えている
 - emptyDir は Pod と運命を共にする
 
@@ -222,7 +222,7 @@ kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].
 
 ***
 
-## 7. Secret について（ここでは体験しない）
+### 7. Secret について（ここでは体験しない）
 Secret の概念は ConfigMap と同じである。  
 ただし用途が異なるため、ここでは操作は行わない。
 
@@ -230,20 +230,20 @@ Secret の概念は ConfigMap と同じである。
 
 ***
 
-## 8. まとめ（このハンズオンで確認したこと）
+### 8. まとめ（このハンズオンで確認したこと）
 
-#### ConfigMap
+##### ConfigMap
 
 - 設定を Pod の外に出す
 - Pod が消えても設定は残る
 - 設定変更は Pod の再作成で反映される
 
-#### Secret
+##### Secret
 
 - 秘密情報を Pod の外に出す
 - 扱い方は ConfigMap と同じ
 
-#### Volume
+##### Volume
 
 - 状態の寿命を明確にする
 - emptyDir は Pod と運命を共にする

@@ -1,6 +1,6 @@
-# 2. CKA / CKAD / CKS（中級〜上級資格）との違いと進め方
+## 2. CKA / CKAD / CKS（中級〜上級資格）との違いと進め方
 
-## 中級資格では「責任範囲」が変わる
+### 中級資格では「責任範囲」が変わる
 
 KCNA がクラウドネイティブ全体の構造理解を扱う資格であるのに対し、  
 CKA・CKAD・CKS は、それぞれ異なる役割や責任範囲を扱う資格です。
@@ -12,9 +12,9 @@ CKA・CKAD・CKS は、それぞれ異なる役割や責任範囲を扱う資格
 
 ***
 
-## CKA（Certified Kubernetes Administrator）
+### CKA（Certified Kubernetes Administrator）
 
-### ■ 分散環境を止めずに支える。
+#### ■ 分散環境を止めずに支える。
 
 CKA は、Kubernetes クラスタの運用・管理を中心に扱う資格です。
 
@@ -29,9 +29,9 @@ CKA は、Kubernetes クラスタの運用・管理を中心に扱う資格で�
 
 ***
 
-## CKAD（Certified Kubernetes Application Developer）
+### CKAD（Certified Kubernetes Application Developer）
 
-### ■ 変化し続ける前提で作る。
+#### ■ 変化し続ける前提で作る。
 
 CKAD は、Kubernetes 上で動作するアプリケーションの設計・配置を扱う資格です。
 
@@ -48,9 +48,9 @@ Deployment、ConfigMap、Secret、Service、Helm、CI/CD などを通じて、
 
 ***
 
-## CKS（Certified Kubernetes Security Specialist）
+### CKS（Certified Kubernetes Security Specialist）
 
-### ■ 変化を許容しながら、安全性を維持する。
+#### ■ 変化を許容しながら、安全性を維持する。
 
 CKS は、Kubernetes 環境におけるセキュリティを専門的に扱う資格です。
 
@@ -86,7 +86,7 @@ CKS は、Kubernetes のセキュリティ資格であると同時に、
 
 ***
 
-## どこから進むべきか
+### どこから進むべきか
 
 学習の順番に絶対的な正解はありません。
 

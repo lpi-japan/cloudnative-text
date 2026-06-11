@@ -4,6 +4,13 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE_DIR="${ROOT_DIR}/../../text-manage/server-text"
 IMAGE="ghcr.io/lpi-japan/server-text:latest"
+CONFIG="config-pdf.yaml"
+OUTPUT="guide.pdf"
+
+if [[ "${1:-}" == "--ignore-linebreaks" ]]; then
+  CONFIG="config-pdf-ignore-linebreaks.yaml"
+  OUTPUT="guide_ignore_linebreaks.pdf"
+fi
 
 # git 管理の英語原稿ディレクトリ（doc-phase 版と同じ明示リスト）
 PART_DIRS=(
@@ -33,6 +40,8 @@ done
 
 docker run --rm -i \
   --user "$(id -u):$(id -g)" \
+  -e CONFIG="${CONFIG}" \
+  -e OUTPUT="${OUTPUT}" \
   -v "${ROOT_DIR}:/data" \
   -v "${TEMPLATE_DIR}:/server-text:ro" \
   -w /data \
@@ -63,15 +72,25 @@ if ((${#chapters[@]} == 0)); then
   exit 1
 fi
 
+if [[ ! -f preface.md ]]; then
+  echo "missing preface.md" >&2
+  exit 1
+fi
+
+pandoc preface.md -o preface.tex --resource-path=.
+
 printf '%s\n' "${chapters[@]}" > /data/.build-chapter-list.txt
 printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
-  -d config-pdf.yaml \
+  -d "${CONFIG}" \
   --template /server-text/template.tex \
   --resource-path=. \
+  -B preface.tex \
   -M no-cover=true \
-  -o guide.pdf
+  -o "${OUTPUT}"
 EOF
 
+echo "Config: ${CONFIG}"
+echo "Output: ${OUTPUT}"
 echo "Chapters (${ROOT_DIR}/.build-chapter-list.txt):"
 nl -ba "${ROOT_DIR}/.build-chapter-list.txt"
-ls -lh "${ROOT_DIR}/guide.pdf"
+ls -lh "${ROOT_DIR}/${OUTPUT}"

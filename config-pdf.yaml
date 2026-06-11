@@ -11,6 +11,7 @@ variables:
   mainfont: Harano Aji Gothic
   bookTitle: クラウドネイティブ入門教科書
   bookVersion: Documentation Phase Draft
+  block-headings: true
 
 toc: true
 toc-depth: 3

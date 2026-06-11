@@ -31,9 +31,22 @@
     tabsize=2,
     captionpos=t,
     linewidth=\textwidth,
+    aboveskip=\medskipamount,
+    belowskip=\medskipamount,
 }
 
 \setcounter{secnumdepth}{3}
+
+% 部（# → \section）の切れ目で改ページ（server-text の \pagebreak 運用に相当）
+\usepackage{etoolbox}
+\newcounter{cnpartbreak}
+\setcounter{cnpartbreak}{0}
+\pretocmd{\section}{%
+  \ifnum\value{cnpartbreak}>0
+    \clearpage
+  \fi
+  \stepcounter{cnpartbreak}%
+}{}{}
 
     \usepackage{fancyhdr}
     \pagestyle{fancy}

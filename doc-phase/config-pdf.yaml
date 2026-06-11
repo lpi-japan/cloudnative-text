@@ -1,0 +1,22 @@
+filters:
+  - pandoc-crossref
+
+metadata:
+  title: クラウドネイティブ入門教科書
+  toc-title: 目次
+
+variables:
+  documentclass: ltjarticle
+  documentClass: ltjarticle
+  mainfont: Harano Aji Gothic
+  bookTitle: クラウドネイティブ入門教科書
+  bookVersion: Documentation Phase Draft
+
+toc: true
+toc-depth: 3
+highlight-style: tango
+include-in-header:
+  - listing.tex
+number-sections: true
+listings: true
+pdf-engine: lualatex

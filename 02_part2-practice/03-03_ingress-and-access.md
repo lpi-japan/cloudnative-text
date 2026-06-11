@@ -1,11 +1,11 @@
 # 3-3 ハンズオン：Gateway API とアクセス確認 ～外から入る責務はどこにあるのか～
 
----
+***
 
 想定環境：KillerCoda（Kubernetes クラスタ起動済み）  
 以降の操作はすべて kubectl を使用します。
 
----
+***
 
 ## 0. 前提確認
 
@@ -21,7 +21,7 @@ kubectl get service
 ```
 sample-deployment と sample-service があれば OK です。
 
----
+***
 
 ## 1. Service の役割を確認する（内部向けの接続点）
 
@@ -39,7 +39,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 
 **Service は内部の接続点である**
 
----
+***
 
 ## 2. Gateway API の前提（CRD と Controller）を確認する
 
@@ -61,7 +61,7 @@ GatewayClass がない場合、Controller が未導入の可能性がある。
 
 **宣言と実行は分離されている**
 
----
+***
 
 ## 3.Gateway を作成する（外部からの入口を定義する）
 
@@ -106,7 +106,7 @@ kubectl describe gateway sample-gateway
 
 **Gateway は定義であり、実行ではない**
 
----
+***
 
 ## 4. HTTPRoute を作成する（流れを定義する）
 
@@ -150,7 +150,7 @@ kubectl describe httproute sample-route
 
 **入口と振り分けは別である**
 
----
+***
 
 ## 5. Gateway 経由でアクセスする
 
@@ -180,7 +180,7 @@ nginx のレスポンスが返ってくれば成功です。
 ※ Service が見つからない / port-forward できない場合、Gateway Controller が未導入の可能性があります。  
 その場合も「7. 責務整理」まで理解できれば、この節の目的は達成です。
 
----
+***
 
 ## 6. Pod を削除する（構造は崩れるか）
 
@@ -201,7 +201,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 
 **経路は維持される**
 
----
+***
 
 ## 7. 責務整理
 
@@ -222,7 +222,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 
 通信の責務は、アプリの外側にある。
 
----
+***
 
 ### 8. 何を「やっていないか」が重要
 
@@ -235,7 +235,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 それでも、外部からアクセスでき、Pod が変わっても動く状態が成立した。  
 **何をしなくてよいかが、設計の意図を表している**
 
----
+***
 
 ## 9. まとめ：このハンズオンで確認したこと
 
@@ -258,4 +258,4 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 **通信は分離される。**  
 では、この構造のまま次に進む。
 
----
+***

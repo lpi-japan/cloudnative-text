@@ -1,11 +1,11 @@
 # 3-2 ハンズオン：ConfigMap / Secret / Volume ～設定と実行を切り離す～
 
----
+***
 
 想定環境：KillerCoda（Kubernetes クラスタ起動済み）  
 以降の操作はすべて kubectl を使用します。
 
----
+***
 
 ## 0. 前提確認
 
@@ -17,7 +17,7 @@ kubectl get pod
 
 Pod が稼働していれば OK です。
 
----
+***
 
 ## 1. ConfigMap を作成する（設定を Pod の外に置く）
 
@@ -43,7 +43,7 @@ kubectl apply -f configmap.yaml
 kubectl get configmap
 ```
 
----
+***
 
 ## 2. ConfigMap を Pod から参照する
 
@@ -100,7 +100,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 **設定は Pod の外に定義される**
 
----
+***
 
 ## 3. Pod を削除する（設定は残るか？）
 
@@ -125,7 +125,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 **Pod は設定を「所有していない」**
 
----
+***
 
 ## 4. ConfigMap を変更する（設定はどこに効くか）
 
@@ -155,7 +155,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 
 **設定を変更しても、Pod の定義は変わらない**
 
----
+***
 
 ## 5. Volume を使う（データの置き場所を考える）
 
@@ -200,7 +200,7 @@ kubectl apply -f deployment-volume.yaml
 kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].metadata.name}') -- cat /data/message.txt
 ```
 
----
+***
 
 ## 6. Pod を削除する（データは残るか？ ）
 
@@ -220,7 +220,7 @@ kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].
 
 **データの寿命は、Volume の種類によって決まる**
 
----
+***
 
 ## 7. Secret について（ここでは体験しない）
 Secret の概念は ConfigMap と同じである。  
@@ -228,7 +228,7 @@ Secret の概念は ConfigMap と同じである。
 
 重要なのは、「秘匿されているか」より「Pod の外にあるか」という点である。
 
----
+***
 
 ## 8. まとめ（このハンズオンで確認したこと）
 
@@ -254,4 +254,4 @@ Secret の概念は ConfigMap と同じである。
 では、外部との接続はどこで扱うのか。  
 Ingress / Gateway に進む。
 
----
+***

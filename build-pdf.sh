@@ -7,11 +7,6 @@ IMAGE="ghcr.io/lpi-japan/server-text:latest"
 CONFIG="config-pdf.yaml"
 OUTPUT="guide.pdf"
 
-if [[ "${1:-}" == "--ignore-linebreaks" ]]; then
-  CONFIG="config-pdf-ignore-linebreaks.yaml"
-  OUTPUT="guide_ignore_linebreaks.pdf"
-fi
-
 # git 管理の英語原稿ディレクトリ（doc-phase 版と同じ明示リスト）
 PART_DIRS=(
   00_prologue

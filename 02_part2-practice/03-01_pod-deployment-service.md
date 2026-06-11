@@ -1,4 +1,4 @@
-## 3-1 ハンズオン：Pod / Deployment / Service ～壊して、戻って、任せる～
+## 3-1 ハンズオン：Pod / Deployment / Service ～壊して、戻って、任せる～ {short="3-1 ハンズオン"}
 
 ***
 

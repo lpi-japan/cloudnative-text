@@ -1,4 +1,5 @@
 filters:
+  - short-headers.lua
   - pandoc-crossref
 
 metadata:

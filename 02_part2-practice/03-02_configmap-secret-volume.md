@@ -1,4 +1,4 @@
-## 3-2 ハンズオン：ConfigMap / Secret / Volume ～設定と実行を切り離す～
+## 3-2 ハンズオン：ConfigMap / Secret / Volume ～設定と実行を切り離す～ {short="3-2 ハンズオン"}
 
 ***
 

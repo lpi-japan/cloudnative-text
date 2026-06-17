@@ -1,11 +1,8 @@
 ## 3-1 ハンズオン：Pod / Deployment / Service ～壊して、戻って、任せる～
 
-***
 
 想定環境：KillerCoda（Kubernetes クラスタ起動済み）  
 以降の操作はすべて kubectl を使用します。
-
-***
 
 ### 0. 事前確認（現在の状態を見る）
 

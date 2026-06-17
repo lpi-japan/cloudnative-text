@@ -1,11 +1,8 @@
 ## 3-2 ハンズオン：ConfigMap / Secret / Volume ～設定と実行を切り離す～
 
-***
 
 想定環境：KillerCoda（Kubernetes クラスタ起動済み）  
 以降の操作はすべて kubectl を使用します。
-
-***
 
 ### 0. 前提確認
 

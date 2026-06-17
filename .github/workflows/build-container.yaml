@@ -103,8 +103,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          pull: true
           tags: |
             ${{ needs.resolve.outputs.image }}:${{ github.sha }}
             ${{ needs.resolve.outputs.image }}:latest

@@ -2,8 +2,9 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_DIR="${ROOT_DIR}/../../text-manage/server-text"
-IMAGE="ghcr.io/lpi-japan/server-text:latest"
+TEMPLATE="${ROOT_DIR}/template.tex"
+IMAGE="${PDF_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}"
+BUILD_MODE="${PDF_BUILD_MODE:-docker}"
 CONFIG="config-pdf.yaml"
 OUT_DIR="${ROOT_DIR}/tmp"
 OUTPUT="tmp/guide.pdf"
@@ -21,8 +22,8 @@ PART_DIRS=(
   07_appendix-doorway-to-practice
 )
 
-if [[ ! -f "${TEMPLATE_DIR}/template.tex" ]]; then
-  echo "template.tex not found: ${TEMPLATE_DIR}/template.tex" >&2
+if [[ ! -f "${TEMPLATE}" ]]; then
+  echo "template.tex not found: ${TEMPLATE}" >&2
   exit 1
 fi
 
@@ -57,16 +58,32 @@ if ((${#chapters[@]} == 0)); then
   exit 1
 fi
 
-docker run --rm -i \
-  --user "$(id -u):$(id -g)" \
-  -e CONFIG="${CONFIG}" \
-  -e OUTPUT="${OUTPUT}" \
-  -e RESOURCE_PATH="${RESOURCE_PATH}" \
-  -v "${ROOT_DIR}:/data" \
-  -v "${TEMPLATE_DIR}:/server-text:ro" \
-  -w /data \
-  --entrypoint /bin/bash \
-  "${IMAGE}" -s <<'EOF'
+run_pandoc() {
+  mapfile -t chapters < tmp/.build-chapter-list.txt
+
+  pandoc preface.md -o tmp/preface.tex --resource-path="${RESOURCE_PATH}"
+  printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
+    -d "${CONFIG}" \
+    --template "${TEMPLATE}" \
+    --resource-path="${RESOURCE_PATH}" \
+    -B tmp/preface.tex \
+    -M no-cover=true \
+    -o "${OUTPUT}"
+}
+
+if [[ "${BUILD_MODE}" == "direct" ]]; then
+  run_pandoc
+else
+  docker run --rm -i \
+    --user "$(id -u):$(id -g)" \
+    -e CONFIG="${CONFIG}" \
+    -e OUTPUT="${OUTPUT}" \
+    -e RESOURCE_PATH="${RESOURCE_PATH}" \
+    -e TEMPLATE="/data/template.tex" \
+    -v "${ROOT_DIR}:/data" \
+    -w /data \
+    --entrypoint /bin/bash \
+    "${IMAGE}" -s <<'EOF'
 set -euo pipefail
 
 mapfile -t chapters < tmp/.build-chapter-list.txt
@@ -74,14 +91,17 @@ mapfile -t chapters < tmp/.build-chapter-list.txt
 pandoc preface.md -o tmp/preface.tex --resource-path="${RESOURCE_PATH}"
 printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
   -d "${CONFIG}" \
-  --template /server-text/template.tex \
+  --template "${TEMPLATE}" \
   --resource-path="${RESOURCE_PATH}" \
   -B tmp/preface.tex \
   -M no-cover=true \
   -o "${OUTPUT}"
 EOF
+fi
 
 echo "Config: ${CONFIG}"
+echo "Build mode: ${BUILD_MODE}"
+echo "Image: ${IMAGE}"
 echo "Resource path: ${RESOURCE_PATH}"
 echo "Output: ${OUT_DIR}/guide.pdf"
 echo "Chapters (${CHAPTER_LIST}):"

@@ -5,8 +5,9 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE_DIR="${ROOT_DIR}/../../text-manage/server-text"
 IMAGE="ghcr.io/lpi-japan/server-text:latest"
 CONFIG="config-pdf.yaml"
-OUTPUT="guide.pdf"
-CHAPTER_LIST="${ROOT_DIR}/.build-chapter-list.txt"
+OUT_DIR="${ROOT_DIR}/tmp"
+OUTPUT="tmp/guide.pdf"
+CHAPTER_LIST="${OUT_DIR}/.build-chapter-list.txt"
 
 # git 管理の原稿ディレクトリ（部ごとに 1 列）
 PART_DIRS=(
@@ -26,6 +27,7 @@ if [[ ! -f "${TEMPLATE_DIR}/template.tex" ]]; then
 fi
 
 cd "${ROOT_DIR}"
+mkdir -p "${OUT_DIR}"
 
 RESOURCE_PATH="."
 for part in "${PART_DIRS[@]}"; do
@@ -67,21 +69,21 @@ docker run --rm -i \
   "${IMAGE}" -s <<'EOF'
 set -euo pipefail
 
-mapfile -t chapters < .build-chapter-list.txt
+mapfile -t chapters < tmp/.build-chapter-list.txt
 
-pandoc preface.md -o preface.tex --resource-path="${RESOURCE_PATH}"
+pandoc preface.md -o tmp/preface.tex --resource-path="${RESOURCE_PATH}"
 printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
   -d "${CONFIG}" \
   --template /server-text/template.tex \
   --resource-path="${RESOURCE_PATH}" \
-  -B preface.tex \
+  -B tmp/preface.tex \
   -M no-cover=true \
   -o "${OUTPUT}"
 EOF
 
 echo "Config: ${CONFIG}"
 echo "Resource path: ${RESOURCE_PATH}"
-echo "Output: ${OUTPUT}"
+echo "Output: ${OUT_DIR}/guide.pdf"
 echo "Chapters (${CHAPTER_LIST}):"
 nl -ba "${CHAPTER_LIST}"
-ls -lh "${ROOT_DIR}/${OUTPUT}"
+ls -lh "${OUT_DIR}/guide.pdf"

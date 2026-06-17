@@ -1,10 +1,5 @@
-guide.pdf
-guide_no_cover.pdf
-preface.tex
+# PDF ビルド成果物・一時ファイル (build-pdf.sh → tmp/)
+tmp/
+
+# 表紙用の大容量ソース（原稿に同梱しない）
 image/Cover/
-.build-chapter-list.txt
-sample.tex
-sample-block.tex
-test-full.tex
-cn.tex
-*.log

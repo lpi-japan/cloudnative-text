@@ -2,15 +2,15 @@ filters:
   - pandoc-crossref
 
 metadata:
-  title: クラウドネイティブ入門教科書
+  title: クラウドネイティブ教科書
   toc-title: 目次
 
 variables:
   documentclass: ltjarticle
   documentClass: ltjarticle
   mainfont: Harano Aji Gothic
-  bookTitle: クラウドネイティブ入門教科書
-  bookVersion: Documentation Phase Draft
+  bookTitle: クラウドネイティブ教科書
+  bookVersion: 0.1.0
   block-headings: true
 
 toc: true

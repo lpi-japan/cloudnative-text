@@ -1,0 +1,47 @@
+name: build pdf
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - make_pdf
+      - feature/*
+    paths:
+      - '**/*.md'
+      - config-pdf.yaml
+      - listing.tex
+      - template.tex
+      - build-pdf.sh
+      - .github/workflows/build-pdf.yaml
+      - .github/workflows/build-container.yaml
+      - Dockerfile
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  ensure-container:
+    uses: ./.github/workflows/build-container.yaml
+    permissions:
+      contents: read
+      packages: write
+    secrets: inherit
+
+  build-pdf:
+    needs: ensure-container
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/lpi-japan/cloudnative-text:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build PDF
+        run: PDF_BUILD_MODE=direct ./build-pdf.sh
+      - uses: actions/upload-artifact@v6
+        with:
+          name: guide-pdf
+          path: tmp/guide.pdf

@@ -1,0 +1,109 @@
+name: build pandoc container
+
+on:
+  workflow_call:
+    inputs:
+      force:
+        description: Force image rebuild even when Dockerfile is unchanged and image is fresh
+        required: false
+        type: boolean
+        default: false
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force image rebuild
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches:
+      - main
+      - make_pdf
+      - feature/*
+    paths:
+      - Dockerfile
+      - .github/workflows/build-container.yaml
+  schedule:
+    # 原稿変更がなくても、公開イメージの鮮度を定期的に確認する
+    - cron: '0 4 1 * *'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      should_build: ${{ steps.resolve.outputs.should_build }}
+      image: ${{ steps.resolve.outputs.image }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Decide whether to rebuild the container image
+        id: resolve
+        env:
+          FORCE: ${{ inputs.force }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          FORCE="${FORCE:-false}"
+          image="$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
+          echo "image=ghcr.io/${image}" >> "$GITHUB_OUTPUT"
+
+          should_build=false
+          if [ "$FORCE" = "true" ]; then
+            echo "Force rebuild requested"
+            should_build=true
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            echo "Docker build inputs changed on push"
+            should_build=true
+          else
+            package="${{ github.event.repository.name }}"
+            versions_url="https://api.github.com/orgs/lpi-japan/packages/container/${package}/versions?per_page=30"
+            versions="$(curl -fsSL \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "${versions_url}" || echo '[]')"
+            updated_at="$(printf '%s' "$versions" | jq -r '
+              [.[] | select(.metadata.container.tags[]? == "latest")][0].updated_at // empty
+            ')"
+            if [ -z "$updated_at" ]; then
+              echo "No published :latest image found"
+              should_build=true
+            else
+              updated_epoch="$(date -d "$updated_at" +%s)"
+              now_epoch="$(date +%s)"
+              age_days="$(( (now_epoch - updated_epoch) / 86400 ))"
+              echo "Latest image age: ${age_days} day(s) (updated_at=${updated_at})"
+              if [ "$age_days" -ge 30 ]; then
+                echo "Image is older than 30 days; rebuilding"
+                should_build=true
+              fi
+            fi
+          fi
+
+          echo "should_build=${should_build}" >> "$GITHUB_OUTPUT"
+
+  build-container:
+    needs: resolve
+    if: needs.resolve.outputs.should_build == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-qemu-action@v4
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          pull: true
+          tags: |
+            ${{ needs.resolve.outputs.image }}:${{ github.sha }}
+            ${{ needs.resolve.outputs.image }}:latest

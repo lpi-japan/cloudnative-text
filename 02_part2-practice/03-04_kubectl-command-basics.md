@@ -1,6 +1,5 @@
-# 3-4 kubectl コマンドの基本整理 ～操作ではなく「状態を見る」ための道具～
+## 3-4 kubectl コマンドの基本整理 ～操作ではなく「状態を見る」ための道具～
 
----
 
 この章のハンズオンでは、いくつかの kubectl コマンドを使う。  
 ここでは、すべてのオプションや使い方を覚える必要はない。
@@ -25,9 +24,8 @@ kubectl には delete や scale など、状態を変更するコマンドも存
 
 を中心に、状態を観察するという使い方を扱う。
 
----
 
-## 1. kubectl とは何か
+### 1. kubectl とは何か
 
 kubectl は、クラスタの状態を確認し、  
 状態を伝えるためのインターフェースである。
@@ -37,11 +35,11 @@ kubectl 自体が何かを判断したり、リソースを管理することは
 - 判断するのは Kubernetes
 - kubectl は「伝える」「見る」だけ
 
----
+***
 
-## 2. kubectl get
+### 2. kubectl get
 
-#### 今の状態を一覧で見る 
+##### 今の状態を一覧で見る 
 ```bash
 kubectl get pod
 kubectl get deployment
@@ -61,9 +59,9 @@ get は、「今、何が存在しているか」を一覧で確認するコマ�
 
 ----
 
-## 3. kubectl describe
+### 3. kubectl describe
 
-#### 詳細な状態を見る
+##### 詳細な状態を見る
 
 ```bash
 kubectl describe pod sample-pod
@@ -80,11 +78,11 @@ describe は個々のリソースの詳細な状態を確認するための道�
 
 **経緯と理由を確認する**
 
----
+***
 
-## 4. kubectl apply
+### 4. kubectl apply
 
-#### あるべき状態を伝える 
+##### あるべき状態を伝える 
 ```bash
 kubectl apply -f deployment.yaml
 ```
@@ -100,11 +98,11 @@ Kubernetes は、
 これらを比較し、その差分を埋めるように動く。  
 **あるべき状態を宣言する**
 
----
+***
 
-## 5. kubectl delete
+### 5. kubectl delete
 
-#### 状態を崩してみる
+##### 状態を崩してみる
 ```bash
 kubectl delete pod sample-pod
 ```
@@ -120,10 +118,10 @@ Deployment のような管理単位がある場合、
 という挙動になる。  
 **状態を崩して挙動を見る**
 
----
+***
 
-## 6. kubectl scale
-#### 数だけを変える 
+### 6. kubectl scale
+##### 数だけを変える 
 ```bash
 kubectl scale deployment sample-deployment --replicas=3
 ```
@@ -137,11 +135,11 @@ scale は、「いくつ存在してほしいか」だけを変更するコマ�
 
 **数だけを指定する**
 
----
+***
 
-## 7. kubectl expose
+### 7. kubectl expose
 
-#### 接続点を作る
+##### 接続点を作る
 ```bash
 kubectl expose deployment sample-deployment --type=ClusterIP --port=80
 ```
@@ -157,10 +155,10 @@ Service がその責務を引き受ける。
 
 **接続点を定義する**
 
----
+***
 
-## 8. kubectl logs / exec
-#### 中を「のぞく」ための道具 
+### 8. kubectl logs / exec
+##### 中を「のぞく」ための道具 
 ```bash
 kubectl logs <pod名>
 kubectl exec -it <pod名> -- /bin/sh
@@ -173,9 +171,9 @@ kubectl exec -it <pod名> -- /bin/sh
 
 **中を観察する**
 
----
+***
 
-## 9. まとめ
+### 9. まとめ
 
 この時点で捉えておくべき対応関係は次の通りである。
 | コマンド 　　　| 役割                     | 
@@ -196,4 +194,4 @@ kubectl は Kubernetes を操作する道具ではない。
 
 では、次に進む。
 
----
+***

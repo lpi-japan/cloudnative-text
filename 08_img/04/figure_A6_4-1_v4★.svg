@@ -1,0 +1,412 @@
+<svg viewBox="0 0 1120 740" xmlns="http://www.w3.org/2000/svg"
+     width="1120" height="740" style="background:#F5F7FA">
+<defs>
+  <!-- Arrowheads -->
+  <marker id="arr-flow" markerWidth="10" markerHeight="7"
+          refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#D84315"/>
+  </marker>
+  <marker id="arr-blue" markerWidth="10" markerHeight="7"
+          refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#2E75B6"/>
+  </marker>
+  <marker id="arr-teal" markerWidth="10" markerHeight="7"
+          refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#00796B"/>
+  </marker>
+  <marker id="arr-red" markerWidth="10" markerHeight="7"
+          refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#C62828"/>
+  </marker>
+  <marker id="arr-gray" markerWidth="10" markerHeight="7"
+          refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#546E7A"/>
+  </marker>
+</defs>
+
+<!-- ═══════════════════════════════════════════════════
+     TITLE BAR
+════════════════════════════════════════════════════ -->
+<rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+<text x="560" y="33" text-anchor="middle" font-family="sans-serif"
+      font-size="17" font-weight="bold" fill="white">
+  図 4-1　オブザーバビリティが必要な理由：マイクロサービスにおける観測の難しさ
+</text>
+
+<!-- ═══════════════════════════════════════════════════
+     LEFT PANEL ── モノリス
+════════════════════════════════════════════════════ -->
+<!-- Header -->
+<rect x="18" y="54" width="520" height="40" rx="4" ry="4"
+      fill="#00796B"/>
+<text x="278" y="79" text-anchor="middle" font-family="sans-serif"
+      font-size="13" font-weight="bold" fill="white">
+  ① モノリス ─ ログ・メトリクスが一か所に集約
+</text>
+
+<!-- Body background -->
+<rect x="18" y="94" width="520" height="440" rx="0" ry="0"
+      fill="#E0F7F4" stroke="#00796B" stroke-width="1.5"/>
+
+<!-- Application box -->
+<rect x="32" y="108" width="492" height="232" rx="6" ry="6"
+      fill="white" stroke="#00796B" stroke-width="2"/>
+<text x="278" y="124" text-anchor="middle" font-family="sans-serif"
+      font-size="12" font-weight="bold" fill="#00695C">
+  Monolithic Application（モノリス）
+</text>
+<line x1="32" y1="132" x2="524" y2="132" stroke="#00796B" stroke-width="1"/>
+
+<!-- Processing A (col1, row1) ── 蛇行フロー: A→B→C→D→E→F -->
+<rect x="52" y="142" width="190" height="26" rx="3" ry="3"
+      fill="#E0F2F1" stroke="#00897B" stroke-width="1"/>
+<text x="147" y="159" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#004D40">Processing A</text>
+
+<!-- Processing B (col2, row1) -->
+<rect x="282" y="142" width="190" height="26" rx="3" ry="3"
+      fill="#E0F2F1" stroke="#00897B" stroke-width="1"/>
+<text x="377" y="159" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#004D40">Processing B</text>
+
+<!-- Processing D (col1, row2) — 蛇行でDがC左に配置 -->
+<rect x="52" y="200" width="190" height="26" rx="3" ry="3"
+      fill="#E0F2F1" stroke="#00897B" stroke-width="1"/>
+<text x="147" y="217" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#004D40">Processing D</text>
+
+<!-- Processing C (col2, row2) -->
+<rect x="282" y="200" width="190" height="26" rx="3" ry="3"
+      fill="#E0F2F1" stroke="#00897B" stroke-width="1"/>
+<text x="377" y="217" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#004D40">Processing C</text>
+
+<!-- Processing E (col1, row3) -->
+<rect x="52" y="258" width="190" height="26" rx="3" ry="3"
+      fill="#E0F2F1" stroke="#00897B" stroke-width="1"/>
+<text x="147" y="275" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#004D40">Processing E</text>
+
+<!-- Processing F (col2, row3) -->
+<rect x="282" y="258" width="190" height="26" rx="3" ry="3"
+      fill="#E0F2F1" stroke="#00897B" stroke-width="1"/>
+<text x="377" y="275" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#004D40">Processing F</text>
+
+<!-- Log badge (bottom of app box) -->
+<rect x="52" y="298" width="196" height="30" rx="3" ry="3"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+<text x="150" y="317" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#0D47A1">📋 Log（一か所）</text>
+
+<!-- Metrics badge (bottom of app box) -->
+<rect x="264" y="298" width="208" height="30" rx="3" ry="3"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="1"/>
+<text x="368" y="317" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#006064">📊 Metrics（一か所）</text>
+
+<!-- "調査対象は1か所" note box -->
+<rect x="32" y="352" width="492" height="40" rx="4" ry="4"
+      fill="#C8E6C9" stroke="#388E3C" stroke-width="1.5"/>
+<text x="278" y="368" text-anchor="middle" font-family="sans-serif"
+      font-size="12" font-weight="bold" fill="#1B5E20">
+  ✔ 調査対象は1か所
+</text>
+<text x="278" y="384" text-anchor="middle" font-family="sans-serif"
+      font-size="11" fill="#2E7D32">ログ・メトリクスは集約されており、全体の状態を追いやすい</text>
+
+<!-- ── 蛇行フロー矢印（太め・見やすく）
+     A→B (右) → B↓C (下) → C←D (左) → D↓E (下) → E→F (右)
+     ※ C←D は「C→D」の向き：col2右→col1左
+-->
+<!-- A → B (row1, 左→右) -->
+<line x1="243" y1="155" x2="281" y2="155" stroke="#00796B" stroke-width="2.2"
+      marker-end="url(#arr-teal)"/>
+<!-- B → C (col2, 上→下) -->
+<line x1="377" y1="169" x2="377" y2="199" stroke="#00796B" stroke-width="2.2"
+      marker-end="url(#arr-teal)"/>
+<!-- C → D (row2, 右→左) -->
+<line x1="281" y1="213" x2="243" y2="213" stroke="#00796B" stroke-width="2.2"
+      marker-end="url(#arr-teal)"/>
+<!-- D → E (col1, 上→下) -->
+<line x1="147" y1="227" x2="147" y2="257" stroke="#00796B" stroke-width="2.2"
+      marker-end="url(#arr-teal)"/>
+<!-- E → F (row3, 左→右) -->
+<line x1="243" y1="271" x2="281" y2="271" stroke="#00796B" stroke-width="2.2"
+      marker-end="url(#arr-teal)"/>
+
+
+<!-- ═══════════════════════════════════════════════════
+     RIGHT PANEL ── マイクロサービス
+════════════════════════════════════════════════════ -->
+<!-- Header -->
+<rect x="562" y="54" width="540" height="40" rx="4" ry="4"
+      fill="#C62828"/>
+<text x="832" y="79" text-anchor="middle" font-family="sans-serif"
+      font-size="13" font-weight="bold" fill="white">
+  ② マイクロサービス ─ ログ・メトリクスが分散
+</text>
+
+<!-- Body background -->
+<rect x="562" y="94" width="540" height="440" rx="0" ry="0"
+      fill="#FFEBEE" stroke="#C62828" stroke-width="1.5"/>
+
+<!-- ──── SERVICE BOXES (2 cols × 3 rows) ────
+     col1: x=574, w=196, center x=672
+     col2: x=826, w=196, center x=924
+     row1: y=106, h=76  row2: y=224, h=76  row3: y=342, h=76
+     col gap: 826-770=56px  row gap: 224-182=42px
+-->
+
+<!-- SERVICE A (col1, row1) -->
+<rect x="574" y="106" width="196" height="76" rx="4" ry="4"
+      fill="white" stroke="#C62828" stroke-width="1.5"/>
+<text x="672" y="120" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">Service A</text>
+<line x1="574" y1="126" x2="770" y2="126" stroke="#C62828" stroke-width="0.8"/>
+<rect x="580" y="130" width="84" height="20" rx="2" ry="2"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="0.8"/>
+<text x="622" y="144" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#0D47A1">Log</text>
+<rect x="672" y="130" width="92" height="20" rx="2" ry="2"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="0.8"/>
+<text x="718" y="144" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#006064">Metrics</text>
+<!-- Second row of badges -->
+<rect x="580" y="155" width="184" height="20" rx="2" ry="2"
+      fill="#FFF9C4" stroke="#F9A825" stroke-width="0.8"/>
+<text x="672" y="169" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#F57F17">独自の出力形式</text>
+
+<!-- SERVICE D (col2, row1) -->
+<rect x="826" y="106" width="196" height="76" rx="4" ry="4"
+      fill="white" stroke="#C62828" stroke-width="1.5"/>
+<text x="924" y="120" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">Service D</text>
+<line x1="826" y1="126" x2="1022" y2="126" stroke="#C62828" stroke-width="0.8"/>
+<rect x="832" y="130" width="84" height="20" rx="2" ry="2"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="0.8"/>
+<text x="874" y="144" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#0D47A1">Log</text>
+<rect x="924" y="130" width="92" height="20" rx="2" ry="2"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="0.8"/>
+<text x="970" y="144" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#006064">Metrics</text>
+<rect x="832" y="155" width="184" height="20" rx="2" ry="2"
+      fill="#FFF9C4" stroke="#F9A825" stroke-width="0.8"/>
+<text x="924" y="169" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#F57F17">独自の出力形式</text>
+
+<!-- SERVICE B (col1, row2) -->
+<rect x="574" y="224" width="196" height="76" rx="4" ry="4"
+      fill="white" stroke="#C62828" stroke-width="1.5"/>
+<text x="672" y="238" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">Service B</text>
+<line x1="574" y1="244" x2="770" y2="244" stroke="#C62828" stroke-width="0.8"/>
+<rect x="580" y="248" width="84" height="20" rx="2" ry="2"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="0.8"/>
+<text x="622" y="262" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#0D47A1">Log</text>
+<rect x="672" y="248" width="92" height="20" rx="2" ry="2"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="0.8"/>
+<text x="718" y="262" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#006064">Metrics</text>
+<rect x="580" y="273" width="184" height="20" rx="2" ry="2"
+      fill="#FFF9C4" stroke="#F9A825" stroke-width="0.8"/>
+<text x="672" y="287" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#F57F17">独自の出力形式</text>
+
+<!-- SERVICE E (col2, row2) -->
+<rect x="826" y="224" width="196" height="76" rx="4" ry="4"
+      fill="white" stroke="#C62828" stroke-width="1.5"/>
+<text x="924" y="238" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">Service E</text>
+<line x1="826" y1="244" x2="1022" y2="244" stroke="#C62828" stroke-width="0.8"/>
+<rect x="832" y="248" width="84" height="20" rx="2" ry="2"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="0.8"/>
+<text x="874" y="262" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#0D47A1">Log</text>
+<rect x="924" y="248" width="92" height="20" rx="2" ry="2"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="0.8"/>
+<text x="970" y="262" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#006064">Metrics</text>
+<rect x="832" y="273" width="184" height="20" rx="2" ry="2"
+      fill="#FFF9C4" stroke="#F9A825" stroke-width="0.8"/>
+<text x="924" y="287" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#F57F17">独自の出力形式</text>
+
+<!-- SERVICE C (col1, row3) -->
+<rect x="574" y="342" width="196" height="76" rx="4" ry="4"
+      fill="white" stroke="#C62828" stroke-width="1.5"/>
+<text x="672" y="356" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">Service C</text>
+<line x1="574" y1="362" x2="770" y2="362" stroke="#C62828" stroke-width="0.8"/>
+<rect x="580" y="366" width="84" height="20" rx="2" ry="2"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="0.8"/>
+<text x="622" y="380" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#0D47A1">Log</text>
+<rect x="672" y="366" width="92" height="20" rx="2" ry="2"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="0.8"/>
+<text x="718" y="380" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#006064">Metrics</text>
+<rect x="580" y="391" width="184" height="20" rx="2" ry="2"
+      fill="#FFF9C4" stroke="#F9A825" stroke-width="0.8"/>
+<text x="672" y="405" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#F57F17">独自の出力形式</text>
+
+<!-- SERVICE F (col2, row3) -->
+<rect x="826" y="342" width="196" height="76" rx="4" ry="4"
+      fill="white" stroke="#C62828" stroke-width="1.5"/>
+<text x="924" y="356" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">Service F</text>
+<line x1="826" y1="362" x2="1022" y2="362" stroke="#C62828" stroke-width="0.8"/>
+<rect x="832" y="366" width="84" height="20" rx="2" ry="2"
+      fill="#BBDEFB" stroke="#1565C0" stroke-width="0.8"/>
+<text x="874" y="380" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#0D47A1">Log</text>
+<rect x="924" y="366" width="92" height="20" rx="2" ry="2"
+      fill="#B2EBF2" stroke="#00838F" stroke-width="0.8"/>
+<text x="970" y="380" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#006064">Metrics</text>
+<rect x="832" y="391" width="184" height="20" rx="2" ry="2"
+      fill="#FFF9C4" stroke="#F9A825" stroke-width="0.8"/>
+<text x="924" y="405" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#F57F17">独自の出力形式</text>
+
+<!-- ──── COMMUNICATION ARROWS (7本) ────
+     Vertical: A→B, B→C (col1), D→E, E→F (col2)
+     Horizontal: A→D, B→E, C→F (between cols)
+-->
+
+<!-- A → B (col1 vertical, gap y=182-224=42px) -->
+<line x1="644" y1="183" x2="644" y2="223"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- B → C (col1 vertical, gap y=300-342) -->
+<line x1="644" y1="301" x2="644" y2="341"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- D → E (col2 vertical) -->
+<line x1="896" y1="183" x2="896" y2="223"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- E → F (col2 vertical) -->
+<line x1="896" y1="301" x2="896" y2="341"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- A → D (row1 horizontal, gap x=770-826=56px) -->
+<line x1="771" y1="144" x2="825" y2="144"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- B → E (row2 horizontal) -->
+<line x1="771" y1="262" x2="825" y2="262"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- C → F (row3 horizontal) -->
+<line x1="771" y1="380" x2="825" y2="380"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- ── 追加通信経路（斜め）── 複雑さを強調 -->
+<!-- A → E (col1 r1 → col2 r2, 右下対角) -->
+<line x1="770" y1="150" x2="826" y2="256"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+<!-- D → B (col2 r1 → col1 r2, 左下対角) -->
+<line x1="826" y1="136" x2="770" y2="270"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+<!-- B → F (col1 r2 → col2 r3, 右下対角) -->
+<line x1="770" y1="268" x2="826" y2="374"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+<!-- C → E (col1 r3 → col2 r2, 右上対角) -->
+<line x1="770" y1="386" x2="826" y2="256"
+      stroke="#D84315" stroke-width="1.8"
+      stroke-dasharray="5,3"
+      marker-end="url(#arr-flow)"/>
+
+<!-- Warning note at bottom of right panel -->
+<rect x="574" y="432" width="448" height="40" rx="4" ry="4"
+      fill="#FFCDD2" stroke="#C62828" stroke-width="1.2"/>
+<text x="798" y="447" text-anchor="middle" font-family="sans-serif"
+      font-size="11" font-weight="bold" fill="#B71C1C">
+  ⚠ 各サービスが独立してログ・メトリクスを出力
+</text>
+<text x="798" y="463" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#C62828">
+  → どのサービスで何が起きているか、通信経路を横断した追跡が困難
+</text>
+
+
+<!-- ═══════════════════════════════════════════════════
+     QUESTION / CONCLUSION SECTION (図下部)
+════════════════════════════════════════════════════ -->
+<rect x="18" y="544" width="1084" height="88" rx="6" ry="6"
+      fill="white" stroke="#D84315" stroke-width="2"
+      stroke-dasharray="8,4"/>
+
+<!-- Three question boxes -->
+<rect x="38" y="552" width="276" height="36" rx="4" ry="4"
+      fill="#FFF3E0" stroke="#E64A19" stroke-width="1.5"/>
+<text x="176" y="567" text-anchor="middle" font-family="sans-serif"
+      font-size="12" font-weight="bold" fill="#BF360C">ログはどこ？</text>
+<text x="176" y="581" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#E64A19">どのサービスが出力したのか不明</text>
+
+<rect x="422" y="552" width="276" height="36" rx="4" ry="4"
+      fill="#FFF3E0" stroke="#E64A19" stroke-width="1.5"/>
+<text x="560" y="567" text-anchor="middle" font-family="sans-serif"
+      font-size="12" font-weight="bold" fill="#BF360C">どのサービス？</text>
+<text x="560" y="581" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#E64A19">障害箇所の特定が難しい</text>
+
+<rect x="808" y="552" width="276" height="36" rx="4" ry="4"
+      fill="#FFF3E0" stroke="#E64A19" stroke-width="1.5"/>
+<text x="946" y="567" text-anchor="middle" font-family="sans-serif"
+      font-size="12" font-weight="bold" fill="#BF360C">どの通信経路？</text>
+<text x="946" y="581" text-anchor="middle" font-family="sans-serif"
+      font-size="10" fill="#E64A19">リクエストの流れを追えない</text>
+
+<!-- "全体像が見えない" large conclusion text -->
+<text x="560" y="622" text-anchor="middle" font-family="sans-serif"
+      font-size="24" font-weight="bold" fill="#C62828">
+  全体像が見えない
+</text>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CAPTION
+════════════════════════════════════════════════════ -->
+<rect x="0" y="648" width="1120" height="92" fill="#ECEFF1"/>
+<rect x="20" y="658" width="4" height="66" rx="2" ry="2" fill="#546E7A"/>
+<text x="34" y="672" font-family="sans-serif" font-size="11" fill="#37474F">
+  【図の説明】モノリスでは、ログとメトリクスはアプリケーション内の一か所に集約されており、問題発生時も単一の
+</text>
+<text x="34" y="688" font-family="sans-serif" font-size="11" fill="#37474F">
+  場所を調べればよい。一方、マイクロサービスでは、各サービス（A〜F）が独立してログ・メトリクスを出力し、
+</text>
+<text x="34" y="704" font-family="sans-serif" font-size="11" fill="#37474F">
+  さらにサービス間の通信経路（A→B, A→D, B→C, B→E, C→F, D→E, E→F）が複数存在するため、
+</text>
+<text x="34" y="720" font-family="sans-serif" font-size="11" fill="#37474F">
+  障害箇所の特定や全体の状態把握が著しく困難になる。これが、オブザーバビリティが必要とされる背景である。
+</text>
+
+</svg>

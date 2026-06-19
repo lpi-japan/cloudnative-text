@@ -82,7 +82,7 @@ Kubernetesはこの問題に対して、状態を管理する役割と
 この分離によって、  
 一部が変化しても全体が崩れない構造が保たれる。
 
-![図1-2.1 Control PlaneとWorker Nodeの役割分担](../08_img/01/figure_1-2.1_v2.svg)
+![図1-2.1 Control PlaneとWorker Nodeの役割分担](../08_img/01/figure_1-2.1_v3.svg)
 
 ***
 

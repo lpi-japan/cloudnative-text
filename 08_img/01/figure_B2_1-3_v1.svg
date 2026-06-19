@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  図版 1-4  v1
+  タイトル：クラウドとオンプレミスの前提の違い
+  作成日：2026-06-09
+  キャンバス：1120 × 740 px
+  レイアウト：左(Cloud 448px) + 中央(軸 200px) + 右(On-premise 432px)
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     font-family="'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif">
+
+  <defs>
+    <marker id="arr-blue" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E75B6"/>
+    </marker>
+    <marker id="arr-gray" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#546E7A"/>
+    </marker>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ===== TITLE BAR ===== -->
+  <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+  <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
+        fill="#FFFFFF">図1-4　クラウドとオンプレミスの前提の違い</text>
+
+  <!-- ══════════════════════════════════════════
+       LEFT PANEL ── クラウド
+       x=20–468, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="66" width="448" height="40" fill="#2E75B6" rx="4"/>
+  <text x="244" y="82" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    変化を前提とした環境
+  </text>
+  <text x="244" y="99" text-anchor="middle" font-size="14" font-weight="bold"
+        fill="#FFFFFF">クラウド</text>
+
+  <rect x="20" y="106" width="448" height="534" fill="#DDEEFF" stroke="#2E75B6"
+        stroke-width="1.5"/>
+
+  <!-- Core premise box -->
+  <rect x="34" y="120" width="420" height="58" fill="#2E75B6" rx="5"/>
+  <text x="244" y="140" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    採用する前提
+  </text>
+  <text x="244" y="160" text-anchor="middle" font-size="13" font-weight="bold"
+        fill="#FFFFFF">変化・拡張・再構成</text>
+
+  <!-- Row 1: 環境の性質 -->
+  <rect x="34" y="194" width="420" height="86" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="4"/>
+  <rect x="34" y="194" width="6" height="86" fill="#2E75B6" rx="2"/>
+  <text x="254" y="215" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#2E75B6">環境は固定されない</text>
+  <text x="254" y="234" text-anchor="middle" font-size="9" fill="#1F4E79">
+    需要に応じてリソースが増減する。
+  </text>
+  <text x="254" y="251" text-anchor="middle" font-size="9" fill="#1F4E79">
+    構成は動き続けることを前提に扱われる。
+  </text>
+  <text x="254" y="268" text-anchor="middle" font-size="9" fill="#546E7A">
+    環境を維持するより、変化を受け入れながら成立させ続ける。
+  </text>
+
+  <!-- Row 2: 障害への扱い -->
+  <rect x="34" y="296" width="420" height="86" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="4"/>
+  <rect x="34" y="296" width="6" height="86" fill="#2E75B6" rx="2"/>
+  <text x="254" y="317" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#2E75B6">障害は起きる前提</text>
+  <text x="254" y="336" text-anchor="middle" font-size="9" fill="#1F4E79">
+    個々を修復するのではなく、
+  </text>
+  <text x="254" y="353" text-anchor="middle" font-size="9" fill="#1F4E79">
+    別の場所で再構成することで対処する。
+  </text>
+  <text x="254" y="370" text-anchor="middle" font-size="9" fill="#546E7A">
+    障害は例外ではなく、設計に組み込まれた前提である。
+  </text>
+
+  <!-- Row 3: 責任の所在 -->
+  <rect x="34" y="398" width="420" height="86" fill="#FFFFFF" stroke="#2E75B6"
+        stroke-width="1.5" rx="4"/>
+  <rect x="34" y="398" width="6" height="86" fill="#2E75B6" rx="2"/>
+  <text x="254" y="419" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#2E75B6">基盤の管理は提供側が担う</text>
+  <text x="254" y="438" text-anchor="middle" font-size="9" fill="#1F4E79">
+    基盤の管理・再起動・スケールは
+  </text>
+  <text x="254" y="455" text-anchor="middle" font-size="9" fill="#1F4E79">
+    仕組みが自動的に引き受ける。
+  </text>
+  <text x="254" y="472" text-anchor="middle" font-size="9" fill="#546E7A">
+    人が都度判断しなくても、全体として成立し続ける。
+  </text>
+
+  <!-- Left summary -->
+  <rect x="34" y="500" width="420" height="46" fill="#2E75B6" rx="4"/>
+  <text x="244" y="519" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    変化が前提であるため
+  </text>
+  <text x="244" y="539" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">成立を維持し続ける仕組みが必要になる</text>
+
+  <!-- LEFT divider -->
+  <line x1="468" y1="106" x2="468" y2="640" stroke="#B0BEC5" stroke-width="1"
+        stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════
+       CENTER PANEL ── 前提の軸
+       x=468–668, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="468" y="66" width="200" height="40" fill="#1F4E79" rx="4"/>
+  <text x="568" y="88" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">前提の置き方</text>
+
+  <rect x="468" y="106" width="200" height="534" fill="#F5F7FA" stroke="#1F4E79"
+        stroke-width="1.5"/>
+
+  <!-- Central key message box -->
+  <rect x="480" y="120" width="176" height="58" fill="#1F4E79" rx="5"/>
+  <text x="568" y="142" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    どちらが正しいかではない
+  </text>
+  <text x="568" y="162" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">前提の置き方が異なる</text>
+
+  <!-- Row 1 center label -->
+  <line x1="480" y1="194" x2="644" y2="194" stroke="#B0BEC5" stroke-width="1"/>
+  <text x="568" y="234" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">環境の</text>
+  <text x="568" y="252" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">性質</text>
+  <line x1="480" y1="280" x2="644" y2="280" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Row 2 center label -->
+  <text x="568" y="332" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">障害への</text>
+  <text x="568" y="350" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">対応</text>
+  <line x1="480" y1="382" x2="644" y2="382" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Row 3 center label -->
+  <text x="568" y="432" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">成立の</text>
+  <text x="568" y="450" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">させ方</text>
+  <line x1="480" y1="484" x2="644" y2="484" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Center bottom message -->
+  <rect x="480" y="496" width="176" height="58" fill="#1F4E79" rx="5"/>
+  <text x="568" y="516" text-anchor="middle" font-size="9" fill="#BBDEFB">
+    何を前提とするかで
+  </text>
+  <text x="568" y="533" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">設計の問いが変わる</text>
+  <text x="568" y="548" text-anchor="middle" font-size="8" fill="#BBDEFB">
+    成立のさせ方そのものが変わる
+  </text>
+
+  <!-- RIGHT divider -->
+  <line x1="668" y1="106" x2="668" y2="640" stroke="#B0BEC5" stroke-width="1"
+        stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════
+       RIGHT PANEL ── オンプレミス
+       x=668–1100, y=66–640
+  ══════════════════════════════════════════ -->
+  <rect x="668" y="66" width="432" height="40" fill="#546E7A" rx="4"/>
+  <text x="884" y="82" text-anchor="middle" font-size="10" fill="#CFD8DC">
+    制御を前提とした環境
+  </text>
+  <text x="884" y="99" text-anchor="middle" font-size="14" font-weight="bold"
+        fill="#FFFFFF">オンプレミス</text>
+
+  <rect x="668" y="106" width="432" height="534" fill="#ECEFF1" stroke="#546E7A"
+        stroke-width="1.5"/>
+
+  <!-- Core premise box -->
+  <rect x="682" y="120" width="404" height="58" fill="#546E7A" rx="5"/>
+  <text x="884" y="140" text-anchor="middle" font-size="10" fill="#CFD8DC">
+    採用する前提
+  </text>
+  <text x="884" y="160" text-anchor="middle" font-size="13" font-weight="bold"
+        fill="#FFFFFF">固定・設計・管理</text>
+
+  <!-- Row 1: 環境の性質 -->
+  <rect x="682" y="194" width="404" height="86" fill="#FFFFFF" stroke="#546E7A"
+        stroke-width="1.5" rx="4"/>
+  <rect x="682" y="194" width="6" height="86" fill="#546E7A" rx="2"/>
+  <text x="892" y="215" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">構成は意図的に設計される</text>
+  <text x="892" y="234" text-anchor="middle" font-size="9" fill="#1F4E79">
+    どこで動かすか、どの構成で動かすかを
+  </text>
+  <text x="892" y="251" text-anchor="middle" font-size="9" fill="#1F4E79">
+    自分たちで設計し、責任を引き受ける。
+  </text>
+  <text x="892" y="268" text-anchor="middle" font-size="9" fill="#546E7A">
+    変更は計画的に管理され、構成は安定したものとして扱われる。
+  </text>
+
+  <!-- Row 2: 障害への扱い -->
+  <rect x="682" y="296" width="404" height="86" fill="#FFFFFF" stroke="#546E7A"
+        stroke-width="1.5" rx="4"/>
+  <rect x="682" y="296" width="6" height="86" fill="#546E7A" rx="2"/>
+  <text x="892" y="317" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">障害は例外として扱われる</text>
+  <text x="892" y="336" text-anchor="middle" font-size="9" fill="#1F4E79">
+    発生した問題を修復し、
+  </text>
+  <text x="892" y="353" text-anchor="middle" font-size="9" fill="#1F4E79">
+    元の状態へ戻すことを目指す。
+  </text>
+  <text x="892" y="370" text-anchor="middle" font-size="9" fill="#546E7A">
+    構成を維持することが運用の中心となる。
+  </text>
+
+  <!-- Row 3: 責任の所在 -->
+  <rect x="682" y="398" width="404" height="86" fill="#FFFFFF" stroke="#546E7A"
+        stroke-width="1.5" rx="4"/>
+  <rect x="682" y="398" width="6" height="86" fill="#546E7A" rx="2"/>
+  <text x="892" y="419" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#546E7A">基盤の管理は自分たちで担う</text>
+  <text x="892" y="438" text-anchor="middle" font-size="9" fill="#1F4E79">
+    何を固定し、何を変えるかは
+  </text>
+  <text x="892" y="455" text-anchor="middle" font-size="9" fill="#1F4E79">
+    自分たちの判断に委ねられる。
+  </text>
+  <text x="892" y="472" text-anchor="middle" font-size="9" fill="#546E7A">
+    制御の範囲を自ら設計し、引き受けることが前提となる。
+  </text>
+
+  <!-- Right summary -->
+  <rect x="682" y="500" width="404" height="46" fill="#546E7A" rx="4"/>
+  <text x="884" y="519" text-anchor="middle" font-size="10" fill="#CFD8DC">
+    固定が前提であるため
+  </text>
+  <text x="884" y="539" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">構成の維持と変更管理が設計の中心になる</text>
+
+  <!-- ═══════════════════════════════════
+       CAPTION  y=652–730
+  ═══════════════════════════════════ -->
+  <rect x="20" y="652" width="4" height="78" fill="#2E75B6" rx="2"/>
+  <text x="34" y="668" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">前提の違い：</tspan>
+    <tspan>クラウドとオンプレミスの違いは性能やコストではない。何が変わることを前提とするのか、何を固定することを前提とするのか——前提の置き方が異なる。</tspan>
+  </text>
+  <text x="34" y="688" text-anchor="start" font-size="11" fill="#1F4E79">
+    変化を前提とした場合、成立を維持し続ける仕組みが必要になる。固定を前提とした場合、構成の設計と変更管理が重要になる。
+  </text>
+  <text x="34" y="708" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">どちらが正しいかではない。前提が変わることで、成立のさせ方そのものが変わる。</tspan>
+  </text>
+
+</svg>

@@ -114,9 +114,6 @@
   <text x="170" y="501" text-anchor="middle" font-size="11" font-weight="bold"
         fill="#1F4E79">あとは Kubernetes に任せる</text>
 
-  <!-- パネル縦区切り -->
-  <line x1="340" y1="106" x2="340" y2="640" stroke="#B0BEC5" stroke-width="1"
-        stroke-dasharray="4,4"/>
 
   <!-- ═══════════════════════════════════════
        CENTER PANEL ─ Kubernetes 宣言的制御ループ
@@ -225,7 +222,7 @@
 
   <line x1="784" y1="222" x2="762" y2="222" stroke="#546E7A" stroke-width="1.5"
         stroke-dasharray="4,3" marker-end="url(#arr-gray-sm)"/>
-  <text x="773" y="210" text-anchor="middle" font-size="8" fill="#546E7A">観測</text>
+  <text x="778" y="210" text-anchor="end" font-size="8" fill="#546E7A">観測</text>
 
   <!-- ═══════════════════════════════════════
        RIGHT PANEL ─ 実際のクラスタ
@@ -255,7 +252,7 @@
 
   <line x1="940" y1="186" x2="940" y2="208" stroke="#C62828" stroke-width="1.5"
         marker-end="url(#arr-flow)"/>
-  <text x="940" y="201" text-anchor="middle" font-size="9" font-weight="bold"
+  <text x="952" y="201" text-anchor="start" font-size="9" font-weight="bold"
         fill="#C62828">障害発生</text>
 
   <!-- ── STATE 2: 障害発生 ── -->
@@ -276,7 +273,7 @@
 
   <line x1="940" y1="274" x2="940" y2="296" stroke="#D84315" stroke-width="1.5"
         marker-end="url(#arr-flow)"/>
-  <text x="940" y="289" text-anchor="middle" font-size="9" fill="#D84315">差分検出</text>
+  <text x="952" y="289" text-anchor="start" font-size="9" fill="#D84315">差分検出</text>
 
   <!-- ── STATE 3: Kubernetes が検知 ── -->
   <rect x="800" y="298" width="280" height="52" fill="#FFF3E0" stroke="#D84315"
@@ -289,7 +286,7 @@
 
   <line x1="940" y1="352" x2="940" y2="374" stroke="#D84315" stroke-width="1.5"
         marker-end="url(#arr-flow)"/>
-  <text x="940" y="367" text-anchor="middle" font-size="9" fill="#D84315">自動修復</text>
+  <text x="952" y="367" text-anchor="start" font-size="9" fill="#D84315">自動修復</text>
 
   <!-- ── STATE 4: Pod 作成中 ── -->
   <rect x="800" y="376" width="280" height="52" fill="#FFF3E0" stroke="#D84315"
@@ -304,7 +301,7 @@
 
   <line x1="940" y1="430" x2="940" y2="452" stroke="#00796B" stroke-width="1.5"
         marker-end="url(#arr-teal)"/>
-  <text x="940" y="445" text-anchor="middle" font-size="9" fill="#00796B">再収束</text>
+  <text x="952" y="445" text-anchor="start" font-size="9" fill="#00796B">再収束</text>
 
   <!-- ── STATE 5: 正常状態に復帰 ── -->
   <rect x="800" y="454" width="280" height="66" fill="#E0F2F1" stroke="#00796B"

@@ -1,15 +1,11 @@
+# PDF ビルド共通設定（ja/en 共通）。言語固有は各言語ディレクトリの config-pdf.yaml。
 filters:
   - pandoc-crossref
-
-metadata:
-  title: クラウドネイティブ教科書
-  toc-title: 目次
 
 variables:
   documentclass: ltjarticle
   documentClass: ltjarticle
   mainfont: Harano Aji Gothic
-  bookTitle: クラウドネイティブ教科書
   bookVersion: 0.1.0
   block-headings: true
 

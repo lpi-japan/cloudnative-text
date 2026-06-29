@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.6;
+}
+pre {
+  font-family: monospace;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 5px;
+  border: 1px #aaa solid;
+  background-color: #eee;
+}
+table {
+  margin: 0 auto 2em auto;
+  border-collapse: collapse;
+}
+table tr th,
+table tr td {
+  padding: 0.3em;
+  border: 1px #aaa solid;
+  font-size: 0.75em;
+}
+table tr th {
+  background-color: #eee;
+  font-weight: normal;
+}

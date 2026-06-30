@@ -78,6 +78,7 @@ run_pandoc() {
   (
     cd "${LANG_DIR}"
     pandoc preface.md -o "../tmp/preface-${LANG}.tex" --resource-path="${RESOURCE_PATH}"
+    printf '%s\n' '\captionsetup[figure]{labelformat=empty,labelsep=none}' >> "../tmp/preface-${LANG}.tex"
     printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
       -d "../config-common-pdf.yaml" \
       -d "config-pdf.yaml" \
@@ -112,6 +113,7 @@ done
 (
   cd "${LANG}"
   pandoc preface.md -o "../tmp/preface-${LANG}.tex" --resource-path="${RESOURCE_PATH}"
+  printf '%s\n' '\captionsetup[figure]{labelformat=empty,labelsep=none}' >> "../tmp/preface-${LANG}.tex"
   printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
     -d "../config-common-pdf.yaml" \
     -d "config-pdf.yaml" \

@@ -4,3 +4,6 @@ metadata:
 
 variables:
   bookTitle: クラウドネイティブ教科書
+
+include-in-header:
+  - listing.tex

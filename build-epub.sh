@@ -4,8 +4,6 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
-CONFIG_EPUB="${LANG_DIR}/config-epub.yaml"
-CROSSREF="${LANG_DIR}/crossref.yaml"
 EPUB_CSS="${ROOT_DIR}/epub.css"
 IMAGE="${EPUB_IMAGE:-pandoc/core:3.1.1.0}"
 BUILD_MODE="${EPUB_BUILD_MODE:-docker}"
@@ -38,18 +36,17 @@ if [[ ! -d "${LANG_DIR}" ]]; then
   exit 1
 fi
 
-if [[ ! -f "${CONFIG_EPUB}" || ! -f "${CROSSREF}" || ! -f "${EPUB_CSS}" ]]; then
-  echo "missing epub config: ${CONFIG_EPUB}, ${CROSSREF}, or ${EPUB_CSS}" >&2
+if [[ ! -f "${LANG_DIR}/config-epub.yaml" || ! -f "${LANG_DIR}/crossref.yaml" || ! -f "${EPUB_CSS}" ]]; then
+  echo "missing epub config under ${LANG_DIR} or ${EPUB_CSS}" >&2
   exit 1
 fi
 
-cd "${ROOT_DIR}"
 mkdir -p "${OUT_DIR}"
 
-inputs=("${LANG_DIR}/preface.md")
+inputs=("preface.md")
 for part in "${PART_DIRS[@]}"; do
   while IFS= read -r -d '' f; do
-    inputs+=("${f}")
+    inputs+=("${f#${LANG_DIR}/}")
   done < <(find "${LANG_DIR}/${part}" -maxdepth 1 -type f -name '*.md' -print0 | LC_ALL=C sort -z)
 done
 
@@ -58,38 +55,41 @@ if ((${#inputs[@]} < 2)); then
   exit 1
 fi
 
-cat "${inputs[@]}" | sed 's/^####.*/#& {-}/' > "${GUIDE_MD}"
+(
+  cd "${LANG_DIR}"
+  cat "${inputs[@]}" | sed 's/^####.*/#& {-}/' > "../${GUIDE_MD#${ROOT_DIR}/}"
+)
 
 run_pandoc() {
-  /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "${GUIDE_MD}" \
-    | pandoc -t epub3 -F pandoc-crossref -o "${OUTPUT}" -N \
-        -M "crossrefYaml=${CROSSREF}" \
-        --metadata-file="${CONFIG_EPUB}" \
-        --css="${EPUB_CSS}"
+  (
+    cd "${LANG_DIR}"
+    /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../${GUIDE_MD#${ROOT_DIR}/}" \
+      | pandoc -t epub3 -F pandoc-crossref -o "../${OUTPUT#${ROOT_DIR}/}" -N \
+          -M "crossrefYaml=crossref.yaml" \
+          --metadata-file="config-epub.yaml" \
+          --css="../epub.css"
+  )
 }
 
 if [[ "${BUILD_MODE}" == "direct" ]]; then
   run_pandoc
 else
   docker run --rm -i \
-    --user "$(id -u):$(id -g)" \
     -e LANG="${LANG}" \
-    -e GUIDE_MD="${GUIDE_MD}" \
-    -e OUTPUT="${OUTPUT}" \
-    -e CROSSREF="${CROSSREF}" \
-    -e CONFIG_EPUB="${CONFIG_EPUB}" \
-    -e EPUB_CSS="${EPUB_CSS}" \
     -v "${ROOT_DIR}:/data" \
     -w /data \
     --entrypoint /bin/bash \
     "${IMAGE}" -s <<'EOF'
 set -euo pipefail
 
-/usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "${GUIDE_MD}" \
-  | pandoc -t epub3 -F pandoc-crossref -o "${OUTPUT}" -N \
-      -M "crossrefYaml=${CROSSREF}" \
-      --metadata-file="${CONFIG_EPUB}" \
-      --css="${EPUB_CSS}"
+(
+  cd "${LANG}"
+  /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../tmp/guide-${LANG}.md" \
+    | pandoc -t epub3 -F pandoc-crossref -o "../tmp/guide-${LANG}.epub" -N \
+        -M "crossrefYaml=crossref.yaml" \
+        --metadata-file="config-epub.yaml" \
+        --css="../epub.css"
+)
 EOF
 fi
 

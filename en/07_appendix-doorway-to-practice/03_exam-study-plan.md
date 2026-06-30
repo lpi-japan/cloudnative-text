@@ -1,6 +1,6 @@
-# [EN DRAFT] 03_exam-stady-plan
+# [EN DRAFT] 03_exam-study-plan
 
-This is a placeholder English manuscript for `07_appendix-doorway-to-practice/03_exam-stady-plan.md`.
+This is a placeholder English manuscript for `07_appendix-doorway-to-practice/03_exam-study-plan.md`.
 Translation pending.
 
 ## Section 1

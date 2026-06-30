@@ -7,6 +7,8 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
+\newcommand{\passthrough}[1]{#1}
+
 \lstset{
     basicstyle=\ttfamily,
     keywordstyle=\color[RGB]{33,74,135}\bfseries,
@@ -30,8 +32,6 @@
     aboveskip=\medskipamount,
     belowskip=\medskipamount,
 }
-
-\setcounter{secnumdepth}{3}
 
 \usepackage{etoolbox}
 \newcounter{cnpartbreak}

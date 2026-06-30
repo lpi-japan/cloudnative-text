@@ -12,8 +12,6 @@ variables:
 toc: true
 toc-depth: 3
 highlight-style: tango
-include-in-header:
-  - listing.tex
-number-sections: true
+number-sections: false
 listings: true
 pdf-engine: lualatex

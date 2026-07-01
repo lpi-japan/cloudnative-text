@@ -17,23 +17,13 @@ on:
       - 'build-pdf.sh'
       - 'build-epub.sh'
       - '.github/workflows/build-pdf.yaml'
-      - '.github/workflows/build-container.yaml'
-      - 'Dockerfile'
 
 permissions:
   contents: read
   packages: read
 
 jobs:
-  ensure-container:
-    uses: ./.github/workflows/build-container.yaml
-    permissions:
-      contents: read
-      packages: write
-    secrets: inherit
-
-  build-pdf:
-    needs: ensure-container
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -47,25 +37,11 @@ jobs:
       - uses: actions/checkout@v5
       - name: Build PDF (${{ matrix.lang }})
         run: PDF_BUILD_MODE=direct ./build-pdf.sh ${{ matrix.lang }}
-      - uses: actions/upload-artifact@v6
-        with:
-          name: guide-${{ matrix.lang }}.pdf
-          path: tmp/guide-${{ matrix.lang }}.pdf
-
-  build-epub:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lang: [ja, en]
-    container:
-      image: pandoc/core:3.1.1.0
-    steps:
-      - uses: actions/checkout@v5
-      - name: Install bash (build-epub.sh requires bash; pandoc/core is Alpine)
-        run: apk add --no-cache bash
       - name: Build EPUB (${{ matrix.lang }})
         run: EPUB_BUILD_MODE=direct ./build-epub.sh ${{ matrix.lang }}
       - uses: actions/upload-artifact@v6
         with:
-          name: guide-${{ matrix.lang }}.epub
-          path: tmp/guide-${{ matrix.lang }}.epub
+          name: guide-${{ matrix.lang }}
+          path: |
+            tmp/guide-${{ matrix.lang }}.pdf
+            tmp/guide-${{ matrix.lang }}.epub

@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 EPUB_CSS="${ROOT_DIR}/epub.css"
-IMAGE="${EPUB_IMAGE:-pandoc/core:3.1.1.0}"
+IMAGE="${EPUB_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
 BUILD_MODE="${EPUB_BUILD_MODE:-docker}"
 OUT_DIR="${ROOT_DIR}/tmp"
 GUIDE_MD="${OUT_DIR}/guide-${LANG}.md"
@@ -29,6 +29,16 @@ usage() {
 
 if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
+fi
+
+if [[ "${BUILD_MODE}" == "docker" ]]; then
+  exec docker run --rm -i \
+    -e LANG="${LANG}" \
+    -e LC_ALL=C.UTF-8 \
+    -v "${ROOT_DIR}:/data" \
+    -w /data \
+    --entrypoint /bin/bash \
+    "${IMAGE}" -c "EPUB_BUILD_MODE=direct ./build-epub.sh ${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then
@@ -60,38 +70,14 @@ fi
   cat "${inputs[@]}" | sed 's/^####.*/#& {-}/' > "../${GUIDE_MD#${ROOT_DIR}/}"
 )
 
-run_pandoc() {
-  (
-    cd "${LANG_DIR}"
-    /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../${GUIDE_MD#${ROOT_DIR}/}" \
-      | pandoc -t epub3 -F pandoc-crossref -o "../${OUTPUT#${ROOT_DIR}/}" -N \
-          -M "crossrefYaml=crossref.yaml" \
-          --metadata-file="config-epub.yaml" \
-          --css="../epub.css"
-  )
-}
-
-if [[ "${BUILD_MODE}" == "direct" ]]; then
-  run_pandoc
-else
-  docker run --rm -i \
-    -e LANG="${LANG}" \
-    -v "${ROOT_DIR}:/data" \
-    -w /data \
-    --entrypoint /bin/bash \
-    "${IMAGE}" -s <<'EOF'
-set -euo pipefail
-
 (
-  cd "${LANG}"
-  /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../tmp/guide-${LANG}.md" \
-    | pandoc -t epub3 -F pandoc-crossref -o "../tmp/guide-${LANG}.epub" -N \
+  cd "${LANG_DIR}"
+  /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../${GUIDE_MD#${ROOT_DIR}/}" \
+    | pandoc -t epub3 -F pandoc-crossref -o "../${OUTPUT#${ROOT_DIR}/}" -N \
         -M "crossrefYaml=crossref.yaml" \
         --metadata-file="config-epub.yaml" \
         --css="../epub.css"
 )
-EOF
-fi
 
 echo "Language: ${LANG}"
 echo "Build mode: ${BUILD_MODE}"

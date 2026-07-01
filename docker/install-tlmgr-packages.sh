@@ -1,39 +1,60 @@
 #!/bin/bash
-# TeX Live 追加パッケージを、ベースイメージ内 tlmgr と互換の固定ミラーから入れる。
-# live CTAN (mirror.ctan.org 経由) は tlnet が進み、古い tlmgr クライアントでは
-#   install 前に update --self を要求する → ビルドが不安定になる。
-# update --self も CTAN 側の状態次第で失敗するため、ここでは使わない。
+# pandoc/extra に無い TeX パッケージを tlmgr で追加する。
+# 固定 tlnet → update --self + 固定 tlnet → live tlnet の順で試す。
 set -euo pipefail
 
 readonly PACKAGES=(collection-langjapanese tocloft wallpaper eso-pic)
-
-# ベース digest 更新時は、必要なら TLMGR_REPOS の順序・URL を見直す。
-readonly TLMGR_REPOS=(
+readonly PINNED_REPOS=(
   "https://latex.us/systems/texlive/tlnet"
+  "https://mirrors.mit.edu/CTAN/systems/texlive/tlnet"
 )
+readonly LIVE_REPO="https://mirror.ctan.org/systems/texlive/tlnet"
+
+pkg_installed() {
+  tlmgr info --only-installed "$1" 2>/dev/null | grep -q 'installed:   Yes'
+}
+
+all_installed() {
+  local pkg
+  for pkg in "${PACKAGES[@]}"; do
+    pkg_installed "$pkg" || return 1
+  done
+}
+
+try_install() {
+  local repo="$1"
+  local update_self="$2"
+  shift 2
+  echo "tlmgr: repository=${repo} update_self=${update_self} packages=$*"
+  tlmgr option repository "${repo}"
+  if [[ "${update_self}" == "1" ]]; then
+    tlmgr update --self
+  fi
+  tlmgr install "$@" || true
+  all_installed
+}
 
 missing=()
 for pkg in "${PACKAGES[@]}"; do
-  if ! tlmgr info --only-installed "$pkg" 2>/dev/null | grep -q 'installed:   Yes'; then
-    missing+=("$pkg")
-  fi
+  pkg_installed "$pkg" || missing+=("$pkg")
 done
 
 if ((${#missing[@]} == 0)); then
-  echo "tlmgr: required packages already installed; skipping"
+  echo "tlmgr: required packages already installed"
   exit 0
 fi
 
 echo "tlmgr: installing ${missing[*]}"
 
-for repo in "${TLMGR_REPOS[@]}"; do
-  echo "tlmgr: trying repository ${repo}"
-  if tlmgr option repository "${repo}" && tlmgr install "${missing[@]}"; then
-    echo "tlmgr: installed from ${repo}"
-    exit 0
-  fi
-  echo "tlmgr: failed with ${repo}" >&2
+for repo in "${PINNED_REPOS[@]}"; do
+  try_install "${repo}" 0 "${missing[@]}" && exit 0
 done
 
-echo "tlmgr: all pinned repositories failed; not falling back to update --self" >&2
+for repo in "${PINNED_REPOS[@]}"; do
+  try_install "${repo}" 1 "${missing[@]}" && exit 0
+done
+
+try_install "${LIVE_REPO}" 1 "${missing[@]}" && exit 0
+
+echo "tlmgr: install failed for: ${missing[*]}" >&2
 exit 1

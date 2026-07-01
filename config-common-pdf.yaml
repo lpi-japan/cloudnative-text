@@ -1,0 +1,15 @@
+# PDF ビルド共通設定（ja/en 共通）。言語固有は各言語ディレクトリの config-pdf.yaml。
+# 図番号は原稿の alt テキスト（図1-1 等）で手動管理するため、PDF では crossref を使わない。
+variables:
+  documentclass: ltjarticle
+  documentClass: ltjarticle
+  mainfont: Harano Aji Gothic
+  bookVersion: 0.1.0
+  block-headings: true
+
+toc: true
+toc-depth: 3
+highlight-style: tango
+number-sections: false
+listings: true
+pdf-engine: lualatex

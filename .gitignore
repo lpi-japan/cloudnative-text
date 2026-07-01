@@ -1,5 +1,6 @@
-# PDF ビルド成果物・一時ファイル (build-pdf.sh → tmp/)
+# PDF/EPUB ビルド成果物・一時ファイル
 tmp/
 
 # 表紙用の大容量ソース（原稿に同梱しない）
-image/Cover/
+ja/image/Cover/
+en/image/Cover/

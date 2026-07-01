@@ -1,0 +1,11 @@
+metadata:
+  title: Cloud Native Textbook
+  toc-title: Table of Contents
+
+variables:
+  bookTitle: Cloud Native Textbook
+  publisher-prefix: Publisher
+  publisher-suffix: Publication
+
+include-in-header:
+  - listing.tex

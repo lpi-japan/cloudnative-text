@@ -1,0 +1,9 @@
+metadata:
+  title: クラウドネイティブ教科書
+  toc-title: 目次
+
+variables:
+  bookTitle: クラウドネイティブ教科書
+
+include-in-header:
+  - listing.tex

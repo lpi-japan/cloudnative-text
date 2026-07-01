@@ -2,15 +2,14 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE="${ROOT_DIR}/template.tex"
+LANG="${1:-ja}"
+LANG_DIR="${ROOT_DIR}/${LANG}"
 IMAGE="${PDF_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}"
 BUILD_MODE="${PDF_BUILD_MODE:-docker}"
-CONFIG="config-pdf.yaml"
 OUT_DIR="${ROOT_DIR}/tmp"
-OUTPUT="tmp/guide.pdf"
-CHAPTER_LIST="${OUT_DIR}/.build-chapter-list.txt"
+OUTPUT="${OUT_DIR}/guide-${LANG}.pdf"
+CHAPTER_LIST="${OUT_DIR}/.build-chapter-list-${LANG}.txt"
 
-# git 管理の原稿ディレクトリ（部ごとに 1 列）
 PART_DIRS=(
   00_prologue
   01_part1-basics
@@ -22,88 +21,115 @@ PART_DIRS=(
   07_appendix-doorway-to-practice
 )
 
-if [[ ! -f "${TEMPLATE}" ]]; then
-  echo "template.tex not found: ${TEMPLATE}" >&2
+usage() {
+  echo "Usage: $0 [ja|en]" >&2
+  exit 1
+}
+
+if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
+  usage
+fi
+
+if [[ ! -d "${LANG_DIR}" ]]; then
+  echo "language directory not found: ${LANG_DIR}" >&2
   exit 1
 fi
 
-cd "${ROOT_DIR}"
+if [[ ! -f "${ROOT_DIR}/template.tex" || ! -f "${ROOT_DIR}/config-common-pdf.yaml" || ! -f "${LANG_DIR}/config-pdf.yaml" ]]; then
+  echo "missing template or config under ${ROOT_DIR} / ${LANG_DIR}" >&2
+  exit 1
+fi
+
 mkdir -p "${OUT_DIR}"
 
 RESOURCE_PATH="."
 for part in "${PART_DIRS[@]}"; do
-  if [[ ! -d "${part}" ]]; then
-    echo "missing manuscript directory: ${part}" >&2
+  if [[ ! -d "${LANG_DIR}/${part}" ]]; then
+    echo "missing manuscript directory: ${LANG_DIR}/${part}" >&2
     exit 1
   fi
   RESOURCE_PATH+=":${part}"
 done
 
-if [[ ! -f preface.md ]]; then
-  echo "missing preface.md" >&2
+if [[ ! -f "${LANG_DIR}/preface.md" ]]; then
+  echo "missing ${LANG_DIR}/preface.md" >&2
   exit 1
 fi
 
+# 原稿パスは言語ディレクトリ基準（main ブランチと同じ ../08_img 等の相対参照を維持）
 chapters=()
 : > "${CHAPTER_LIST}"
 for part in "${PART_DIRS[@]}"; do
   while IFS= read -r -d '' f; do
-    chapters+=("${f}")
-    printf '%s\n' "${f}" >> "${CHAPTER_LIST}"
-  done < <(find "./${part}" -maxdepth 1 -type f -name '*.md' -print0 | LC_ALL=C sort -z)
+    rel="${f#${LANG_DIR}/}"
+    chapters+=("${rel}")
+    printf '%s\n' "${rel}" >> "${CHAPTER_LIST}"
+  done < <(find "${LANG_DIR}/${part}" -maxdepth 1 -type f -name '*.md' -print0 | LC_ALL=C sort -z)
 done
 
 if ((${#chapters[@]} == 0)); then
-  echo "no manuscript markdown files found" >&2
+  echo "no manuscript markdown files found under ${LANG_DIR}" >&2
   exit 1
 fi
 
 run_pandoc() {
-  mapfile -t chapters < tmp/.build-chapter-list.txt
+  mapfile -t chapters < "${CHAPTER_LIST}"
 
-  pandoc preface.md -o tmp/preface.tex --resource-path="${RESOURCE_PATH}"
-  printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
-    -d "${CONFIG}" \
-    --template "${TEMPLATE}" \
-    --resource-path="${RESOURCE_PATH}" \
-    -B tmp/preface.tex \
-    -M no-cover=true \
-    -o "${OUTPUT}"
+  (
+    cd "${LANG_DIR}"
+    pandoc preface.md -o "../tmp/preface-${LANG}.tex" --resource-path="${RESOURCE_PATH}"
+    printf '%s\n' '\captionsetup[figure]{labelformat=empty,labelsep=none}' >> "../tmp/preface-${LANG}.tex"
+    printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
+      -d "../config-common-pdf.yaml" \
+      -d "config-pdf.yaml" \
+      --template "../template.tex" \
+      --resource-path="${RESOURCE_PATH}" \
+      -B "../tmp/preface-${LANG}.tex" \
+      -M "no-cover=true" \
+      -o "../tmp/guide-${LANG}.pdf"
+  )
 }
 
 if [[ "${BUILD_MODE}" == "direct" ]]; then
   run_pandoc
 else
   docker run --rm -i \
-    --user "$(id -u):$(id -g)" \
-    -e CONFIG="${CONFIG}" \
-    -e OUTPUT="${OUTPUT}" \
-    -e RESOURCE_PATH="${RESOURCE_PATH}" \
-    -e TEMPLATE="/data/template.tex" \
+    -e LANG="${LANG}" \
+    -e LC_ALL=C.UTF-8 \
     -v "${ROOT_DIR}:/data" \
     -w /data \
     --entrypoint /bin/bash \
     "${IMAGE}" -s <<'EOF'
 set -euo pipefail
 
-mapfile -t chapters < tmp/.build-chapter-list.txt
+LANG="${LANG}"
+mapfile -t chapters < "tmp/.build-chapter-list-${LANG}.txt"
 
-pandoc preface.md -o tmp/preface.tex --resource-path="${RESOURCE_PATH}"
-printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
-  -d "${CONFIG}" \
-  --template "${TEMPLATE}" \
-  --resource-path="${RESOURCE_PATH}" \
-  -B tmp/preface.tex \
-  -M no-cover=true \
-  -o "${OUTPUT}"
+RESOURCE_PATH="."
+for part in 00_prologue 01_part1-basics 02_part2-practice 03_part3-application 04_part4-operation 05_part5-development 06_part6-summary 07_appendix-doorway-to-practice; do
+  RESOURCE_PATH+=":${part}"
+done
+
+(
+  cd "${LANG}"
+  pandoc preface.md -o "../tmp/preface-${LANG}.tex" --resource-path="${RESOURCE_PATH}"
+  printf '%s\n' '\captionsetup[figure]{labelformat=empty,labelsep=none}' >> "../tmp/preface-${LANG}.tex"
+  printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
+    -d "../config-common-pdf.yaml" \
+    -d "config-pdf.yaml" \
+    --template "../template.tex" \
+    --resource-path="${RESOURCE_PATH}" \
+    -B "../tmp/preface-${LANG}.tex" \
+    -M "no-cover=true" \
+    -o "../tmp/guide-${LANG}.pdf"
+)
 EOF
 fi
 
-echo "Config: ${CONFIG}"
+echo "Language: ${LANG}"
 echo "Build mode: ${BUILD_MODE}"
 echo "Image: ${IMAGE}"
-echo "Resource path: ${RESOURCE_PATH}"
-echo "Output: ${OUT_DIR}/guide.pdf"
+echo "Output: ${OUTPUT}"
 echo "Chapters (${CHAPTER_LIST}):"
 nl -ba "${CHAPTER_LIST}"
-ls -lh "${OUT_DIR}/guide.pdf"
+ls -lh "${OUTPUT}"

@@ -53,12 +53,16 @@ jobs:
           path: tmp/guide-${{ matrix.lang }}.pdf
 
   build-epub:
+    needs: ensure-container
     runs-on: ubuntu-latest
     strategy:
       matrix:
         lang: [ja, en]
     container:
-      image: pandoc/core:3.1.1.0
+      image: ghcr.io/lpi-japan/cloudnative-text:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
       - name: Build EPUB (${{ matrix.lang }})

@@ -25,6 +25,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      LC_ALL: C.UTF-8
     strategy:
       matrix:
         lang: [ja, en]

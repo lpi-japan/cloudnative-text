@@ -20,7 +20,7 @@ jobs:
       manuscript: ${{ steps.set.outputs.manuscript }}
     steps:
       - uses: actions/checkout@v5
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: filter
         if: github.event_name == 'push'
         with:
@@ -73,7 +73,6 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: docker
-          file: Dockerfile
           platforms: linux/amd64
           push: true
           cache-from: type=gha

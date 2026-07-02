@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cloud Native テキスト　図版 図4-2.1　v2
+  v2 修正：API Gateway を親Span（0-300ms全体覆い）として表現
+           親子関係ブラケット・Child Spanラベル追加
+  タイトル：Trace と Span で処理の流れを再構成する
+  スケール: 300ms → 860px（2.867px/ms）、開始 x=220
+    API Gateway  : 0–300ms  (860px) ← 親Span（全体を待機）
+    Order Service  : 30–80ms  (143px)
+    Inventory Service  : 80–140ms (172px)
+    Payment Service  : 140–260ms (344px) ← ボトルネック
+    Notification Service  : 260–300ms (115px)
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     xml:lang="en"
+     font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
+
+  <title>Figure 4-2.1: Reconstructing the Processing Flow with Trace and Span</title>
+  <desc>Cloud Native テキスト 図版 図4-2.1 v2　Trace/Span 親子構造ガントチャート</desc>
+
+  <!-- 0. 背景 -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- 1. TITLE BAR -->
+  <g id="g-title">
+    <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+    <text x="560" y="27" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="18" font-weight="bold" letter-spacing="0.5">
+      Figure 4-2.1: Reconstructing the Processing Flow with Trace and Span
+    </text>
+  </g>
+
+  <!-- 2. ZONE HEADER -->
+  <g id="g-zone-header">
+    <rect x="20" y="66" width="1080" height="38" fill="#546E7A" rx="2"/>
+    <text x="560" y="85" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="13" font-weight="bold">
+      Recording and visualizing the 5-service call chain from Figure 4-2 with Trace and Span (Gantt chart format)
+    </text>
+  </g>
+
+  <!-- 3. TIME AXIS ZONE -->
+  <g id="g-time-axis">
+    <rect x="20" y="104" width="1080" height="48"
+          fill="#ECEFF1" stroke="#546E7A" stroke-width="0.5"/>
+    <text x="110" y="128" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10" font-weight="bold">Time Axis (ms)</text>
+    <text x="220" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">0</text>
+    <text x="363" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">50ms</text>
+    <text x="507" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">100ms</text>
+    <text x="650" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">150ms</text>
+    <text x="793" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">200ms</text>
+    <text x="937" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">250ms</text>
+    <text x="1080" y="126" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">300ms</text>
+    <line x1="218" y1="142" x2="1082" y2="142" stroke="#546E7A" stroke-width="1"/>
+    <line x1="220" y1="140" x2="220" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="363" y1="140" x2="363" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="507" y1="140" x2="507" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="650" y1="140" x2="650" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="793" y1="140" x2="793" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="937" y1="140" x2="937" y2="152" stroke="#546E7A" stroke-width="1"/>
+    <line x1="1080" y1="140" x2="1080" y2="152" stroke="#546E7A" stroke-width="1"/>
+  </g>
+
+  <!-- グリッドライン -->
+  <g id="g-grid">
+    <line x1="218" y1="152" x2="218" y2="520" stroke="#BDBDBD" stroke-width="0.8"/>
+    <line x1="220" y1="152" x2="220" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="363" y1="152" x2="363" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="507" y1="152" x2="507" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="650" y1="152" x2="650" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="793" y1="152" x2="793" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="937" y1="152" x2="937" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <line x1="1080" y1="152" x2="1080" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+  </g>
+
+  <!-- 4. TRACE ROW -->
+  <g id="g-trace-row">
+    <rect x="20" y="152" width="1080" height="56" fill="#DDEEFF"/>
+    <line x1="20" y1="208" x2="1100" y2="208" stroke="#BDBDBD" stroke-width="0.5"/>
+    <text x="30" y="172" dominant-baseline="middle"
+          fill="#1F4E79" font-size="13" font-weight="bold">Trace</text>
+    <text x="30" y="192" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Entire Request)</text>
+    <rect x="220" y="162" width="860" height="34" fill="#1F4E79" rx="3"/>
+    <text x="232" y="179" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="9">0 ms</text>
+    <text x="560" y="179" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="10" font-weight="bold">
+      ─── Trace (Processing Record of the Entire Request) ───
+    </text>
+    <text x="1068" y="179" text-anchor="end" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="9">Total 300ms</text>
+  </g>
+
+  <!-- 5. SPAN DIVIDER -->
+  <g id="g-span-divider">
+    <rect x="20" y="208" width="1080" height="22" fill="#546E7A"/>
+    <text x="560" y="219" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="10">
+      ↓ Span (Individual service processing interval) — Parent Span contains Child Spans
+    </text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       6. SPAN 1: API Gateway ── 親Span
+       0-300ms（全体を覆う親Span）
+       実処理: 0-30ms（ゲートウェイ処理）
+       待機　: 30-300ms（Child Spanの完了を待機）
+  ══════════════════════════════════════════════════════════════ -->
+  <g id="g-span-1">
+    <rect x="20" y="230" width="1080" height="52" fill="#FFF3E0"/>
+    <line x1="20" y1="282" x2="1100" y2="282" stroke="#BDBDBD" stroke-width="0.5"/>
+
+    <!-- ラベル -->
+    <text x="30" y="244" dominant-baseline="middle"
+          fill="#D84315" font-size="11" font-weight="bold">API Gateway</text>
+    <!-- 親Span バッジ -->
+    <rect x="23" y="252" width="64" height="13" rx="2" fill="#D84315"/>
+    <text x="55" y="259" text-anchor="middle" dominant-baseline="middle"
+          fill="white" font-size="8" font-weight="bold">Parent Span</text>
+    <text x="30" y="270" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 1)</text>
+
+    <!-- ── Spanバー ── -->
+    <!-- 全体覆いバー（0-300ms、点線: Child Span待機を示す） -->
+    <rect x="220" y="244" width="860" height="24"
+          fill="#FFF8F5" stroke="#D84315" stroke-width="1.5" rx="3"
+          stroke-dasharray="7,3"/>
+    <!-- 実処理区間（0-30ms、ソリッド） -->
+    <rect x="220" y="244" width="86" height="24"
+          fill="#FFE0B2" stroke="#D84315" stroke-width="2" rx="3"/>
+    <text x="263" y="256" text-anchor="middle" dominant-baseline="middle"
+          fill="#D84315" font-size="10" font-weight="bold">30ms</text>
+    <!-- 待機ラベル -->
+    <text x="683" y="254" text-anchor="middle" dominant-baseline="middle"
+          fill="#D84315" font-size="9" font-style="italic">← Waiting for Child Spans to complete →</text>
+    <!-- 右端（300ms）ラベル -->
+    <text x="1070" y="254" text-anchor="end" dominant-baseline="middle"
+          fill="#D84315" font-size="8">300ms</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════
+       7. SPAN 2: Order Service（Child Span）
+       30-80ms（143px, start x=306）
+  ════════════════════════════════════════════════════ -->
+  <g id="g-span-2">
+    <rect x="20" y="282" width="1080" height="52" fill="#F5F7FA"/>
+    <line x1="20" y1="334" x2="1100" y2="334" stroke="#BDBDBD" stroke-width="0.5"/>
+    <text x="30" y="300" dominant-baseline="middle"
+          fill="#1F4E79" font-size="11" font-weight="bold">Order Service</text>
+    <text x="30" y="316" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 2 / Child Span)</text>
+    <rect x="306" y="296" width="143" height="24"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="3"/>
+    <text x="377" y="308" text-anchor="middle" dominant-baseline="middle"
+          fill="#2E75B6" font-size="10" font-weight="bold">50ms</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════
+       8. SPAN 3: Inventory Service（Child Span）
+       80-140ms（172px, start x=449）
+  ════════════════════════════════════════════════════ -->
+  <g id="g-span-3">
+    <rect x="20" y="334" width="1080" height="52" fill="#ECEFF1"/>
+    <line x1="20" y1="386" x2="1100" y2="386" stroke="#BDBDBD" stroke-width="0.5"/>
+    <text x="30" y="352" dominant-baseline="middle"
+          fill="#1F4E79" font-size="11" font-weight="bold">Inventory Service</text>
+    <text x="30" y="368" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 3 / Child Span)</text>
+    <rect x="449" y="348" width="172" height="24"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="3"/>
+    <text x="535" y="360" text-anchor="middle" dominant-baseline="middle"
+          fill="#2E75B6" font-size="10" font-weight="bold">60ms</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════
+       9. SPAN 4: Payment Service（Child Span・ボトルネック）
+       140-260ms（344px, start x=621）
+  ════════════════════════════════════════════════════ -->
+  <g id="g-span-4">
+    <rect x="20" y="386" width="1080" height="82" fill="#FFEBEE"/>
+    <line x1="20" y1="468" x2="1100" y2="468" stroke="#C62828" stroke-width="0.8"/>
+    <text x="30" y="404" dominant-baseline="middle"
+          fill="#C62828" font-size="11" font-weight="bold">Payment Service</text>
+    <text x="30" y="420" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 4 / Child Span)</text>
+    <text x="30" y="438" dominant-baseline="middle"
+          fill="#C62828" font-size="10" font-weight="bold">⚠ Longest</text>
+    <!-- ボトルネック Span バー -->
+    <rect x="621" y="397" width="344" height="52"
+          fill="#FFEBEE" stroke="#C62828" stroke-width="2.5" rx="3"/>
+    <text x="793" y="413" text-anchor="middle" dominant-baseline="middle"
+          fill="#C62828" font-size="12" font-weight="bold">120ms (Bottleneck)</text>
+    <text x="793" y="440" text-anchor="middle" dominant-baseline="middle"
+          fill="#C62828" font-size="9">The latency of this Span affects the total processing time of the Trace</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════
+       10. SPAN 5: Notification Service（Child Span）
+       260-300ms（115px, start x=965）
+  ════════════════════════════════════════════════════ -->
+  <g id="g-span-5">
+    <rect x="20" y="468" width="1080" height="52" fill="#F5F7FA"/>
+    <line x1="20" y1="520" x2="1100" y2="520" stroke="#BDBDBD" stroke-width="0.5"/>
+    <text x="30" y="486" dominant-baseline="middle"
+          fill="#1F4E79" font-size="11" font-weight="bold">Notification Service</text>
+    <text x="30" y="502" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">(Span 5 / Child Span)</text>
+    <rect x="965" y="480" width="115" height="24"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="3"/>
+    <text x="1022" y="492" text-anchor="middle" dominant-baseline="middle"
+          fill="#2E75B6" font-size="10" font-weight="bold">40ms</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════
+       親子関係ブラケット
+       ラベル列右端（x=213）に縦線 + 各Child Spanへの水平ティック
+       API Gateway（y=256）→ 通知（y=490）を連結
+  ════════════════════════════════════════════════════ -->
+  <g id="g-hierarchy">
+    <!-- 縦ライン -->
+    <line x1="213" y1="256" x2="213" y2="494"
+          stroke="#D84315" stroke-width="2"/>
+    <!-- 上端キャップ（API Gateway の実処理バー左端高さ） -->
+    <line x1="213" y1="256" x2="220" y2="256"
+          stroke="#D84315" stroke-width="2"/>
+    <!-- Order Service への水平ティック（row center y=308） -->
+    <line x1="213" y1="308" x2="220" y2="308"
+          stroke="#D84315" stroke-width="1.5"/>
+    <!-- Inventory Service（row center y=360） -->
+    <line x1="213" y1="360" x2="220" y2="360"
+          stroke="#D84315" stroke-width="1.5"/>
+    <!-- Payment Service（row center y=427） -->
+    <line x1="213" y1="427" x2="220" y2="427"
+          stroke="#D84315" stroke-width="1.5"/>
+    <!-- Notification Service（row center y=494） -->
+    <line x1="213" y1="494" x2="220" y2="494"
+          stroke="#D84315" stroke-width="1.5"/>
+    <!-- 下端キャップ -->
+    <line x1="213" y1="494" x2="220" y2="494"
+          stroke="#D84315" stroke-width="2"/>
+  </g>
+
+  <!-- ガントチャート外枠 -->
+  <g id="g-gantt-border">
+    <rect x="20" y="104" width="1080" height="416"
+          fill="none" stroke="#546E7A" stroke-width="1"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════
+       11. SUMMARY BOXES
+  ════════════════════════════════════════════════════ -->
+  <g id="g-summary">
+    <!-- Trace 定義 -->
+    <rect x="30" y="532" width="505" height="76"
+          fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+    <text x="282" y="548" text-anchor="middle" dominant-baseline="middle"
+          fill="#1F4E79" font-size="12" font-weight="bold">Trace</text>
+    <text x="282" y="564" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">A record of all service processing that one request passes through</text>
+    <text x="282" y="580" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">The entire flow from start to completion across all services = a collection of Spans</text>
+
+    <!-- Span 定義 -->
+    <rect x="560" y="532" width="530" height="76"
+          fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5" rx="4"/>
+    <text x="825" y="548" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="12" font-weight="bold">Span</text>
+    <text x="825" y="564" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">Processing interval per individual service (records start time, end time, service name, etc.)</text>
+    <text x="825" y="580" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="9">Parent Span (caller) contains Child Span (callee) — expresses dependencies in a hierarchical structure</text>
+  </g>
+
+  <!-- 12. NOTE -->
+  <g id="g-note">
+    <text x="560" y="618" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="11">
+      By comparing Span lengths, the service causing the latency bottleneck can be identified at a glance
+    </text>
+  </g>
+
+  <!-- 13. CAPTION -->
+  <g id="g-caption">
+    <rect x="20" y="628" width="4" height="80" fill="#1F4E79"/>
+    <text x="32" y="644" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      Figure 4-2.1: The API Gateway wraps the entire Trace as the Parent Span (0-300ms).
+      The Order, Inventory, Payment, and Notification services below execute sequentially as Child Spans.
+    </text>
+    <text x="32" y="664" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      A Trace is the processing record of the entire request. Each Span represents the processing interval of an individual service. Since a Parent Span
+      waits for Child Spans to complete, latency in a Child Span directly affects the total processing time of the Trace.
+    </text>
+    <text x="32" y="684" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      It is immediately apparent that the Payment Service (Span 4: 120ms) is the bottleneck. This is the essence of Distributed Tracing.
+    </text>
+  </g>
+
+</svg>

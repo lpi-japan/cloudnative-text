@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cloud Native テキスト　図版 図4-2　v1
+  A-7→図4-2 改訂：図番号更新・サービス名統合・矢印調整・レスポンスラベル
+  タイトル：1つのリクエストが複数のサービスを経由する
+  主張：Userには「1回の操作」に見えても、内部では複数のサービス呼び出しが連鎖している。
+        問題が起きたとき、どの呼び出しステップで何が起きたかを追跡する手段が必要になる。
+  レイアウト：上下2ゾーン（A-4〜A-6と異なる「フロー型」レイアウト）
+    ゾーン1（User視点）：1回のやり取りに見える
+    ゾーン2（System内部）：5つのサービスが連鎖する呼び出し経路
+  A-6との連続性：A-6で「全体が見えなくなる」原因を学んだ → A-7でその「全体」が何かを示す
+  A-8への導線：処理経路を記録・追跡する仕組み = Distributed Tracing
+  グループ構造:
+    g-title
+    g-zone1-header / g-zone1-body
+      g-user-box          Userボックス
+      g-req-arrow         リクエスト矢印
+      g-system-box        System（ブラックボックス）
+      g-res-arrow         レスポンス矢印
+      g-zone1-note
+    g-zone2-header / g-zone2-body
+      g-chain-label       呼び出し連鎖ラベル
+      g-svc-1 〜 g-svc-5  各サービスボックス
+      g-call-1 〜 g-call-4 呼び出し矢印（①②③④）
+      g-return-arrows     レスポンスパス（破線）
+      g-problem-box       問題発生時の課題ボックス
+      g-tracing-note      A-8への導線ボックス
+      g-zone2-note
+    g-caption
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     xml:lang="en"
+     font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
+
+  <title>図4-2 リクエストが複数サービスを経由する</title>
+  <desc>Cloud Native テキスト 図版 図4-2 v1　リクエストが複数サービスを経由する</desc>
+
+  <defs>
+    <!-- フロー矢頭（オレンジ）前方呼び出し -->
+    <marker id="arr-flow" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#D84315"/>
+    </marker>
+    <!-- グレー矢頭（レスポンス・補助） -->
+    <marker id="arr-gray" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#546E7A"/>
+    </marker>
+    <!-- ブルー矢頭（コンポーネント接続） -->
+    <marker id="arr-blue" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#2E75B6"/>
+    </marker>
+    <!-- 赤矢頭（エラー・問題） -->
+    <marker id="arr-red" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#C62828"/>
+    </marker>
+  </defs>
+
+  <!-- ═══════════════ 0. 背景 ══════════════════════════ -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ═══════════════ 1. TITLE BAR ════════════════════ -->
+  <g id="g-title">
+    <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+    <text x="560" y="26" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="18" font-weight="bold" letter-spacing="0.5">
+      Figure 4-2: A Request Passing Through Multiple Services
+    </text>
+
+  </g>
+
+  <!-- ═══════════════ 2. ZONE 1 ─ User視点 ═══════════
+       Infra Gray ヘッダー：「Userには見えている部分」を落ち着いた色で示す
+       ════════════════════════════════════════════════ -->
+  <g id="g-zone1-header">
+    <rect x="20" y="66" width="1080" height="38" fill="#546E7A" rx="2"/>
+    <text x="560" y="86" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="14" font-weight="bold">
+      ① From the User's Perspective — Appears as "One Interaction"
+    </text>
+  </g>
+
+  <g id="g-zone1-body">
+    <rect x="20" y="104" width="1080" height="138"
+          fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5"/>
+
+    <!-- Userボックス -->
+    <g id="g-user-box">
+      <rect x="90" y="116" width="140" height="72"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="2" rx="4"/>
+      <text x="160" y="143" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="13" font-weight="bold">User</text>
+      <text x="160" y="162" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="10">"Place Order" button</text>
+      <text x="160" y="178" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="10">is pressed</text>
+    </g>
+
+    <!-- リクエスト矢印（→） -->
+    <g id="g-req-arrow">
+      <line x1="234" y1="143" x2="376" y2="143"
+            stroke="#D84315" stroke-width="2.5" marker-end="url(#arr-flow)"/>
+      <text x="305" y="134" text-anchor="middle" dominant-baseline="middle"
+            fill="#D84315" font-size="10" font-weight="bold">POST /order</text>
+      <text x="305" y="125" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">[One Request]</text>
+    </g>
+
+    <!-- System（ブラックボックス）-->
+    <g id="g-system-box">
+      <rect x="380" y="116" width="610" height="72"
+            fill="#F5F7FA" stroke="#546E7A" stroke-width="1.5"
+            stroke-dasharray="6,3" rx="4"/>
+      <text x="685" y="140" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="14" font-weight="bold">System</text>
+      <text x="685" y="161" text-anchor="middle" dominant-baseline="middle"
+            fill="#BDBDBD" font-size="11">(Internal details are invisible)</text>
+      <text x="685" y="178" text-anchor="middle" dominant-baseline="middle"
+            fill="#BDBDBD" font-size="10">…</text>
+    </g>
+
+    <!-- レスポンス矢印（←）-->
+    <g id="g-res-arrow">
+      <line x1="378" y1="175" x2="236" y2="175"
+            stroke="#546E7A" stroke-width="1.5" stroke-dasharray="5,3"
+            marker-end="url(#arr-gray)"/>
+      <text x="305" y="188" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="10">200 OK (Order Complete)</text>
+    </g>
+
+    <!-- ゾーン1 下部ノート -->
+    <g id="g-zone1-note">
+      <text x="560" y="224" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="12" font-weight="bold">
+        Appears to the user as "one interaction"
+      </text>
+    </g>
+
+  </g><!-- /g-zone1-body -->
+
+
+  <!-- ═══════════════ 3. ZONE 2 ─ System内部 ═══════════
+       Primary Blue ヘッダー：「技術的内部」を権威あるダーク色で示す
+       ════════════════════════════════════════════════ -->
+  <g id="g-zone2-header">
+    <rect x="20" y="242" width="1080" height="38" fill="#1F4E79" rx="2"/>
+    <text x="560" y="262" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="14" font-weight="bold">
+      ② Inside the System — 5 Services in a Chain
+    </text>
+  </g>
+
+  <g id="g-zone2-body">
+    <rect x="20" y="280" width="1080" height="346"
+          fill="#F5F7FA" stroke="#1F4E79" stroke-width="1.5"/>
+
+    <!-- 呼び出し連鎖ラベル -->
+    <g id="g-chain-label">
+      <text x="560" y="298" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="11">
+        The chain of calls generated internally by one request
+      </text>
+    </g>
+
+    <!-- ─── Service 1: API Gateway ─────────────────── -->
+    <g id="g-svc-1">
+      <!-- エントリポイント：オレンジ系（ユーザー接点） -->
+      <rect x="134" y="310" width="148" height="70"
+            fill="#FFF3E0" stroke="#D84315" stroke-width="2" rx="4"/>
+      <text x="208" y="334" text-anchor="middle" dominant-baseline="middle"
+            fill="#D84315" font-size="11" font-weight="bold">① API Gateway</text>
+      <text x="208" y="352" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">Request Reception</text>
+      <text x="208" y="366" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">Routing</text>
+    </g>
+
+    <!-- ─── 呼び出し①：API Gateway → 注文サービス ──── -->
+    <g id="g-call-1">
+      <line x1="284" y1="345" x2="308" y2="345"
+            stroke="#D84315" stroke-width="1.8" marker-end="url(#arr-flow)"/>
+
+    </g>
+
+    <!-- ─── Service 2: 注文サービス ─────────────────── -->
+    <g id="g-svc-2">
+      <rect x="310" y="310" width="148" height="70"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+      <text x="384" y="334" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="11" font-weight="bold">② Authentication Service</text>
+
+      <text x="384" y="366" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">Authentication / Access Control</text>
+    </g>
+
+    <!-- ─── 呼び出し②：注文 → 在庫 ─────────────────── -->
+    <g id="g-call-2">
+      <line x1="460" y1="345" x2="484" y2="345"
+            stroke="#D84315" stroke-width="1.8" marker-end="url(#arr-flow)"/>
+
+    </g>
+
+    <!-- ─── Service 3: 在庫サービス ─────────────────── -->
+    <g id="g-svc-3">
+      <rect x="486" y="310" width="148" height="70"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+      <text x="560" y="334" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="11" font-weight="bold">③ Product Service</text>
+
+      <text x="560" y="366" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">Manages product information</text>
+    </g>
+
+    <!-- ─── 呼び出し③：在庫 → 決済 ─────────────────── -->
+    <g id="g-call-3">
+      <line x1="636" y1="345" x2="660" y2="345"
+            stroke="#D84315" stroke-width="1.8" marker-end="url(#arr-flow)"/>
+
+    </g>
+
+    <!-- ─── Service 4: 決済サービス ─────────────────── -->
+    <g id="g-svc-4">
+      <rect x="662" y="310" width="148" height="70"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+      <text x="736" y="334" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="11" font-weight="bold">④ Payment Service</text>
+
+      <text x="736" y="366" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">Billing / Payment Processing</text>
+    </g>
+
+    <!-- ─── 呼び出し④：決済 → 通知 ─────────────────── -->
+    <g id="g-call-4">
+      <line x1="812" y1="345" x2="836" y2="345"
+            stroke="#D84315" stroke-width="1.8" marker-end="url(#arr-flow)"/>
+
+    </g>
+
+    <!-- ─── Service 5: 通知サービス ─────────────────── -->
+    <g id="g-svc-5">
+      <rect x="838" y="310" width="148" height="70"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+      <text x="912" y="334" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="11" font-weight="bold">⑤ Notification Service</text>
+
+      <text x="912" y="366" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">Email / Push Notification</text>
+    </g>
+
+    <!-- ─── レスポンスパス（← ← ← ←）──────────────── -->
+    <g id="g-return-arrows">
+      <!-- レスポンス経路：通し矢印（svc-5右端→svc-1左端） -->
+      <line x1="986" y1="392" x2="138" y2="392"
+            stroke="#546E7A" stroke-width="1.5" stroke-dasharray="5,3"
+            marker-end="url(#arr-gray)"/>
+      <!-- 補足説明：往路・復路が対になることを明示 -->
+      <text x="560" y="406" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="9">
+        ← Response returns through each service
+      </text>
+    </g>
+
+    <!-- ─── 問題発生時の課題ボックス ─────────────────── -->
+    <g id="g-problem-box">
+      <rect x="134" y="418" width="852" height="60"
+            fill="#FFEBEE" stroke="#C62828" stroke-width="1.5" rx="4"/>
+      <text x="560" y="438" text-anchor="middle" dominant-baseline="middle"
+            fill="#C62828" font-size="12" font-weight="bold">
+        When a problem occurs: Among steps ①–④, what happened at which step — cannot be determined individually
+      </text>
+      <text x="560" y="458" text-anchor="middle" dominant-baseline="middle"
+            fill="#C62828" font-size="10">
+        Error logs are distributed across each service, and the "path" and "order" of calls are lost (Loss of Visibility)
+      </text>
+    </g>
+
+    <!-- ─── A-8 への導線ボックス ──────────────────── -->
+    <g id="g-tracing-note">
+      <rect x="134" y="492" width="852" height="60"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="4"/>
+      <text x="560" y="512" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="12" font-weight="bold">
+        → A mechanism for recording and visualizing the entire processing path is needed
+      </text>
+      <text x="560" y="533" text-anchor="middle" dominant-baseline="middle"
+            fill="#2E75B6" font-size="11">
+        Distributed Tracing — Visualized as a Trace in the next figure
+      </text>
+    </g>
+
+    <!-- ─── ゾーン2 下部ノート ──────────────────────── -->
+    <g id="g-zone2-note">
+      <text x="560" y="572" text-anchor="middle" dominant-baseline="middle"
+            fill="#546E7A" font-size="11">
+        The chain of internal calls generated by one user operation is called a "Trace"
+      </text>
+    </g>
+
+  </g><!-- /g-zone2-body -->
+
+
+  <!-- ═══════════════ 4. CAPTION ════════════════════════ -->
+  <g id="g-caption">
+    <rect x="20" y="640" width="4" height="76" fill="#1F4E79"/>
+    <text x="32" y="655" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      Figure 4-2: A request that appears to the user as "one interaction" is internally a chain of calls across multiple services: API Gateway → Authentication → Product → Payment → Notification.
+    </text>
+    <text x="32" y="675" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      "Loss of Visibility" means precisely that this chain becomes invisible. To track what happened at which step,
+    </text>
+    <text x="32" y="695" dominant-baseline="middle"
+          fill="#546E7A" font-size="12">
+      a mechanism for recording the entire call path — Distributed Tracing — is needed.
+    </text>
+  </g>
+
+</svg>

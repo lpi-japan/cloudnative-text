@@ -3,6 +3,10 @@
 set -euo pipefail
 
 readonly PACKAGES=(collection-langjapanese tocloft wallpaper eso-pic)
+# tlnet ミラー（上ほど固定 URL・下ほど live に近い）。
+#   latex.us … 単一 URL の CTAN ミラー。再現性重視で最初に試す。
+#   mit.edu … 大規模 CTAN ミラー。us が tlmgr 更新を要求するときの実績あり。
+#   mirror.ctan.org … CTAN 公式リダイレクト（live tlnet）。最後のフォールバック。
 readonly REPOS=(
   "https://latex.us/systems/texlive/tlnet"
   "https://mirrors.mit.edu/CTAN/systems/texlive/tlnet"

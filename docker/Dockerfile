@@ -18,6 +18,6 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends fonts-takao fonts-ipafont \
     && rm -rf /var/lib/apt/lists/*
 
-COPY docker/install-tlmgr-packages.sh /usr/local/bin/install-tlmgr-packages.sh
+COPY install-tlmgr-packages.sh /usr/local/bin/install-tlmgr-packages.sh
 RUN chmod +x /usr/local/bin/install-tlmgr-packages.sh \
     && install-tlmgr-packages.sh

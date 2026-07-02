@@ -8,7 +8,6 @@ on:
       - make_pdf
       - feature/*
     paths:
-      - Dockerfile
       - docker/**
       - .github/workflows/build-container.yaml
 
@@ -35,7 +34,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
-          context: .
+          context: docker
+          file: Dockerfile
           platforms: linux/amd64
           push: true
           cache-from: type=gha

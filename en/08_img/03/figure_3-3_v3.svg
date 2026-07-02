@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cloud Native テキスト　図版 図3-3　v1
+  A-5→図3-3 改訂：図番号更新・右パネル余白改善・中央タイトル位置調整
+  タイトル：Where Communication Control Lives：複雑さをどこに置くか
+  主張：Complexity Does Not Disappear。アプリが持つか、基盤（Service Mesh）が持つかの違い。
+  A-4との連続性：同じ Flow Orange バッジ（通信制御の複雑さ）を使用
+  グループ構造:
+    g-title
+    g-left-panel          左パネル（アプリ側制御）
+      g-svc-a-left / g-svc-b-left / g-svc-c-left   各サービス+内部バッジ
+      g-left-arrows        サービス間直接矢印
+      g-left-bracket       複雑さゾーン表示
+      g-left-note
+    g-center-compare       中央比較エリア
+    g-right-panel         右パネル（Service Mesh）
+      g-control-plane
+      g-unit-a / g-unit-b / g-unit-c   Service + Sidecar ペア
+      g-cp-arrow
+      g-mesh-arrows        Sidecar 間メッシュ矢印
+      g-right-bracket
+      g-right-note
+    g-caption
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     xml:lang="en"
+     font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
+
+  <title>Figure 3-3: Where Communication Control Lives</title>
+  <desc>Cloud Native テキスト 図版 図3-3 v1　Where Communication Control Lives: Application Side vs. Service Mesh</desc>
+
+  <defs>
+    <!-- フロー矢頭（オレンジ）Service間・Service→Sidecar -->
+    <marker id="arr-flow" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#D84315"/>
+    </marker>
+    <!-- ティール矢頭 Sidecar間メッシュ -->
+    <marker id="arr-teal" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#00796B"/>
+    </marker>
+    <!-- ブルー矢頭（Control Plane→Sidecar） -->
+    <marker id="arr-blue" viewBox="0 0 10 8" markerWidth="10" markerHeight="8"
+            refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#2E75B6"/>
+    </marker>
+  </defs>
+
+  <!-- ═══════════════ 0. 背景 ══════════════════════════ -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ═══════════════ 1. TITLE BAR ════════════════════ -->
+  <g id="g-title">
+    <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+    <text x="560" y="28" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="18" font-weight="bold" letter-spacing="0.5">
+      Figure 3-3: Where Communication Control Lives
+    </text>
+  </g>
+
+  <!-- ═══════════════ 2. LEFT PANEL ════════════════════
+       アプリケーション側で制御
+       各サービスの内部にTimeout・Retry・Error Handlingが混在
+       ════════════════════════════════════════════════ -->
+  <g id="g-left-panel">
+
+    <!-- パネルヘッダー（Infra Gray：抑制色→「従来的」アプローチ） -->
+    <rect x="20" y="66" width="450" height="40" fill="#546E7A" rx="3"/>
+    <text x="245" y="87" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="14" font-weight="bold">
+      ① Held by the Application Side
+    </text>
+
+    <!-- パネルボディ -->
+    <rect x="20" y="106" width="450" height="564"
+          fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5"/>
+
+    <!-- 「Location of Communication Control」ラベル（左パネル全体にかかる） -->
+    <rect x="40" y="152" width="410" height="390"
+          fill="none" stroke="#D84315" stroke-width="1"
+          stroke-dasharray="6,4" rx="6"/>
+    <rect x="108" y="147" width="224" height="16" fill="#ECEFF1"/>
+    <text x="220" y="155" text-anchor="middle" dominant-baseline="middle"
+          fill="#D84315" font-size="10">Location of Communication Control</text>
+
+    <!-- ─── Service A（左パネル） ─────────────────── -->
+    <g id="g-svc-a-left">
+      <rect x="55" y="165" width="370" height="85"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="2" rx="8"/>
+      <text x="240" y="176" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="13" font-weight="bold">Service A</text>
+      <line x1="65" y1="185" x2="415" y2="185" stroke="#2E75B6" stroke-width="0.8" opacity="0.5"/>
+
+      <!-- 通信制御ロジック（コードとして混在） -->
+      <g id="g-svc-a-complexity">
+        <rect x="68" y="191" width="344" height="48"
+              fill="#FFF3E0" stroke="#D84315" stroke-width="1"
+              stroke-dasharray="4,2" rx="4"/>
+        <!-- Timeout -->
+        <rect x="78" y="199" width="96" height="26"
+              fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="126" y="212" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Timeout</text>
+        <!-- Retry -->
+        <rect x="185" y="199" width="72" height="26"
+              fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="221" y="212" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Retry</text>
+        <!-- Error Handling -->
+        <rect x="266" y="199" width="106" height="26"
+              fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="319" y="212" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Error Handling</text>
+      </g>
+    </g><!-- /g-svc-a-left -->
+
+    <!-- ─── Service B（左パネル） ─────────────────── -->
+    <g id="g-svc-b-left">
+      <rect x="55" y="305" width="370" height="85"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="2" rx="8"/>
+      <text x="240" y="316" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="13" font-weight="bold">Service B</text>
+      <line x1="65" y1="325" x2="415" y2="325" stroke="#2E75B6" stroke-width="0.8" opacity="0.5"/>
+
+      <g id="g-svc-b-complexity">
+        <rect x="68" y="331" width="344" height="48"
+              fill="#FFF3E0" stroke="#D84315" stroke-width="1"
+              stroke-dasharray="4,2" rx="4"/>
+        <rect x="78" y="339" width="96" height="26" fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="126" y="352" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Timeout</text>
+        <rect x="185" y="339" width="72" height="26" fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="221" y="352" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Retry</text>
+        <rect x="266" y="339" width="106" height="26" fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="319" y="352" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Error Handling</text>
+      </g>
+    </g><!-- /g-svc-b-left -->
+
+    <!-- ─── Service C（左パネル） ─────────────────── -->
+    <g id="g-svc-c-left">
+      <rect x="55" y="445" width="370" height="85"
+            fill="#DDEEFF" stroke="#2E75B6" stroke-width="2" rx="8"/>
+      <text x="240" y="456" text-anchor="middle" dominant-baseline="middle"
+            fill="#1F4E79" font-size="13" font-weight="bold">Service C</text>
+      <line x1="65" y1="465" x2="415" y2="465" stroke="#2E75B6" stroke-width="0.8" opacity="0.5"/>
+
+      <g id="g-svc-c-complexity">
+        <rect x="68" y="471" width="344" height="48"
+              fill="#FFF3E0" stroke="#D84315" stroke-width="1"
+              stroke-dasharray="4,2" rx="4"/>
+        <rect x="78" y="479" width="96" height="26" fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="126" y="492" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Timeout</text>
+        <rect x="185" y="479" width="72" height="26" fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="221" y="492" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Retry</text>
+        <rect x="266" y="479" width="106" height="26" fill="#FFFFFF" stroke="#D84315" stroke-width="1.5" rx="3"/>
+        <text x="319" y="492" text-anchor="middle" dominant-baseline="middle"
+              fill="#D84315" font-size="11" font-weight="bold">Error Handling</text>
+      </g>
+    </g><!-- /g-svc-c-left -->
+
+    <!-- ─── サービス間 直接矢印 ───────────────────── -->
+    <g id="g-left-arrows">
+      <!-- A → B（直接通信） -->
+      <line x1="240" y1="250" x2="240" y2="305"
+            stroke="#D84315" stroke-width="1.5"
+            marker-end="url(#arr-flow)"/>
+      <text x="255" y="280" dominant-baseline="middle"
+            fill="#D84315" font-size="9" font-style="italic">Direct Call</text>
+      <!-- B → C（直接通信） -->
+      <line x1="240" y1="390" x2="240" y2="445"
+            stroke="#D84315" stroke-width="1.5"
+            marker-end="url(#arr-flow)"/>
+      <text x="255" y="420" dominant-baseline="middle"
+            fill="#D84315" font-size="9" font-style="italic">Direct Call</text>
+    </g>
+
+    <!-- ─── 左パネル 下部注記 ──────────────────────── -->
+    <g id="g-left-note">
+      <rect x="40" y="548" width="410" height="52"
+            fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="4"/>
+      <text x="245" y="565" text-anchor="middle" dominant-baseline="middle"
+            fill="#D84315" font-size="12" font-weight="bold">
+        Communication logic is distributed across each service
+      </text>
+      <text x="245" y="585" text-anchor="middle" dominant-baseline="middle"
+            fill="#D84315" font-size="10">
+        Behavior varies across services
+      </text>
+    </g>
+
+  </g><!-- /g-left-panel -->
+
+
+  <!-- ═══════════════ 3. CENTER COMPARISON ════════════
+       「置き場所が違う、複雑さは同じ」を示す中央エリア
+       ════════════════════════════════════════════════ -->
+  <g id="g-center-compare">
+
+    <!-- 上部ラベル：比較の軸（中央タイトルボックス・ヘッダーゾーン） -->
+    <rect x="478" y="67" width="164" height="50"
+          fill="#F5F7FA" stroke="#546E7A" stroke-width="1.5" rx="3"/>
+    <text x="560" y="83" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="12" font-weight="bold">Where Communication</text>
+    <text x="560" y="101" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="12" font-weight="bold">Control Lives</text>
+
+
+    <!-- 対比矢印 ← vs → -->
+    <line x1="478" y1="320" x2="640" y2="320"
+          stroke="#546E7A" stroke-width="1" stroke-dasharray="4,3"/>
+    <polygon points="478,316 468,320 478,324" fill="#546E7A"/>
+    <polygon points="640,316 650,320 640,324" fill="#546E7A"/>
+
+
+
+    <!-- メッセージ -->
+    <rect x="484" y="382" width="152" height="62" fill="#F5F7FA" stroke="#546E7A"
+          stroke-width="1" rx="6"/>
+    <text x="560" y="397" text-anchor="middle" dominant-baseline="middle"
+          fill="#D84315" font-size="12" font-weight="bold">Complexity Does Not</text>
+    <text x="560" y="413" text-anchor="middle" dominant-baseline="middle"
+          fill="#D84315" font-size="12" font-weight="bold">Disappear</text>
+    <text x="560" y="431" text-anchor="middle" dominant-baseline="middle"
+          fill="#546E7A" font-size="10">Only its location differs</text>
+
+    <!-- 補足 -->
+    <text x="560" y="456" text-anchor="middle" dominant-baseline="middle"
+          fill="#888888" font-size="9" font-style="italic">(Both require the same amount of</text>
+    <text x="560" y="468" text-anchor="middle" dominant-baseline="middle"
+          fill="#888888" font-size="9" font-style="italic"> communication control)</text>
+
+  </g><!-- /g-center-compare -->
+
+
+  <!-- ═══════════════ 4. RIGHT PANEL ═══════════════════
+       基盤側（Service Mesh）で制御
+       各サービスはシンプル、通信制御は Sidecar が担う
+       ════════════════════════════════════════════════ -->
+  <g id="g-right-panel">
+
+    <!-- パネルヘッダー（Component Blue：前進感） -->
+    <rect x="650" y="66" width="370" height="40" fill="#2E75B6" rx="3"/>
+    <text x="835" y="87" text-anchor="middle" dominant-baseline="middle"
+          fill="#FFFFFF" font-size="14" font-weight="bold">
+      ② Delegated to the Infrastructure (Service Mesh)
+    </text>
+
+    <!-- パネルボディ -->
+    <rect x="650" y="106" width="370" height="564"
+          fill="#F5F7FA" stroke="#2E75B6" stroke-width="1.5"/>
+
+    <!-- ─── Control Plane ────────────────── -->
+    <g id="g-control-plane">
+      <rect x="682" y="126" width="296" height="46"
+            fill="#E0F2F1" stroke="#00796B" stroke-width="2" rx="8"/>
+      <text x="830" y="145" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="13" font-weight="bold">Control Plane</text>
+      <text x="830" y="161" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="10">(Distributes configuration to all Sidecars)</text>
+    </g>
+
+    <!-- ─── CP → SidecarA（設定配信） ───────────── -->
+    <g id="g-cp-arrow">
+      <line x1="887" y1="172" x2="887" y2="198"
+            stroke="#2E75B6" stroke-width="1.5"
+            stroke-dasharray="5,3"
+            marker-end="url(#arr-blue)"/>
+    </g>
+
+    <!-- ─── Sidecar 複雑さゾーン ブラケット ─────── -->
+    <g id="g-right-bracket">
+      <rect x="818" y="188" width="140" height="340"
+            fill="none" stroke="#D84315" stroke-width="1"
+            stroke-dasharray="6,4" rx="6"/>
+      <rect x="786" y="183" width="204" height="16" fill="#F5F7FA"/>
+      <text x="888" y="191" text-anchor="middle" dominant-baseline="middle"
+            fill="#D84315" font-size="10">Location of Communication Control</text>
+    </g>
+
+    <!-- ─── Unit A: Service A + Sidecar A ─────── -->
+    <g id="g-unit-a">
+      <!-- Service A(Simple) -->
+      <g id="g-svc-a-right">
+        <rect x="668" y="198" width="130" height="76"
+              fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="8"/>
+        <text x="733" y="236" text-anchor="middle" dominant-baseline="middle"
+              fill="#1F4E79" font-size="13" font-weight="bold">Service A</text>
+        <text x="733" y="254" text-anchor="middle" dominant-baseline="middle"
+              fill="#546E7A" font-size="9" font-style="italic">(Simple)</text>
+      </g>
+      <!-- Sidecar A（通信制御を担う） -->
+      <g id="g-sidecar-a">
+        <rect x="826" y="198" width="122" height="76"
+              fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5" rx="6"/>
+        <text x="887" y="213" text-anchor="middle" dominant-baseline="middle"
+              fill="#546E7A" font-size="11" font-weight="bold">Proxy A</text>
+        <line x1="836" y1="220" x2="938" y2="220" stroke="#546E7A" stroke-width="0.8" opacity="0.6"/>
+        <!-- 通信制御バッジ（小） -->
+        <g id="g-sidecar-a-complexity">
+          <rect x="836" y="225" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="232" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Timeout</text>
+          <rect x="836" y="241" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="248" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Retry</text>
+          <rect x="836" y="257" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="264" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Error Handling</text>
+        </g>
+      </g>
+      <!-- Service A → Sidecar A（トラフィック経由） -->
+      <line x1="798" y1="236" x2="826" y2="236"
+            stroke="#D84315" stroke-width="1.5"
+            marker-end="url(#arr-flow)"/>
+    </g><!-- /g-unit-a -->
+
+    <!-- ─── Unit B: Service B + Sidecar B ─────── -->
+    <g id="g-unit-b">
+      <g id="g-svc-b-right">
+        <rect x="668" y="318" width="130" height="76"
+              fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="8"/>
+        <text x="733" y="356" text-anchor="middle" dominant-baseline="middle"
+              fill="#1F4E79" font-size="13" font-weight="bold">Service B</text>
+        <text x="733" y="374" text-anchor="middle" dominant-baseline="middle"
+              fill="#546E7A" font-size="9" font-style="italic">(Simple)</text>
+      </g>
+      <g id="g-sidecar-b">
+        <rect x="826" y="318" width="122" height="76"
+              fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5" rx="6"/>
+        <text x="887" y="333" text-anchor="middle" dominant-baseline="middle"
+              fill="#546E7A" font-size="11" font-weight="bold">Proxy B</text>
+        <line x1="836" y1="340" x2="938" y2="340" stroke="#546E7A" stroke-width="0.8" opacity="0.6"/>
+        <g id="g-sidecar-b-complexity">
+          <rect x="836" y="345" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="352" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Timeout</text>
+          <rect x="836" y="361" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="368" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Retry</text>
+          <rect x="836" y="377" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="384" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Error Handling</text>
+        </g>
+      </g>
+      <line x1="798" y1="356" x2="826" y2="356"
+            stroke="#D84315" stroke-width="1.5"
+            marker-end="url(#arr-flow)"/>
+    </g><!-- /g-unit-b -->
+
+    <!-- ─── Unit C: Service C + Sidecar C ─────── -->
+    <g id="g-unit-c">
+      <g id="g-svc-c-right">
+        <rect x="668" y="438" width="130" height="76"
+              fill="#DDEEFF" stroke="#2E75B6" stroke-width="1.5" rx="8"/>
+        <text x="733" y="476" text-anchor="middle" dominant-baseline="middle"
+              fill="#1F4E79" font-size="13" font-weight="bold">Service C</text>
+        <text x="733" y="494" text-anchor="middle" dominant-baseline="middle"
+              fill="#546E7A" font-size="9" font-style="italic">(Simple)</text>
+      </g>
+      <g id="g-sidecar-c">
+        <rect x="826" y="438" width="122" height="76"
+              fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5" rx="6"/>
+        <text x="887" y="453" text-anchor="middle" dominant-baseline="middle"
+              fill="#546E7A" font-size="11" font-weight="bold">Proxy C</text>
+        <line x1="836" y1="460" x2="938" y2="460" stroke="#546E7A" stroke-width="0.8" opacity="0.6"/>
+        <g id="g-sidecar-c-complexity">
+          <rect x="836" y="465" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="472" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Timeout</text>
+          <rect x="836" y="481" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="488" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Retry</text>
+          <rect x="836" y="497" width="102" height="14" fill="#FFF3E0" stroke="#D84315" stroke-width="1" rx="2"/>
+          <text x="887" y="504" text-anchor="middle" dominant-baseline="middle"
+                fill="#D84315" font-size="9">Error Handling</text>
+        </g>
+      </g>
+      <line x1="798" y1="476" x2="826" y2="476"
+            stroke="#D84315" stroke-width="1.5"
+            marker-end="url(#arr-flow)"/>
+    </g><!-- /g-unit-c -->
+
+    <!-- ─── Sidecar 間メッシュ矢印 ───────────────── -->
+    <g id="g-mesh-arrows">
+      <!-- Proxy A → Proxy B（メッシュ経由） -->
+      <line x1="887" y1="274" x2="887" y2="318"
+            stroke="#00796B" stroke-width="2"
+            marker-end="url(#arr-teal)"/>
+      <rect x="893" y="288" width="62" height="14" fill="#F5F7FA" rx="2"/>
+      <text x="924" y="295" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="9">via mesh</text>
+      <!-- Proxy B → Proxy C（メッシュ経由） -->
+      <line x1="887" y1="394" x2="887" y2="438"
+            stroke="#00796B" stroke-width="2"
+            marker-end="url(#arr-teal)"/>
+      <rect x="893" y="408" width="62" height="14" fill="#F5F7FA" rx="2"/>
+      <text x="924" y="415" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="9">via mesh</text>
+    </g>
+
+    <!-- ─── 右パネル 下部注記 ─────────────────────── -->
+    <g id="g-right-note">
+      <rect x="660" y="538" width="348" height="64"
+            fill="#E0F2F1" stroke="#00796B" stroke-width="1" rx="4"/>
+      <text x="834" y="553" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="12" font-weight="bold">
+        Communication control is centrally managed
+      </text>
+      <text x="834" y="569" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="12" font-weight="bold">
+        by Proxy (Sidecar)
+      </text>
+      <text x="834" y="589" text-anchor="middle" dominant-baseline="middle"
+            fill="#00796B" font-size="10">
+        Services are designed without awareness of communication control
+      </text>
+    </g>
+
+  </g><!-- /g-right-panel -->
+
+
+  <!-- ═══════════════ 5. CAPTION ════════════════════════
+       A-4 同スタイル：12px・3行・左寄せ・左アクセントバー
+       ════════════════════════════════════════════════ -->
+  <g id="g-caption">
+    <rect x="0" y="670" width="1120" height="70" fill="#ECEFF1"/>
+    <line x1="0" y1="670" x2="1120" y2="670" stroke="#546E7A" stroke-width="2"/>
+    <rect x="0" y="670" width="6" height="70" fill="#2E75B6"/>
+    <text x="24" y="685" dominant-baseline="middle"
+          fill="#1F4E79" font-size="12" font-weight="bold">
+      ▶ The complexity of communication control can be distributed across the application side, or consolidated into the infrastructure (Service Mesh).
+    </text>
+    <text x="24" y="705" dominant-baseline="middle"
+          fill="#222222" font-size="12">
+      　Neither is correct. It is a design decision about where and by whom the complexity can be taken on.
+    </text>
+    <text x="24" y="724" dominant-baseline="middle"
+          fill="#888888" font-size="11" font-style="italic">
+      　The principle seen in Figure 3-1 — "Complexity moves" — applies equally to communication control.
+    </text>
+  </g>
+
+</svg>

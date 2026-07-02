@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  図版 3-2  v2
+  タイトル：GitOps Flow:変更の流れを定義する
+  変更：①矢印細化(2.5→1.5) ②「Change Detection」→「Git/Change Detection」2行化 ③「image push」2行化 ④ボックス高260pxに縮小・内部行間引き締め
+  キャンバス：1120 × 606 px
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 558"
+     width="1120" height="558"
+     font-family="'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif">
+
+  <defs>
+    <marker id="arr-flow" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D84315"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E75B6"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00796B"/>
+    </marker>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1120" height="558" fill="#F5F7FA"/>
+
+  <!-- ===== TITLE BAR ===== -->
+  <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+  <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
+        fill="#FFFFFF">Figure 3-2: GitOps Flow: Defining the Flow of Change</text>
+
+  <!-- ══════════════════════════════════════════
+       ZONE BANNERS  y=66–94
+  ══════════════════════════════════════════ -->
+  <rect x="30" y="66" width="406" height="28" fill="#2E75B6" rx="4"/>
+  <text x="233" y="85" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">By Human Hands</text>
+
+  <rect x="466" y="66" width="624" height="28" fill="#00796B" rx="4"/>
+  <text x="778" y="85" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Automated Flow</text>
+
+  <!-- Zone boundary indicator -->
+  <line x1="451" y1="66" x2="451" y2="305" stroke="#B0BEC5" stroke-width="1.5"
+        stroke-dasharray="5,4"/>
+  <text x="451" y="315" text-anchor="middle" font-size="8" fill="#546E7A">
+    Human involvement
+  </text>
+  <text x="451" y="326" text-anchor="middle" font-size="8" fill="#546E7A">
+    ends here
+  </text>
+
+  <!-- ══════════════════════════════════════════
+       FLOW BOXES  y=100–300  (height=200, width=188, gap=30)
+  ══════════════════════════════════════════ -->
+
+  <!-- ─── Stage 1: Developer  x=30–218 ─── -->
+  <rect x="30" y="100" width="188" height="200" fill="#DDEEFF" stroke="#2E75B6"
+        stroke-width="2" rx="5"/>
+  <rect x="30" y="100" width="188" height="26" fill="#2E75B6" rx="5"/>
+  <rect x="30" y="114" width="188" height="12" fill="#2E75B6"/>
+  <text x="124" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Define Change</text>
+  <text x="124" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#1F4E79">Developer</text>
+  <text x="124" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Developer）
+  </text>
+  <line x1="42" y1="164" x2="206" y2="164" stroke="#BBDEFB" stroke-width="1"/>
+  <text x="124" y="181" text-anchor="middle" font-size="9" fill="#1F4E79">
+    Changes code or configuration,
+  </text>
+  <text x="124" y="196" text-anchor="middle" font-size="9" fill="#1F4E79">
+    and pushes to Git.
+  </text>
+  <text x="124" y="213" text-anchor="middle" font-size="9" fill="#546E7A">
+    In all cases, changes
+  </text>
+  <text x="124" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    are first recorded in Git.
+  </text>
+  <rect x="42" y="254" width="164" height="40" fill="#2E75B6" rx="3"/>
+  <text x="124" y="276" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">Human operation ends here</text>
+
+  <!-- ─── Arrow 1→2 ─── -->
+  <line x1="220" y1="230" x2="244" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <text x="232" y="222" text-anchor="middle" font-size="6" fill="#D84315">push</text>
+
+  <!-- ─── Stage 2: Git Repository  x=248–436 ─── -->
+  <rect x="248" y="100" width="188" height="200" fill="#DDEEFF" stroke="#2E75B6"
+        stroke-width="2" rx="5"/>
+  <rect x="248" y="100" width="188" height="26" fill="#2E75B6" rx="5"/>
+  <rect x="248" y="114" width="188" height="12" fill="#2E75B6"/>
+  <text x="342" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Hold Change</text>
+  <text x="342" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#1F4E79">Git Repository</text>
+  <text x="342" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （Git Repository）
+  </text>
+  <line x1="260" y1="164" x2="424" y2="164" stroke="#BBDEFB" stroke-width="1"/>
+  <text x="342" y="181" text-anchor="middle" font-size="9" fill="#1F4E79">
+    All changes
+  </text>
+  <text x="342" y="196" text-anchor="middle" font-size="9" fill="#1F4E79">
+    are recorded here.
+  </text>
+  <text x="342" y="213" text-anchor="middle" font-size="9" fill="#546E7A">
+    Can be tracked as diffs,
+  </text>
+  <text x="342" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    and the previous state can be restored.
+  </text>
+  <rect x="260" y="254" width="164" height="40" fill="#2E75B6" rx="3"/>
+  <text x="342" y="267" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">A structure for managing</text>
+  <text x="342" y="282" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">change becomes viable</text>
+
+  <!-- ─── Arrow 2→3 (crosses zone boundary) ─── -->
+  <line x1="438" y1="230" x2="462" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <text x="451" y="207" text-anchor="middle" font-size="6" fill="#D84315">Git</text>
+  <text x="451" y="216" text-anchor="middle" font-size="6" fill="#D84315">Change</text>
+  <text x="451" y="225" text-anchor="middle" font-size="6" fill="#D84315">Detection</text>
+
+  <!-- ─── Stage 3: CI Pipeline  x=466–654 ─── -->
+  <rect x="466" y="100" width="188" height="200" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="2" rx="5"/>
+  <rect x="466" y="100" width="188" height="26" fill="#00796B" rx="5"/>
+  <rect x="466" y="114" width="188" height="12" fill="#00796B"/>
+  <text x="560" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Verify Change</text>
+  <text x="560" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#004D40">CI Pipeline</text>
+  <text x="560" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    （CI Pipeline）
+  </text>
+  <line x1="478" y1="164" x2="642" y2="164" stroke="#E0F2F1" stroke-width="1"/>
+  <text x="560" y="181" text-anchor="middle" font-size="9" fill="#004D40">
+    Tests, builds,
+  </text>
+  <text x="560" y="196" text-anchor="middle" font-size="9" fill="#004D40">
+    and image pushes
+  </text>
+  <text x="560" y="211" text-anchor="middle" font-size="9" fill="#004D40">
+    are executed automatically.
+  </text>
+  <text x="560" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    No human involvement.
+  </text>
+  <rect x="478" y="254" width="164" height="40" fill="#00796B" rx="3"/>
+  <text x="560" y="267" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">Change automatically</text>
+  <text x="560" y="282" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">becomes executable</text>
+
+  <!-- ─── Arrow 3→4 ─── -->
+  <line x1="656" y1="230" x2="680" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <text x="668" y="215" text-anchor="middle" font-size="6" fill="#D84315">image</text>
+  <text x="668" y="224" text-anchor="middle" font-size="6" fill="#D84315">push</text>
+
+  <!-- ─── Stage 4: GitOps Operator  x=684–872 ─── -->
+  <rect x="684" y="100" width="188" height="200" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="2" rx="5"/>
+  <rect x="684" y="100" width="188" height="26" fill="#00796B" rx="5"/>
+  <rect x="684" y="114" width="188" height="12" fill="#00796B"/>
+  <text x="778" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Detect Diff</text>
+  <text x="778" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#004D40">GitOps Operator</text>
+  <text x="778" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    (ArgoCD / Flux, etc.)
+  </text>
+  <line x1="696" y1="164" x2="860" y2="164" stroke="#E0F2F1" stroke-width="1"/>
+  <text x="778" y="181" text-anchor="middle" font-size="9" fill="#004D40">
+    Continuously compares
+  </text>
+  <text x="778" y="196" text-anchor="middle" font-size="9" fill="#004D40">
+    the state in Git
+  </text>
+  <text x="778" y="211" text-anchor="middle" font-size="9" fill="#004D40">
+    with the cluster state.
+  </text>
+  <text x="778" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    Synchronizes if there is a diff.
+  </text>
+  <rect x="696" y="254" width="164" height="40" fill="#00796B" rx="3"/>
+  <text x="778" y="267" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">Change and Execution</text>
+  <text x="778" y="282" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">are Connected</text>
+
+  <!-- ─── Arrow 4→5 ─── -->
+  <line x1="874" y1="230" x2="898" y2="230" stroke="#D84315" stroke-width="1.5"
+        marker-end="url(#arr-flow)"/>
+  <text x="886" y="222" text-anchor="middle" font-size="6" fill="#D84315">apply</text>
+
+  <!-- ─── Stage 5: Kubernetes  x=902–1090 ─── -->
+  <rect x="902" y="100" width="188" height="200" fill="#E0F2F1" stroke="#00796B"
+        stroke-width="2" rx="5"/>
+  <rect x="902" y="100" width="188" height="26" fill="#00796B" rx="5"/>
+  <rect x="902" y="114" width="188" height="12" fill="#00796B"/>
+  <text x="996" y="118" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#FFFFFF">Realize State</text>
+  <text x="996" y="138" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#004D40">Kubernetes</text>
+  <text x="996" y="154" text-anchor="middle" font-size="9" fill="#546E7A">
+    (Cluster)
+  </text>
+  <line x1="914" y1="164" x2="1078" y2="164" stroke="#E0F2F1" stroke-width="1"/>
+  <text x="996" y="181" text-anchor="middle" font-size="9" fill="#004D40">
+    Continuously updates
+  </text>
+  <text x="996" y="196" text-anchor="middle" font-size="9" fill="#004D40">
+    the cluster state based on diffs.
+  </text>
+  <text x="996" y="213" text-anchor="middle" font-size="9" fill="#546E7A">
+    Continues approaching
+  </text>
+  <text x="996" y="228" text-anchor="middle" font-size="9" fill="#546E7A">
+    the declared state.
+  </text>
+  <rect x="914" y="254" width="164" height="40" fill="#00796B" rx="3"/>
+  <text x="996" y="267" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">Git definition is reflected</text>
+  <text x="996" y="282" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">in the environment</text>
+
+  <!-- ══════════════════════════════════════════
+       KEY MESSAGES  y=344–454
+  ══════════════════════════════════════════ -->
+
+  <!-- Message 1 -->
+  <rect x="30" y="344" width="330" height="110" fill="#2E75B6" rx="5"/>
+  <rect x="30" y="344" width="330" height="28" fill="#1F4E79" rx="5"/>
+  <rect x="30" y="360" width="330" height="12" fill="#1F4E79"/>
+  <text x="195" y="362" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    Change Management
+  </text>
+  <text x="195" y="392" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">All changes are recorded in Git</text>
+  <text x="195" y="414" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    Can be tracked as diffs,and the previous state can be restored.
+  </text>
+  <text x="195" y="432" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    By recording changes in Git, they become a managed flow.
+  </text>
+
+  <!-- Message 2 -->
+  <rect x="390" y="344" width="330" height="110" fill="#1F4E79" rx="5"/>
+  <rect x="390" y="344" width="330" height="28" fill="#004D40" rx="5"/>
+  <rect x="390" y="360" width="330" height="12" fill="#004D40"/>
+  <text x="555" y="362" text-anchor="middle" font-size="10" fill="#BBDEFB">
+    Deployment Mechanism
+  </text>
+  <text x="555" y="388" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">People do not deploy directly</text>
+  <text x="555" y="406" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    Operation records remain, procedures are aligned,
+  </text>
+  <text x="555" y="420" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    and state can be reproduced.
+  </text>
+  <text x="555" y="438" text-anchor="middle" font-size="9" fill="#DDEEFF">
+    Design that does not depend on human operations brings stability.
+  </text>
+
+  <!-- Message 3 -->
+  <rect x="750" y="344" width="340" height="110" fill="#00796B" rx="5"/>
+  <rect x="750" y="344" width="340" height="28" fill="#004D40" rx="5"/>
+  <rect x="750" y="360" width="340" height="12" fill="#004D40"/>
+  <text x="920" y="362" text-anchor="middle" font-size="10" fill="#E0F2F1">
+    Structural Connection
+  </text>
+  <text x="920" y="392" text-anchor="middle" font-size="12" font-weight="bold"
+        fill="#FFFFFF">Change and Execution are Connected</text>
+  <text x="920" y="414" text-anchor="middle" font-size="9" fill="#E0F2F1">
+    The state in Git is directly connected to the state in Kubernetes.
+  </text>
+  <text x="920" y="432" text-anchor="middle" font-size="9" fill="#E0F2F1">
+    Definition and execution become viable as one flow.
+  </text>
+
+  <!-- ═══════════════════════════════════
+       CAPTION  y=530–608
+  ═══════════════════════════════════ -->
+  <rect x="20" y="470" width="4" height="78" fill="#2E75B6" rx="2"/>
+  <text x="34" y="486" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">GitOps Flow:</tspan>
+    <tspan>The developer only needs to push to Git. All subsequent verification, diff detection, and reflection to the cluster are performed automatically.</tspan>
+  </text>
+  <text x="34" y="506" text-anchor="start" font-size="11" fill="#1F4E79">
+    Changes are recorded in Git, verified by the CI Pipeline, and the GitOps Operator continuously synchronizes with Kubernetes.
+  </text>
+  <text x="34" y="526" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">By separating the act of deployment itself from human hands, change comes to be handled as a stable flow.</tspan>
+  </text>
+
+</svg>

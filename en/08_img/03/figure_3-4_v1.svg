@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  図版 3-4  v1
+  タイトル：遅延が上流へ伝播する
+  レイアウト：垂直伝播図（上=上位サービス、下=障害源）
+  キャンバス：1120 × 740 px
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1120 740"
+     width="1120" height="740"
+     font-family="'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif">
+
+  <defs>
+    <marker id="arr-req" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E75B6"/>
+    </marker>
+    <marker id="arr-prop" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C62828"/>
+    </marker>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1120" height="740" fill="#F5F7FA"/>
+
+  <!-- ===== TITLE BAR ===== -->
+  <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
+  <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
+        fill="#FFFFFF">Figure 3-4: Latency Propagates Upstream</text>
+
+  <!-- ===== ZONE LABELS (y=64-94) ===== -->
+  <rect x="20" y="64" width="240" height="28" fill="#2E75B6" rx="4"/>
+  <text x="140" y="83" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">Direction of Call (Top → Bottom)</text>
+
+  <rect x="860" y="64" width="240" height="28" fill="#C62828" rx="4"/>
+  <text x="980" y="83" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">Propagation of Failure (Bottom → Top)</text>
+
+  <!-- Side guide lines -->
+  <line x1="140" y1="94" x2="140" y2="562"
+        stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="5,4"
+        marker-end="url(#arr-req)"/>
+  <line x1="980" y1="562" x2="980" y2="94"
+        stroke="#C62828" stroke-width="1.2" stroke-dasharray="5,4"
+        marker-end="url(#arr-prop)"/>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE A  (上位サービス)  y=100-185
+  ══════════════════════════════════════════ -->
+  <rect x="280" y="100" width="560" height="85" fill="#FFF3E0"
+        stroke="#D84315" stroke-width="2" rx="5"/>
+  <rect x="280" y="100" width="560" height="26" fill="#D84315" rx="5"/>
+  <rect x="280" y="114" width="560" height="12" fill="#D84315"/>
+  <text x="420" y="118" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">Calling Service</text>
+  <text x="680" y="118" text-anchor="middle" font-size="9"
+        fill="#FFEBEE">（Service A）</text>
+  <!-- State badge -->
+  <rect x="648" y="145" width="182" height="20" fill="#D84315" rx="3"/>
+  <text x="739" y="159" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">State: Waiting</text>
+  <!-- Description -->
+  <text x="440" y="150" text-anchor="middle" font-size="8.5" fill="#BF360C">
+    Latency from downstream propagates,
+  </text>
+  <text x="440" y="163" text-anchor="middle" font-size="8.5" fill="#BF360C">
+    and pending requests begin to accumulate.
+  </text>
+  <text x="440" y="176" text-anchor="middle" font-size="8" fill="#546E7A">
+    Threads are consumed and responses begin to slow.
+  </text>
+
+  <!-- ── Arrow Zone 1  y=185-225 ── -->
+  <!-- Request (down) -->
+  <line x1="430" y1="188" x2="430" y2="221"
+        stroke="#2E75B6" stroke-width="1.5" marker-end="url(#arr-req)"/>
+  <text x="435" y="205" text-anchor="start" dominant-baseline="middle" font-size="8" fill="#2E75B6">Call</text>
+  <!-- Propagation (up) -->
+  <line x1="690" y1="222" x2="690" y2="189"
+        stroke="#C62828" stroke-width="1.5" marker-end="url(#arr-prop)"/>
+  <text x="698" y="206" text-anchor="start" dominant-baseline="middle" font-size="8" fill="#C62828">Impact Propagates</text>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE B  (Intermediate Service)  y=225-310
+  ══════════════════════════════════════════ -->
+  <rect x="280" y="225" width="560" height="85" fill="#FFF3E0"
+        stroke="#D84315" stroke-width="2" rx="5"/>
+  <rect x="280" y="225" width="560" height="26" fill="#D84315" rx="5"/>
+  <rect x="280" y="239" width="560" height="12" fill="#D84315"/>
+  <text x="420" y="243" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">Intermediate Service</text>
+  <text x="680" y="243" text-anchor="middle" font-size="9"
+        fill="#FFEBEE">（Service B）</text>
+  <!-- State badge -->
+  <rect x="648" y="270" width="182" height="20" fill="#D84315" rx="3"/>
+  <text x="739" y="284" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">State: Response Delay</text>
+  <!-- Description -->
+  <text x="440" y="275" text-anchor="middle" font-size="8.5" fill="#BF360C">
+    While waiting for the response from the called service,
+  </text>
+  <text x="440" y="288" text-anchor="middle" font-size="8.5" fill="#BF360C">
+    all available threads become occupied.
+  </text>
+  <text x="440" y="301" text-anchor="middle" font-size="8" fill="#546E7A">
+    New requests can no longer be accepted.
+  </text>
+
+  <!-- ── Arrow Zone 2  y=310-350 ── -->
+  <line x1="430" y1="313" x2="430" y2="346"
+        stroke="#2E75B6" stroke-width="1.5" marker-end="url(#arr-req)"/>
+  <text x="435" y="330" text-anchor="start" dominant-baseline="middle" font-size="8" fill="#2E75B6">Call</text>
+  <line x1="690" y1="347" x2="690" y2="314"
+        stroke="#C62828" stroke-width="1.5" marker-end="url(#arr-prop)"/>
+  <text x="698" y="331" text-anchor="start" dominant-baseline="middle" font-size="8" fill="#C62828">Impact Propagates</text>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE C  (Called Service)  y=350-435
+  ══════════════════════════════════════════ -->
+  <rect x="280" y="350" width="560" height="85" fill="#FFEBEE"
+        stroke="#C62828" stroke-width="2" rx="5"/>
+  <rect x="280" y="350" width="560" height="26" fill="#C62828" rx="5"/>
+  <rect x="280" y="364" width="560" height="12" fill="#C62828"/>
+  <text x="420" y="368" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">Called Service</text>
+  <text x="680" y="368" text-anchor="middle" font-size="9"
+        fill="#FFEBEE">（Service C）</text>
+  <!-- State badge -->
+  <rect x="648" y="395" width="182" height="20" fill="#C62828" rx="3"/>
+  <text x="739" y="409" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#FFFFFF">State: Processing Backlog</text>
+  <!-- Description -->
+  <text x="440" y="400" text-anchor="middle" font-size="8.5" fill="#C62828">
+    Continues waiting for a response from external,
+  </text>
+  <text x="440" y="413" text-anchor="middle" font-size="8.5" fill="#C62828">
+    and processing continues to stop there.
+  </text>
+  <text x="440" y="426" text-anchor="middle" font-size="8" fill="#546E7A">
+    By waiting until timeout, the impact on upstream begins.
+  </text>
+
+  <!-- ── Arrow Zone 3  y=435-475 ── -->
+  <line x1="430" y1="438" x2="430" y2="471"
+        stroke="#2E75B6" stroke-width="1.5" marker-end="url(#arr-req)"/>
+  <text x="435" y="455" text-anchor="start" dominant-baseline="middle" font-size="8" fill="#2E75B6">Query</text>
+  <line x1="690" y1="472" x2="690" y2="439"
+        stroke="#C62828" stroke-width="1.5" marker-end="url(#arr-prop)"/>
+  <text x="698" y="456" text-anchor="start" dominant-baseline="middle" font-size="8" fill="#C62828">Response Delay</text>
+
+  <!-- ══════════════════════════════════════════
+       EXTERNAL DB / API  (障害源)  y=475-560
+  ══════════════════════════════════════════ -->
+  <rect x="280" y="475" width="560" height="85" fill="#C62828"
+        stroke="#BF360C" stroke-width="2" rx="5"/>
+  <rect x="280" y="475" width="560" height="26" fill="#BF360C" rx="5"/>
+  <rect x="280" y="489" width="560" height="12" fill="#BF360C"/>
+  <text x="420" y="493" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">External Dependency (DB / API)</text>
+  <text x="700" y="493" text-anchor="middle" font-size="9"
+        fill="#FFEBEE">▶ Source of Failure</text>
+  <!-- State badge (white on dark) -->
+  <rect x="648" y="520" width="182" height="20" fill="#FFFFFF" rx="3"/>
+  <text x="739" y="534" text-anchor="middle" font-size="9" font-weight="bold"
+        fill="#C62828">State: Processing Halted</text>
+  <!-- Description -->
+  <text x="440" y="525" text-anchor="middle" font-size="8.5" fill="#FFEBEE">
+    Responses become extremely slow,
+  </text>
+  <text x="440" y="538" text-anchor="middle" font-size="8.5" fill="#FFEBEE">
+    putting all connected services into a waiting state.
+  </text>
+  <text x="440" y="551" text-anchor="middle" font-size="8" fill="#FFF3E0">
+    This becomes the root cause of the latency chain.
+  </text>
+
+  <!-- ══════════════════════════════════════════
+       KEY MESSAGES  y=578-638
+  ══════════════════════════════════════════ -->
+
+  <!-- Message 1 -->
+  <rect x="20" y="578" width="346" height="60" fill="#1F4E79" rx="5"/>
+  <rect x="20" y="578" width="346" height="22" fill="#2E75B6" rx="5"/>
+  <rect x="20" y="588" width="346" height="10" fill="#2E75B6"/>
+  <text x="193" y="594" text-anchor="middle" font-size="9" fill="#BBDEFB">Latency Chain</text>
+  <text x="193" y="616" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">A single delay propagates to the whole</text>
+  <text x="193" y="632" text-anchor="middle" font-size="8.5" fill="#DDEEFF">
+    Timeout waits cascade and stop all the way upstream.
+  </text>
+
+  <!-- Message 2 -->
+  <rect x="387" y="578" width="346" height="60" fill="#1F4E79" rx="5"/>
+  <rect x="387" y="578" width="346" height="22" fill="#D84315" rx="5"/>
+  <rect x="387" y="588" width="346" height="10" fill="#D84315"/>
+  <text x="560" y="594" text-anchor="middle" font-size="9" fill="#FFF3E0">Thread Exhaustion</text>
+  <text x="560" y="616" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">Waiting for responses continues to occupy threads</text>
+  <text x="560" y="632" text-anchor="middle" font-size="8.5" fill="#FFEBEE">
+    Processing capacity is taken away, and new requests can no longer be accepted.
+  </text>
+
+  <!-- Message 3 -->
+  <rect x="754" y="578" width="346" height="60" fill="#1F4E79" rx="5"/>
+  <rect x="754" y="578" width="346" height="22" fill="#C62828" rx="5"/>
+  <rect x="754" y="588" width="346" height="10" fill="#C62828"/>
+  <text x="927" y="594" text-anchor="middle" font-size="9" fill="#FFEBEE">Root Cause</text>
+  <text x="927" y="616" text-anchor="middle" font-size="10" font-weight="bold"
+        fill="#FFFFFF">The cause becomes harder to see at higher levels</text>
+  <text x="927" y="632" text-anchor="middle" font-size="8.5" fill="#FFEBEE">
+    Failure occurs downstream, and symptoms appear upstream.
+  </text>
+
+  <!-- ══════════════════════════════════════════
+       CAPTION  y=650-718
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="650" width="4" height="68" fill="#C62828" rx="2"/>
+  <text x="34" y="666" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">Propagation of Latency and Failure:</tspan>
+    <tspan>When a downstream service's response is delayed, the upstream service waiting for it stops processing and continues to wait. Eventually threads fill up and new requests can no longer be accepted.</tspan>
+  </text>
+  <text x="34" y="686" text-anchor="start" font-size="11" fill="#1F4E79">
+    The upstream service whose threads are exhausted can no longer accept new requests, and the failure propagates further upstream.
+  </text>
+  <text x="34" y="706" text-anchor="start" font-size="11" fill="#1F4E79">
+    <tspan font-weight="bold">Latency begins downstream, but symptoms appear upstream. Because the cause and symptoms are distant from each other, it is difficult to notice the impact on the whole.</tspan>
+  </text>
+
+</svg>

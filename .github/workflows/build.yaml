@@ -96,8 +96,17 @@ jobs:
     env:
       LC_ALL: C.UTF-8
     strategy:
+      fail-fast: false
       matrix:
-        lang: [ja, en]
+        include:
+          - lang: ja
+            format: pdf
+          - lang: ja
+            format: epub
+          - lang: en
+            format: pdf
+          - lang: en
+            format: epub
     container:
       image: ${{ needs.build-container.outputs.image_ref || 'ghcr.io/lpi-japan/cloudnative-text:latest' }}
       credentials:
@@ -106,12 +115,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Build PDF (${{ matrix.lang }})
+        if: matrix.format == 'pdf'
         run: PDF_BUILD_MODE=direct ./build-pdf.sh ${{ matrix.lang }}
       - name: Build EPUB (${{ matrix.lang }})
+        if: matrix.format == 'epub'
         run: EPUB_BUILD_MODE=direct ./build-epub.sh ${{ matrix.lang }}
       - uses: actions/upload-artifact@v6
         with:
-          name: guide-${{ matrix.lang }}
-          path: |
-            tmp/guide-${{ matrix.lang }}.pdf
-            tmp/guide-${{ matrix.lang }}.epub
+          name: guide-outputs
+          path: tmp/guide-${{ matrix.lang }}.${{ matrix.format }}
+          if-no-files-found: error

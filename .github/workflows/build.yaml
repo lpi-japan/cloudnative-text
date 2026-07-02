@@ -1,0 +1,118 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - make_pdf
+      - feature/*
+      - add_en
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docker: ${{ steps.set.outputs.docker }}
+      manuscript: ${{ steps.set.outputs.manuscript }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dorny/paths-filter@v3
+        id: filter
+        if: github.event_name == 'push'
+        with:
+          filters: |
+            docker:
+              - 'docker/**'
+              - '.github/workflows/build.yaml'
+            manuscript:
+              - 'ja/**'
+              - 'en/**'
+              - 'config-common-pdf.yaml'
+              - 'epub.css'
+              - 'template.tex'
+              - 'build-pdf.sh'
+              - 'build-epub.sh'
+              - '.github/workflows/build.yaml'
+      - id: set
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "docker=true" >> "$GITHUB_OUTPUT"
+            echo "manuscript=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "docker=${{ steps.filter.outputs.docker }}" >> "$GITHUB_OUTPUT"
+            echo "manuscript=${{ steps.filter.outputs.manuscript }}" >> "$GITHUB_OUTPUT"
+          fi
+
+  build-container:
+    needs: changes
+    if: needs.changes.outputs.docker == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image_ref: ${{ steps.ref.outputs.image_ref }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-qemu-action@v4
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: metadata
+        run: |
+          echo "image=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "tag=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: docker
+          file: Dockerfile
+          platforms: linux/amd64
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          tags: |
+            ghcr.io/${{ steps.metadata.outputs.image }}:${{ steps.metadata.outputs.tag }}
+            ${{ github.ref == 'refs/heads/main' && format('ghcr.io/{0}:latest', steps.metadata.outputs.image) || '' }}
+      - id: ref
+        run: echo "image_ref=ghcr.io/${{ steps.metadata.outputs.image }}:${{ steps.metadata.outputs.tag }}" >> "$GITHUB_OUTPUT"
+
+  build-manuscript:
+    needs: [changes, build-container]
+    if: |
+      always() && !cancelled() &&
+      needs.changes.outputs.manuscript == 'true' &&
+      (needs.build-container.result == 'success' || needs.build-container.result == 'skipped')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    env:
+      LC_ALL: C.UTF-8
+    strategy:
+      matrix:
+        lang: [ja, en]
+    container:
+      image: ${{ needs.build-container.outputs.image_ref || 'ghcr.io/lpi-japan/cloudnative-text:latest' }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build PDF (${{ matrix.lang }})
+        run: PDF_BUILD_MODE=direct ./build-pdf.sh ${{ matrix.lang }}
+      - name: Build EPUB (${{ matrix.lang }})
+        run: EPUB_BUILD_MODE=direct ./build-epub.sh ${{ matrix.lang }}
+      - uses: actions/upload-artifact@v6
+        with:
+          name: guide-${{ matrix.lang }}
+          path: |
+            tmp/guide-${{ matrix.lang }}.pdf
+            tmp/guide-${{ matrix.lang }}.epub

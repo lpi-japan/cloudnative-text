@@ -1,6 +1,5 @@
 #!/bin/bash
 # pandoc/extra に無い TeX パッケージを tlmgr で追加する。
-# 固定 tlnet で install → update --self（1 回）→ 固定 tlnet で install → live tlnet
 set -euo pipefail
 
 readonly PACKAGES=(collection-langjapanese tocloft wallpaper eso-pic)
@@ -21,31 +20,6 @@ all_installed() {
   done
 }
 
-try_install() {
-  local repo="$1"
-  shift
-  echo "tlmgr: repository=${repo} packages=$*"
-  tlmgr option repository "${repo}"
-  tlmgr install "$@" || true
-  all_installed
-}
-
-# update --self は tlmgr クライアント自体の更新（リポジトリ設定もグローバル）。
-# どのミラーから取るかだけ試し、成功したら 1 回で終わり。
-update_tlmgr_self() {
-  local repo
-  for repo in "${PINNED_REPOS[@]}" "${LIVE_REPO}"; do
-    echo "tlmgr: update --self via ${repo}"
-    tlmgr option repository "${repo}"
-    if tlmgr update --self; then
-      echo "tlmgr: update --self ok"
-      return 0
-    fi
-  done
-  echo "tlmgr: update --self failed on all mirrors" >&2
-  return 1
-}
-
 missing=()
 for pkg in "${PACKAGES[@]}"; do
   pkg_installed "$pkg" || missing+=("$pkg")
@@ -59,16 +33,25 @@ fi
 echo "tlmgr: installing ${missing[*]}"
 
 for repo in "${PINNED_REPOS[@]}"; do
-  try_install "${repo}" "${missing[@]}" && exit 0
+  echo "tlmgr: repository=${repo} install"
+  tlmgr option repository "${repo}"
+  tlmgr install "${missing[@]}" || true
+  all_installed && exit 0
 done
-
-update_tlmgr_self || true
 
 for repo in "${PINNED_REPOS[@]}"; do
-  try_install "${repo}" "${missing[@]}" && exit 0
+  echo "tlmgr: repository=${repo} update --self + install"
+  tlmgr option repository "${repo}"
+  tlmgr update --self || true
+  tlmgr install "${missing[@]}" || true
+  all_installed && exit 0
 done
 
-try_install "${LIVE_REPO}" "${missing[@]}" && exit 0
+echo "tlmgr: repository=${LIVE_REPO} update --self + install"
+tlmgr option repository "${LIVE_REPO}"
+tlmgr update --self || true
+tlmgr install "${missing[@]}" || true
+all_installed && exit 0
 
 echo "tlmgr: install failed for: ${missing[*]}" >&2
 exit 1

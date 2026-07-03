@@ -27,3 +27,6 @@ RUN chmod +x /usr/local/bin/install-tlmgr-packages.sh \
 COPY install-pandoc-crossref.sh /usr/local/bin/install-pandoc-crossref.sh
 RUN chmod +x /usr/local/bin/install-pandoc-crossref.sh \
     && install-pandoc-crossref.sh
+
+# build-pdf.sh / build-epub.sh が CI や docker run 内では direct 実行する判定に使う
+ENV CLOUDNATIVE_TEXT_BUILD=1

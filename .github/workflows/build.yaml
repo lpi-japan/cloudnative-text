@@ -119,9 +119,9 @@ jobs:
       - name: Build guide (${{ matrix.lang }} ${{ matrix.format }})
         run: |
           if [ "${{ matrix.format }}" = pdf ]; then
-            PDF_BUILD_MODE=direct ./build-pdf.sh "${{ matrix.lang }}"
+            ./build-pdf.sh "${{ matrix.lang }}"
           else
-            EPUB_BUILD_MODE=direct ./build-epub.sh "${{ matrix.lang }}"
+            ./build-epub.sh "${{ matrix.lang }}"
           fi
       - name: Upload guide-${{ matrix.lang }}.${{ matrix.format }}
         if: always()

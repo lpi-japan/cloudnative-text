@@ -2,11 +2,14 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=scripts/resolve-build-mode.sh
+source "${ROOT_DIR}/scripts/resolve-build-mode.sh"
+
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 EPUB_CSS="${ROOT_DIR}/epub.css"
 IMAGE="${EPUB_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
-BUILD_MODE="${EPUB_BUILD_MODE:-docker}"
+BUILD_MODE="$(resolve_build_mode "${EPUB_BUILD_MODE:-}")"
 OUT_DIR="${ROOT_DIR}/tmp"
 GUIDE_MD="${OUT_DIR}/.build-guide-${LANG}.md"
 OUTPUT="${OUT_DIR}/guide-${LANG}.epub"
@@ -38,7 +41,7 @@ if [[ "${BUILD_MODE}" == "docker" ]]; then
     -v "${ROOT_DIR}:/data" \
     -w /data \
     --entrypoint /bin/bash \
-    "${IMAGE}" -c "EPUB_BUILD_MODE=direct ./build-epub.sh ${LANG}"
+    "${IMAGE}" -c "./build-epub.sh ${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then

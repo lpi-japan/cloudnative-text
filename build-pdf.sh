@@ -2,10 +2,13 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=scripts/resolve-build-mode.sh
+source "${ROOT_DIR}/scripts/resolve-build-mode.sh"
+
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 IMAGE="${PDF_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
-BUILD_MODE="${PDF_BUILD_MODE:-docker}"
+BUILD_MODE="$(resolve_build_mode "${PDF_BUILD_MODE:-}")"
 OUT_DIR="${ROOT_DIR}/tmp"
 OUTPUT="${OUT_DIR}/guide-${LANG}.pdf"
 CHAPTER_LIST="${OUT_DIR}/.build-chapter-list-${LANG}.txt"
@@ -37,7 +40,7 @@ if [[ "${BUILD_MODE}" == "docker" ]]; then
     -v "${ROOT_DIR}:/data" \
     -w /data \
     --entrypoint /bin/bash \
-    "${IMAGE}" -c "PDF_BUILD_MODE=direct ./build-pdf.sh ${LANG}"
+    "${IMAGE}" -c "./build-pdf.sh ${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then

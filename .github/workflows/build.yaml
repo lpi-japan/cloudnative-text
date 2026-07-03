@@ -75,10 +75,6 @@ jobs:
           context: docker
           platforms: linux/amd64
           push: true
-          # GHA cache (type=gha) は *.dockerbuild という Actions artifact が
-          # 成果物一覧に出る。registry cache に切り替えて UI を汚さない。
-          cache-from: type=registry,ref=ghcr.io/${{ steps.metadata.outputs.image }}:buildcache
-          cache-to: type=registry,ref=ghcr.io/${{ steps.metadata.outputs.image }}:buildcache,mode=max
           tags: |
             ghcr.io/${{ steps.metadata.outputs.image }}:${{ steps.metadata.outputs.tag }}
             ${{ github.ref == 'refs/heads/main' && format('ghcr.io/{0}:latest', steps.metadata.outputs.image) || '' }}

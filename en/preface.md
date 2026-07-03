@@ -32,7 +32,7 @@ Part 2 uses **KillerCoda** as the standard hands-on environment. KillerCoda is a
 
 ### Prerequisites {.unlisted .unnumbered}
 
-The network used for exercises is assumed to have **Internet access**, which is required for KillerCoda and for this textbook's web page (`https://linuc.org/en/textbooks/cloudnative/`).
+The network used for exercises is assumed to have **Internet access**, which is required for KillerCoda and for referring to this textbook's web page.
 
 Part 2 uses **kubectl**, but the goal is to observe cluster state rather than memorize commands. Basic Linux skills (shell, file operations, and so on) at the **LinuC Level 1** level are assumed.
 
@@ -129,14 +129,6 @@ This textbook may be used freely as teaching material for non-commercial purpose
 Please use this textbook without making any alterations. Any modifications to this textbook are carried out by **LPI-Japan** or by organizations authorized by LPI-Japan.
 
 ## Feedback {.unlisted .unnumbered}
-
-We welcome feedback in our open Slack workspace. See this textbook's web page for how to join:
-
-```
-https://linuc.org/en/textbooks/cloudnative/
-```
-
-![https://linuc.org/en/textbooks/cloudnative/](image/Ch0/QR_cloudnative.png){width=25%}
 
 For feedback on this textbook or inquiries about its use, please contact:
 

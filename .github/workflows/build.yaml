@@ -36,7 +36,6 @@ jobs:
               - 'template.tex'
               - 'build-pdf.sh'
               - 'build-epub.sh'
-              - '.github/actions/upload-guide-outputs/**'
               - '.github/workflows/build.yaml'
       - id: set
         run: |
@@ -117,6 +116,31 @@ jobs:
       - name: Build EPUB (en)
         continue-on-error: true
         run: EPUB_BUILD_MODE=direct ./build-epub.sh en
-      - name: Upload guide outputs
+      - name: Upload guide-ja.pdf
         if: always()
-        uses: ./.github/actions/upload-guide-outputs
+        uses: actions/upload-artifact@v6
+        with:
+          path: tmp/guide-ja.pdf
+          archive: false
+          if-no-files-found: error
+      - name: Upload guide-en.pdf
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          path: tmp/guide-en.pdf
+          archive: false
+          if-no-files-found: error
+      - name: Upload guide-ja.epub
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          path: tmp/guide-ja.epub
+          archive: false
+          if-no-files-found: error
+      - name: Upload guide-en.epub
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          path: tmp/guide-en.epub
+          archive: false
+          if-no-files-found: error

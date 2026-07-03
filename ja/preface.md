@@ -10,7 +10,7 @@
 本教科書の最新情報は以下のWebページをご参照ください。
 
 ```
-https://linuc.org/
+https://linuc.org/textbooks/cloudnative/
 ```
 
 ## 本教科書の目的 {.unlisted .unnumbered}
@@ -28,7 +28,7 @@ Kubernetes やコンテナの操作手順を覚えることではなく、なぜ
 第2部では、**KillerCoda** を標準の実習環境としています。KillerCoda は、ブラウザ上で Kubernetes などを学習できるハンズオン環境です。Kubernetes クラスタが起動済みの状態から、`kubectl` で YAML を適用する形式で実習を進めます。Google アカウントなどを利用して開始でき、ローカル PC へのインストールや環境構築を行わなくても利用できます。詳細は第2部第2章を参照してください。
 
 ### 必要な前提 {.unlisted .unnumbered}
-実習を行うネットワークは、インターネットに接続できることを前提としています。KillerCoda の利用や、本教科書の Web ページ（`https://linuc.org/`）の参照に必要です。
+実習を行うネットワークは、インターネットに接続できることを前提としています。KillerCoda の利用や、本教科書の Web ページ（`https://linuc.org/textbooks/cloudnative/`）の参照に必要です。
 
 第2部では **kubectl** を使いますが、操作を暗記することより、クラスタの状態を観察することを目的としています。Linux の基本的な操作（シェル、ファイル操作など）は、LinuC レベル1相当の知識を前提としています。
 
@@ -114,10 +114,10 @@ Copyright©️ LPI-Japan. All Rights Reserved.
 フィードバックは誰でも参加できる Slack で受け付けていますので、積極的にご参加ください。Slack参加の詳細は以下の本教科書のWebページを参照してください。
 
 ```
-https://linuc.org/
+https://linuc.org/textbooks/cloudnative/
 ```
 
-![https://linuc.org/](image/Ch0/QRserver.png){width=25%}
+![https://linuc.org/textbooks/cloudnative/](image/Ch0/QRserver.png){width=25%}
 
 ## 本教科書の使用に関するお問合せ先 {.unlisted .unnumbered}
 特定非営利活動法人エルピーアイジャパン（LPI-Japan）事務局

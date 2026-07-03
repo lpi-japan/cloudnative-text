@@ -22,7 +22,6 @@ PART_DIRS=(
 
 usage() {
   echo "Usage: $0 [ja|en]" >&2
-  echo "Local build: docker compose run --rm build ./build-epub.sh [ja|en]" >&2
   exit 1
 }
 
@@ -30,10 +29,8 @@ if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
 fi
 
-if ! command -v pandoc >/dev/null 2>&1; then
-  echo "pandoc not found on PATH." >&2
-  echo "Use: docker compose run --rm build ./build-epub.sh ${LANG}" >&2
-  exit 1
+if ! command -v pandoc >/dev/null 2>&1 || ! command -v pandoc-crossref >/dev/null 2>&1; then
+  exec "${ROOT_DIR}/scripts/with-build-image.sh" "./build-epub.sh" "${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then

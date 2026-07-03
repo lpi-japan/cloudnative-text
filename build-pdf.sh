@@ -21,7 +21,6 @@ PART_DIRS=(
 
 usage() {
   echo "Usage: $0 [ja|en]" >&2
-  echo "Local build: docker compose run --rm build ./build-pdf.sh [ja|en]" >&2
   exit 1
 }
 
@@ -29,10 +28,8 @@ if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
 fi
 
-if ! command -v pandoc >/dev/null 2>&1; then
-  echo "pandoc not found on PATH." >&2
-  echo "Use: docker compose run --rm build ./build-pdf.sh ${LANG}" >&2
-  exit 1
+if ! command -v pandoc >/dev/null 2>&1 || ! command -v lualatex >/dev/null 2>&1; then
+  exec "${ROOT_DIR}/scripts/with-build-image.sh" "./build-pdf.sh" "${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then

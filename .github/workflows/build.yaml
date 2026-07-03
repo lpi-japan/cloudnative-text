@@ -27,7 +27,6 @@ jobs:
           filters: |
             docker:
               - 'docker/**'
-              - 'compose.yaml'
               - '.github/workflows/build.yaml'
             manuscript:
               - 'ja/**'
@@ -37,7 +36,7 @@ jobs:
               - 'template.tex'
               - 'build-pdf.sh'
               - 'build-epub.sh'
-              - 'docs/local-build.md'
+              - 'scripts/with-build-image.sh'
               - '.github/workflows/build.yaml'
       - id: set
         run: |

@@ -36,7 +36,6 @@ jobs:
               - 'template.tex'
               - 'build-pdf.sh'
               - 'build-epub.sh'
-              - 'scripts/with-build-image.sh'
               - '.github/workflows/build.yaml'
       - id: set
         run: |

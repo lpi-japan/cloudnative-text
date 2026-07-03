@@ -92,10 +92,10 @@ jobs:
           else
             ./build-epub.sh "${{ matrix.lang }}"
           fi
-      - name: Upload guide-${{ matrix.lang }}.${{ matrix.format }}
+      - name: Upload cloudnativetext_${{ matrix.lang }}.${{ matrix.format }}
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          path: tmp/guide-${{ matrix.lang }}.${{ matrix.format }}
+          path: tmp/cloudnativetext_${{ matrix.lang }}.${{ matrix.format }}
           archive: false
           if-no-files-found: error

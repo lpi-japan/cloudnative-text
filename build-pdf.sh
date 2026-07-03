@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 OUT_DIR="${ROOT_DIR}/tmp"
-OUTPUT="${OUT_DIR}/guide-${LANG}.pdf"
+OUTPUT="${OUT_DIR}/cloudnativetext_${LANG}.pdf"
 CHAPTER_LIST="${OUT_DIR}/.build-chapter-list-${LANG}.txt"
 
 PART_DIRS=(
@@ -87,7 +87,7 @@ mapfile -t chapters < "${CHAPTER_LIST}"
     --resource-path="${RESOURCE_PATH}" \
     -B "../tmp/preface-${LANG}.tex" \
     -M "no-cover=true" \
-    -o "../tmp/guide-${LANG}.pdf"
+    -o "../tmp/cloudnativetext_${LANG}.pdf"
 )
 
 echo "Language: ${LANG}"

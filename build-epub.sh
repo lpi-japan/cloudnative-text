@@ -7,7 +7,7 @@ LANG_DIR="${ROOT_DIR}/${LANG}"
 EPUB_CSS="${ROOT_DIR}/epub.css"
 OUT_DIR="${ROOT_DIR}/tmp"
 GUIDE_MD="${OUT_DIR}/.build-guide-${LANG}.md"
-OUTPUT="${OUT_DIR}/guide-${LANG}.epub"
+OUTPUT="${OUT_DIR}/cloudnativetext_${LANG}.epub"
 
 PART_DIRS=(
   00_prologue

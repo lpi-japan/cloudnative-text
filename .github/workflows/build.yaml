@@ -105,22 +105,58 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Build PDF (ja)
+        id: build_pdf_ja
+        continue-on-error: true
         run: PDF_BUILD_MODE=direct ./build-pdf.sh ja
       - name: Build PDF (en)
+        id: build_pdf_en
+        continue-on-error: true
         run: PDF_BUILD_MODE=direct ./build-pdf.sh en
       - name: Build EPUB (ja)
+        id: build_epub_ja
+        continue-on-error: true
         run: EPUB_BUILD_MODE=direct ./build-epub.sh ja
       - name: Build EPUB (en)
+        id: build_epub_en
+        continue-on-error: true
         run: EPUB_BUILD_MODE=direct ./build-epub.sh en
-      - name: List outputs
-        run: ls -lh tmp/guide-*.{pdf,epub}
+      - name: Stage guide outputs
+        id: stage_outputs
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p artifact-staging
+          for f in tmp/guide-ja.pdf tmp/guide-en.pdf tmp/guide-ja.epub tmp/guide-en.epub; do
+            if [ -f "$f" ]; then
+              cp "$f" artifact-staging/
+            fi
+          done
+          echo "Staged files:"
+          ls -la artifact-staging/
+          count=$(find artifact-staging -type f | wc -l)
+          if [ "$count" -eq 0 ]; then
+            echo "No guide outputs were built successfully." >&2
+            exit 1
+          fi
       - name: Upload guide outputs
+        if: always() && steps.stage_outputs.outcome == 'success'
         uses: actions/upload-artifact@v6
         with:
           name: guide-outputs
-          path: |
-            tmp/guide-ja.pdf
-            tmp/guide-ja.epub
-            tmp/guide-en.pdf
-            tmp/guide-en.epub
+          path: artifact-staging/
           if-no-files-found: error
+      - name: Report build failures
+        if: always()
+        run: |
+          failed=0
+          check() {
+            if [ "$1" != "success" ]; then
+              echo "::error title=Build failed::$2"
+              failed=1
+            fi
+          }
+          check "${{ steps.build_pdf_ja.outcome }}" "Build PDF (ja)"
+          check "${{ steps.build_pdf_en.outcome }}" "Build PDF (en)"
+          check "${{ steps.build_epub_ja.outcome }}" "Build EPUB (ja)"
+          check "${{ steps.build_epub_en.outcome }}" "Build EPUB (en)"
+          exit "$failed"

@@ -75,8 +75,10 @@ jobs:
           context: docker
           platforms: linux/amd64
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # GHA cache (type=gha) は *.dockerbuild という Actions artifact が
+          # 成果物一覧に出る。registry cache に切り替えて UI を汚さない。
+          cache-from: type=registry,ref=ghcr.io/${{ steps.metadata.outputs.image }}:buildcache
+          cache-to: type=registry,ref=ghcr.io/${{ steps.metadata.outputs.image }}:buildcache,mode=max
           tags: |
             ghcr.io/${{ steps.metadata.outputs.image }}:${{ steps.metadata.outputs.tag }}
             ${{ github.ref == 'refs/heads/main' && format('ghcr.io/{0}:latest', steps.metadata.outputs.image) || '' }}
@@ -95,18 +97,6 @@ jobs:
       packages: read
     env:
       LC_ALL: C.UTF-8
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - lang: ja
-            format: pdf
-          - lang: ja
-            format: epub
-          - lang: en
-            format: pdf
-          - lang: en
-            format: epub
     container:
       image: ${{ needs.build-container.outputs.image_ref || 'ghcr.io/lpi-japan/cloudnative-text:latest' }}
       credentials:
@@ -114,14 +104,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-      - name: Build PDF (${{ matrix.lang }})
-        if: matrix.format == 'pdf'
-        run: PDF_BUILD_MODE=direct ./build-pdf.sh ${{ matrix.lang }}
-      - name: Build EPUB (${{ matrix.lang }})
-        if: matrix.format == 'epub'
-        run: EPUB_BUILD_MODE=direct ./build-epub.sh ${{ matrix.lang }}
+      - name: Build all guides (ja/en × pdf/epub)
+        run: |
+          PDF_BUILD_MODE=direct ./build-pdf.sh ja
+          PDF_BUILD_MODE=direct ./build-pdf.sh en
+          EPUB_BUILD_MODE=direct ./build-epub.sh ja
+          EPUB_BUILD_MODE=direct ./build-epub.sh en
+          ls -lh tmp/guide-*.{pdf,epub}
       - uses: actions/upload-artifact@v6
         with:
           name: guide-outputs
-          path: tmp/guide-${{ matrix.lang }}.${{ matrix.format }}
+          path: |
+            tmp/guide-ja.pdf
+            tmp/guide-ja.epub
+            tmp/guide-en.pdf
+            tmp/guide-en.epub
           if-no-files-found: error

@@ -117,7 +117,7 @@ Copyright©️ LPI-Japan. All Rights Reserved.
 https://linuc.org/textbooks/cloudnative/
 ```
 
-![https://linuc.org/textbooks/cloudnative/](image/Ch0/QRserver.png){width=25%}
+![https://linuc.org/textbooks/cloudnative/](image/Ch0/QR_cloudnative.png){width=25%}
 
 ## 本教科書の使用に関するお問合せ先 {.unlisted .unnumbered}
 特定非営利活動法人エルピーアイジャパン（LPI-Japan）事務局

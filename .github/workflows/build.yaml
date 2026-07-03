@@ -95,6 +95,18 @@ jobs:
     permissions:
       contents: read
       packages: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lang: ja
+            format: pdf
+          - lang: ja
+            format: epub
+          - lang: en
+            format: pdf
+          - lang: en
+            format: epub
     env:
       LC_ALL: C.UTF-8
     container:
@@ -104,43 +116,17 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-      - name: Build PDF (ja)
-        continue-on-error: true
-        run: PDF_BUILD_MODE=direct ./build-pdf.sh ja
-      - name: Build PDF (en)
-        continue-on-error: true
-        run: PDF_BUILD_MODE=direct ./build-pdf.sh en
-      - name: Build EPUB (ja)
-        continue-on-error: true
-        run: EPUB_BUILD_MODE=direct ./build-epub.sh ja
-      - name: Build EPUB (en)
-        continue-on-error: true
-        run: EPUB_BUILD_MODE=direct ./build-epub.sh en
-      - name: Upload guide-ja.pdf
+      - name: Build guide (${{ matrix.lang }} ${{ matrix.format }})
+        run: |
+          if [ "${{ matrix.format }}" = pdf ]; then
+            PDF_BUILD_MODE=direct ./build-pdf.sh "${{ matrix.lang }}"
+          else
+            EPUB_BUILD_MODE=direct ./build-epub.sh "${{ matrix.lang }}"
+          fi
+      - name: Upload guide-${{ matrix.lang }}.${{ matrix.format }}
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          path: tmp/guide-ja.pdf
-          archive: false
-          if-no-files-found: error
-      - name: Upload guide-en.pdf
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          path: tmp/guide-en.pdf
-          archive: false
-          if-no-files-found: error
-      - name: Upload guide-ja.epub
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          path: tmp/guide-ja.epub
-          archive: false
-          if-no-files-found: error
-      - name: Upload guide-en.epub
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          path: tmp/guide-en.epub
+          path: tmp/guide-${{ matrix.lang }}.${{ matrix.format }}
           archive: false
           if-no-files-found: error

@@ -5,8 +5,6 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 EPUB_CSS="${ROOT_DIR}/epub.css"
-IMAGE="${EPUB_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
-BUILD_MODE="${EPUB_BUILD_MODE:-docker}"
 OUT_DIR="${ROOT_DIR}/tmp"
 GUIDE_MD="${OUT_DIR}/.build-guide-${LANG}.md"
 OUTPUT="${OUT_DIR}/guide-${LANG}.epub"
@@ -31,14 +29,8 @@ if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
 fi
 
-if [[ "${BUILD_MODE}" == "docker" ]]; then
-  exec docker run --rm -i \
-    -e LANG="${LANG}" \
-    -e LC_ALL=C.UTF-8 \
-    -v "${ROOT_DIR}:/data" \
-    -w /data \
-    --entrypoint /bin/bash \
-    "${IMAGE}" -c "EPUB_BUILD_MODE=direct ./build-epub.sh ${LANG}"
+if ! command -v pandoc >/dev/null 2>&1 || ! command -v pandoc-crossref >/dev/null 2>&1; then
+  exec "${ROOT_DIR}/scripts/with-build-image.sh" "./build-epub.sh" "${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then
@@ -96,7 +88,5 @@ fi
 )
 
 echo "Language: ${LANG}"
-echo "Build mode: ${BUILD_MODE}"
-echo "Image: ${IMAGE}"
 echo "Output: ${OUTPUT}"
 ls -lh "${OUTPUT}"

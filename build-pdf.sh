@@ -4,8 +4,6 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
-IMAGE="${PDF_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
-BUILD_MODE="${PDF_BUILD_MODE:-docker}"
 OUT_DIR="${ROOT_DIR}/tmp"
 OUTPUT="${OUT_DIR}/guide-${LANG}.pdf"
 CHAPTER_LIST="${OUT_DIR}/.build-chapter-list-${LANG}.txt"
@@ -30,14 +28,8 @@ if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
 fi
 
-if [[ "${BUILD_MODE}" == "docker" ]]; then
-  exec docker run --rm -i \
-    -e LANG="${LANG}" \
-    -e LC_ALL=C.UTF-8 \
-    -v "${ROOT_DIR}:/data" \
-    -w /data \
-    --entrypoint /bin/bash \
-    "${IMAGE}" -c "PDF_BUILD_MODE=direct ./build-pdf.sh ${LANG}"
+if ! command -v pandoc >/dev/null 2>&1 || ! command -v lualatex >/dev/null 2>&1; then
+  exec "${ROOT_DIR}/scripts/with-build-image.sh" "./build-pdf.sh" "${LANG}"
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then
@@ -99,8 +91,6 @@ mapfile -t chapters < "${CHAPTER_LIST}"
 )
 
 echo "Language: ${LANG}"
-echo "Build mode: ${BUILD_MODE}"
-echo "Image: ${IMAGE}"
 echo "Output: ${OUTPUT}"
 echo "Chapters (${CHAPTER_LIST}):"
 nl -ba "${CHAPTER_LIST}"

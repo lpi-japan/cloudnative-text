@@ -5,9 +5,7 @@ on:
   push:
     branches:
       - main
-      - make_pdf
       - feature/*
-      - add_en
 
 permissions:
   contents: read
@@ -27,7 +25,7 @@ jobs:
           filters: |
             docker:
               - 'docker/**'
-              - '.github/workflows/build.yaml'
+              - '.github/workflows/build-container.yaml'
             manuscript:
               - 'ja/**'
               - 'en/**'
@@ -50,38 +48,11 @@ jobs:
   build-container:
     needs: changes
     if: needs.changes.outputs.docker == 'true'
-    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    outputs:
-      image_ref: ${{ steps.ref.outputs.image_ref }}
-    steps:
-      - uses: actions/checkout@v5
-      - uses: docker/setup-qemu-action@v4
-      - uses: docker/setup-buildx-action@v4
-      - uses: docker/login-action@v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - id: metadata
-        run: |
-          echo "image=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
-          echo "tag=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
-      - name: Build and push
-        uses: docker/build-push-action@v7
-        with:
-          context: docker
-          platforms: linux/amd64
-          push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          tags: |
-            ghcr.io/${{ steps.metadata.outputs.image }}:${{ steps.metadata.outputs.tag }}
-            ${{ github.ref == 'refs/heads/main' && format('ghcr.io/{0}:latest', steps.metadata.outputs.image) || '' }}
-      - id: ref
-        run: echo "image_ref=ghcr.io/${{ steps.metadata.outputs.image }}:${{ steps.metadata.outputs.tag }}" >> "$GITHUB_OUTPUT"
+    secrets: inherit
+    uses: ./.github/workflows/build-container.yaml
 
   build-manuscript:
     needs: [changes, build-container]
@@ -93,8 +64,6 @@ jobs:
     permissions:
       contents: read
       packages: read
-    env:
-      LC_ALL: C.UTF-8
     strategy:
       fail-fast: false
       matrix:
@@ -107,6 +76,8 @@ jobs:
             format: pdf
           - lang: en
             format: epub
+    env:
+      LC_ALL: C.UTF-8
     container:
       image: ${{ needs.build-container.outputs.image_ref || 'ghcr.io/lpi-japan/cloudnative-text:latest' }}
       credentials:
@@ -114,14 +85,17 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-      - name: Build PDF (${{ matrix.lang }})
-        if: matrix.format == 'pdf'
-        run: PDF_BUILD_MODE=direct ./build-pdf.sh ${{ matrix.lang }}
-      - name: Build EPUB (${{ matrix.lang }})
-        if: matrix.format == 'epub'
-        run: EPUB_BUILD_MODE=direct ./build-epub.sh ${{ matrix.lang }}
-      - uses: actions/upload-artifact@v6
+      - name: Build guide (${{ matrix.lang }} ${{ matrix.format }})
+        run: |
+          if [ "${{ matrix.format }}" = pdf ]; then
+            ./build-pdf.sh "${{ matrix.lang }}"
+          else
+            ./build-epub.sh "${{ matrix.lang }}"
+          fi
+      - name: Upload guide-${{ matrix.lang }}.${{ matrix.format }}
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
-          name: guide-outputs
           path: tmp/guide-${{ matrix.lang }}.${{ matrix.format }}
+          archive: false
           if-no-files-found: error

@@ -36,6 +36,7 @@ jobs:
               - 'template.tex'
               - 'build-pdf.sh'
               - 'build-epub.sh'
+              - '.github/actions/upload-guide-outputs/**'
               - '.github/workflows/build.yaml'
       - id: set
         run: |
@@ -118,24 +119,4 @@ jobs:
         run: EPUB_BUILD_MODE=direct ./build-epub.sh en
       - name: Upload guide outputs
         if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: guide-outputs
-          path: |
-            tmp/guide-ja.pdf
-            tmp/guide-en.pdf
-            tmp/guide-ja.epub
-            tmp/guide-en.epub
-          if-no-files-found: warn
-      - name: Verify all guide outputs
-        if: always()
-        run: |
-          missing=0
-          for f in tmp/guide-ja.pdf tmp/guide-en.pdf tmp/guide-ja.epub tmp/guide-en.epub; do
-            if [ ! -f "$f" ]; then
-              echo "::error title=Missing output::Expected file not found: $f"
-              missing=1
-            fi
-          done
-          ls -lh tmp/guide-*.{pdf,epub} 2>/dev/null || true
-          exit "$missing"
+        uses: ./.github/actions/upload-guide-outputs

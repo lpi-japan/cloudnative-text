@@ -25,7 +25,6 @@ jobs:
           filters: |
             docker:
               - 'docker/**'
-              - '.github/workflows/build.yaml'
             manuscript:
               - 'ja/**'
               - 'en/**'
@@ -119,7 +118,7 @@ jobs:
           fi
       - name: Upload guide-${{ matrix.lang }}.${{ matrix.format }}
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           path: tmp/guide-${{ matrix.lang }}.${{ matrix.format }}
           archive: false

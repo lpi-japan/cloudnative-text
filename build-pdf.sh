@@ -2,13 +2,8 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=scripts/resolve-build-mode.sh
-source "${ROOT_DIR}/scripts/resolve-build-mode.sh"
-
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
-IMAGE="${PDF_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
-BUILD_MODE="$(resolve_build_mode "${PDF_BUILD_MODE:-}")"
 OUT_DIR="${ROOT_DIR}/tmp"
 OUTPUT="${OUT_DIR}/guide-${LANG}.pdf"
 CHAPTER_LIST="${OUT_DIR}/.build-chapter-list-${LANG}.txt"
@@ -26,6 +21,7 @@ PART_DIRS=(
 
 usage() {
   echo "Usage: $0 [ja|en]" >&2
+  echo "Local build: docker compose run --rm build ./build-pdf.sh [ja|en]" >&2
   exit 1
 }
 
@@ -33,14 +29,10 @@ if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
 fi
 
-if [[ "${BUILD_MODE}" == "docker" ]]; then
-  exec docker run --rm -i \
-    -e LANG="${LANG}" \
-    -e LC_ALL=C.UTF-8 \
-    -v "${ROOT_DIR}:/data" \
-    -w /data \
-    --entrypoint /bin/bash \
-    "${IMAGE}" -c "./build-pdf.sh ${LANG}"
+if ! command -v pandoc >/dev/null 2>&1; then
+  echo "pandoc not found on PATH." >&2
+  echo "Use: docker compose run --rm build ./build-pdf.sh ${LANG}" >&2
+  exit 1
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then
@@ -102,8 +94,6 @@ mapfile -t chapters < "${CHAPTER_LIST}"
 )
 
 echo "Language: ${LANG}"
-echo "Build mode: ${BUILD_MODE}"
-echo "Image: ${IMAGE}"
 echo "Output: ${OUTPUT}"
 echo "Chapters (${CHAPTER_LIST}):"
 nl -ba "${CHAPTER_LIST}"

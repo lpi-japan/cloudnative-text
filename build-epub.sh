@@ -2,14 +2,9 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=scripts/resolve-build-mode.sh
-source "${ROOT_DIR}/scripts/resolve-build-mode.sh"
-
 LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 EPUB_CSS="${ROOT_DIR}/epub.css"
-IMAGE="${EPUB_IMAGE:-${TEXT_IMAGE:-ghcr.io/lpi-japan/cloudnative-text:latest}}"
-BUILD_MODE="$(resolve_build_mode "${EPUB_BUILD_MODE:-}")"
 OUT_DIR="${ROOT_DIR}/tmp"
 GUIDE_MD="${OUT_DIR}/.build-guide-${LANG}.md"
 OUTPUT="${OUT_DIR}/guide-${LANG}.epub"
@@ -27,6 +22,7 @@ PART_DIRS=(
 
 usage() {
   echo "Usage: $0 [ja|en]" >&2
+  echo "Local build: docker compose run --rm build ./build-epub.sh [ja|en]" >&2
   exit 1
 }
 
@@ -34,14 +30,10 @@ if [[ "${LANG}" != "ja" && "${LANG}" != "en" ]]; then
   usage
 fi
 
-if [[ "${BUILD_MODE}" == "docker" ]]; then
-  exec docker run --rm -i \
-    -e LANG="${LANG}" \
-    -e LC_ALL=C.UTF-8 \
-    -v "${ROOT_DIR}:/data" \
-    -w /data \
-    --entrypoint /bin/bash \
-    "${IMAGE}" -c "./build-epub.sh ${LANG}"
+if ! command -v pandoc >/dev/null 2>&1; then
+  echo "pandoc not found on PATH." >&2
+  echo "Use: docker compose run --rm build ./build-epub.sh ${LANG}" >&2
+  exit 1
 fi
 
 if [[ ! -d "${LANG_DIR}" ]]; then
@@ -99,7 +91,5 @@ fi
 )
 
 echo "Language: ${LANG}"
-echo "Build mode: ${BUILD_MODE}"
-echo "Image: ${IMAGE}"
 echo "Output: ${OUTPUT}"
 ls -lh "${OUTPUT}"

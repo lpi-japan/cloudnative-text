@@ -1,0 +1,21 @@
+# Local build environment (same image stack as CI).
+#
+#   docker compose run --rm build ./build-pdf.sh ja
+#   docker compose run --rm build ./build-epub.sh en
+#   docker compose build build    # after docker/ changes
+#
+# See docs/local-build.md
+
+name: cloudnative-text
+
+services:
+  build:
+    build:
+      context: ./docker
+    image: ghcr.io/lpi-japan/cloudnative-text:local
+    working_dir: /data
+    volumes:
+      - .:/data
+    environment:
+      LC_ALL: C.UTF-8
+    entrypoint: ["/bin/bash", "-lc"]

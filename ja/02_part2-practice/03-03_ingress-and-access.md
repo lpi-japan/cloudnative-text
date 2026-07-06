@@ -221,7 +221,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 
 
 
-#### 8. 何を「やっていないか」が重要
+### 8. 何を「やっていないか」が重要
 
 このハンズオンでは、次を行っていない。
 

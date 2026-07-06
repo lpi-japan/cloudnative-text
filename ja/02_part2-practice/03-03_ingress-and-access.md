@@ -60,7 +60,7 @@ GatewayClass がない場合、Controller が未導入の可能性がある。
 
 
 
-### 3.Gateway を作成する（外部からの入口を定義する）
+### 3. Gateway を作成する（外部からの入口を定義する）
 
 ##### GatewayClass を確認します。
 ```bash

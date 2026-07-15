@@ -43,6 +43,12 @@ if [[ ! -f "${LANG_DIR}/config-epub.yaml" || ! -f "${LANG_DIR}/crossref.yaml" ||
   exit 1
 fi
 
+COVER_IMAGE="${LANG_DIR}/image/Cover/電子版表紙_300dpi_2480x3508.png"
+if [[ ! -f "${COVER_IMAGE}" ]]; then
+  echo "missing cover image: ${COVER_IMAGE}" >&2
+  exit 1
+fi
+
 mkdir -p "${OUT_DIR}"
 
 RESOURCE_PATH="."
@@ -83,6 +89,7 @@ fi
     | pandoc -t epub3 -F pandoc-crossref -o "../${OUTPUT#${ROOT_DIR}/}" -N \
         -M "crossrefYaml=crossref.yaml" \
         --metadata-file="config-epub.yaml" \
+        --epub-cover-image="image/Cover/電子版表紙_300dpi_2480x3508.png" \
         --css="../epub.css" \
         --resource-path="${RESOURCE_PATH}"
 )

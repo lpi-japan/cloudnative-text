@@ -42,6 +42,12 @@ if [[ ! -f "${ROOT_DIR}/template.tex" || ! -f "${ROOT_DIR}/config-common-pdf.yam
   exit 1
 fi
 
+COVER_IMAGE="${LANG_DIR}/image/Cover/電子版表紙_300dpi_2480x3508.png"
+if [[ ! -f "${COVER_IMAGE}" ]]; then
+  echo "missing cover image: ${COVER_IMAGE}" >&2
+  exit 1
+fi
+
 mkdir -p "${OUT_DIR}"
 
 RESOURCE_PATH="."
@@ -80,13 +86,14 @@ mapfile -t chapters < "${CHAPTER_LIST}"
   cd "${LANG_DIR}"
   pandoc preface.md -o "../tmp/preface-${LANG}.tex" --resource-path="${RESOURCE_PATH}"
   printf '%s\n' '\captionsetup[figure]{labelformat=empty,labelsep=none}' >> "../tmp/preface-${LANG}.tex"
+  # 電子版 = 表紙画像あり（template.tex の wallpaper）。製本用に表紙なしが必要なら
+  # -M no-cover=true を付けた別出力を追加する（server-text の guide_no_cover.pdf 相当）。
   printf '%s\0' "${chapters[@]}" | xargs -0 pandoc \
     -d "../config-common-pdf.yaml" \
     -d "config-pdf.yaml" \
     --template "../template.tex" \
     --resource-path="${RESOURCE_PATH}" \
     -B "../tmp/preface-${LANG}.tex" \
-    -M "no-cover=true" \
     -o "../tmp/cloudnativetext_${LANG}.pdf"
 )
 

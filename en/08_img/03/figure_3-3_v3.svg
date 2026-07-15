@@ -29,7 +29,7 @@
      font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
 
   <title>Figure 3-3: Where Communication Control Lives</title>
-  <desc>Cloud Native テキスト 図版 図3-3 v1　Where Communication Control Lives: Application Side vs. Service Mesh</desc>
+  <desc>Cloud Native Textbook Figure 3-3 — Where Communication Control Lives: Application Side vs. Service Mesh</desc>
 
   <defs>
     <!-- フロー矢頭（オレンジ）Service間・Service→Sidecar -->

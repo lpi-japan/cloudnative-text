@@ -13,8 +13,8 @@
      xml:lang="en"
      font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
 
-  <title>図3-1 複雑さは消えない――置き場所が変わるだけ（v2）</title>
-  <desc>Cloud Native テキスト 図版 図3-1 v2　各サービスへ複雑さ分散配置</desc>
+  <title>Figure 3-1: Complexity Does Not Disappear — Only Its Location Changes (v2)</title>
+  <desc>Cloud Native Textbook Figure 3-1 v2 — Complexity distributed across services</desc>
 
   <!-- ═══ DEFINITIONS ═══ -->
   <defs>

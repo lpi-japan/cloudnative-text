@@ -18,7 +18,7 @@
      font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
 
   <title>Figure 4-2.1: Reconstructing the Processing Flow with Trace and Span</title>
-  <desc>Cloud Native テキスト 図版 図4-2.1 v2　Trace/Span 親子構造ガントチャート</desc>
+  <desc>Cloud Native Textbook Figure 4-2.1 v2 — Trace/Span parent–child structure Gantt chart</desc>
 
   <!-- 0. 背景 -->
   <rect width="1120" height="740" fill="#F5F7FA"/>

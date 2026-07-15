@@ -4,7 +4,7 @@ variables:
   documentclass: ltjarticle
   documentClass: ltjarticle
   mainfont: Harano Aji Gothic
-  bookVersion: 0.1.0
+  bookVersion: 1.0.0
   block-headings: true
 
 toc: true

@@ -34,8 +34,8 @@
      xml:lang="en"
      font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
 
-  <title>図4-2 リクエストが複数サービスを経由する</title>
-  <desc>Cloud Native テキスト 図版 図4-2 v1　リクエストが複数サービスを経由する</desc>
+  <title>Figure 4-2: A single request passing through multiple services</title>
+  <desc>Cloud Native Textbook Figure 4-2 — A single request passing through multiple services</desc>
 
   <defs>
     <!-- フロー矢頭（オレンジ）前方呼び出し -->

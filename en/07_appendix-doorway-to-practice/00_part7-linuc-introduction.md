@@ -20,9 +20,9 @@ Proof of an advanced engineer who can oversee the entire system lifecycle, inclu
 For more details about LinuC, please refer to the following website:
 
 ```
-https://linuc.org/about/01.html
+https://linuc.org/en/
 ```
 
-![https://linuc.org/about/01.html](image/Ch0/QRaboutLinuC_en.png){width=25%}
+![https://linuc.org/en/](image/Ch0/QRaboutLinuC_en.png){width=25%}
 
 \pagebreak

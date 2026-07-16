@@ -1,6 +1,6 @@
-# 2. CKA / CKAD / CKS — Differences from Intermediate and Advanced Certifications, and How to Approach Them
+## 3. CKA / CKAD / CKS — Differences from Intermediate and Advanced Certifications, and How to Approach Them
 
-## Intermediate Certifications Change the Scope of Responsibility
+### Intermediate Certifications Change the Scope of Responsibility
 
 Where KCNA examines structural understanding of cloud native as a whole,  
 CKA, CKAD, and CKS each address different roles and scopes of responsibility.
@@ -11,9 +11,9 @@ It is which domain to engage with deeply, and which responsibility to take on.
 That distinction shapes the direction of learning.
 
 
-## CKA (Certified Kubernetes Administrator)
+### CKA (Certified Kubernetes Administrator)
 
-### ■ Keeping a distributed environment running without stopping.
+#### ■ Keeping a distributed environment running without stopping.
 
 CKA is a certification centered on the operation and management of Kubernetes clusters.
 
@@ -27,9 +27,9 @@ and responding to change within an environment where failures and changes contin
 > "**Why does operation itself become design?**"
 
 
-## CKAD (Certified Kubernetes Application Developer)
+### CKAD (Certified Kubernetes Application Developer)
 
-### ■ Building with continuous change as the baseline assumption.
+#### ■ Building with continuous change as the baseline assumption.
 
 CKAD is a certification covering the design and deployment of applications that run on Kubernetes.
 
@@ -45,9 +45,9 @@ This domain concerns application design for the cloud native era.
 > "**Why do applications also become distributed by assumption?**"
 
 
-## CKS (Certified Kubernetes Security Specialist)
+### CKS (Certified Kubernetes Security Specialist)
 
-### ■ Maintaining safety while permitting change.
+#### ■ Maintaining safety while permitting change.
 
 CKS is a certification that specializes in security within Kubernetes environments.
 
@@ -80,7 +80,7 @@ and a certification for thinking about how to protect an entire cloud native env
 > CKA certification is required to register for CKS.
 
 
-## Where to Begin
+### Where to Begin
 
 There is no single correct order for learning.
 

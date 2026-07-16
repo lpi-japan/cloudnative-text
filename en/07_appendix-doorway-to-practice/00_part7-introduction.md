@@ -1,6 +1,6 @@
 # Appendix: Doorway to Practice — Certifications and Learning Roadmap
 
-## Introduction
+## The Role of This Appendix
 
 Throughout this textbook, cloud native has been organized not as a collection of technologies,  
 but as a structure: **how to observe, control, and operate a distributed environment that operates under the assumption of change.**

@@ -1,4 +1,4 @@
-## 1. KCNA（Kubernetes and Cloud Native Associate）
+## 2. KCNA（Kubernetes and Cloud Native Associate）
 
 ### KCNAとは
 

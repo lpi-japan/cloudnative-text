@@ -12,6 +12,12 @@ pre {
   border: 1px #aaa solid;
   background-color: #eee;
 }
+/* Pandoc skylighting: each highlighted line is a span with
+   display:inline-block (for line anchors / wrap indent on the Web).
+   Kindle Previewer doubles those lines; keep token colors, use inline. */
+pre > code.sourceCode > span {
+  display: inline;
+}
 table {
   margin: 0 auto 2em auto;
   border-collapse: collapse;

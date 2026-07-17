@@ -12,9 +12,9 @@ pre {
   border: 1px #aaa solid;
   background-color: #eee;
 }
-/* Pandoc skylighting: each highlighted line is a span with
-   display:inline-block (for line anchors / wrap indent on the Web).
-   Kindle Previewer doubles those lines; keep token colors, use inline. */
+/* Belt-and-suspenders for non-Kindle readers. Kindle Previewer ignores
+   this override for the embedded skylighting rule; build-epub.sh patches
+   that rule inside chapter XHTML (display:inline-block -> inline). */
 pre > code.sourceCode > span {
   display: inline;
 }

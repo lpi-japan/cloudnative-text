@@ -94,6 +94,51 @@ fi
         --resource-path="${RESOURCE_PATH}"
 )
 
+# Pandoc embeds skylighting CSS in each chapter <style>:
+#   pre > code.sourceCode > span { display: inline-block; ... }
+# Kindle Previewer treats that as doubled line spacing. External epub.css
+# overrides do not win there (pandoc#8528); patch the embedded rule in-place.
+# Uses Python (available in the build image) so we do not depend on unzip/zip.
+python3 - "${OUTPUT}" <<'PY'
+import sys
+import zipfile
+from pathlib import Path
+
+epub = Path(sys.argv[1])
+old = "pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }"
+new = "pre > code.sourceCode > span { display: inline; line-height: 1.25; }"
+out = epub.with_suffix(epub.suffix + ".patched")
+
+patched = 0
+with zipfile.ZipFile(epub, "r") as zin, zipfile.ZipFile(
+    out, "w"
+) as zout:
+    # EPUB: mimetype must be first and stored uncompressed.
+    mime = zin.read("mimetype")
+    zout.writestr("mimetype", mime, compress_type=zipfile.ZIP_STORED)
+    for info in zin.infolist():
+        if info.filename == "mimetype":
+            continue
+        data = zin.read(info.filename)
+        if info.filename.endswith(".xhtml"):
+            text = data.decode("utf-8")
+            if old in text:
+                text = text.replace(old, new)
+                data = text.encode("utf-8")
+                patched += 1
+        # Preserve compression type when possible.
+        dout = zipfile.ZipInfo(filename=info.filename, date_time=info.date_time)
+        dout.compress_type = info.compress_type
+        dout.external_attr = info.external_attr
+        zout.writestr(dout, data)
+
+if patched == 0:
+    print(f"warning: no skylighting inline-block rule found to patch in {epub}", file=sys.stderr)
+else:
+    print(f"Patched Kindle sourceCode CSS in {patched} xhtml file(s)")
+out.replace(epub)
+PY
+
 echo "Language: ${LANG}"
 echo "Output: ${OUTPUT}"
 ls -lh "${OUTPUT}"

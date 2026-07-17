@@ -8,6 +8,7 @@ EPUB_CSS="${ROOT_DIR}/epub.css"
 OUT_DIR="${ROOT_DIR}/tmp"
 GUIDE_MD="${OUT_DIR}/.build-guide-${LANG}.md"
 OUTPUT="${OUT_DIR}/cloudnativetext_${LANG}.epub"
+HL_CSS_KINDLE="${OUT_DIR}/.highlighting-kindle.css"
 
 PART_DIRS=(
   00_prologue
@@ -83,6 +84,36 @@ fi
     > "../${GUIDE_MD#${ROOT_DIR}/}"
 )
 
+# Pandoc embeds skylighting CSS via $highlighting-css$ with:
+#   pre > code.sourceCode > span { display: inline-block; ... }
+# Kindle Previewer doubles those lines (pandoc#8528). External --css does not
+# override it there. Pass a patched stylesheet through -V so the embedded
+# <style> is correct at pandoc write time (no post-EPUB rewrite).
+prepare_kindle_highlighting_css() {
+  local sample_md hl_tpl hl_default
+  sample_md="${OUT_DIR}/.hl-sample.md"
+  hl_tpl="${OUT_DIR}/.hl-extract.tpl"
+  hl_default="${OUT_DIR}/.highlighting-default.css"
+  printf '%s\n' '```bash' 'x' '```' > "${sample_md}"
+  printf '%s\n' '$highlighting-css$' > "${hl_tpl}"
+  pandoc "${sample_md}" --template="${hl_tpl}" -t html -o "${hl_default}"
+  python3 - "${hl_default}" "${HL_CSS_KINDLE}" <<'PY'
+import sys
+from pathlib import Path
+
+src, dst = Path(sys.argv[1]), Path(sys.argv[2])
+old = "pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }"
+new = "pre > code.sourceCode > span { display: inline; line-height: 1.25; }"
+text = src.read_text(encoding="utf-8")
+if old not in text:
+    raise SystemExit(f"expected skylighting rule not found in {src}")
+dst.write_text(text.replace(old, new), encoding="utf-8")
+print(f"Prepared Kindle-safe highlighting CSS: {dst}")
+PY
+}
+
+prepare_kindle_highlighting_css
+
 (
   cd "${LANG_DIR}"
   /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../${GUIDE_MD#${ROOT_DIR}/}" \
@@ -91,53 +122,9 @@ fi
         --metadata-file="config-epub.yaml" \
         --epub-cover-image="image/Cover/電子版表紙_300dpi_2480x3508.png" \
         --css="../epub.css" \
-        --resource-path="${RESOURCE_PATH}"
+        --resource-path="${RESOURCE_PATH}" \
+        -V highlighting-css="$(cat "${HL_CSS_KINDLE}")"
 )
-
-# Pandoc embeds skylighting CSS in each chapter <style>:
-#   pre > code.sourceCode > span { display: inline-block; ... }
-# Kindle Previewer treats that as doubled line spacing. External epub.css
-# overrides do not win there (pandoc#8528); patch the embedded rule in-place.
-# Uses Python (available in the build image) so we do not depend on unzip/zip.
-python3 - "${OUTPUT}" <<'PY'
-import sys
-import zipfile
-from pathlib import Path
-
-epub = Path(sys.argv[1])
-old = "pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }"
-new = "pre > code.sourceCode > span { display: inline; line-height: 1.25; }"
-out = epub.with_suffix(epub.suffix + ".patched")
-
-patched = 0
-with zipfile.ZipFile(epub, "r") as zin, zipfile.ZipFile(
-    out, "w"
-) as zout:
-    # EPUB: mimetype must be first and stored uncompressed.
-    mime = zin.read("mimetype")
-    zout.writestr("mimetype", mime, compress_type=zipfile.ZIP_STORED)
-    for info in zin.infolist():
-        if info.filename == "mimetype":
-            continue
-        data = zin.read(info.filename)
-        if info.filename.endswith(".xhtml"):
-            text = data.decode("utf-8")
-            if old in text:
-                text = text.replace(old, new)
-                data = text.encode("utf-8")
-                patched += 1
-        # Preserve compression type when possible.
-        dout = zipfile.ZipInfo(filename=info.filename, date_time=info.date_time)
-        dout.compress_type = info.compress_type
-        dout.external_attr = info.external_attr
-        zout.writestr(dout, data)
-
-if patched == 0:
-    print(f"warning: no skylighting inline-block rule found to patch in {epub}", file=sys.stderr)
-else:
-    print(f"Patched Kindle sourceCode CSS in {patched} xhtml file(s)")
-out.replace(epub)
-PY
 
 echo "Language: ${LANG}"
 echo "Output: ${OUTPUT}"

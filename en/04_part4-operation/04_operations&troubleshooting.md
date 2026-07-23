@@ -71,19 +71,13 @@ Ad hoc operations continue to generate drift from the original state.
 
 Furthermore:
 
-- It is necessary to grasp distributed services across them
-- It is necessary to track past state and changes
-- It is necessary to combine multiple pieces of information and make judgments
+- Distributed services must be understood across the board
+- Past state and changes must be tracked
+- Multiple pieces of information must be combined to make judgments
 
 kubectl alone cannot respond to this state.
 
-Therefore, a mechanism for handling:
-
-- Metrics
-- Logs
-- Tracing
-
-these pieces of information in an integrated manner becomes necessary.
+Therefore, a mechanism that integrates metrics, logs, and tracing becomes necessary.
 
 What matters is not the tools.  
 It is being in a state where information necessary for judgment can be handled.

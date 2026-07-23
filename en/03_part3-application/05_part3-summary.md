@@ -21,7 +21,7 @@ This is because **what matters is not what is chosen, but whether one is conscio
 
 The technologies and ideas that appeared in Part 3 are not things that eliminate problems.
 
-- Microservices is not something that reduces complexity — it is **a choice that relocates its placement**.
+- Microservices are not something that reduces complexity — it is **a choice that relocates its placement**.
 - GitOps is not something that eliminates judgment — it is **an idea that fixes judgment as a structure**.
 - Inter-service communication control is not something that avoids the difficulty of communication — it is **a design that decides where to face it**.
 - The behavior of communication is **a design as a rule** for how to act in response to its results.

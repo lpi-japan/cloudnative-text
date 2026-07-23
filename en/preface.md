@@ -10,7 +10,7 @@ To remain current with the latest technological trends, this textbook will be up
 For the most up-to-date information regarding this textbook, please refer to the following webpage:
 
 ```
-https://linuc.org/textbooks/cloudnative/
+https://linuc.org/en/textbooks/cloudnative/
 ```
 
 ## Purpose of This Textbook {.unlisted .unnumbered}
@@ -111,19 +111,9 @@ In a for-profit company or non-profit organization, conducting training or lectu
 Please use this textbook without making any alterations. Any modifications to this textbook are carried out by **LPI-Japan** or by organizations authorized by LPI-Japan.
 
 ## Feedback {.unlisted .unnumbered}
-We welcome feedback on Slack, which anyone can join. Please participate actively. For details on joining Slack, see the textbook web page below.
 
-```
-https://linuc.org/textbooks/cloudnative/
-```
+For feedback on this textbook or inquiries about its use, please contact:
 
-![https://linuc.org/textbooks/cloudnative/](image/Ch0/QR_cloudnative.png){width=25%}
+LPI-Japan Secretariat (Specified Non-Profit Organization)
 
-## Inquiries Regarding Use of This Textbook {.unlisted .unnumbered}
-LPI-Japan (Specified Non-Profit Organization) Secretariat
-
-```
-Inquiries: https://lpij.tayori.com/f/textbookinfo/
-```
-
-![https://lpij.tayori.com/f/textbookinfo/](image/Ch0/QR_toiawase.png){width=25%}
+<info@lpi.or.jp>

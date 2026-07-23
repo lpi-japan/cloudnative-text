@@ -4,7 +4,11 @@
 
 In cloud native learning, almost nothing is completed through a single technology alone.
 
-Operations, development, design, security, observation.
+- Operations
+- Development
+- Design
+- Security
+- Observation
 
 Each connects to the others  
 to constitute the system as a whole.
@@ -18,6 +22,7 @@ There are approaches that expand outward from the whole picture step by step,
 and approaches that go deeper from a specific role or responsibility.
 
 The following presents representative learning progressions as examples.
+
 
 
 ### 1: For Those Who Want to Learn Progressively
@@ -36,6 +41,7 @@ while gradually moving into practice and specialized domains.
 | Step 5 | Branch into CKA / CKAD / CKS |
 
 > "**Why does partial understanding alone make overall operations more difficult?**"
+
 
 
 ### 2: For Those Who Want to Move Toward Operations
@@ -59,6 +65,7 @@ This path goes deeper into operational judgment and state awareness in distribut
 > "**Why does 'operations' itself become critical in a distributed environment?**"
 
 
+
 ### 3: For Those Who Want to Move Toward Development and Design
 
 #### Build with the assumption of continuous change.
@@ -79,6 +86,7 @@ this path develops understanding of how to connect
 and how to operate within an environment of continuous change.
 
 > "**Why must design also take 'change' as its baseline assumption?**"
+
 
 
 ### 4: For Those Who Want to Move Toward Security
@@ -105,6 +113,7 @@ while preserving flexibility.
 > "**Why do 'boundaries' become more critical as systems become more distributed?**"
 
 
+
 ### ■ In Closing
 
 Cloud native is not a world that can be completed through a single technology.
@@ -118,4 +127,5 @@ Cloud native itself is a world that takes change as its baseline assumption —
 and so the way of learning is likewise not something that becomes fixed.
 
 If this textbook can serve as an entry point into that world, that is its purpose.
+
 

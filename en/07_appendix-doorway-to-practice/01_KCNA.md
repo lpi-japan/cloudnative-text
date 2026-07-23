@@ -13,6 +13,7 @@ It is a certification that examines structural understanding of cloud native as 
 In that sense, it connects naturally to the knowledge framework developed throughout this textbook.
 
 
+
 ### Exam Overview
 
 | Item | Details |
@@ -27,10 +28,10 @@ In that sense, it connects naturally to the knowledge framework developed throug
 > ※ Exam content and format are subject to change. Please verify official information at the time of registration.
 
 
+
 ### Domains Covered by KCNA
 
 KCNA organizes the cloud native world into the following broad domains.
-
 
 #### 1: Cloud Native Fundamentals (Where everything begins.)
 
@@ -68,7 +69,9 @@ Service, DNS, Ingress, and related components.
 > "**Why are connection targets not fixed?**"
 
 
+
 The relationship between this textbook and these domains is organized in the table below.
+
 
 
 ### Correspondence with This Textbook
@@ -85,4 +88,5 @@ What matters is not memorizing KCNA terminology.
 
 It is connecting names from a knowledge framework  
 to the structures already understood through this textbook.
+
 

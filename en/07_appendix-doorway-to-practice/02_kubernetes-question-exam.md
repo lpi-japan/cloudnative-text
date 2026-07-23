@@ -11,6 +11,7 @@ It is which domain to engage with deeply, and which responsibility to take on.
 That distinction shapes the direction of learning.
 
 
+
 ### CKA (Certified Kubernetes Administrator)
 
 #### ■ Keeping a distributed environment running without stopping.
@@ -25,6 +26,7 @@ this certification demands an operational practice of grasping state
 and responding to change within an environment where failures and changes continue to occur.
 
 > "**Why does operation itself become design?**"
+
 
 
 ### CKAD (Certified Kubernetes Application Developer)
@@ -43,6 +45,7 @@ and how to continuously apply changes to it.
 This domain concerns application design for the cloud native era.
 
 > "**Why do applications also become distributed by assumption?**"
+
 
 
 ### CKS (Certified Kubernetes Security Specialist)
@@ -78,6 +81,7 @@ and a certification for thinking about how to protect an entire cloud native env
 
 > > [!WARNING]  
 > CKA certification is required to register for CKS.
+
 
 
 ### Where to Begin

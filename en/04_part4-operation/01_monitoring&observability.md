@@ -1,7 +1,7 @@
-# Chapter 1: Monitoring and Observability – Visibility Alone Is Not Enough for Judgment
+## Chapter 1: Monitoring and Observability – Visibility Alone Is Not Enough for Judgment
 
 
-## 1. The Moment of Distribution Is When "The Whole Becomes Invisible"
+### 1. The Moment of Distribution Is When "The Whole Becomes Invisible"
 
 In a single application:
 
@@ -27,7 +27,8 @@ From this moment, the state of the system can no longer be grasped in one place.
 ![Figure 4-1: The Moment of Distribution Is When the Whole Becomes Invisible](../08_img/04/figure_4-1.0_v4.svg)
 
 
-## 2. The State of "Visible but Not Understandable"
+
+### 2. The State of "Visible but Not Understandable"
 
 Even in a distributed system:
 
@@ -48,7 +49,8 @@ Each can be observed,
 but how they connect as a single problem is not clear.
 
 
-## 3. Observation Is Possible, but Judgment Is Not
+
+### 3. Observation Is Possible, but Judgment Is Not
 
 Having information and being able to make judgments are different things.
 
@@ -61,7 +63,8 @@ Only by connecting how those things relate to one another
 does the state of the whole become visible.
 
 
-## 4. From "Seeing" to "Judging"
+
+### 4. From "Seeing" to "Judging"
 
 What is needed here is not an increase in information.
 
@@ -76,7 +79,8 @@ Only by being able to make these judgments
 does stable operations first become viable.
 
 
-## 5. What Is Observability?
+
+### 5. What Is Observability?
 
 Observability is not seeing everything.
 
@@ -96,7 +100,8 @@ Therefore, Observability is also
 a design for deciding **how far to observe**.
 
 
-## 6. The Difference from Monitoring
+
+### 6. The Difference from Monitoring
 
 Monitoring watches pre-determined indicators.
 
@@ -120,4 +125,15 @@ It is the judgment of what to observe.
 ![Figure 4-1.1: Coverage of Monitoring and Observability](../08_img/04/figure_4-1.1_v1.svg)
 
 
-## 7. The Questi
+
+### 7. The Question That Remains
+
+Once observation becomes possible, is that sufficient?
+
+- Which information should be looked at?
+- How should they be related?
+- How should abnormalities be judged?
+
+How do those become a single judgment?
+
+

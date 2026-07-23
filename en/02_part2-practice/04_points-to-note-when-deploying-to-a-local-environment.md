@@ -1,4 +1,4 @@
-# Chapter 4: Points to Note When Deploying to a Local Environment – More Freedom Means More Responsibility
+## Chapter 4: Points to Note When Deploying to a Local Environment – More Freedom Means More Responsibility
 
 
 Through Chapter 3, using KillerCoda for practice, the following were experienced firsthand.
@@ -9,7 +9,7 @@ Through Chapter 3, using KillerCoda for practice, the following were experienced
 
 From here, the environment changes.
 
-## 1. Differences Between Learning Environments and Local Environments
+### 1. Differences Between Learning Environments and Local Environments
 
 In a learning environment such as KillerCoda:
 
@@ -32,9 +32,9 @@ This does not mean Kubernetes has become more difficult.
 **It simply means there is no longer anything absorbing the assumptions.**
 
 
-## 2. Points Where Environment Differences Become Visible
+### 2. Points Where Environment Differences Become Visible
 
-### 2-1. Network
+#### 2-1. Network
 
 In a local environment:
 
@@ -50,7 +50,7 @@ It occurs because the network boundary and DNS configuration
 in a local environment differ from those in a learning environment.
 
 
-### 2-2. Resources (CPU / Memory)
+#### 2-2. Resources (CPU / Memory)
 
 In a local environment:
 
@@ -72,7 +72,7 @@ These tend to occur in local environments, but can similarly occur in remote env
 What matters is that this is not a Kubernetes problem — it is a property of the foundation, and is part of the assumption.
 
 
-### 2-3. Storage
+#### 2-3. Storage
 
 In a local environment:
 
@@ -93,7 +93,7 @@ The actual dependencies are:
 
 
 
-## 3. Freedom and Responsibility
+### 3. Freedom and Responsibility
 
 In a local environment:
 
@@ -107,7 +107,7 @@ This is not difficulty.
 
 
 
-## 4. Connection to the Assumptions of Part 1
+### 4. Connection to the Assumptions of Part 1
 
 All the gaps encountered up to this point connect back to Part 1.
 
@@ -124,7 +124,7 @@ Kubernetes is not a mechanism for hiding those.
 
 
 
-## 5. Summary
+### 5. Summary
 
 When the environment changes, where responsibility lies also changes.  
 Which assumptions, and who is taking them on?

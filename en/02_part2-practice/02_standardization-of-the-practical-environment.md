@@ -1,7 +1,7 @@
-# Chapter 2: Standardizing the Practice Environment – Aligning Assumptions for Observation
+## Chapter 2: Standardizing the Practice Environment – Aligning Assumptions for Observation
 
 
-## 1. Why Align the Environment?
+### 1. Why Align the Environment?
 
 In learning Kubernetes, behavior changes depending on the environment.
 
@@ -15,7 +15,7 @@ comes from this gap in assumptions.
 
 
 
-## 2. How This Part Handles It
+### 2. How This Part Handles It
 
 In this part, the impact of environment differences is minimized.
 
@@ -48,7 +48,7 @@ with elements other than "what to learn" removed as much as possible.
 
 
 
-## 3. The Role of the Environment
+### 3. The Role of the Environment
 
 The environment used here is not one that closely resembles production, nor is it feature-rich.  
 It is one that reduces differences unrelated to the essence of learning.
@@ -69,7 +69,7 @@ It is simply the foundation for understanding structure and behavior.
 
 
 
-## 4. Confirmation Before Entering Practice
+### 4. Confirmation Before Entering Practice
 
 What matters here is not the environment itself.  
 It is being conscious of what assumptions the observation is being made under.

@@ -1,4 +1,4 @@
-# Part 2 Summary – Connecting What Was Experienced Firsthand to Design
+## Part 2 Summary – Connecting What Was Experienced Firsthand to Design
 
 
 What was done in this part was not operations.

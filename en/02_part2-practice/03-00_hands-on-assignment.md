@@ -1,7 +1,7 @@
-# Chapter 3: Hands-On Assignment – Experiencing Kubernetes Behavior Firsthand
+## Chapter 3: Hands-On Assignment – Experiencing Kubernetes Behavior Firsthand
 
 
-## 1. Purpose of This Chapter
+### 1. Purpose of This Chapter
 
 In this chapter, Kubernetes resources are actually handled  
 and their behavior is observed.
@@ -18,7 +18,7 @@ actually appear as behavior.
 
 
 
-## 2. How to Observe in This Chapter
+### 2. How to Observe in This Chapter
 
 In the hands-on work, the following perspectives are kept in mind.
 
@@ -30,7 +30,7 @@ In this chapter, by intentionally breaking and intentionally recovering, that de
 
 
 
-## 3. Main Resources Appearing in This Chapter
+### 3. Main Resources Appearing in This Chapter
 
 In this chapter, several Kubernetes resources are handled.  
 There is no need to memorize the details here.
@@ -57,7 +57,7 @@ What matters is not memorizing the names.
 Confirm through actual behavior why the roles are separated.
 
 
-### 3-1. Pod / Deployment / Service – Separation of Execution Unit and Responsibility
+#### 3-1. Pod / Deployment / Service – Separation of Execution Unit and Responsibility
 
 ■ Question  
 When units are separated,  
@@ -82,7 +82,7 @@ it is designed to restore when something breaks.
 
 
 
-### 3-2. ConfigMap / Secret / Volume – Separating Configuration from Execution
+#### 3-2. ConfigMap / Secret / Volume – Separating Configuration from Execution
 
 ■ Question  
 Why is configuration separated from execution?
@@ -105,7 +105,7 @@ it is replacement.
 
 
 
-### 3-3. Ingress / Gateway – Where Is the Boundary Placed?
+#### 3-3. Ingress / Gateway – Where Is the Boundary Placed?
 
 ■ Question  
 Where is external connectivity handled?
@@ -120,7 +120,7 @@ but "how it is intended to be handled."
 
 
 
-### 3-4. kubectl – Used for Observation, Not Operation
+#### 3-4. kubectl – Used for Observation, Not Operation
 
 In this chapter, the following commands are used.
 
@@ -139,7 +139,7 @@ That is what it is used for.
 
 
 
-## 4. Summary of This Chapter
+### 4. Summary of This Chapter
 
 What was done in this chapter is not memorizing operations.
 

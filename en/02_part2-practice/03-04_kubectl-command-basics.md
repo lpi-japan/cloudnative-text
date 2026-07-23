@@ -1,4 +1,4 @@
-# 3-4 kubectl Command Basics – A Tool for "Viewing State," Not for Operating
+## 3-4 kubectl Command Basics – A Tool for "Viewing State," Not for Operating
 
 
 In the hands-on work of this chapter, several kubectl commands are used.  
@@ -22,7 +22,7 @@ In this chapter,
 
 are the focus, using kubectl in the way of observing state.
 
-## 1. What Is kubectl?
+### 1. What Is kubectl?
 
 
 kubectl is an interface for confirming cluster state  
@@ -33,11 +33,11 @@ kubectl itself does not make judgments or manage resources.
 - Kubernetes makes the judgments
 - kubectl only "communicates" and "views"
 
-## 2. kubectl get
+### 2. kubectl get
 
 
 
-#### View the current state as a list
+##### View the current state as a list
 
 ```bash
 kubectl get pod
@@ -57,9 +57,9 @@ Detailed reasons cannot be determined.
 
 
 
-## 3. kubectl describe
+### 3. kubectl describe
 
-#### View the detailed state
+##### View the detailed state
 
 ```bash
 kubectl describe pod sample-pod
@@ -78,9 +78,9 @@ describe is a tool for confirming the detailed state of individual resources.
 
 
 
-## 4. kubectl apply
+### 4. kubectl apply
 
-#### Communicate the Desired State
+##### Communicate the Desired State
 ```bash
 kubectl apply -f deployment.yaml
 ```
@@ -98,9 +98,9 @@ and acts to close that gap.
 
 
 
-## 5. kubectl delete
+### 5. kubectl delete
 
-#### Break the state
+##### Break the state
 ```bash
 kubectl delete pod sample-pod
 ```
@@ -118,8 +118,8 @@ This is the behavior that occurs.
 
 
 
-## 6. kubectl scale
-#### Change only the count
+### 6. kubectl scale
+##### Change only the count
 ```bash
 kubectl scale deployment sample-deployment --replicas=3
 ```
@@ -135,9 +135,9 @@ These are determined by Kubernetes.
 
 
 
-## 7. kubectl expose
+### 7. kubectl expose
 
-#### Create a connection point
+##### Create a connection point
 ```bash
 kubectl expose deployment sample-deployment --type=ClusterIP --port=80
 ```
@@ -155,8 +155,8 @@ The Service takes on that responsibility.
 
 
 
-## 8. kubectl logs / exec
-#### Tools for "looking inside"
+### 8. kubectl logs / exec
+##### Tools for "looking inside"
 ```bash
 kubectl logs <pod-name>
 kubectl exec -it <pod-name> -- /bin/sh
@@ -171,7 +171,7 @@ They are tools for observation only.
 
 
 
-## 9. Summary
+### 9. Summary
 
 The correspondence to understand at this point is as follows.
 

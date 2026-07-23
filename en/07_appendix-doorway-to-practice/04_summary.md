@@ -1,4 +1,4 @@
-## Conclusion
+## Summary
 
 Throughout this textbook, cloud native has been organized not as a set of technical terms or products,  
 but as a structure: "how to observe, control, and operate a distributed environment that operates under the assumption of change."

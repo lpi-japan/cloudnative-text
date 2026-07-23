@@ -11,7 +11,7 @@ kubectl has commands such as delete and scale that change state.
 However, in essence, it is a tool for confirming and understanding:
 
 - What state is the cluster currently in?
-- What is happening compared to the Desired State?
+- What is happening compared to the desired state?
 
 In this chapter,
 
@@ -73,7 +73,7 @@ describe is a tool for confirming the detailed state of individual resources.
 
 ### 4. kubectl apply
 
-##### Communicate the Desired State
+##### Communicate the desired state
 
 ```bash
 kubectl apply -f deployment.yaml
@@ -88,7 +88,7 @@ Kubernetes compares:
 - The declared state
 
 and acts to close that gap.  
-**Declare the Desired State**
+**Declare the desired state**
 
 ### 5. kubectl delete
 
@@ -170,7 +170,7 @@ The correspondence to understand at this point is as follows.
 |-----------|-------------------------|
 | get | View what currently exists |
 | describe | View the detailed state |
-| apply | Declare the Desired State |
+| apply | Declare the desired state |
 | delete | Break the state and observe behavior |
 | scale | Change only the count |
 | expose | Create a connection point |

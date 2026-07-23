@@ -2,21 +2,15 @@
 
 ### 1. What Became a Problem in a World of More Containers?
 
-With containers, applications could be treated as small units.
-
+With containers, applications could be treated as small units.  
 As a result, units increased, execution locations became distributed,  
 and failure became not an exception but an assumption.
 
-In this state,  
-it is not realistic for people to manage each unit individually.
+In this state, it is not realistic for people to manage each unit individually.  
+As the number grows, states diverge and understanding the whole becomes difficult.
 
-As the number grows,  
-states diverge and understanding the whole becomes difficult.
-
-What becomes a problem in this state is not the behavior of individual applications.
-
-Who, and how,  
-keeps these ever-increasing units viable as a whole?
+What becomes a problem in this state is not the behavior of individual applications.  
+Who, and how, keeps these ever-increasing units viable as a whole?
 
 ### 2. What Does Kubernetes Take Responsibility For?
 
@@ -25,18 +19,13 @@ Kubernetes is a mechanism designed to address this problem.
 What it handles is not individual containers.  
 It is the state in which the whole remains viable.
 
-Rather than people operating individually,  
-maintaining the state in which the whole remains viable becomes the assumption.
+Rather than people operating individually, maintaining the state in which the whole remains viable becomes the assumption.  
+Not where something is running, but what state it should continue to be in — that is what is addressed.  
+So that the state is maintained, scheduling, restarting, and adjustment continue to take place.
 
-Not where something is running,  
-but what state it should continue to be in — that is what is addressed.
+### 3. Managing State and Continuously Closing the Gap
 
-So that the state is maintained,  
-scheduling, restarting, and adjustment continue to take place.
-
-### 3. Managing State and Continuously Closing the Gap (Reconciliation)
-
-Kubernetes treats the current state and the Desired State separately.
+Kubernetes treats the current state and the desired state separately.
 
 Not "what to do,"  
 but "what should be the case" is defined.
@@ -66,7 +55,7 @@ To keep this mechanism viable, the roles are divided broadly into two.
 The side that handles state and keeps the whole viable,  
 and the side that actually runs applications.
 
-The former understands the Desired State,  
+The former understands the desired state,  
 and continues to make judgments so that state is maintained.
 
 The latter receives the resulting instructions  
@@ -102,7 +91,7 @@ Because it can handle multiple machines together,
 it may appear that way.
 
 In reality, however, it does not directly manage resources —  
-it is responsible for the control required to maintain the Desired State.
+it is responsible for the control required to maintain the desired state.
 
 Execution itself is delegated to the OS and the mechanisms on top of it.
 

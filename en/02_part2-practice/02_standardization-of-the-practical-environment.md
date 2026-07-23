@@ -19,9 +19,9 @@ In this part, the impact of environment differences is minimized.
 The purpose is not to perform operations, but to observe behavior itself.  
 Therefore, in this part, a pre-configured environment is used as the assumption.
 
-In this textbook, the **KillerCoda** environment is used.
+In this textbook, the **Killercoda** environment is used.
 
-KillerCoda is a hands-on environment for learning Kubernetes  
+Killercoda is a hands-on environment for learning Kubernetes  
 and cloud-native technologies in a browser.
 
 It can be started easily using a Google account or similar,  

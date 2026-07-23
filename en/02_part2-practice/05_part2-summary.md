@@ -14,7 +14,7 @@ In this situation, breaking is not an exception —
 recovery becomes the assumption.
 
 Rather than people making each operation viable individually,  
-the Desired State is defined and viability is left to the mechanism.
+the desired state is defined and viability is left to the mechanism.
 
 What becomes important here  
 is the boundary of what is delegated and what is taken on oneself.

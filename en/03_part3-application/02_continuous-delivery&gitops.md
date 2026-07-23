@@ -9,7 +9,7 @@ This approach remained viable in environments where change frequency was low and
 However, when applications are divided and the unit of change becomes smaller, this assumption breaks down.
 
 Small changes occur frequently, and it becomes necessary to continuously track "who changed what, and when."  
-An increase in changes means a corresponding increase in the possibility of State Drift.
+An increase in changes means a corresponding increase in the possibility that state will drift.
 
 - Unintended changes become mixed in
 - The state that is currently applied becomes unclear
@@ -65,7 +65,7 @@ Therefore, **a design is chosen that separates the act of deployment itself from
 
 One way of organizing this challenge is GitOps.
 
-In GitOps, the Desired State of the environment is defined in Git,  
+In GitOps, the desired state of the environment is defined in Git,  
 and a structure is taken in which the actual environment is continuously brought closer to that state.
 
 What matters here is not the tool.  
@@ -83,7 +83,7 @@ Git is used because **it exists as a structure for managing change**
 
 ### 5. The Relationship Between Kubernetes and GitOps
 
-Kubernetes is a foundation on which the Desired State can be defined declaratively.  
+Kubernetes is a foundation on which the desired state can be defined declaratively.  
 The desired state is described, and the gap with the current state continues to be closed.
 
 This property aligns with GitOps.

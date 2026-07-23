@@ -61,7 +61,7 @@ What was covered in a previous part will reappear in a different form.
 
 Through that back-and-forth, understanding accumulates.
 
-### 5. Transferability
+### 5. Reproducibility
 
 The structures addressed in this textbook do not depend on any specific product or environment.
 

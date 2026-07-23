@@ -57,7 +57,7 @@ Without these:
 
 **The system as a whole becomes unstable**
 
-![Figure 3-4: Latency Spreads to the Whole](../08_img/03/figure_3-4_v1.svg)
+![Figure 3-4: Latency Propagates Upstream](../08_img/03/figure_3-4_v1.svg)
 
 ### 5. What Cannot Be Seen Cannot Be Controlled
 

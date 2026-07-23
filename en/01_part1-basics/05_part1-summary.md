@@ -35,7 +35,7 @@ the structure of the whole finally becomes visible.
 
 What matters is not memorizing all the details of individual technologies.
 
-It is being able to isolate and understand  
+Being able to isolate and understand  
 where something is happening and what is happening there.
 
 And there is one more important point.  

@@ -1,6 +1,6 @@
 ## 3-2 Hands-On: ConfigMap / Secret / Volume – Separating Configuration from Execution
 
-Assumed environment: KillerCoda (Kubernetes cluster running)  
+Assumed environment: Killercoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
 ### 0. Pre-Check

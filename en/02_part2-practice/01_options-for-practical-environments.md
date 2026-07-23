@@ -28,7 +28,7 @@ tools such as Minikube, Kind, k3s, or Docker Desktop are used,
 and it is necessary to take on part of the setup and control oneself.
 
 On the other hand, as a pre-configured environment,  
-there are options such as KillerCoda where the execution environment is provided.
+there are options such as Killercoda where the execution environment is provided.
 
 Neither is superior.
 

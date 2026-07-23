@@ -50,7 +50,7 @@ and changes are treated as managed events.
 What to fix and what to change  
 is left to the team's own judgment.
 
-![Figure 1-4: The Difference in Assumptions Between Cloud and On-Premise](../08_img/01/figure_1-3_v2.svg)
+![Figure 1-3: The Difference in Assumptions Between Cloud and On-Premise](../08_img/01/figure_1-3_v2.svg)
 
 ### 4. What Is Different?
 

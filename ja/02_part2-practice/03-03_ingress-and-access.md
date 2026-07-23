@@ -1,6 +1,6 @@
 ## 3-3 ハンズオン：Gateway API とアクセス確認 ～外から入る責務はどこにあるのか～
 
-想定環境：KillerCoda（Kubernetes クラスタ起動済み）  
+想定環境：Killercoda（Kubernetes クラスタ起動済み）  
 以降の操作はすべて kubectl を使用します。
 
 ### 0. 前提確認

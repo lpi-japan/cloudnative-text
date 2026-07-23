@@ -2,14 +2,10 @@
 
 ### 1. Why Return to the Foundation Now?
 
-Cloud and Kubernetes  
-appear to be self-contained on their own layer.
+Cloud and Kubernetes appear to be self-contained on their own layer.  
+In reality, however, everything they do depends on the layer beneath them.
 
-In reality, however,  
-everything they do depends on the layer beneath them.
-
-The assumptions have not disappeared.
-
+The assumptions have not disappeared.  
 **They have simply become invisible.**
 
 Through abstraction, things have become easier to handle,  

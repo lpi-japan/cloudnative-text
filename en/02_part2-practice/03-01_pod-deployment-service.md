@@ -1,6 +1,6 @@
 ## 3-1 Hands-On: Pod / Deployment / Service – Break, Restore, Delegate
 
-Assumed environment: KillerCoda (Kubernetes cluster running)  
+Assumed environment: Killercoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
 ### 0. Pre-Check (Viewing the Current State)
@@ -70,7 +70,7 @@ it is a mechanism that operates based on "what the state should be."
 This Pod has no definition stating "it should continue to exist."
 
 Therefore, even if it is deleted, from Kubernetes's perspective  
-no "gap from the Desired State" has occurred.
+no "gap from the desired state" has occurred.
 
 **What has no defined state to protect is not maintained**
 

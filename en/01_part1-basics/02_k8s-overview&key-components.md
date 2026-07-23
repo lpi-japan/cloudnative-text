@@ -2,21 +2,15 @@
 
 ### 1. What Became a Problem in a World of More Containers?
 
-With containers, applications could be treated as small units.
-
+With containers, applications could be treated as small units.  
 As a result, units increased, execution locations became distributed,  
 and failure became not an exception but an assumption.
 
-In this state,  
-it is not realistic for people to manage each unit individually.
+In this state, it is not realistic for people to manage each unit individually.  
+As the number grows, states diverge and understanding the whole becomes difficult.
 
-As the number grows,  
-states diverge and understanding the whole becomes difficult.
-
-What becomes a problem in this state is not the behavior of individual applications.
-
-Who, and how,  
-keeps these ever-increasing units viable as a whole?
+What becomes a problem in this state is not the behavior of individual applications.  
+Who, and how, keeps these ever-increasing units viable as a whole?
 
 ### 2. What Does Kubernetes Take Responsibility For?
 
@@ -25,14 +19,9 @@ Kubernetes is a mechanism designed to address this problem.
 What it handles is not individual containers.  
 It is the state in which the whole remains viable.
 
-Rather than people operating individually,  
-maintaining the state in which the whole remains viable becomes the assumption.
-
-Not where something is running,  
-but what state it should continue to be in — that is what is addressed.
-
-So that the state is maintained,  
-scheduling, restarting, and adjustment continue to take place.
+Rather than people operating individually, maintaining the state in which the whole remains viable becomes the assumption.  
+Not where something is running, but what state it should continue to be in — that is what is addressed.  
+So that the state is maintained, scheduling, restarting, and adjustment continue to take place.
 
 ### 3. Managing State and Continuously Closing the Gap
 

@@ -1,7 +1,7 @@
-# Chapter 3: Characteristics of Cloud vs. On-Premise – Thinking About Where to Run as a Structure
+## Chapter 3: Characteristics of Cloud vs. On-Premise – Thinking About Where to Run as a Structure
 
 
-## 1. Why Does the Debate Never Converge?
+### 1. Why Does the Debate Never Converge?
 
 Discussions about cloud and on-premise often reach no conclusion.
 
@@ -18,7 +18,8 @@ When assumptions differ, the appropriate design and judgment differ as well.
 Note that the characteristics described here represent general tendencies. It is possible to adopt a fixed configuration on cloud, or to adopt a design that assumes change on-premise.
 
 
-## 2. The Assumption of Cloud
+
+### 2. The Assumption of Cloud
 
 Note that the cloud referred to here is in the sense of an execution platform,  
 and should be understood separately from the design philosophy of cloud native.
@@ -39,7 +40,8 @@ Rather than maintaining the environment,
 viability is maintained while accepting change.
 
 
-## 3. The Assumption of On-Premise
+
+### 3. The Assumption of On-Premise
 
 On-premise is not the opposite of cloud.  
 It is an environment in which the assumption is that you control it yourself.
@@ -56,13 +58,14 @@ is left to the team's own judgment.
 ![Figure 1-4: The Difference in Assumptions Between Cloud and On-Premise](../08_img/01/figure_1-3_v2.svg)
 
 
-## 4. What Is Different?
+
+### 4. What Is Different?
 
 The difference is not performance or cost.
 
-What is assumed to change,  
-what is assumed to stay fixed,  
-and who takes responsibility.
+- What is assumed to change
+- What is assumed to stay fixed
+- Who takes responsibility
 
 The way assumptions are set differs.
 
@@ -78,7 +81,8 @@ When assumptions change,
 how viability is achieved changes as well.
 
 
-## 5. Choosing an Assumption
+
+### 5. Choosing an Assumption
 
 Deciding where to run something  
 is not a matter of choosing an environment.
@@ -91,14 +95,18 @@ or to control and fix.
 That choice changes the meaning of design.  
 What is assumed determines what problem is being addressed.
 
-What is to be kept viable?  
-How much is left to the mechanism?  
-How much is taken on by the team itself?
+- What is to be kept viable
+- How much is left to the mechanism
+- How much is taken on by the team itself
 
 The way those questions are framed changes.
 
 
-## 6. The Question That Remains
+
+### 6. The Question That Remains
 
 The unit has been separated, and its viability has come to be controlled.  
-And the envi
+And the environment that serves as its assumption has also been organized.
+
+Then, what supports those assumptions?
+

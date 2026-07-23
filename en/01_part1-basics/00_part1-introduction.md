@@ -16,6 +16,7 @@ Yet certain situations tend to arise.
 - When problems occur, cannot determine where to look
 
 
+
 The issue here is not the technology.  
 **It is the inability to see the whole as a structure.**
 
@@ -32,8 +33,10 @@ Four areas are addressed.
 Each of these is a distinct problem.
 
 
+
 What matters is not understanding everything.  
 **It is being able to isolate where something is happening and what is happening there.**
 
 Carry this perspective forward into the next chapter.
+
 

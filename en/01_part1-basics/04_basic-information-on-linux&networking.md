@@ -1,7 +1,7 @@
-# Chapter 4: Fundamentals of Linux and Networking – Putting Words to the Foundation That Underlies Everything
+## Chapter 4: Fundamentals of Linux and Networking – Putting Words to the Foundation That Underlies Everything
 
 
-## 1. Why Return to the Foundation Now?
+### 1. Why Return to the Foundation Now?
 
 Cloud and Kubernetes  
 appear to be self-contained on their own layer.
@@ -17,7 +17,8 @@ Through abstraction, things have become easier to handle,
 and with that, opportunities to be aware of those assumptions have decreased.
 
 
-## 2. The Assumption of Linux
+
+### 2. The Assumption of Linux
 
 Much of the mechanism behind both containers and Kubernetes is built on Linux capabilities and concepts.
 
@@ -37,7 +38,8 @@ Therefore, they are created when needed
 and discarded when no longer needed.
 
 
-## 3. Resources Are Not Always Stable
+
+### 3. Resources Are Not Always Stable
 
 CPU and memory cannot always be used in the same way.
 
@@ -49,16 +51,18 @@ These are not exceptions.
 **They are unavoidable properties of handling finite resources.**  
 In an abstracted environment, these constraints become difficult to see.
 
-But they have not disappeared —  
+However, they have not disappeared —  
 they have simply become invisible.
 
 
-## 4. The Assumption of Networking
+
+### 4. The Assumption of Networking
 
 The network does not always connect.
 
-Latency occurs, ordering is disrupted,  
-connections drop without warning.
+- Latency occurs
+- Ordering is disrupted
+- Connections drop without warning
 
 For example, when communication is slow,  
 the cause may not be immediately clear.
@@ -68,7 +72,8 @@ These are not exceptions.
 **They are properties that arise within a finite environment, and are part of its assumptions.**
 
 
-## 5. Failure Is an Assumption
+
+### 5. Failure Is an Assumption
 
 With containers, units are separated,  
 and with Kubernetes, they come to be controlled.
@@ -85,16 +90,17 @@ What is needed is
 **a structure from which recovery is possible when failure occurs.**
 
 
-## 6. Who Takes Responsibility for the Assumptions?
+
+### 6. Who Takes Responsibility for the Assumptions?
 
 These assumptions are always taken on somewhere.
 
 Resource constraints and network uncertainty  
 cannot simply be left unaddressed.
 
-Does the application take them on directly?  
-Does a control mechanism such as Kubernetes absorb them?  
-Does the cloud environment abstract them and make them invisible?
+- Does the application take them on directly?
+- Does a control mechanism such as Kubernetes absorb them?
+- Does the cloud environment abstract them and make them invisible?
 
 Somewhere, they are always taken on.
 
@@ -102,7 +108,8 @@ Where responsibility lies
 changes the meaning of design.
 
 
-## 7. The Question That Remains
+
+### 7. The Question That Remains
 
 What has been examined up to this point is not new technology.  
 Everything rests on assumptions that already existed.

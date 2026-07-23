@@ -9,7 +9,6 @@ Through Chapter 3, using KillerCoda for practice, the following were experienced
 
 From here, the environment changes.
 
-
 ## 1. Differences Between Learning Environments and Local Environments
 
 In a learning environment such as KillerCoda:
@@ -93,6 +92,7 @@ The actual dependencies are:
 - Mounts
 
 
+
 ## 3. Freedom and Responsibility
 
 In a local environment:
@@ -104,6 +104,7 @@ On the other hand, the reason when things do not work must also be taken on by t
 This is not difficulty.
 
 **It is simply that where responsibility lies has changed.**
+
 
 
 ## 4. Connection to the Assumptions of Part 1
@@ -122,6 +123,7 @@ Kubernetes is not a mechanism for hiding those.
 **It is a mechanism for reducing the burden on people, under the assumption that those things occur.**
 
 
+
 ## 5. Summary
 
 When the environment changes, where responsibility lies also changes.  
@@ -130,4 +132,6 @@ Which assumptions, and who is taking them on?
 Whether one is conscious of that determines the design.
 
 Proceeding from here into design with these assumptions in hand.
+
+
 

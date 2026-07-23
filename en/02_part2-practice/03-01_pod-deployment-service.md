@@ -4,7 +4,6 @@
 Assumed environment: KillerCoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
-
 ## 0. Pre-Check (Viewing the Current State)
 
 #### First, confirm the state in which nothing has happened.
@@ -17,6 +16,7 @@ kubectl get pod
 - **Kubernetes** "does not start anything on its own"
 
 **If nothing is defined, nothing happens**
+
 
 
 ## 1. Create a Pod (A Single Execution Unit)
@@ -72,6 +72,7 @@ no "gap from the Desired State" has occurred.
 **What has no defined state to protect is not maintained**
 
 
+
 ## 2. Delete the Pod (Break It)
 
 #### Delete the Pod.
@@ -93,6 +94,9 @@ kubectl get pod
 #### Question
 - What would happen if this were production?
 - Would a person recreate it every time?
+
+
+
 
 
 ## 3. Manage the Pod Using a Deployment
@@ -151,6 +155,7 @@ kubectl get pod
 **What is protecting it is not a person but the mechanism**
 
 
+
 ## 4. Change the Replica Count (Changing State)
 
 #### Change the replica count of the Deployment.
@@ -168,6 +173,7 @@ kubectl get pod
 - Only the "count" is specified, not individual instances
 
 **The person specifies only the state**
+
 
 
 ## 5. Access a Pod Through a Service
@@ -199,6 +205,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 **The entry point is handled, not the instance**
 
 
+
 ## 6. Summary (What Was Confirmed in This Hands-On)
 
 What was experienced in this hands-on is the following distinction.
@@ -225,4 +232,3 @@ is not a mechanism for running containers.
 
 Up to this point, the flow of break, restore, and delegate has been experienced.  
 Then, where is that state and configuration held?
-

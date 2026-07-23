@@ -17,6 +17,7 @@ and the environment aligned in Part 2
 actually appear as behavior.
 
 
+
 ## 2. How to Observe in This Chapter
 
 In the hands-on work, the following perspectives are kept in mind.
@@ -26,6 +27,7 @@ Not "avoiding failure" but "how does it recover after breaking"
 
 Kubernetes is a mechanism for reducing human operations.  
 In this chapter, by intentionally breaking and intentionally recovering, that design is confirmed.
+
 
 
 ## 3. Main Resources Appearing in This Chapter
@@ -79,6 +81,7 @@ Kubernetes is not designed to prevent breakage —
 it is designed to restore when something breaks.
 
 
+
 ### 3-2. ConfigMap / Secret / Volume – Separating Configuration from Execution
 
 ■ Question  
@@ -101,6 +104,7 @@ In Kubernetes, the assumption is not long-running operation —
 it is replacement.
 
 
+
 ### 3-3. Ingress / Gateway – Where Is the Boundary Placed?
 
 ■ Question  
@@ -113,6 +117,7 @@ Where is external connectivity handled?
 
 Kubernetes is a mechanism that defines not the method of communication,  
 but "how it is intended to be handled."
+
 
 
 ### 3-4. kubectl – Used for Observation, Not Operation
@@ -131,6 +136,7 @@ What matters is that in this textbook, kubectl is not used as a tool for operati
 - Viewing the gap
 
 That is what it is used for.
+
 
 
 ## 4. Summary of This Chapter
@@ -154,4 +160,3 @@ The experience up to this point was made viable on the KillerCoda environment.
 When the environment changes, the assumptions taken on also change.
 
 Proceeding to the next chapter to confirm that.
-

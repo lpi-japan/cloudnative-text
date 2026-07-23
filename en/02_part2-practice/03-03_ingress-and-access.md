@@ -4,13 +4,11 @@
 Assumed environment: KillerCoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
-
 ## 0. Pre-Check
 
 In the hands-on work up to this point,
 - Deployment (nginx)
 - Service (ClusterIP)
-
 These are assumed to exist. Proceed on that basis.
 
 #### Confirm.
@@ -19,6 +17,7 @@ kubectl get deployment
 kubectl get service
 ```
 If sample-deployment and sample-service exist, that is sufficient.
+
 
 
 ## 1. Confirm the Role of Service (Internal Connection Point)
@@ -36,6 +35,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 - The number of Pods and their replacement are not something to be aware of
 
 **Service is the internal connection point**
+
 
 
 ## 2. Confirm the Assumptions of Gateway API (CRD and Controller)
@@ -57,6 +57,7 @@ If GatewayClass is not present, the Controller may not be installed.
 In that case, skip "3.–5." and reading "7. Responsibility Organization" is sufficient.
 
 **Declaration and execution are separated**
+
 
 
 ## 3. Create a Gateway (Define the External Entry Point)
@@ -103,6 +104,7 @@ kubectl describe gateway sample-gateway
 **Gateway is a definition, not an execution**
 
 
+
 ## 4. Create an HTTPRoute (Define the Flow)
 
 #### Define an HTTPRoute resource.
@@ -146,6 +148,7 @@ kubectl describe httproute sample-route
 **Entry point and routing are separate**
 
 
+
 ## 5. Access Through the Gateway
 
 #### Find the Service associated with the Gateway.
@@ -175,6 +178,7 @@ If an nginx response is returned, it is successful.
 Even in that case, if "7. Responsibility Organization" is understood, the purpose of this section is achieved.
 
 
+
 ## 6. Delete the Pod (Does the Structure Collapse?)
 
 #### Delete the Pod.
@@ -193,6 +197,7 @@ kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
 - The access method does not change
 
 **The route is maintained**
+
 
 
 ## 7. Responsibility Organization
@@ -215,7 +220,8 @@ Here, the role of each resource is organized.
 The responsibility for communication lies outside the application.
 
 
-### 8. What Was "Not Done" Is Important
+
+## 8. What Was "Not Done" Is Important
 
 In this hands-on, the following were not performed.
 
@@ -225,6 +231,7 @@ In this hands-on, the following were not performed.
 
 Even so, a state was achieved in which external access was possible and things continued to work even when Pods changed.  
 **What does not need to be done reflects the intent of the design**
+
 
 
 ## 9. Summary: What Was Confirmed in This Hands-On
@@ -247,4 +254,3 @@ Even so, a state was achieved in which external access was possible and things c
 
 **Communication is separated.**  
 Proceeding to the next chapter with this structure intact.
-

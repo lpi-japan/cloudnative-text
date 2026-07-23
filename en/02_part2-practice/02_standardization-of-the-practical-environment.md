@@ -14,6 +14,7 @@ Much of the time spent on things unrelated to the essence of learning
 comes from this gap in assumptions.
 
 
+
 ## 2. How This Part Handles It
 
 In this part, the impact of environment differences is minimized.
@@ -46,6 +47,7 @@ This makes it possible to enter practice
 with elements other than "what to learn" removed as much as possible.
 
 
+
 ## 3. The Role of the Environment
 
 The environment used here is not one that closely resembles production, nor is it feature-rich.  
@@ -66,6 +68,7 @@ What is addressed here does not reproduce all of those.
 It is simply the foundation for understanding structure and behavior.
 
 
+
 ## 4. Confirmation Before Entering Practice
 
 What matters here is not the environment itself.  
@@ -76,4 +79,6 @@ what is being observed becomes unclear.
 
 With this, the assumptions for entering practice are in place.  
 Then, what actually happens within this environment?
+
+
 

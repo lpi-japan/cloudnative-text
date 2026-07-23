@@ -22,8 +22,8 @@ In this chapter,
 
 are the focus, using kubectl in the way of observing state.
 
-
 ## 1. What Is kubectl?
+
 
 kubectl is an interface for confirming cluster state  
 and communicating state.
@@ -33,16 +33,17 @@ kubectl itself does not make judgments or manage resources.
 - Kubernetes makes the judgments
 - kubectl only "communicates" and "views"
 
-
 ## 2. kubectl get
 
+
+
 #### View the current state as a list
+
 ```bash
 kubectl get pod
 kubectl get deployment
 kubectl get service
 ```
-
 get is the command for confirming "what currently exists" as a list.
 
 What can be understood here is:
@@ -54,7 +55,7 @@ What can be understood here is:
 Detailed reasons cannot be determined.  
 **Confirm existence and state**
 
-----
+
 
 ## 3. kubectl describe
 
@@ -76,6 +77,7 @@ describe is a tool for confirming the detailed state of individual resources.
 **Confirm the history and reason**
 
 
+
 ## 4. kubectl apply
 
 #### Communicate the Desired State
@@ -93,6 +95,7 @@ Kubernetes compares:
 
 and acts to close that gap.  
 **Declare the Desired State**
+
 
 
 ## 5. kubectl delete
@@ -114,6 +117,7 @@ This is the behavior that occurs.
 **Break the state and observe the behavior**
 
 
+
 ## 6. kubectl scale
 #### Change only the count
 ```bash
@@ -128,6 +132,7 @@ scale is the command for changing only "how many should exist."
 These are determined by Kubernetes.
 
 **Specify only the count**
+
 
 
 ## 7. kubectl expose
@@ -149,6 +154,7 @@ The Service takes on that responsibility.
 **Define the connection point**
 
 
+
 ## 8. kubectl logs / exec
 #### Tools for "looking inside"
 ```bash
@@ -164,9 +170,11 @@ They are tools for observation only.
 **Observe the inside**
 
 
+
 ## 9. Summary
 
 The correspondence to understand at this point is as follows.
+
 | Command | Role |
 |-----------|-------------------------|
 | get | View what currently exists |
@@ -184,4 +192,3 @@ It is a window for exchanging state.
 It is sufficient to grasp only this relationship.
 
 Proceeding to the next chapter.
-

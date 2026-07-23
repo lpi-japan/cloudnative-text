@@ -4,7 +4,6 @@
 Assumed environment: KillerCoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
-
 ## 0. Pre-Check
 
 Confirm that the Deployment created in the previous hands-on exists.
@@ -14,6 +13,7 @@ kubectl get pod
 ```
 
 If Pods are running, that is sufficient.
+
 
 
 ## 1. Create a ConfigMap (Place Configuration Outside the Pod)
@@ -39,6 +39,7 @@ kubectl apply -f configmap.yaml
 ```bash
 kubectl get configmap
 ```
+
 
 
 ## 2. Reference the ConfigMap from a Pod
@@ -97,6 +98,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 **Configuration is defined outside the Pod**
 
 
+
 ## 3. Delete the Pod (Does the Configuration Remain?)
 
 #### Delete the Pod.
@@ -119,6 +121,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 - The configuration is still in use
 
 **The Pod does not "own" the configuration**
+
 
 
 ## 4. Change the ConfigMap (Where Does the Configuration Take Effect?)
@@ -148,6 +151,7 @@ kubectl exec -it $(kubectl get pod -l app=sample -o jsonpath='{.items[0].metadat
 - Configuration and execution are separated
 
 **Changing the configuration does not change the Pod definition**
+
 
 
 ## 5. Use a Volume (Thinking About Where Data Is Placed)
@@ -194,6 +198,7 @@ kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].
 ```
 
 
+
 ## 6. Delete the Pod (Does the Data Remain?)
 
 ```bash
@@ -213,11 +218,13 @@ kubectl exec -it $(kubectl get pod -l app=volume-sample -o jsonpath='{.items[0].
 **The lifetime of data is determined by the type of Volume**
 
 
+
 ## 7. On Secrets (Not Practiced Here)
 The concept of Secret is the same as ConfigMap.  
 However, because the use case differs, no operations are performed here.
 
 What matters is not "whether it is kept secret" but "whether it is outside the Pod."
+
 
 
 ## 8. Summary (What Was Confirmed in This Hands-On)
@@ -243,4 +250,3 @@ not a place for storing state or configuration.
 
 Then, where is external connectivity handled?  
 Proceeding to Ingress / Gateway.
-

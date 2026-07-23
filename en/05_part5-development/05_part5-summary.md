@@ -1,6 +1,5 @@
 ## Part 5 Summary
 
-
 ### Structure Is Connected to Society
 
 In Part 5, themes such as ways of working, how value is produced, cost, and AI were addressed.  
@@ -20,8 +19,6 @@ Even when handling the same technology, the value provided is entirely different
 Cost does not arise after the fact — structure is directly reflected in it.  
 AI is also a technology that changes how responsibility is divided, and is an extension of structure.
 
-
-
 Technology and means continue to change. But there are things that do not change.
 
 - What to keep viable,
@@ -29,8 +26,6 @@ Technology and means continue to change. But there are things that do not change
 - Where to draw the boundary.
 
 These do not change in any era.
-
-
 
 What this textbook has addressed is not tools or procedures.
 
@@ -43,15 +38,11 @@ What this textbook has addressed is not tools or procedures.
 
 By understanding these, a foundation is created that can be applied even when technology changes.
 
-
-
 Cloud native is a discussion of technology,  
 but what lies beyond it is **the ability to handle structure**.
 
 In a changing environment, taking uncertainty as an assumption, keeping a distributed system viable.  
 This ability connects not only to technology, but directly to business and society as well.
-
-
 
 ### The Question That Still Remains
 
@@ -62,5 +53,3 @@ Having examined structure up to this point:
 - At which boundary does one stand?
 
 How is that judgment made?
-
-

@@ -1,6 +1,5 @@
 ## Chapter 3: FinOps – Cost Is Determined by Structure
 
-
 ### 1. Why Cost Problems Appear
 
 In a monolithic structure, the system is handled as a single body.  
@@ -12,8 +11,6 @@ configuration changes dynamically,
 and resources continue to increase and decrease.
 
 Through this change, **cost becomes not something fixed but something that always changes.**
-
-
 
 ### 2. What Cannot Be Observed Cannot Be Controlled
 
@@ -30,8 +27,6 @@ Furthermore, when it becomes ambiguous who holds responsibility for that cost:
 
 As a result, **cost continues to grow without being controlled.**
 
-
-
 ### 3. What FinOps Is Addressing
 
 The organization for this problem is FinOps.  
@@ -45,8 +40,6 @@ FinOps is neither a tool nor a method.
 
 This directly corresponds to the structure examined in Parts 1 through 4.
 
-
-
 ### 4. Cost Appears in Design
 
 Cost appears as a result of design.
@@ -59,8 +52,6 @@ Cost appears as a result of design.
 These choices are directly reflected in cost.  
 Cost is "the shadow of design."
 
-
-
 ### 5. Cost Constrains Design
 
 Cost is not merely a result.
@@ -72,8 +63,6 @@ Cost is not merely a result.
 It influences these judgments.
 
 In other words, cost is **both a result of design and a constraint on design.**
-
-
 
 ### 6. What This Chapter Is Showing
 
@@ -94,8 +83,6 @@ cost is not something managed after the fact.
 Furthermore, cost not only appears as a result of design —  
 **it is also a factor that constrains which design is chosen.**
 
-
-
 ### 7. The Question That Remains
 
 When cost is determined by structure:
@@ -103,5 +90,3 @@ When cost is determined by structure:
 - At what unit is cost grasped?
 - How is responsibility divided?
 - How is continuous optimization achieved?
-
-

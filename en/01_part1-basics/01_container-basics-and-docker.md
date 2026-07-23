@@ -1,6 +1,5 @@
 ## Chapter 1: Container Basics and Docker – The Story of How the Execution Unit Changed
 
-
 ### 1. Why Was It Necessary to Reconsider the "Execution Unit"?
 
 Applications were once treated as things that run on top of a specific environment.
@@ -26,7 +25,6 @@ The problem in this situation was not the code.
 **It was that the assumed environment did not match.**  
 What was called into question here was: at what unit should the application be treated?
 
-
 ### 2. What Virtualization Changed
 
 Through virtualization, environments were separated from physical servers.
@@ -48,8 +46,6 @@ but "how to treat" had not changed.
 
 ![Figure 1-1: The Change in Execution Unit — From VM to Container](../08_img/01/figure_1-1_v3.svg)
 
-
-
 ### 3. The Container as an Execution Unit
 
 A container separates the execution unit from the environment.
@@ -69,7 +65,6 @@ Rather than adjusting configurations for each environment,
 Created when needed, discarded when no longer needed.  
 The assumption becomes replacement, not maintenance of a fixed instance.
 
-
 ### 4. The Idea of Treating Something as a Unit
 
 What changed with containers was not the tooling.
@@ -85,8 +80,6 @@ Through this distinction, the meaning of stability changes.
 Stability is not the maintenance of a state.  
 **It is a state of viability achieved through continuous replacement.**
 
-
-
 ### 5. The Role of Docker
 
 The container mechanism itself is realized through Linux capabilities.  
@@ -101,7 +94,6 @@ Docker is not cloud native itself.
 
 However, by making it possible to actually work with this unit,  
 the idea of "treating applications as units" became a reality.
-
 
 ### 6. Containers and Microservices Are Separate Concerns
 
@@ -119,7 +111,6 @@ Microservices address "how to divide."
 
 The problems they address are different.
 
-
 ### 7. The Question That Remains
 
 The execution unit has been separated from the environment  
@@ -130,4 +121,3 @@ and change and failure become assumptions.
 
 Then, how are these ever-increasing units  
 kept viable as a whole?
-

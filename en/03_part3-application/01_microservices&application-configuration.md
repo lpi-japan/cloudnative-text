@@ -1,6 +1,5 @@
 ## Chapter 1: Microservices and Application Configuration – What Happens When You Divide?
 
-
 ### 0. How Assumptions Are Set
 
 This chapter does not address specific configurations or correct answers.
@@ -12,8 +11,6 @@ What is addressed here is not which form is correct.
 - **What happens when things are divided?**
 
 That structure is what is addressed.
-
-
 
 ### 1. Why Does Division Appear?
 
@@ -39,8 +36,6 @@ At this point, "continuing to handle things as a single body" becomes unrealisti
   
 What emerges here is the question: "Where do we draw the boundary?"
 
-
-
 ### 2. What Happens When Things Are Divided?
 
 When an application is divided,  
@@ -63,8 +58,6 @@ There are aspects that become easier to handle through division.
 
 However, at the same time, a new problem emerges:  
 how to keep what has been divided viable together.
-
-
 
 ### 3. Complexity Moves
 
@@ -91,8 +84,6 @@ now emerge as objects to be handled.
 These are not exceptions.  
 **Division brings assumptions to the surface**
 
-
-
 ### 4. Division as Responsibility
 
 An application can be understood as a collection of responsibilities.
@@ -113,8 +104,6 @@ However, at the same time, the need to connect what has been divided emerges.
 
 The division changes what problems must be addressed.  
 **This judgment becomes the design itself.**
-
-
 
 ### 5. Division and Execution Environment
 
@@ -144,8 +133,6 @@ It is here, for the first time, that a mechanism such as Kubernetes takes on mea
 
 **Division reveals where responsibility must be placed**
 
-
-
 ### 6. A Choice, Not a Correct Answer
 
 It is here, for the first time, that the term "microservices" takes on meaning.
@@ -164,8 +151,6 @@ As a result of division:
 
 That understanding is what matters.
 
-
-
 ### 7. The Question That Remains
 
 Through division, the flows of change and communication have emerged.
@@ -174,5 +159,3 @@ Change is not something delivered once and finished.
 It needs to be delivered repeatedly, safely, and continuously.
 
 Then, how is that change delivered?
-
-

@@ -1,6 +1,5 @@
 ## Chapter 3: Characteristics of Cloud vs. On-Premise – Thinking About Where to Run as a Structure
 
-
 ### 1. Why Does the Debate Never Converge?
 
 Discussions about cloud and on-premise often reach no conclusion.
@@ -16,8 +15,6 @@ changes the basis for evaluation significantly.
 When assumptions differ, the appropriate design and judgment differ as well.
 
 Note that the characteristics described here represent general tendencies. It is possible to adopt a fixed configuration on cloud, or to adopt a design that assumes change on-premise.
-
-
 
 ### 2. The Assumption of Cloud
 
@@ -39,8 +36,6 @@ they are reconstructed elsewhere.
 Rather than maintaining the environment,  
 viability is maintained while accepting change.
 
-
-
 ### 3. The Assumption of On-Premise
 
 On-premise is not the opposite of cloud.  
@@ -56,8 +51,6 @@ What to fix and what to change
 is left to the team's own judgment.
 
 ![Figure 1-4: The Difference in Assumptions Between Cloud and On-Premise](../08_img/01/figure_1-3_v2.svg)
-
-
 
 ### 4. What Is Different?
 
@@ -80,8 +73,6 @@ Neither is correct.
 When assumptions change,  
 how viability is achieved changes as well.
 
-
-
 ### 5. Choosing an Assumption
 
 Deciding where to run something  
@@ -101,12 +92,9 @@ What is assumed determines what problem is being addressed.
 
 The way those questions are framed changes.
 
-
-
 ### 6. The Question That Remains
 
 The unit has been separated, and its viability has come to be controlled.  
 And the environment that serves as its assumption has also been organized.
 
 Then, what supports those assumptions?
-

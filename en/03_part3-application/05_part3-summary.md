@@ -1,6 +1,5 @@
 ## Part 3 Summary – What Was the "Judgment" Addressed in the Application Step?
 
-
 In Part 3, the technologies that make up a cloud-native application were examined  
 not as methods or correct answers, but as an accumulation of judgments.
 
@@ -18,7 +17,6 @@ the flow of communication.
 In none of the chapters was a specific configuration or technology treated as "what should be chosen."  
 This is because **what matters is not what is chosen, but whether one is conscious of what is being taken on**.
 
-
 ### Technology Is Not an "Answer" — It Is a "Place to Take On Responsibility"
 
 The technologies and ideas that appeared in Part 3 are not things that eliminate problems.
@@ -32,8 +30,6 @@ Technology does not make judgment unnecessary.
 
 **It is a means of expressing as structure where judgment is taken on**
 
-
-
 ### The Question That Still Remains
 
 Divide, deliver, connect.
@@ -45,5 +41,3 @@ What is happening in the system right now?
 Is that judgment functioning correctly?
 
 Then, how can it be observed?
-
-

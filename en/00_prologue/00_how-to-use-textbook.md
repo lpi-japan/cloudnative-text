@@ -5,7 +5,6 @@
 This textbook is not for memorizing operations or procedures.  
 It is for understanding how to keep a system viable within an environment that continues to change.
 
-
 ### 1. Why Now
 
 The assumptions surrounding systems have changed.
@@ -20,8 +19,6 @@ has become harder than building them in the first place.
 Cloud native is a structural response to this change.  
 The reason to learn it is not that it is new technology.  
 It became necessary because the traditional assumptions can no longer keep systems viable.
-
-
 
 ### 2. The Structure of This Textbook
 
@@ -38,8 +35,6 @@ This textbook is organized in the following sequence.
 This sequence is intentional.  
 Each part is built on the assumptions established in the part before it.
 
-
-
 ### 3. What It Means to Understand Through Structure
 
 In this textbook, before tools or procedures,  
@@ -54,8 +49,6 @@ but on grasping what is actually happening.
 Understanding through structure means looking not at the technology itself,  
 but at **the responsibility that technology has taken on**.
 
-
-
 ### 4. How to Read
 
 It is fine not to understand immediately.
@@ -67,8 +60,6 @@ Sections that are unclear will look different after moving forward and returning
 What was covered in a previous part will reappear in a different form.
 
 Through that back-and-forth, understanding accumulates.
-
-
 
 ### 5. Transferability
 
@@ -82,4 +73,3 @@ How far to hold responsibility.
 Where to draw the boundary.
 
 These questions do not change.
-

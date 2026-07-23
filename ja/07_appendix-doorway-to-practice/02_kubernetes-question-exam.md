@@ -10,8 +10,6 @@ CKA・CKAD・CKS は、それぞれ異なる役割や責任範囲を扱う資格
 
 その違いによって、学習の方向性が変わっていきます。
 
-
-
 ### CKA（Certified Kubernetes Administrator）
 
 #### ■ 分散環境を止めずに支える。
@@ -26,8 +24,6 @@ CKA は、Kubernetes クラスタの運用・管理を中心に扱う資格で�
 状態を把握しながら変化へ対応していく運用が求められます。
 
 > 「**なぜ、運用そのものが設計になるのか？**」
-
-
 
 ### CKAD（Certified Kubernetes Application Developer）
 
@@ -45,8 +41,6 @@ Deployment、ConfigMap、Secret、Service、Helm、CI/CD などを通じて、
 クラウドネイティブ時代のアプリケーション設計に関わる領域です。
 
 > 「**なぜ、アプリケーションも分散前提になるのか？**」
-
-
 
 ### CKS（Certified Kubernetes Security Specialist）
 
@@ -84,8 +78,6 @@ CKS は、Kubernetes のセキュリティ資格であると同時に、
 
 > > [!WARNING]  
 > CKS の受験にはCKA資格が必要
-
-
 
 ### どこから進むべきか
 

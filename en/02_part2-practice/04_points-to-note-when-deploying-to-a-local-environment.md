@@ -1,6 +1,5 @@
 ## Chapter 4: Points to Note When Deploying to a Local Environment – More Freedom Means More Responsibility
 
-
 Through Chapter 3, using KillerCoda for practice, the following were experienced firsthand.
 
 - Basic behavior of Kubernetes
@@ -31,7 +30,6 @@ This does not mean Kubernetes has become more difficult.
 
 **It simply means there is no longer anything absorbing the assumptions.**
 
-
 ### 2. Points Where Environment Differences Become Visible
 
 #### 2-1. Network
@@ -48,7 +46,6 @@ This is not abnormal.
 
 It occurs because the network boundary and DNS configuration  
 in a local environment differ from those in a learning environment.
-
 
 #### 2-2. Resources (CPU / Memory)
 
@@ -71,7 +68,6 @@ Kubernetes does not prevent that.
 These tend to occur in local environments, but can similarly occur in remote environments as well.  
 What matters is that this is not a Kubernetes problem — it is a property of the foundation, and is part of the assumption.
 
-
 #### 2-3. Storage
 
 In a local environment:
@@ -91,8 +87,6 @@ The actual dependencies are:
 - File system
 - Mounts
 
-
-
 ### 3. Freedom and Responsibility
 
 In a local environment:
@@ -104,8 +98,6 @@ On the other hand, the reason when things do not work must also be taken on by t
 This is not difficulty.
 
 **It is simply that where responsibility lies has changed.**
-
-
 
 ### 4. Connection to the Assumptions of Part 1
 
@@ -122,8 +114,6 @@ is that the assumptions the learning environment was absorbing have been removed
 Kubernetes is not a mechanism for hiding those.  
 **It is a mechanism for reducing the burden on people, under the assumption that those things occur.**
 
-
-
 ### 5. Summary
 
 When the environment changes, where responsibility lies also changes.  
@@ -132,6 +122,3 @@ Which assumptions, and who is taking them on?
 Whether one is conscious of that determines the design.
 
 Proceeding from here into design with these assumptions in hand.
-
-
-

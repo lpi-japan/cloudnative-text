@@ -1,6 +1,5 @@
 ## Chapter 2: Continuous Delivery and GitOps – Continuously Delivering Changes
 
-
 ### 1. Why "Deploy Once and Done" No Longer Works
 
 In traditional systems, deployment was an event.  
@@ -18,8 +17,6 @@ An increase in changes means a corresponding increase in the possibility of Stat
 
 Changes are not always applied correctly.  
 **Change is also an uncertain flow**
-
-
 
 ### 2. Continuous Delivery Is Not "Automation"
 
@@ -45,8 +42,6 @@ What Continuous Delivery aims for is:
 
 In other words, **creating a state that remains viable without requiring human judgment each time**
 
-
-
 ### 3. Why the Structure Becomes "People Do Not Deploy Directly"
 
 In cloud-native environments,  
@@ -66,7 +61,6 @@ What matters is not "who did it" but **"what was done"**
 
 Therefore, **a design is chosen that separates the act of deployment itself from human hands**.
  
-
 ### 4. The Idea of GitOps
 
 One way of organizing this challenge is GitOps.
@@ -87,8 +81,6 @@ Git is used because **it exists as a structure for managing change**
 
 ![Figure 3-2: GitOps Flow — Defining the Flow of Change](../08_img/03/figure_3-2_v3.svg)
 
-
-
 ### 5. The Relationship Between Kubernetes and GitOps
 
 Kubernetes is a foundation on which the Desired State can be defined declaratively.  
@@ -107,8 +99,6 @@ and keep this structure viable by continuously synchronizing the gap.
 What matters is not the difference between tools.  
 **The fact that this structure is viable**
 
-
-
 ### 6. The Meaning of Continuous Delivery
 
 As seen up to this point, in an environment where change has increased,  
@@ -116,8 +106,6 @@ it is not realistic for people to continue making judgments each time.
 
 Therefore, by defining state, fixing the flow of change,  
 and having a mechanism for applying it, **judgment is shifted to the mechanism**
-
-
 
 ### 7. The Question That Remains
 
@@ -133,5 +121,3 @@ Services call one another and exchange processing.
 
 The flow of change has been organized.  
 Then, how is this communication handled?
-
-

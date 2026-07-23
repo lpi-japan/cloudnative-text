@@ -1,6 +1,5 @@
 ## Chapter 4: Fundamentals of Linux and Networking – Putting Words to the Foundation That Underlies Everything
 
-
 ### 1. Why Return to the Foundation Now?
 
 Cloud and Kubernetes  
@@ -15,8 +14,6 @@ The assumptions have not disappeared.
 
 Through abstraction, things have become easier to handle,  
 and with that, opportunities to be aware of those assumptions have decreased.
-
-
 
 ### 2. The Assumption of Linux
 
@@ -37,8 +34,6 @@ They use this already-existing assumption
 Therefore, they are created when needed  
 and discarded when no longer needed.
 
-
-
 ### 3. Resources Are Not Always Stable
 
 CPU and memory cannot always be used in the same way.
@@ -54,8 +49,6 @@ In an abstracted environment, these constraints become difficult to see.
 However, they have not disappeared —  
 they have simply become invisible.
 
-
-
 ### 4. The Assumption of Networking
 
 The network does not always connect.
@@ -70,8 +63,6 @@ the cause may not be immediately clear.
 These are not exceptions.
 
 **They are properties that arise within a finite environment, and are part of its assumptions.**
-
-
 
 ### 5. Failure Is an Assumption
 
@@ -89,8 +80,6 @@ This state cannot be eliminated.
 What is needed is  
 **a structure from which recovery is possible when failure occurs.**
 
-
-
 ### 6. Who Takes Responsibility for the Assumptions?
 
 These assumptions are always taken on somewhere.
@@ -107,8 +96,6 @@ Somewhere, they are always taken on.
 Where responsibility lies  
 changes the meaning of design.
 
-
-
 ### 7. The Question That Remains
 
 What has been examined up to this point is not new technology.  
@@ -116,4 +103,3 @@ Everything rests on assumptions that already existed.
 
 Then, in order to treat those assumptions as assumptions,  
 how is state understood, and how are judgments made?
-

@@ -1,6 +1,5 @@
 ## Chapter 4: How to Handle the Behavior of Communication – Retry, Timeout, Observability
 
-
 ### 1. Communication "Appears as a Result"
 
 In Chapter 3, where communication is controlled was examined.  
@@ -13,8 +12,6 @@ Communication appears in the form of:
 - Being delayed
 
 **Communication can only be observed as a result**
-
-
 
 ### 2. Communication Without Defined Behavior Becomes Unstable
 
@@ -32,8 +29,6 @@ This is a state in which communication is not controlled.
 
 **Communication without defined behavior becomes unstable**
 
-
-
 ### 3. Behavior Is Defined as a "Rule"
 
 The behavior of communication is defined as a rule.
@@ -44,8 +39,6 @@ The behavior of communication is defined as a rule.
 
 All of these **decide how to act when failure occurs**  
 What is important here is that **it is behavior at the time of failure, not success, that determines the design**
-
-
 
 ### 4. Retry and Timeout
 
@@ -66,8 +59,6 @@ Without these:
 
 ![Figure 3-4: Latency Spreads to the Whole](../08_img/03/figure_3-4_v1.svg)
 
-
-
 ### 5. What Cannot Be Seen Cannot Be Controlled
 
 The moment communication leaves the system, it becomes invisible.
@@ -79,8 +70,6 @@ The moment communication leaves the system, it becomes invisible.
 If these cannot be determined, the behavior cannot be adjusted.  
 **What cannot be seen cannot be controlled**
 
-
-
 ### 6. The Idea of Observability
 
 In order to handle communication, it is necessary to understand state,  
@@ -90,8 +79,6 @@ The idea for this is Observability.
 Observability is not a tool.
 
 **It is the assumption required for understanding behavior**
-
-
 
 ### 7. Where Is Behavior Taken On?
 
@@ -103,8 +90,6 @@ These behaviors can be:
 Neither is correct.
 
 **It is a design decision of where to take responsibility**
-
-
 
 ### 8. Summary
 
@@ -130,6 +115,3 @@ has come together.
 
 Then, on top of these assumptions, how is the whole made viable?  
 This is organized in the Part 3 summary.
-
-
-

@@ -1,6 +1,5 @@
 ## Chapter 4: Redefining Structure in the Age of AI
 
-
 ### 0. Cloud Native and AI Are in the Same Flow
 
 What has been examined up to this point is the structure of:
@@ -17,8 +16,6 @@ It moves judgment that people were taking on to the outside, and makes it an obj
 
 This is the same as the structure seen in cloud native.
 
-
-
 ### 1. AI Is Also a Technology That Changes How Responsibility Is Divided
 
 AI appears to be adding "new functions," but that is not the essence.  
@@ -28,8 +25,6 @@ Work that was done manually is automated, part of judgment is delegated to the m
 and the range in which people are involved changes.
 
 This is the same as the structural change seen in cloud native.
-
-
 
 ### 2. "Those Who Use" and "Those Who Keep Viable"
 
@@ -46,8 +41,6 @@ It is a difference in **how far one treats as their own responsibility**.
 
 This is where the way value is produced diverges.
 
-
-
 ### 3. "Only Using" AI Cannot Remain Viable
 
 With AI, why a particular result occurred, where errors arose,  
@@ -62,8 +55,6 @@ If results are continued to be used in this state:
 As a result, **even while using AI,  
 the system cannot continue to remain viable.**
 
-
-
 ### 4. Whether It Can Be Observed Becomes the Divergence
 
 What becomes important in this situation is **whether it can be observed**.
@@ -76,8 +67,6 @@ Without being able to grasp these, AI cannot be controlled.
 
 As seen in Part 4, **what cannot be observed cannot be controlled.**  
 AI is no exception.
-
-
 
 ### 5. What Remains Unchanged
 
@@ -101,8 +90,6 @@ The structure seen in cloud native connects directly into the age of AI.
 
 Those who can handle these will continue to produce value in the next era as well.
 
-
-
 ### 6. What This Chapter Is Showing
 
 What has been examined in this chapter  
@@ -125,5 +112,3 @@ What matters is not the technology itself.
 and deciding where to place that responsibility**
 
 Whether this judgment can be made determines whether value can be produced.
-
-

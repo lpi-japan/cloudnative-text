@@ -31,5 +31,3 @@ and what responsibilities does one want to take on.
 If this textbook can serve as an entry point  
 for grasping this ever-changing world of cloud native as structure,  
 that is its purpose.
-
-

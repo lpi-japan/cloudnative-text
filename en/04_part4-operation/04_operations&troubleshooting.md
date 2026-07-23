@@ -1,6 +1,5 @@
 ## Chapter 4: Operations and Troubleshooting – A Design for Continuing to Make Judgments
 
-
 ### 1. Operations Means "Keeping Things Going"
 
 A system does not end once it is running.  
@@ -25,8 +24,6 @@ These must be judged each time they occur.
 
 Operations is not about knowing everything.  
 **It is about continuing to make judgments in order to keep things going, based on limited information.**
-
-
 
 ### 2. What Is Being Done in Failure Response?
 
@@ -56,8 +53,6 @@ However, this judgment is made in a state of incomplete information.
 - The same failure repeats
 
 Without the ability to make a judgment, operations cannot remain viable.
-
-
 
 ### 3. Why Tools Become Necessary
 
@@ -93,8 +88,6 @@ these pieces of information in an integrated manner becomes necessary.
 What matters is not the tools.  
 It is being in a state where information necessary for judgment can be handled.
 
-
-
 ### 4. The Assumption of Continuing to Improve
 
 Failure response does not end with restoration.
@@ -112,8 +105,6 @@ However, what matters is not making everything perfect.
 
 By repeatedly making these judgments,  
 the stability of the system gradually increases.
-
-
 
 ### 5. Design for Reliability (SRE)
 
@@ -136,8 +127,6 @@ and a judgment can be made on how far to respond.
 
 Not everything can be protected.  
 That is precisely why it is necessary to decide what to protect.
-
-
 
 ### 6. Summary
 
@@ -162,5 +151,3 @@ That is precisely why:
 these judgments become necessary.
 
 Technology exists to support those judgments.
-
-

@@ -1,6 +1,5 @@
 ## Chapter 1: Monitoring and Observability – Visibility Alone Is Not Enough for Judgment
 
-
 ### 1. The Moment of Distribution Is When "The Whole Becomes Invisible"
 
 In a single application:
@@ -26,8 +25,6 @@ From this moment, the state of the system can no longer be grasped in one place.
 
 ![Figure 4-1: The Moment of Distribution Is When the Whole Becomes Invisible](../08_img/04/figure_4-1.0_v4.svg)
 
-
-
 ### 2. The State of "Visible but Not Understandable"
 
 Even in a distributed system:
@@ -48,8 +45,6 @@ and outputs information in different places at different times.
 Each can be observed,  
 but how they connect as a single problem is not clear.
 
-
-
 ### 3. Observation Is Possible, but Judgment Is Not
 
 Having information and being able to make judgments are different things.
@@ -61,8 +56,6 @@ Fragmented information carries no meaning on its own.
 
 Only by connecting how those things relate to one another  
 does the state of the whole become visible.
-
-
 
 ### 4. From "Seeing" to "Judging"
 
@@ -77,8 +70,6 @@ whether state can be inferred from observed information.
 
 Only by being able to make these judgments  
 does stable operations first become viable.
-
-
 
 ### 5. What Is Observability?
 
@@ -98,8 +89,6 @@ In real operations, observation also has a cost.
 
 Therefore, Observability is also  
 a design for deciding **how far to observe**.
-
-
 
 ### 6. The Difference from Monitoring
 
@@ -124,8 +113,6 @@ It is the judgment of what to observe.
 
 ![Figure 4-1.1: Coverage of Monitoring and Observability](../08_img/04/figure_4-1.1_v1.svg)
 
-
-
 ### 7. The Question That Remains
 
 Once observation becomes possible, is that sufficient?
@@ -135,5 +122,3 @@ Once observation becomes possible, is that sufficient?
 - How should abnormalities be judged?
 
 How do those become a single judgment?
-
-

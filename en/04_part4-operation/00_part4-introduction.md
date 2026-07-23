@@ -1,7 +1,5 @@
 # Part 4: Operations Step – Making Things Visible and Protecting Them
 
-
-
 In Part 3, the structure for dividing, delivering, and connecting applications was organized.
 
 However, merely moving judgment outside as a structure  
@@ -25,7 +23,6 @@ Without knowing the cause, the same failure repeats.
 
 **In this state, stable operations cannot remain viable.**
 
-
 Even when the structure is in order, if the state cannot be determined, the whole cannot be maintained.  
 What is needed here is not the ability to directly look inside.
 
@@ -33,5 +30,3 @@ What is needed here is not the ability to directly look inside.
 
 What is happening in the system right now?  
 And where does that judgment come from?
-
-

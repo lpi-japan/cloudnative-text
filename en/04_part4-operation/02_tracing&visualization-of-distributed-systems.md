@@ -1,6 +1,5 @@
 ## Chapter 2: Tracing and Visualization of Distributed Systems
 
-
 ### 1. Problems That Occur in Distributed Systems
 
 What is addressed here is an application divided into multiple services.  
@@ -39,8 +38,6 @@ In this state:
 
 Without understanding the flow of processing, the system cannot be operated stably
 
-
-
 ### 2. The Idea of Distributed Tracing
 
 What addresses this problem is distributed tracing.
@@ -66,8 +63,6 @@ and system load is also affected.
 **Tracing is not about tracing everything —  
 it is a design for deciding how far to trace**
 
-
-
 ### 3. The Structure of Trace Data
 
 In distributed tracing,  
@@ -83,8 +78,6 @@ processing that was fragmented
 is reconstructed as the flow of a single request.
 
 ![Figure 4-2.1: Reconstructing the flow of processing with Trace and Span](../08_img/04/figure_4-2.1_v2.svg)
-
-
 
 ### 4. The Role of Representative Tools
 
@@ -103,8 +96,6 @@ What matters is not the tools.
 
 That judgment is what matters.
 
-
-
 ### 5. The Question That Remains
 
 Is it sufficient to be able to trace the flow of processing?
@@ -114,6 +105,3 @@ Is it sufficient to be able to trace the flow of processing?
 - Which information to retain
 
 How does the design of observation become viable?
-
-
-

@@ -1,6 +1,5 @@
 ## Chapter 3: Inter-Service Communication Control – Where to Take Responsibility for Complexity
 
-
 ### 1. The Moment of Division Is When Communication Becomes a "Design Problem"
 
 Within a single application, communication is barely considered.  
@@ -22,8 +21,6 @@ When the behavior of communication is left to each service, behavior diverges an
 Communication may succeed, fail, or be delayed.  
 The behavior of communication is a rule for how to act in situations such as success, failure, and latency.
 
-
-
 ### 2. Communication Control "Always Takes Place Somewhere"
 
 The option of "not controlling" inter-service communication does not exist.
@@ -35,8 +32,6 @@ The problem is where they are being taken on.
 
 In the code of each service, in a shared library, or on the infrastructure side —  
 communication control already exists. It is simply not visible.
-
-
 
 ### 3. Complexity Does Not "Disappear" — It Moves
 
@@ -50,8 +45,6 @@ However, complexity appears in a different form: understanding configuration, vi
 
 Designing communication control is not eliminating complexity — it is deciding where to place it.  
 It is in this context that the idea of a **Service Mesh** emerges.
-
-
 
 ### 4. Not "Whether to Introduce" but "Whether It Can Be Taken On"
 
@@ -75,8 +68,6 @@ What matters is not the difference in functions.
 
 **The fact that communication control is separated out as a structure**
 
-
-
 ### 5. The Question That Remains
 
 What has been examined up to this point is the flow of communication.
@@ -97,5 +88,3 @@ and how is it observed?
 
 Next, we look at how to handle  
 the behavior of communication itself.
-
-

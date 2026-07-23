@@ -1,6 +1,5 @@
 ## What Is Cloud Native?
 
-
 ### 1. The Question
 
 The term "cloud native" does not refer to a collective name for cloud services or container technologies.
@@ -9,8 +8,6 @@ Cloud is an environment structure that assumes change, scalability, and automati
 Native means adapting to that environment and continuing to remain viable as a whole.
 
 So, what is cloud native?
-
-
 
 ### 2. Background: Not Technological Evolution, but a Change in Assumptions
 
@@ -33,8 +30,6 @@ configuration is distributed, and the environment is no longer stable.
 
 With change, distribution, and uncertainty now taken as assumptions,  
 systems can no longer remain viable under the traditional assumptions.
-
-
 
 ### 3. The Core: From Static Optimization to Dynamic Stability
 
@@ -65,8 +60,6 @@ Under this assumption, operations that rely on human judgment case by case canno
 Therefore, the judgment required to maintain viability  
 is designed to be carried out by the structure, not by people.
 
-
-
 ### 4. The CNCF Definition
 
 The CNCF definition of cloud native is widely referenced.
@@ -88,8 +81,6 @@ Observability is a mechanism for understanding state and enabling judgment.
 
 All of these are positioned as elements that enable the system as a whole to continue to remain viable,  
 within an environment that assumes change.
-
-
 
 ### 5. What Learning Makes Visible
 
@@ -127,8 +118,6 @@ and where viability is being supported.
 This change is not simply the addition of a skill.  
 It means that the assumptions about systems themselves change.
 
-
-
 ### 6. Summary
 
 What has been addressed here  
@@ -141,5 +130,3 @@ the way systems are seen and the approach to design change significantly.
 
 How, then, is that structure realized?  
 We hope you will proceed to the next part with this question in mind.
-
-

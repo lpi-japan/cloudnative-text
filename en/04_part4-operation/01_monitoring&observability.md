@@ -23,7 +23,7 @@ Some processing spans multiple services, and results are returned over a network
 
 From this moment, the state of the system can no longer be grasped in one place.
 
-![Figure 4-1: The Moment Things Become Distributed, the Whole Becomes Invisible](../08_img/04/figure_4-1.0_v4.svg)
+![Figure 4-1.0: The Moment Things Become Distributed, the Whole Becomes Invisible](../08_img/04/figure_4-1.0_v4.svg)
 
 ### 2. The State of "Visible but Not Understandable"
 

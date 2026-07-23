@@ -55,7 +55,7 @@
   ═══════════════════════════════════════ -->
   <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
   <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
-        fill="#FFFFFF">Figure 1-2: The Kubernetes Declarative Control Loop</text>
+        fill="#FFFFFF">Figure 1-2.0: The Kubernetes Declarative Control Loop</text>
 
   <!-- ═══════════════════════════════════════
        LEFT PANEL ─ User宣言

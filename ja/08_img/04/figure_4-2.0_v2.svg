@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Cloud Native テキスト　図版 図4-2　v1
-  A-7→図4-2 改訂：図番号更新・サービス名統合・矢印調整・レスポンスラベル
+  Cloud Native テキスト　図版 図4-2.0　v1
+  A-7→図4-2.0 改訂：図番号更新・サービス名統合・矢印調整・レスポンスラベル
   タイトル：1つのリクエストが複数のサービスを経由する
   主張：利用者には「1回の操作」に見えても、内部では複数のサービス呼び出しが連鎖している。
         問題が起きたとき、どの呼び出しステップで何が起きたかを追跡する手段が必要になる。
@@ -34,8 +34,8 @@
      xml:lang="ja"
      font-family="'Meiryo','Yu Gothic','Hiragino Sans','MS Gothic',Arial,sans-serif">
 
-  <title>図4-2 リクエストが複数サービスを経由する</title>
-  <desc>Cloud Native テキスト 図版 図4-2 v1　リクエストが複数サービスを経由する</desc>
+  <title>図4-2.0 リクエストが複数サービスを経由する</title>
+  <desc>Cloud Native テキスト 図版 図4-2.0 v1　リクエストが複数サービスを経由する</desc>
 
   <defs>
     <!-- フロー矢頭（オレンジ）前方呼び出し -->
@@ -68,7 +68,7 @@
     <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
     <text x="560" y="26" text-anchor="middle" dominant-baseline="middle"
           fill="#FFFFFF" font-size="18" font-weight="bold" letter-spacing="0.5">
-      図4-2　リクエストが複数サービスを経由する
+      図4-2.0　リクエストが複数サービスを経由する
     </text>
 
   </g>
@@ -308,7 +308,7 @@
     <rect x="20" y="640" width="4" height="76" fill="#1F4E79"/>
     <text x="32" y="655" dominant-baseline="middle"
           fill="#546E7A" font-size="12">
-      図4-2：利用者には「1回のやり取り」に見えるリクエストも、内部では API Gateway →認証→商品→決済→通知という複数サービスの呼び出し連鎖になっている。
+      図4-2.0：利用者には「1回のやり取り」に見えるリクエストも、内部では API Gateway →認証→商品→決済→通知という複数サービスの呼び出し連鎖になっている。
     </text>
     <text x="32" y="675" dominant-baseline="middle"
           fill="#546E7A" font-size="12">

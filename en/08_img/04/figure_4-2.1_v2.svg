@@ -37,7 +37,7 @@
     <rect x="20" y="66" width="1080" height="38" fill="#546E7A" rx="2"/>
     <text x="560" y="85" text-anchor="middle" dominant-baseline="middle"
           fill="#FFFFFF" font-size="13" font-weight="bold">
-      Recording and visualizing the 5-service call chain from Figure 4-2 with Trace and Span (Gantt chart format)
+      Recording and visualizing the 5-service call chain from Figure 4-2.0 with Trace and Span (Gantt chart format)
     </text>
   </g>
 

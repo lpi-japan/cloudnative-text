@@ -77,7 +77,13 @@ Furthermore:
 
 kubectl alone cannot respond to this state.
 
-Therefore, a mechanism that integrates metrics, logs, and tracing becomes necessary.
+Therefore,
+
+- Metrics
+- Logs
+- Tracing
+
+These pieces of information need a mechanism that handles them in an integrated manner.
 
 What matters is not the tools.  
 It is being in a state where information necessary for judgment can be handled.

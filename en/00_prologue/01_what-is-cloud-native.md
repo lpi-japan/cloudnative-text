@@ -20,7 +20,7 @@ In cloud native, the assumptions themselves changed.
 This is not technological evolution.  
 It is a change in the assumptions under which systems exist.
 
-![Figure P-1: A Change in Assumptions, Not Technological Evolution](../08_img/00/figure_P-1_v6.svg)
+![Figure P-1: Not Technological Evolution, but a Change in Assumptions](../08_img/00/figure_P-1_v6.svg)
 
 Traditional systems assumed that the environment would not change significantly.  
 Configuration was fixed, and changes and failures were treated as exceptions.

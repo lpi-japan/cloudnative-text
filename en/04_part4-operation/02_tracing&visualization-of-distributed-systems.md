@@ -28,7 +28,7 @@ Each service can be observed.
 
 However, how they connect as a single request is not clear.
 
-![Figure 4-2.0: The flow of a single request passing through multiple services](../08_img/04/figure_4-2.0_v2.svg)
+![Figure 4-2.0: A Request Passing Through Multiple Services](../08_img/04/figure_4-2.0_v2.svg)
 
 In this state:
 

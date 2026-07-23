@@ -1,7 +1,6 @@
-# Chapter 1: Social Challenges and the Resolving Power of Cloud Native
+## Chapter 1: Social Challenges and the Resolving Power of Cloud Native
 
-
-## 1. The Fact That the Assumptions of Society Have Changed
+### 1. The Fact That the Assumptions of Society Have Changed
 
 Cloud native did not spread because it is "convenient technology."  
 It emerged **as a response to the fact that systems could no longer remain viable under the traditional assumptions**.
@@ -13,13 +12,14 @@ This approach remained viable in situations where the environment did not change
 
 However, today, these assumptions have broken down.
 
-Services change continuously, usage patterns are unpredictable,  
-and systems are composed of multiple elements in a distributed structure that assumes a network.
+Services change continuously,  
+usage patterns are unpredictable,  
+systems are composed of multiple elements,  
+and they become a distributed structure that assumes a network.
 
 **The fact that change, distribution, and uncertainty have become assumptions** is what this represents.
 
-
-## 2. "Continuing to Remain Viable" Has Become More Difficult Than "Building"
+### 2. "Continuing to Remain Viable" Has Become More Difficult Than "Building"
 
 This change has significantly altered what is difficult about systems.  
 Previously, **"how to build"** was the central problem.
@@ -49,8 +49,7 @@ Furthermore, as real constraints:
 These conditions accumulate.  
 Not only does it not remain viable — it also cannot be maintained.
 
-
-## 3. Why Structure Becomes Necessary
+### 3. Why Structure Becomes Necessary
 
 For this situation, it is not possible to resolve things through human response alone.
 
@@ -70,8 +69,7 @@ This is the reason why mechanisms such as:
 
 become necessary.
 
-
-## 4. The Problem That Cloud Native Is Solving
+### 4. The Problem That Cloud Native Is Solving
 
 Cloud native is an answer to the challenge of creating "a structure that continues to remain viable."  
 Everything examined in Parts 1 through 4 exists for this purpose.
@@ -86,8 +84,7 @@ These are not individual technologies.
 They are a structure for accepting change, taking distribution as an assumption,  
 and continuing to remain viable amid uncertainty.
 
-
-## 5. Understanding It as Structure, Not as Technology
+### 5. Understanding It as Structure, Not as Technology
 
 When cloud native is viewed as a collection of tools:
 
@@ -109,8 +106,7 @@ This choice of boundaries becomes the standard for all design.
 Cloud native is not "a better method."  
 It is the structure chosen in situations where, without it, things cannot remain viable.
 
-
-## 6. The Question That Remains
+### 6. The Question That Remains
 
 Through structure, the system has come to continue to remain viable.
 
@@ -121,4 +117,3 @@ Then, that structure —
 - How does it function within society?
 
 Next, how this structure appears as value will be examined.
-

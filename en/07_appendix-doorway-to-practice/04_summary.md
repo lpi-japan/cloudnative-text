@@ -10,8 +10,7 @@ but to understand **"why that structure became necessary."**
 In the world of cloud native, systems continue to change at all times.
 
 Configuration is not fixed, roles continue to shift,  
-and the responsibilities and perspectives required keep expanding.
-
+and the responsibilities and perspectives required keep expanding.  
 For that reason, what matters is not "memorizing the correct answer,"  
 but **"how to grasp structure within change."**
 
@@ -32,4 +31,3 @@ and what responsibilities does one want to take on.
 If this textbook can serve as an entry point  
 for grasping this ever-changing world of cloud native as structure,  
 that is its purpose.
-

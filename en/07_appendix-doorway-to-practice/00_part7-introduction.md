@@ -13,4 +13,3 @@ Its purpose is to provide a bridge to the next stage of learning by clarifying:
 - which knowledge frameworks the structural understanding built in this textbook connects to,
 - what kinds of roles and responsibilities that understanding leads toward,
 - and what to learn next to deepen that understanding.
-

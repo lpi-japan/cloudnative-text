@@ -6,7 +6,9 @@ This textbook was developed in response to requests from many educational instit
 
 The textbook is published under the license attached to it (Creative Commons License).
 
-To remain current with the latest technological trends, this textbook will be updated from time to time. For the most up-to-date information regarding this textbook, please refer to the following webpage:
+To remain current with the latest technological trends, this textbook will be updated from time to time.
+
+For the most up-to-date information regarding this textbook, please refer to the following webpage:
 
 ```
 https://linuc.org/en/textbooks/cloudnative/
@@ -86,7 +88,9 @@ This textbook is developed as an **open project**. From the planning stage onwar
 
 ### Toshiyuki Tashibu (SHINESOFT CORPORATION) {.unlisted .unnumbered}
 
-We created this textbook hoping it will support everyone who is starting to learn cloud native technology and those who guide that learning. Cloud native spans many technologies and open source projects, so understanding individual tools alone makes it hard to see the whole picture. This book emphasizes structural understanding—why each mechanism was needed and what problem its design solves—rather than a single product or implementation recipe. We hope it serves as a useful entry point into cloud native learning.
+We created this textbook hoping it will support everyone who is starting to learn cloud native technology and those who guide that learning. Cloud native spans many technologies and open source projects, so understanding individual tools alone makes it hard to see the whole picture.
+This book emphasizes structural understanding—why each mechanism was needed and what problem its design solves—rather than a single product or implementation recipe.
+We hope it serves as a useful entry point into cloud native learning.
 
 ## Contributors {.unlisted .unnumbered}
 
@@ -120,9 +124,13 @@ Please indicate that the copyright of this textbook belongs to the **LPI-Japan**
 
 ### Non-Commercial {.unlisted .unnumbered}
 
-This textbook may be used freely as teaching material for non-commercial purposes. Use for commercial purposes, primarily aimed at commercial gain or monetary compensation, requires permission from LPI-Japan. However, in education where this textbook is used, if no fee is charged for the textbook itself, it can basically be used even in commercial education. In such cases, and for any other inquiries, please feel free to contact the LPI-Japan Secretariat.
+This textbook may be used freely as teaching material for non-commercial purposes.
 
-\* Commercial use is defined as follows: in a for-profit company or non-profit organization, conducting training or lectures using copies of this textbook while charging learners more than the printing cost of this textbook, with commercial gain or monetary compensation as the primary aim.
+Use for commercial purposes, primarily aimed at commercial gain or monetary compensation, requires permission from LPI-Japan. However, in education where this textbook is used, if no fee is charged for the textbook itself, it can basically be used even in commercial education.
+In such cases, and for any other inquiries, please feel free to contact the LPI-Japan Secretariat.
+
+\* Commercial use is defined as follows:
+In a for-profit company or non-profit organization, conducting training or lectures using copies of this textbook while charging learners more than the printing cost of this textbook, with commercial gain or monetary compensation as the primary aim.
 
 ### NoDerivatives (No Alteration) {.unlisted .unnumbered}
 

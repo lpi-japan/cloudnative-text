@@ -1,7 +1,6 @@
-# Chapter 1: Options for Practice Environments – Where to Run Kubernetes
+## Chapter 1: Options for Practice Environments – Where to Run Kubernetes
 
-
-## 1. Why Start with the Environment?
+### 1. Why Start with the Environment?
 
 There is not one environment for practicing Kubernetes.
 
@@ -17,8 +16,7 @@ and what must be handled by the person changes.
 
 Without understanding that difference, "why it does not work" becomes unclear.
 
-
-## 2. Aligning Assumptions
+### 2. Aligning Assumptions
 
 What matters is not which environment to use.
 
@@ -42,8 +40,7 @@ Therefore, a pre-configured environment is used as the assumption.
 What matters is that this choice is not made because it is "convenient,"  
 but because it allows focus on observation.
 
-
-## ■ Main Options for Running Kubernetes
+### ■ Main Options for Running Kubernetes
 
 ※ Note on the execution environment addressed in this chapter
 
@@ -68,8 +65,7 @@ What matters is not deciding which is best.
 It is understanding the purpose for which each option was created,  
 and what assumptions it operates under.
 
-
-## 3. How This Part Handles the Environment
+### 3. How This Part Handles the Environment
 
 In this part, the impact of environment differences is minimized.
 
@@ -86,4 +82,3 @@ Capturing that difference is what matters.
 It is fine not to understand immediately.
 
 Confirm repeatedly how the assumptions addressed in Part 1 appear.
-

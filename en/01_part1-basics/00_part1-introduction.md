@@ -1,8 +1,6 @@
 # Part 1: Fundamentals – The Story of How the Execution Unit Changed
 
-
 ## Introduction
-
 
 Cloud-native technologies are already in widespread use.
 
@@ -14,7 +12,6 @@ Yet certain situations tend to arise.
 - Can run it, but cannot explain why it works that way
 - Can replicate configurations, but changes cause things to break
 - When problems occur, cannot determine where to look
-
 
 The issue here is not the technology.  
 **It is the inability to see the whole as a structure.**
@@ -31,9 +28,7 @@ Four areas are addressed.
 
 Each of these is a distinct problem.
 
-
 What matters is not understanding everything.  
 **It is being able to isolate where something is happening and what is happening there.**
 
 Carry this perspective forward into the next chapter.
-

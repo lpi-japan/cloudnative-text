@@ -1,20 +1,18 @@
-# Chapter 1: Microservices and Application Configuration – What Happens When You Divide?
+## Chapter 1: Microservices and Application Configuration – What Happens When You Divide?
 
-
-## 0. How Assumptions Are Set
+### 0. How Assumptions Are Set
 
 This chapter does not address specific configurations or correct answers.
 
 The way applications are divided changes depending on the assumptions in place.  
 What is addressed here is not which form is correct.
 
-**Why does the idea of division emerge?**  
-**What happens when things are divided?**
+- **Why does the idea of division emerge?**
+- **What happens when things are divided?**
 
 That structure is what is addressed.
 
-
-## 1. Why Does Division Appear?
+### 1. Why Does Division Appear?
 
 What is addressed here is the application.
 
@@ -27,19 +25,18 @@ However, as change increases, the situation changes.
 
 What flows through the system continues to grow.
 
-**The flow of change**  
-**The flow of communication**
+- **The flow of change**
+- **The flow of communication**
 
 In this state, a single change affects the whole,  
 and the whole must be handled every time a change occurs.
 
 Even fixing just a part may require stopping the whole.  
 At this point, "continuing to handle things as a single body" becomes unrealistic.
-
+  
 What emerges here is the question: "Where do we draw the boundary?"
 
-
-## 2. What Happens When Things Are Divided?
+### 2. What Happens When Things Are Divided?
 
 When an application is divided,  
 each part can be handled as an independent unit.
@@ -62,8 +59,7 @@ There are aspects that become easier to handle through division.
 However, at the same time, a new problem emerges:  
 how to keep what has been divided viable together.
 
-
-## 3. Complexity Moves
+### 3. Complexity Moves
 
 Division is not an act of reducing complexity.  
 **It is an act of relocating complexity.**
@@ -88,8 +84,7 @@ now emerge as objects to be handled.
 These are not exceptions.  
 **Division brings assumptions to the surface**
 
-
-## 4. Division as Responsibility
+### 4. Division as Responsibility
 
 An application can be understood as a collection of responsibilities.
 
@@ -110,8 +105,7 @@ However, at the same time, the need to connect what has been divided emerges.
 The division changes what problems must be addressed.  
 **This judgment becomes the design itself.**
 
-
-## 5. Division and Execution Environment
+### 5. Division and Execution Environment
 
 Divided units do not remain viable on their own.  
 Each runs in a different place, and each changes independently.
@@ -121,11 +115,13 @@ some decrease,
 some fail,  
 and some are restarted elsewhere.
 
-In order to maintain this state, judgments are constantly required:
+In order to maintain this state,
 
 - Where to run
 - When to run
 - How to connect
+
+judgments such as these constantly arise.
 
 If all of this were handled by people, the state would need to be confirmed at every change  
 and the necessary operations would need to be performed each time.
@@ -137,8 +133,7 @@ It is here, for the first time, that a mechanism such as Kubernetes takes on mea
 
 **Division reveals where responsibility must be placed**
 
-
-## 6. A Choice, Not a Correct Answer
+### 6. A Choice, Not a Correct Answer
 
 It is here, for the first time, that the term "microservices" takes on meaning.
 
@@ -156,9 +151,11 @@ As a result of division:
 
 That understanding is what matters.
 
-
-## 7. The Question That Remains
+### 7. The Question That Remains
 
 Through division, the flows of change and communication have emerged.
 
-Change is not something delivered once and finis
+Change is not something delivered once and finished.  
+It needs to be delivered repeatedly, safely, and continuously.
+
+Then, how is that change delivered?

@@ -1,5 +1,4 @@
-# 3-4 kubectl Command Basics – A Tool for "Viewing State," Not for Operating
-
+## 3-4 kubectl Command Basics – A Tool for "Viewing State," Not for Operating
 
 In the hands-on work of this chapter, several kubectl commands are used.  
 There is no need to memorize all options and usage here.
@@ -22,8 +21,7 @@ In this chapter,
 
 are the focus, using kubectl in the way of observing state.
 
-
-## 1. What Is kubectl?
+### 1. What Is kubectl?
 
 kubectl is an interface for confirming cluster state  
 and communicating state.
@@ -33,10 +31,10 @@ kubectl itself does not make judgments or manage resources.
 - Kubernetes makes the judgments
 - kubectl only "communicates" and "views"
 
+### 2. kubectl get
 
-## 2. kubectl get
+##### View the current state as a list
 
-#### View the current state as a list
 ```bash
 kubectl get pod
 kubectl get deployment
@@ -54,11 +52,9 @@ What can be understood here is:
 Detailed reasons cannot be determined.  
 **Confirm existence and state**
 
-----
+### 3. kubectl describe
 
-## 3. kubectl describe
-
-#### View the detailed state
+##### View the detailed state
 
 ```bash
 kubectl describe pod sample-pod
@@ -75,10 +71,10 @@ describe is a tool for confirming the detailed state of individual resources.
 
 **Confirm the history and reason**
 
+### 4. kubectl apply
 
-## 4. kubectl apply
+##### Communicate the Desired State
 
-#### Communicate the Desired State
 ```bash
 kubectl apply -f deployment.yaml
 ```
@@ -94,10 +90,10 @@ Kubernetes compares:
 and acts to close that gap.  
 **Declare the Desired State**
 
+### 5. kubectl delete
 
-## 5. kubectl delete
+##### Break the state
 
-#### Break the state
 ```bash
 kubectl delete pod sample-pod
 ```
@@ -113,9 +109,10 @@ When a management unit such as a Deployment exists:
 This is the behavior that occurs.  
 **Break the state and observe the behavior**
 
+### 6. kubectl scale
 
-## 6. kubectl scale
-#### Change only the count
+##### Change only the count
+
 ```bash
 kubectl scale deployment sample-deployment --replicas=3
 ```
@@ -129,10 +126,10 @@ These are determined by Kubernetes.
 
 **Specify only the count**
 
+### 7. kubectl expose
 
-## 7. kubectl expose
+##### Create a connection point
 
-#### Create a connection point
 ```bash
 kubectl expose deployment sample-deployment --type=ClusterIP --port=80
 ```
@@ -140,6 +137,7 @@ kubectl expose deployment sample-deployment --type=ClusterIP --port=80
 expose is the command for exposing a resource through a Service.
 
 Here too,
+
 - Which Pod to connect to
 - Processing when Pods increase or decrease
 
@@ -148,9 +146,10 @@ The Service takes on that responsibility.
 
 **Define the connection point**
 
+### 8. kubectl logs / exec
 
-## 8. kubectl logs / exec
-#### Tools for "looking inside"
+##### Tools for "looking inside"
+
 ```bash
 kubectl logs <pod-name>
 kubectl exec -it <pod-name> -- /bin/sh
@@ -163,10 +162,10 @@ They are tools for observation only.
 
 **Observe the inside**
 
-
-## 9. Summary
+### 9. Summary
 
 The correspondence to understand at this point is as follows.
+
 | Command | Role |
 |-----------|-------------------------|
 | get | View what currently exists |
@@ -177,11 +176,9 @@ The correspondence to understand at this point is as follows.
 | expose | Create a connection point |
 | logs / exec | Observe the inside |
 
-
 kubectl is not a tool for operating Kubernetes.
 
 It is a window for exchanging state.  
 It is sufficient to grasp only this relationship.
 
 Proceeding to the next chapter.
-

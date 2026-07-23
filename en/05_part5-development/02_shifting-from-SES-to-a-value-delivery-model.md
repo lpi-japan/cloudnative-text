@@ -1,11 +1,10 @@
-# Chapter 2: Shifting from SES to a Value-Delivery Model
+## Chapter 2: Shifting from SES to a Value-Delivery Model
 
+### 1. Decomposition Changes How Responsibility Is Divided
 
-## 1. Decomposition Changes How Responsibility Is Divided
-
-Through containers, applications were separated as execution units.  
-Through Kubernetes, control of those units came to be delegated to the mechanism.  
-Through cloud, part of the infrastructure came to be left to the outside.
+- Through containers, applications were separated as execution units.
+- Through Kubernetes, control of those units came to be delegated to the mechanism.
+- Through cloud, part of the infrastructure came to be left to the outside.
 
 This is not merely a change in technology.
 
@@ -15,13 +14,10 @@ and responsibility is allocated to each**.
 Decomposition is not making a structure more fine-grained.  
 It is **redistributing where responsibility is placed**.
 
-Through this change,  
-the assumption of "who handles how far" changes.
-
+Through this change, the assumption of "who handles how far" changes.  
 As a result, the very way work is conducted changes.
 
-
-## 2. Value Is Determined by "How Far Responsibility Is Held"
+### 2. Value Is Determined by "How Far Responsibility Is Held"
 
 Even when handling the same technology:
 
@@ -35,8 +31,7 @@ This difference is not a difference in skills.
 
 It is determined by **how far one treats as within their own scope of responsibility**.
 
-
-## 3. Why Work Can No Longer Be Handled as Tasks
+### 3. Why Work Can No Longer Be Handled as Tasks
 
 In an environment where change, distribution, and uncertainty are assumptions,  
 it becomes impossible to respond simply by carving out task units and allocating them to people.
@@ -57,8 +52,7 @@ In this state:
 
 As a result, **simply completing tasks means the system cannot continue to remain viable.**
 
-
-## 4. From "What to Do" to "What to Keep Viable"
+### 4. From "What to Do" to "What to Keep Viable"
 
 What is required in this situation is not tasks.  
 It is observing state, identifying problems, and continuing to improve.
@@ -76,8 +70,7 @@ A state in which these conditions are met.
 The observation, control, and judgment addressed in Part 4  
 are the assumptions that support this viability.
 
-
-## 5. Structure Determines Value
+### 5. Structure Determines Value
 
 When structure changes, how value is produced changes.
 
@@ -101,12 +94,10 @@ This choice becomes value itself.
 Cloud native is not "a better method."  
 **It is a structure that changes the very way responsibility is held.**
 
-
-## 6. The Question That Remains
+### 6. The Question That Remains
 
 When the scope of responsibility determines value:
 
-How is that responsibility defined?  
-How far should it be taken on?  
-How is it kept viable as an organization?
-
+- How is that responsibility defined?
+- How far should it be taken on?
+- How is it kept viable as an organization?

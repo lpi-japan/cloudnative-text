@@ -1,27 +1,26 @@
-# 3-1 Hands-On: Pod / Deployment / Service – Break, Restore, Delegate
-
+## 3-1 Hands-On: Pod / Deployment / Service – Break, Restore, Delegate
 
 Assumed environment: KillerCoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
+### 0. Pre-Check (Viewing the Current State)
 
-## 0. Pre-Check (Viewing the Current State)
+##### First, confirm the state in which nothing has happened.
 
-#### First, confirm the state in which nothing has happened.
 ```bash
 kubectl get pod
 ```
 
-#### Observation
+##### Observation
+
 - In a state where nothing has been created, nothing exists
 - **Kubernetes** "does not start anything on its own"
 
 **If nothing is defined, nothing happens**
 
+### 1. Create a Pod (A Single Execution Unit)
 
-## 1. Create a Pod (A Single Execution Unit)
-
-#### Create a Pod definition file.
+##### Create a Pod definition file.
 
 ```bash
 cat <<EOF > pod.yaml
@@ -38,28 +37,32 @@ spec:
 EOF
 ```
 
-#### Create the Pod.
+##### Create the Pod.
+
 ```bash
 kubectl apply -f pod.yaml
 ```
 
-#### Confirm the state.
+##### Confirm the state.
+
 ```bash
 kubectl get pod
 ```
 
-#### Confirm the Pod details.
+##### Confirm the Pod details.
+
 ```bash
 kubectl describe pod sample-pod
 ```
 
-#### Observation
+##### Observation
+
 - A Pod is "a single execution unit"
 - Kubernetes manages it but does not protect it
 
 **The Pod runs but is not maintained**
 
-#### ※ Note
+##### ※ Note
 
 Kubernetes does not manage "what is running" —  
 it is a mechanism that operates based on "what the state should be."
@@ -71,33 +74,36 @@ no "gap from the Desired State" has occurred.
 
 **What has no defined state to protect is not maintained**
 
+### 2. Delete the Pod (Break It)
 
-## 2. Delete the Pod (Break It)
+##### Delete the Pod.
 
-#### Delete the Pod.
 ```bash
 kubectl delete pod sample-pod
 ```
 
-#### Confirm the state again.
+##### Confirm the state again.
+
 ```bash
 kubectl get pod
 ```
 
-#### Observation
+##### Observation
+
 - The Pod is gone and does not return
 - Kubernetes "does not protect a standalone Pod"
 
 **When it breaks, it ends**
 
-#### Question
+##### Question
+
 - What would happen if this were production?
 - Would a person recreate it every time?
 
+### 3. Manage the Pod Using a Deployment
 
-## 3. Manage the Pod Using a Deployment
+##### Create a Deployment definition file.
 
-#### Create a Deployment definition file.
 ```bash
 cat <<EOF > deployment.yaml
 apiVersion: apps/v1
@@ -122,27 +128,31 @@ spec:
 EOF
 ```
 
-#### Create the Deployment.
+##### Create the Deployment.
+
 ```bash
 kubectl apply -f deployment.yaml
 ```
 
-#### Confirm the Pod.
+##### Confirm the Pod.
+
 ```bash
 kubectl get pod
 ```
 
-#### Delete the Pod. (Break it again)
+##### Delete the Pod. (Break it again)
+
 ```bash
 kubectl delete pod -l app=sample
 ```
 
-#### Confirm again immediately.
+##### Confirm again immediately.
+
 ```bash
 kubectl get pod
 ```
 
-#### Observation
+##### Observation
 
 - The Pod is automatically recreated
 - No instruction was given
@@ -150,29 +160,31 @@ kubectl get pod
 **State is maintained**  
 **What is protecting it is not a person but the mechanism**
 
+### 4. Change the Replica Count (Changing State)
 
-## 4. Change the Replica Count (Changing State)
+##### Change the replica count of the Deployment.
 
-#### Change the replica count of the Deployment.
 ```bash
 kubectl scale deployment sample-deployment --replicas=3
 ```
 
-#### Confirm the Pods.
+##### Confirm the Pods.
+
 ```bash
 kubectl get pod
 ```
 
-#### Observation
+##### Observation
+
 - Three Pods exist
 - Only the "count" is specified, not individual instances
 
 **The person specifies only the state**
 
+### 5. Access a Pod Through a Service
 
-## 5. Access a Pod Through a Service
+##### Create a Service.
 
-#### Create a Service.
 ```bash
 kubectl expose deployment sample-deployment \
   --type=ClusterIP \
@@ -180,40 +192,44 @@ kubectl expose deployment sample-deployment \
   --port=80
 ```
 
-#### Confirm the Service.
+##### Confirm the Service.
+
 ```bash
 kubectl get service
 ```
 
-#### Confirm access through the Service.
+##### Confirm access through the Service.
+
 ```bash
 kubectl run curl --rm -it --image=curlimages/curl --restart=Never -- \
   curl http://sample-service
 ```
 
-#### Observation
+##### Observation
 
 - No Pod was specified directly
 - The Service is in between
 
 **The entry point is handled, not the instance**
 
-
-## 6. Summary (What Was Confirmed in This Hands-On)
+### 6. Summary (What Was Confirmed in This Hands-On)
 
 What was experienced in this hands-on is the following distinction.
 
-### Pod
+#### Pod
+
 - Execution unit
 - Breaks
 - Not protected
 
-### Deployment
+#### Deployment
+
 - Management unit
 - Maintains state
 - Makes judgments in place of people
 
-### Service
+#### Service
+
 - Connection point
 - Conceals instances
 - Separates responsibility
@@ -225,4 +241,3 @@ is not a mechanism for running containers.
 
 Up to this point, the flow of break, restore, and delegate has been experienced.  
 Then, where is that state and configuration held?
-

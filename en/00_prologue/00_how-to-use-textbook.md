@@ -1,11 +1,11 @@
-# Prologue: How to Use This Textbook — For Genuine Understanding
+# Prologue: What Is Cloud Native?
 
+## How to Use This Textbook — For Genuine Understanding
 
 This textbook is not for memorizing operations or procedures.  
 It is for understanding how to keep a system viable within an environment that continues to change.
 
-
-## Why Now
+### 1. Why Now
 
 The assumptions surrounding systems have changed.
 
@@ -20,8 +20,7 @@ Cloud native is a structural response to this change.
 The reason to learn it is not that it is new technology.  
 It became necessary because the traditional assumptions can no longer keep systems viable.
 
-
-## The Structure of This Textbook
+### 2. The Structure of This Textbook
 
 This textbook is organized in the following sequence.
 
@@ -31,13 +30,12 @@ This textbook is organized in the following sequence.
 - Part 3 engages with them as structure,
 - Part 4 applies judgment through operations,
 - Part 5 connects them to society,
-- Part 6 brings it all together as a conclusion.
+- Part 6 brings it all together as a conclusion.  
 
 This sequence is intentional.  
 Each part is built on the assumptions established in the part before it.
 
-
-## What It Means to Understand Through Structure
+### 3. What It Means to Understand Through Structure
 
 In this textbook, before tools or procedures,  
 the focus is on **"why that form exists."**
@@ -51,8 +49,7 @@ but on grasping what is actually happening.
 Understanding through structure means looking not at the technology itself,  
 but at **the responsibility that technology has taken on**.
 
-
-## How to Read
+### 4. How to Read
 
 It is fine not to understand immediately.
 
@@ -64,8 +61,7 @@ What was covered in a previous part will reappear in a different form.
 
 Through that back-and-forth, understanding accumulates.
 
-
-## Transferability
+### 5. Transferability
 
 The structures addressed in this textbook do not depend on any specific product or environment.
 

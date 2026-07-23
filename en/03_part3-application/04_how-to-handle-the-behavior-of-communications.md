@@ -1,7 +1,7 @@
-# Chapter 4: How to Handle the Behavior of Communication – Retry, Timeout, Observability
+## Chapter 4: How to Handle the Behavior of Communication – Retry, Timeout, Observability
 
 
-## 1. Communication "Appears as a Result"
+### 1. Communication "Appears as a Result"
 
 In Chapter 3, where communication is controlled was examined.  
 However, what actually appears is not the configuration itself but its result.
@@ -15,7 +15,8 @@ Communication appears in the form of:
 **Communication can only be observed as a result**
 
 
-## 2. Communication Without Defined Behavior Becomes Unstable
+
+### 2. Communication Without Defined Behavior Becomes Unstable
 
 Communication carries the assumption of failure.
 
@@ -32,7 +33,8 @@ This is a state in which communication is not controlled.
 **Communication without defined behavior becomes unstable**
 
 
-## 3. Behavior Is Defined as a "Rule"
+
+### 3. Behavior Is Defined as a "Rule"
 
 The behavior of communication is defined as a rule.
 
@@ -44,7 +46,8 @@ All of these **decide how to act when failure occurs**
 What is important here is that **it is behavior at the time of failure, not success, that determines the design**
 
 
-## 4. Retry and Timeout
+
+### 4. Retry and Timeout
 
 Among the behaviors of communication, the two most fundamental are:
 
@@ -64,7 +67,8 @@ Without these:
 ![Figure 3-4: Latency Spreads to the Whole](../08_img/03/figure_3-4_v1.svg)
 
 
-## 5. What Cannot Be Seen Cannot Be Controlled
+
+### 5. What Cannot Be Seen Cannot Be Controlled
 
 The moment communication leaves the system, it becomes invisible.
 
@@ -76,7 +80,8 @@ If these cannot be determined, the behavior cannot be adjusted.
 **What cannot be seen cannot be controlled**
 
 
-## 6. The Idea of Observability
+
+### 6. The Idea of Observability
 
 In order to handle communication, it is necessary to understand state,  
 trace the flow, and identify the cause.
@@ -87,7 +92,8 @@ Observability is not a tool.
 **It is the assumption required for understanding behavior**
 
 
-## 7. Where Is Behavior Taken On?
+
+### 7. Where Is Behavior Taken On?
 
 These behaviors can be:
 
@@ -99,7 +105,8 @@ Neither is correct.
 **It is a design decision of where to take responsibility**
 
 
-## 8. Summary
+
+### 8. Summary
 
 What has been examined in this chapter is the behavior of communication.
 
@@ -109,7 +116,8 @@ Communication appears as the results of:
 - Failing
 - Being delayed
 
-What matters is whether it has been decided how to act in response to those results.
+What matters is whether it has been decided  
+how to act in response to those results.
 
 Up to this point, the structure of:
 
@@ -120,4 +128,8 @@ Up to this point, the structure of:
 
 has come together.
 
-Then, on top of these assumptions, how does the syst
+Then, on top of these assumptions, how is the whole made viable?  
+This is organized in the Part 3 summary.
+
+
+

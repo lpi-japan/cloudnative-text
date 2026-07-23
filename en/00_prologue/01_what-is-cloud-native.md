@@ -1,7 +1,7 @@
-# Introduction: What Is Cloud Native?
+## What Is Cloud Native?
 
 
-## 1. The Question
+### 1. The Question
 
 The term "cloud native" does not refer to a collective name for cloud services or container technologies.
 
@@ -11,7 +11,8 @@ Native means adapting to that environment and continuing to remain viable as a w
 So, what is cloud native?
 
 
-## 2. Background: Not Technological Evolution, but a Change in Assumptions
+
+### 2. Background: Not Technological Evolution, but a Change in Assumptions
 
 Monoliths remained viable under fixed assumptions.  
 Virtualization separated environments, but the assumptions did not change.  
@@ -34,7 +35,8 @@ With change, distribution, and uncertainty now taken as assumptions,
 systems can no longer remain viable under the traditional assumptions.
 
 
-## 3. The Core: From Static Optimization to Dynamic Stability
+
+### 3. The Core: From Static Optimization to Dynamic Stability
 
 Traditional design was optimized under the assumption that change would not occur.  
 Configuration was fixed, and failures and changes were treated as exceptions.
@@ -64,7 +66,8 @@ Therefore, the judgment required to maintain viability
 is designed to be carried out by the structure, not by people.
 
 
-## 4. The CNCF Definition
+
+### 4. The CNCF Definition
 
 The CNCF definition of cloud native is widely referenced.
 
@@ -87,7 +90,8 @@ All of these are positioned as elements that enable the system as a whole to con
 within an environment that assumes change.
 
 
-## 5. What Learning Makes Visible
+
+### 5. What Learning Makes Visible
 
 When cloud native is understood from this perspective,  
 the way systems are seen changes significantly.
@@ -124,7 +128,8 @@ This change is not simply the addition of a skill.
 It means that the assumptions about systems themselves change.
 
 
-## 6. Summary
+
+### 6. Summary
 
 What has been addressed here  
 is not an explanation of the term "cloud native."
@@ -132,4 +137,9 @@ is not an explanation of the term "cloud native."
 It is a perspective on what assumptions to hold about systems.
 
 When standing on this perspective,  
-the way systems are seen and the approach to design change significant
+the way systems are seen and the approach to design change significantly.
+
+How, then, is that structure realized?  
+We hope you will proceed to the next part with this question in mind.
+
+

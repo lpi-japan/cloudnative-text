@@ -1,4 +1,4 @@
-# Appendix: Doorway to Practice — Certifications and Learning Roadmap
+# Appendix: Bridge to Practice — Certifications and Learning Roadmap
 
 ## The Role of This Appendix
 

@@ -78,7 +78,7 @@ Business and social context, FinOps, and connections with AI—turning technolog
 
 A structural recap of what you have learned.
 
-### Appendix&nbsp;Gateway to Practice {.unlisted .unnumbered}
+### Appendix&nbsp;Bridge to Practice {.unlisted .unnumbered}
 
 Certifications such as KCNA and a learning roadmap.
 

@@ -1,4 +1,4 @@
-# Part 5: Deployment Step – Turning Technology into Value
+# Part 5: Expansion Step – Turning Technology into Value
 
 In Parts 1 through 4, the cloud-native system was examined  
 not as a collection of technologies, but as a structure.

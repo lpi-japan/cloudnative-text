@@ -1,4 +1,4 @@
-# Part 2: Practice – Experiencing the Assumptions Firsthand
+# Part 2: Practice Step – Experiencing the Assumptions Firsthand
 
 ## Introduction
 

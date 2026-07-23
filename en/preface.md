@@ -54,27 +54,27 @@ This textbook proceeds as follows:
 
 How to use this textbook and why cloud native matters.
 
-### Part 1&nbsp;Foundations {.unlisted .unnumbered}
+### Part 1&nbsp;Fundamentals Step {.unlisted .unnumbered}
 
 Containers, Kubernetes, and the difference between cloud and on-premises—understanding the principles.
 
-### Part 2&nbsp;Practice {.unlisted .unnumbered}
+### Part 2&nbsp;Practice Step {.unlisted .unnumbered}
 
 Hands-on work in Killercoda and similar environments to experience how Kubernetes behaves.
 
-### Part 3&nbsp;Application {.unlisted .unnumbered}
+### Part 3&nbsp;Application Step {.unlisted .unnumbered}
 
 Microservices, continuous delivery, and service-to-service communication—delivering and connecting applications.
 
-### Part 4&nbsp;Operations {.unlisted .unnumbered}
+### Part 4&nbsp;Operations Step {.unlisted .unnumbered}
 
 Monitoring, tracing, and security—making systems visible and keeping them safe.
 
-### Part 5&nbsp;Expansion {.unlisted .unnumbered}
+### Part 5&nbsp;Expansion Step {.unlisted .unnumbered}
 
 Business and social context, FinOps, and connections with AI—turning technology into value.
 
-### Part 6&nbsp;Summary {.unlisted .unnumbered}
+### Part 6&nbsp;Conclusion {.unlisted .unnumbered}
 
 A structural recap of what you have learned.
 

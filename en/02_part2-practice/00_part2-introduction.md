@@ -1,7 +1,7 @@
-## Part 2: Practice – Experiencing the Assumptions Firsthand
+# Part 2: Practice – Experiencing the Assumptions Firsthand
 
 
-### Introduction
+## Introduction
 
 In Part 1, cloud native was understood as a structure.
 

@@ -147,7 +147,7 @@ All of these rest on the assumptions organized in Part 1.
 
 kubectl is the window for viewing that state.
 
-The experience up to this point was made viable on the KillerCoda environment.  
+The experience up to this point was made viable on the Killercoda environment.  
 When the environment changes, the assumptions taken on also change.
 
 Proceeding to the next chapter to confirm that.

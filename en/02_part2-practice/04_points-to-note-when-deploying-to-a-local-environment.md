@@ -1,6 +1,6 @@
 ## Chapter 4: Points to Note When Deploying to a Local Environment – More Freedom Means More Responsibility
 
-Through Chapter 3, using KillerCoda for practice, the following were experienced firsthand.
+Through Chapter 3, using Killercoda for practice, the following were experienced firsthand.
 
 - Basic behavior of Kubernetes
 - Design under the assumption that things break
@@ -10,7 +10,7 @@ From here, the environment changes.
 
 ### 1. Differences Between Learning Environments and Local Environments
 
-In a learning environment such as KillerCoda:
+In a learning environment such as Killercoda:
 
 - The initial state is in order
 - Dependencies are aligned

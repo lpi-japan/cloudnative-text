@@ -1,6 +1,6 @@
 ## 3-1 Hands-On: Pod / Deployment / Service – Break, Restore, Delegate
 
-Assumed environment: KillerCoda (Kubernetes cluster running)  
+Assumed environment: Killercoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
 ### 0. Pre-Check (Viewing the Current State)

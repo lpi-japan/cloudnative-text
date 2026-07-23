@@ -30,21 +30,21 @@ This textbook is designed for self-study. Hands-on work is concentrated in Part 
 
 ### Part 2 Hands-on (Standard) {.unlisted .unnumbered}
 
-Part 2 uses **KillerCoda** as the standard hands-on environment. KillerCoda is a browser-based environment for learning Kubernetes and related topics. Exercises start from a running Kubernetes cluster and proceed by applying YAML with `kubectl`. You can begin with a Google account or similar, without installing tools or building an environment on your local PC. See Part 2, Chapter 2 for details.
+Part 2 uses **Killercoda** as the standard hands-on environment. Killercoda is a browser-based environment for learning Kubernetes and related topics. Exercises start from a running Kubernetes cluster and proceed by applying YAML with `kubectl`. You can begin with a Google account or similar, without installing tools or building an environment on your local PC. See Part 2, Chapter 2 for details.
 
 ### Prerequisites {.unlisted .unnumbered}
 
-The network used for exercises is assumed to have **Internet access**, which is required for KillerCoda and for referring to this textbook's web page.
+The network used for exercises is assumed to have **Internet access**, which is required for Killercoda and for referring to this textbook's web page.
 
 Part 2 uses **kubectl**, but the goal is to observe cluster state rather than memorize commands. Basic Linux skills (shell, file operations, and so on) at the **LinuC Level 1** level are assumed.
 
 ### Local Environment (Optional) {.unlisted .unnumbered}
 
-You may also run Kubernetes locally with Minikube, Kind, k3s, Docker Desktop, and similar tools. Behavior and prerequisites vary by environment, so this textbook standardizes on KillerCoda. Part 2, Chapter 4 summarizes points to watch when moving exercises to a local environment.
+You may also run Kubernetes locally with Minikube, Kind, k3s, Docker Desktop, and similar tools. Behavior and prerequisites vary by environment, so this textbook standardizes on Killercoda. Part 2, Chapter 4 summarizes points to watch when moving exercises to a local environment.
 
 ### Classroom Use {.unlisted .unnumbered}
 
-Even when many learners study together in a classroom, each learner is expected to use KillerCoda individually in a browser. If KillerCoda is blocked on your network, confirm connectivity in advance. If an instructor provides a shared Kubernetes environment, verify beforehand that Part 2 procedures work there as written.
+Even when many learners study together in a classroom, each learner is expected to use Killercoda individually in a browser. If Killercoda is blocked on your network, confirm connectivity in advance. If an instructor provides a shared Kubernetes environment, verify beforehand that Part 2 procedures work there as written.
 
 ## Overall Flow {.unlisted .unnumbered}
 
@@ -60,7 +60,7 @@ Containers, Kubernetes, and the difference between cloud and on-premises—under
 
 ### Part 2&nbsp;Practice {.unlisted .unnumbered}
 
-Hands-on work in KillerCoda and similar environments to experience how Kubernetes behaves.
+Hands-on work in Killercoda and similar environments to experience how Kubernetes behaves.
 
 ### Part 3&nbsp;Application {.unlisted .unnumbered}
 

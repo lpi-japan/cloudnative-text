@@ -1,6 +1,6 @@
 ## 3-3 Hands-On: Gateway API and Access Confirmation – Where Does the Responsibility for External Entry Lie?
 
-Assumed environment: KillerCoda (Kubernetes cluster running)  
+Assumed environment: Killercoda (Kubernetes cluster running)  
 All subsequent operations use kubectl.
 
 ### 0. Pre-Check

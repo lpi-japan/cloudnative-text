@@ -84,21 +84,21 @@ Certifications such as KCNA and a learning roadmap.
 
 This textbook is developed as an **open project**. From the planning stage onward, members exchange ideas and share preliminary research, writing, and review.
 
-### Toshiyuki Tasome (Shinesoft Inc.) {.unlisted .unnumbered}
+### Toshiyuki Tashibu (SHINESOFT CORPORATION) {.unlisted .unnumbered}
 
 We created this textbook hoping it will support everyone who is starting to learn cloud native technology and those who guide that learning. Cloud native spans many technologies and open source projects, so understanding individual tools alone makes it hard to see the whole picture. This book emphasizes structural understanding—why each mechanism was needed and what problem its design solves—rather than a single product or implementation recipe. We hope it serves as a useful entry point into cloud native learning.
 
 ## Contributors {.unlisted .unnumbered}
 
-### Tomohiro Katsumura (Nomura Research Institute) {.unlisted .unnumbered}
+### Tomohiro Katsumura (Nomura Research Institute, Ltd.) {.unlisted .unnumbered}
 
 Cloud native technology can feel daunting to start because the domain is broad and the product landscape is large. Yet it is hard to stay competitive in today's business environment without it. We hope this book helps everyone who sets out to learn cloud native technology.
 
-### Kanta Furufuji (Nomura Research Institute) {.unlisted .unnumbered}
+### Kanta Koto (Nomura Research Institute, Ltd.) {.unlisted .unnumbered}
 
 In daily work I often touched Kubernetes and other cloud native technologies, but I found it difficult to explain systematically what "cloud native" means. Writing this book was a valuable opportunity to reorganize those concepts and connections. We hope it helps readers learn and understand.
 
-### Daiki Takao (Nomura Research Institute) {.unlisted .unnumbered}
+### Daiki Takasao (Nomura Research Institute, Ltd.) {.unlisted .unnumbered}
 
 When I learned Kubernetes and other cloud native technologies, I had no textbook that showed the whole landscape and had to feel my way forward. I joined this project hoping a broad overview textbook would ease that path for others. We hope this book is a good way to start exploring cloud native technology.
 

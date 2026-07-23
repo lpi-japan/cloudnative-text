@@ -1,25 +1,25 @@
 # Part 6: Conclusion
 
-## On Handling Structure
+### 1. On Handling Structure
 
 What this textbook has addressed is not cloud native as a technology.
 
 It is the structure of how to keep a system viable  
 under the assumptions of change, distribution, and uncertainty.
 
-In Part 1, the assumptions were examined.
+■ Part 1 examined the assumptions.
 
 The environment continues to change, systems are distributed, and uncertainty is unavoidable.  
 Under these assumptions, the traditional approach cannot remain viable.
 
-In Part 2, this was experienced firsthand.
+■ Part 2 experienced this firsthand.
 
 Units divided, connections formed,  
 state drifted, communication failed.
 
 A system always contains elements of instability.
 
-In Part 3, how to handle that state was examined.
+■ Part 3 examined how to handle that state.
 
 - How to divide
 - How to deliver
@@ -28,14 +28,14 @@ In Part 3, how to handle that state was examined.
 
 All of these are judgments as design.
 
-In Part 4, how to observe that state was examined.
+■ Part 4 examined how to observe that state.
 
 What matters is not what is visible, but what can be judged.
 
 Observation is not the act of grasping state.  
 **It is the act of obtaining information that makes judgment possible.**
 
-In Part 5, how this structure connects to society was examined.
+■ Part 5 examined how this structure connects to society.
 
 - Ways of working
 - How value is produced
@@ -74,7 +74,7 @@ Rather than completing tasks, one comes to hold responsibility for keeping thing
 The purpose of this textbook is not to increase knowledge.  
 It is to create a state in which judgments can be made.
 
-## The Question That Still Remains
+### 2. The Question That Still Remains
 
 Having examined structure up to this point:
 

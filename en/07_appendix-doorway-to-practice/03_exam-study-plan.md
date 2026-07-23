@@ -25,7 +25,7 @@ The following presents representative learning progressions as examples.
 
 ### 1: For Those Who Want to Learn Progressively
 
-#### First understand the whole, then go deeper.
+#### ▼ First understand the whole, then go deeper.
 
 A learning plan that grasps the overall flow of cloud native  
 while gradually moving into practice and specialized domains.
@@ -42,7 +42,7 @@ while gradually moving into practice and specialized domains.
 
 ### 2: For Those Who Want to Move Toward Operations
 
-#### Understand in order not to stop.
+#### ▼ Understand in order not to stop.
 
 A learning plan oriented toward Kubernetes operations, failure response,  
 and deepening the practice of stable operation.
@@ -62,7 +62,7 @@ This path goes deeper into operational judgment and state awareness in distribut
 
 ### 3: For Those Who Want to Move Toward Development and Design
 
-#### Build with the assumption of continuous change.
+#### ▼ Build with the assumption of continuous change.
 
 A learning plan oriented toward application design, continuous change,  
 and design adapted to distributed environments.
@@ -83,7 +83,7 @@ and how to operate within an environment of continuous change.
 
 ### 4: For Those Who Want to Move Toward Security
 
-#### Protect while permitting change.
+#### ▼ Protect while permitting change.
 
 A learning plan oriented toward boundary design  
 and Responsibility Boundaries in cloud native environments.

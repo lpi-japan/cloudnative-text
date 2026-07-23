@@ -50,35 +50,35 @@ Even when many learners study together in a classroom, each learner is expected 
 
 This textbook proceeds as follows:
 
-### Prologue: What Is Cloud Native? {.unlisted .unnumbered}
+### Prologue&nbsp;What Is Cloud Native? {.unlisted .unnumbered}
 
 How to use this textbook and why cloud native matters.
 
-### Part 1: Foundations {.unlisted .unnumbered}
+### Part 1&nbsp;Foundations {.unlisted .unnumbered}
 
 Containers, Kubernetes, and the difference between cloud and on-premises—understanding the principles.
 
-### Part 2: Practice {.unlisted .unnumbered}
+### Part 2&nbsp;Practice {.unlisted .unnumbered}
 
 Hands-on work in KillerCoda and similar environments to experience how Kubernetes behaves.
 
-### Part 3: Application {.unlisted .unnumbered}
+### Part 3&nbsp;Application {.unlisted .unnumbered}
 
 Microservices, continuous delivery, and service-to-service communication—delivering and connecting applications.
 
-### Part 4: Operations {.unlisted .unnumbered}
+### Part 4&nbsp;Operations {.unlisted .unnumbered}
 
 Monitoring, tracing, and security—making systems visible and keeping them safe.
 
-### Part 5: Expansion {.unlisted .unnumbered}
+### Part 5&nbsp;Expansion {.unlisted .unnumbered}
 
 Business and social context, FinOps, and connections with AI—turning technology into value.
 
-### Part 6: Summary {.unlisted .unnumbered}
+### Part 6&nbsp;Summary {.unlisted .unnumbered}
 
 A structural recap of what you have learned.
 
-### Appendix: Gateway to Practice {.unlisted .unnumbered}
+### Appendix&nbsp;Gateway to Practice {.unlisted .unnumbered}
 
 Certifications such as KCNA and a learning roadmap.
 

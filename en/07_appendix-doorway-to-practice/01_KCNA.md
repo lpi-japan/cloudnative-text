@@ -50,7 +50,7 @@ and the design thinking that takes change and scalability as given.
 
 > "**Why does a fixed design eventually reach its limits?**"
 
-#### 4: Observability (Seeing what cannot be seen.)
+#### 4: Observability (The technique of seeing what cannot be seen.)
 
 This domain covers how to understand the internal state of a distributed environment  
 through Monitoring, Logging, and Tracing.

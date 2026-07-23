@@ -15,7 +15,7 @@ Under these assumptions, the traditional approach cannot remain viable.
 In Part 2, this was experienced firsthand.
 
 Units divided, connections formed,  
-State Drift occurred, communication failed.
+state drifted, communication failed.
 
 A system always contains elements of instability.
 

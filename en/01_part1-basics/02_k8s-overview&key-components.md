@@ -34,9 +34,9 @@ but what state it should continue to be in — that is what is addressed.
 So that the state is maintained,  
 scheduling, restarting, and adjustment continue to take place.
 
-### 3. Managing State and Continuously Closing the Gap (Reconciliation)
+### 3. Managing State and Continuously Closing the Gap
 
-Kubernetes treats the current state and the Desired State separately.
+Kubernetes treats the current state and the desired state separately.
 
 Not "what to do,"  
 but "what should be the case" is defined.
@@ -66,7 +66,7 @@ To keep this mechanism viable, the roles are divided broadly into two.
 The side that handles state and keeps the whole viable,  
 and the side that actually runs applications.
 
-The former understands the Desired State,  
+The former understands the desired state,  
 and continues to make judgments so that state is maintained.
 
 The latter receives the resulting instructions  
@@ -102,7 +102,7 @@ Because it can handle multiple machines together,
 it may appear that way.
 
 In reality, however, it does not directly manage resources —  
-it is responsible for the control required to maintain the Desired State.
+it is responsible for the control required to maintain the desired state.
 
 Execution itself is delegated to the OS and the mechanisms on top of it.
 

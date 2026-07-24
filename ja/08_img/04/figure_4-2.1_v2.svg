@@ -37,7 +37,7 @@
     <rect x="20" y="66" width="1080" height="38" fill="#546E7A" rx="2"/>
     <text x="560" y="85" text-anchor="middle" dominant-baseline="middle"
           fill="#FFFFFF" font-size="13" font-weight="bold">
-      図4-2 の5サービス呼び出し連鎖を、Trace と Span（ガントチャート形式）で記録・可視化する
+      図4-2.0 の5サービス呼び出し連鎖を、Trace と Span（ガントチャート形式）で記録・可視化する
     </text>
   </g>
 

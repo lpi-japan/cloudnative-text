@@ -56,7 +56,7 @@ Use decimal form for supplemental figures of the same base figure.
 
 Examples
 
-* Figure 4-2
+* Figure 4-2.0
 * Figure 4-2.1
 * Figure 4-2.2
 
@@ -75,7 +75,7 @@ Technological evolution as a change in assumptions
 
 Change in execution unit: from VM to container
 
-### Figure 1-2
+### Figure 1-2.0
 
 Kubernetes declarative control loop
 
@@ -87,11 +87,11 @@ Complexity does not disappear — only its location changes
 
 Where communication control is placed
 
-### Figure 4-1
+### Figure 4-1.0
 
 The moment things become distributed, the whole becomes invisible
 
-### Figure 4-2
+### Figure 4-2.0
 
 A request passing through multiple services
 

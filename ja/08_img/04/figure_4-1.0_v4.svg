@@ -30,7 +30,7 @@
 <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
 <text x="560" y="33" text-anchor="middle" font-family="sans-serif"
       font-size="17" font-weight="bold" fill="white">
-  図 4-1　オブザーバビリティが必要な理由：マイクロサービスにおける観測の難しさ
+  図 4-1.0　オブザーバビリティが必要な理由：マイクロサービスにおける観測の難しさ
 </text>
 
 <!-- ═══════════════════════════════════════════════════

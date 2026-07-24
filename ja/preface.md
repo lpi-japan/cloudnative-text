@@ -50,35 +50,35 @@ Minikube、Kind、k3s、Docker Desktop などを用いて、ローカル PC 上�
 
 本教科書では、以下の通りに学習を進めます。
 
-### 序章&nbsp;クラウドネイティブとは何か {.unlisted .unnumbered}
+### 序章&nbsp;クラウドネイティブとは何か {#flow-prologue .unlisted .unnumbered}
 
 本教科書の使い方と、クラウドネイティブを学ぶ意味を整理します。
 
-### 第1部&nbsp;基礎ステップ {.unlisted .unnumbered}
+### 第1部&nbsp;基礎ステップ {#flow-part-1 .unlisted .unnumbered}
 
 コンテナ、Kubernetes、クラウドとオンプレの違いなど、原理を理解します。
 
-### 第2部&nbsp;実践ステップ {.unlisted .unnumbered}
+### 第2部&nbsp;実践ステップ {#flow-part-2 .unlisted .unnumbered}
 
 Killercoda などの環境でハンズオンを行い、Kubernetes の振る舞いを体感します。
 
-### 第3部&nbsp;応用ステップ {.unlisted .unnumbered}
+### 第3部&nbsp;応用ステップ {#flow-part-3 .unlisted .unnumbered}
 
 マイクロサービス、継続的デリバリー、サービス間通信など、アプリケーションを届けてつなぎます。
 
-### 第4部&nbsp;運用ステップ {.unlisted .unnumbered}
+### 第4部&nbsp;運用ステップ {#flow-part-4 .unlisted .unnumbered}
 
 モニタリング、トレーシング、セキュリティなど、見える化して守ります。
 
-### 第5部&nbsp;展開ステップ {.unlisted .unnumbered}
+### 第5部&nbsp;展開ステップ {#flow-part-5 .unlisted .unnumbered}
 
 社会・ビジネスへの展開、FinOps、AI との接続など、技術を価値に変えます。
 
-### 第6部&nbsp;総括 {.unlisted .unnumbered}
+### 第6部&nbsp;総括 {#flow-part-6 .unlisted .unnumbered}
 
 これまでの内容を構造として総括します。
 
-### 付録&nbsp;実践への扉 {.unlisted .unnumbered}
+### 付録&nbsp;実践への扉 {#flow-appendix .unlisted .unnumbered}
 
 KCNA などの資格と学習ロードマップを示します。
 

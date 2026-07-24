@@ -1,4 +1,4 @@
-# Part 1: Fundamentals – The Story of How the Execution Unit Changed
+# Part 1: Fundamentals Step – The Story of How the Execution Unit Changed
 
 ## Introduction
 

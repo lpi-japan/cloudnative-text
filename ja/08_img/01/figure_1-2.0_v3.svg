@@ -55,7 +55,7 @@
   ═══════════════════════════════════════ -->
   <rect x="0" y="0" width="1120" height="54" fill="#1F4E79"/>
   <text x="560" y="34" text-anchor="middle" font-size="16" font-weight="bold"
-        fill="#FFFFFF">図1-2　Kubernetesの宣言的制御ループ</text>
+        fill="#FFFFFF">図1-2.0　Kubernetesの宣言的制御ループ</text>
 
   <!-- ═══════════════════════════════════════
        LEFT PANEL ─ 利用者（ユーザー）宣言

@@ -6,9 +6,9 @@ LANG="${1:-ja}"
 LANG_DIR="${ROOT_DIR}/${LANG}"
 EPUB_CSS="${ROOT_DIR}/epub.css"
 OUT_DIR="${ROOT_DIR}/tmp"
-GUIDE_MD="${OUT_DIR}/.build-guide-${LANG}.md"
 OUTPUT="${OUT_DIR}/cloudnativetext_${LANG}.epub"
 HL_CSS_KINDLE="${OUT_DIR}/.highlighting-kindle.css"
+CHAPTER_LIST="${OUT_DIR}/.build-epub-chapter-list-${LANG}.txt"
 
 PART_DIRS=(
   00_prologue
@@ -50,6 +50,11 @@ if [[ ! -f "${COVER_IMAGE}" ]]; then
   exit 1
 fi
 
+if [[ ! -f "${LANG_DIR}/preface.md" ]]; then
+  echo "missing ${LANG_DIR}/preface.md" >&2
+  exit 1
+fi
+
 mkdir -p "${OUT_DIR}"
 
 RESOURCE_PATH="."
@@ -61,10 +66,16 @@ for part in "${PART_DIRS[@]}"; do
   RESOURCE_PATH+=":${part}"
 done
 
+# PDF と同様、原稿を結合せず複数入力で渡す。
+# pandoc がファイル間に空行を入れるため blank_before_header 問題も起きない。
+# ../08_img は --resource-path（言語ルート + 各部）で解決する。
 inputs=("preface.md")
+: > "${CHAPTER_LIST}"
 for part in "${PART_DIRS[@]}"; do
   while IFS= read -r -d '' f; do
-    inputs+=("${f#${LANG_DIR}/}")
+    rel="${f#${LANG_DIR}/}"
+    inputs+=("${rel}")
+    printf '%s\n' "${rel}" >> "${CHAPTER_LIST}"
   done < <(find "${LANG_DIR}/${part}" -maxdepth 1 -type f -name '*.md' -print0 | LC_ALL=C sort -z)
 done
 
@@ -72,20 +83,6 @@ if ((${#inputs[@]} < 2)); then
   echo "no manuscript markdown files found under ${LANG_DIR}" >&2
   exit 1
 fi
-
-# server-text 等は Chapter*.md を同一ディレクトリに cat するが、cloudnative は
-# ja/XX_part/ 配下の ../08_img 参照がある。tmp/ へ結合すると基準パスがずれるため、
-# 08_img 参照を言語ディレクトリ基準へ正規化し --resource-path で解決する（build-pdf.sh と同趣旨）。
-# ファイル境界には空行を入れる。単純 cat だと直前段落に次ファイル先頭の # 見出しが
-# 飲み込まれ、EPUB の目次・章分割が壊れる（Pandoc の blank_before_header）。
-# awk: 2ファイル目以降の先頭で空行を1つ挟む（xargs cat では挟めない）。
-(
-  cd "${LANG_DIR}"
-  awk 'FNR==1 && NR!=1 {print ""} {print}' "${inputs[@]}" \
-    | sed -e 's/^####.*/#& {-}/' \
-          -e 's|(\.\./08_img/|(08_img/|g' \
-    > "../${GUIDE_MD#${ROOT_DIR}/}"
-)
 
 # Pandoc embeds skylighting CSS via $highlighting-css$ with:
 #   pre > code.sourceCode > span { display: inline-block; ... }
@@ -119,16 +116,21 @@ prepare_kindle_highlighting_css
 
 (
   cd "${LANG_DIR}"
-  /usr/bin/awk 'BEGIN{go=0}{ if (go==1){print;} else {if($0 ~ /^#/){ go=1;print;}}}' "../${GUIDE_MD#${ROOT_DIR}/}" \
-    | pandoc -t epub3 -F pandoc-crossref -o "../${OUTPUT#${ROOT_DIR}/}" -N \
-        -M "crossrefYaml=crossref.yaml" \
-        --metadata-file="config-epub.yaml" \
-        --epub-cover-image="image/Cover/電子版表紙_300dpi_2480x3508.png" \
-        --css="../epub.css" \
-        --resource-path="${RESOURCE_PATH}" \
-        -V highlighting-css="$(cat "${HL_CSS_KINDLE}")"
+  pandoc "${inputs[@]}" \
+    -t epub3 \
+    -F pandoc-crossref \
+    -o "../${OUTPUT#${ROOT_DIR}/}" \
+    -M "crossrefYaml=crossref.yaml" \
+    --metadata-file="config-epub.yaml" \
+    --epub-cover-image="image/Cover/電子版表紙_300dpi_2480x3508.png" \
+    --css="../epub.css" \
+    --resource-path="${RESOURCE_PATH}" \
+    -V highlighting-css="$(cat "${HL_CSS_KINDLE}")"
 )
 
 echo "Language: ${LANG}"
 echo "Output: ${OUTPUT}"
+echo "Inputs (${CHAPTER_LIST}; plus preface.md):"
+printf 'preface.md\n'
+nl -ba "${CHAPTER_LIST}"
 ls -lh "${OUTPUT}"

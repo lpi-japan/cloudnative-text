@@ -77,19 +77,14 @@ fi
 # ja/XX_part/ 配下の ../08_img 参照がある。tmp/ へ結合すると基準パスがずれるため、
 # 08_img 参照を言語ディレクトリ基準へ正規化し --resource-path で解決する（build-pdf.sh と同趣旨）。
 # ファイル境界には空行を入れる。単純 cat だと直前段落に次ファイル先頭の # 見出しが
-# 飲み込まれ、EPUB の目次・章分割が壊れる。
+# 飲み込まれ、EPUB の目次・章分割が壊れる（Pandoc の blank_before_header）。
+# awk: 2ファイル目以降の先頭で空行を1つ挟む（xargs cat では挟めない）。
 (
   cd "${LANG_DIR}"
-  python3 - "${inputs[@]}" <<'PY' | sed -e 's/^####.*/#& {-}/' -e 's|(\.\./08_img/|(08_img/|g' > "../${GUIDE_MD#${ROOT_DIR}/}"
-import sys
-from pathlib import Path
-
-chunks = []
-for path in sys.argv[1:]:
-    text = Path(path).read_text(encoding="utf-8")
-    chunks.append(text.rstrip() + "\n")
-sys.stdout.write("\n".join(chunks))
-PY
+  awk 'FNR==1 && NR!=1 {print ""} {print}' "${inputs[@]}" \
+    | sed -e 's/^####.*/#& {-}/' \
+          -e 's|(\.\./08_img/|(08_img/|g' \
+    > "../${GUIDE_MD#${ROOT_DIR}/}"
 )
 
 # Pandoc embeds skylighting CSS via $highlighting-css$ with:

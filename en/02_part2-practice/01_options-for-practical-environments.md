@@ -40,7 +40,7 @@ Therefore, a pre-configured environment is used as the assumption.
 What matters is that this choice is not made because it is "convenient,"  
 but because it allows focus on observation.
 
-### ■ Main Options for Running Kubernetes
+#### ■ Main Options for Running Kubernetes
 
 ※ Note on the execution environment addressed in this chapter
 

@@ -1,6 +1,6 @@
 ## 4. Example Learning Plans
 
-### ■ There Is No Single Correct Path
+#### ■ There Is No Single Correct Path
 
 In cloud native learning, almost nothing is completed through a single technology alone.
 
@@ -104,7 +104,7 @@ while preserving flexibility.
 
 > "**Why do 'boundaries' become more critical as systems become more distributed?**"
 
-### ■ In Closing
+#### ■ In Closing
 
 Cloud native is not a world that can be completed through a single technology.
 
